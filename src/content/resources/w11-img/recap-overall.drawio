@@ -1,0 +1,97 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.5 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" version="28.2.5">
+  <diagram name="Page-1" id="WEfcjdApP_QUX4lp3u8g">
+    <mxGraphModel dx="2386" dy="1582" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AibRwDad6stZlNyArShZ-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-2" target="AibRwDad6stZlNyArShZ-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;curved=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-2" target="AibRwDad6stZlNyArShZ-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-2" value="&lt;span&gt;GE5230&lt;/span&gt;&lt;div&gt;Geospatial Statistics &amp;amp; Visualisation&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Montserrat;fontSize=16;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="487" y="360" width="200" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-3" target="AibRwDad6stZlNyArShZ-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-3" target="AibRwDad6stZlNyArShZ-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-3" target="AibRwDad6stZlNyArShZ-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-3" value="Geospatial Statistics" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Montserrat;fontStyle=1;fontSize=14;fontColor=#BF616A;" parent="1" vertex="1">
+          <mxGeometry x="507" y="230" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-4" target="AibRwDad6stZlNyArShZ-20" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-4" target="AibRwDad6stZlNyArShZ-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-4" target="AibRwDad6stZlNyArShZ-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-4" value="Geospatial Visualisation" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Montserrat;fontStyle=1;fontSize=14;fontColor=#5E81AC;" parent="1" vertex="1">
+          <mxGeometry x="547" y="560" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-7" value="&lt;ul&gt;&lt;li&gt;Data Preparation&lt;/li&gt;&lt;li&gt;Frequency Distribution&lt;/li&gt;&lt;li&gt;Data Transformation&lt;/li&gt;&lt;li&gt;Data Classification&lt;/li&gt;&lt;li&gt;Analysis of Differences&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Inter;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="102" y="170" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-8" target="AibRwDad6stZlNyArShZ-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-8" value="Point / Location" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Montserrat;fontColor=#BF616A;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="322" y="310" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-9" target="AibRwDad6stZlNyArShZ-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-9" value="Statistics / Attributes" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Montserrat;fontColor=#BF616A;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="322" y="190" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-10" target="AibRwDad6stZlNyArShZ-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-10" value="Areal / Spatial Attributes" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Montserrat;fontColor=#BF616A;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="322" y="420" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-16" value="&lt;ul&gt;&lt;li&gt;Complete Spatial Randomness&lt;/li&gt;&lt;li&gt;Monte Carlo Simulation and Permutation&lt;/li&gt;&lt;li&gt;Quadrate Count&lt;/li&gt;&lt;li&gt;Nearest Neighbor Analysis&lt;/li&gt;&lt;li&gt;Ripley&#39;s K-function&lt;/li&gt;&lt;li&gt;Kernel Density Estimation&lt;/li&gt;&lt;li&gt;K-means Clustering&lt;/li&gt;&lt;li&gt;DBSCAN&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Inter;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="37" y="300" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-17" value="&lt;ul&gt;&lt;li&gt;Spatial Autocorrelation&lt;/li&gt;&lt;li&gt;Spatial Weights (defining neighborhoods)&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;LISA&lt;/span&gt;&lt;/li&gt;&lt;li&gt;Moran&#39;s I and Local Moran&lt;/li&gt;&lt;li&gt;Geary&#39;s C and Local Geary&lt;/li&gt;&lt;li&gt;Getis-Ord&#39;s G, G*, Gi, Gi*&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Inter;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="77" y="460" width="205" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-20" target="AibRwDad6stZlNyArShZ-27" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-20" value="General Things" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Montserrat;fontColor=#5E81AC;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="732" y="370" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-21" target="AibRwDad6stZlNyArShZ-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-21" value="&lt;div&gt;Definition of &#39;Space&#39; and Geospatial&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Montserrat;fontColor=#5E81AC;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="732" y="490" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=1;fontFamily=Inter;" parent="1" source="AibRwDad6stZlNyArShZ-22" target="AibRwDad6stZlNyArShZ-31" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-22" value="Scientific Visualisation" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Montserrat;fontColor=#5E81AC;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="732" y="600" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-27" value="&lt;ul&gt;&lt;li&gt;Observe, Think, Assess, Show&lt;/li&gt;&lt;li&gt;Cartography Components&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Size&lt;/li&gt;&lt;li&gt;Typography&lt;/li&gt;&lt;li&gt;Colours&lt;/li&gt;&lt;li&gt;Coordinate System&lt;/li&gt;&lt;li&gt;Arrangement&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Cartographic Visualisation&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Inter;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="902" y="330" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-28" value="&lt;ul&gt;&lt;li&gt;Absolute Space&lt;/li&gt;&lt;li&gt;Relative Space&lt;/li&gt;&lt;li&gt;Relational Space&lt;/li&gt;&lt;li&gt;Mental Space&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Inter;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="912" y="490" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="AibRwDad6stZlNyArShZ-31" value="&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Spatial Database&lt;/span&gt;&lt;/li&gt;&lt;li&gt;Storytelling&lt;/li&gt;&lt;li&gt;Visual Hierarchy&lt;/li&gt;&lt;li&gt;Ethics in Spatial Data&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Inter;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="902" y="610" width="180" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

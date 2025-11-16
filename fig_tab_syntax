@@ -1,0 +1,24 @@
+```{figure} ./resources/w03-img/
+:label: 
+:alt: 
+:align: center
+
+
+```
+
+
+
+:::{table} A slice of HDB data table.
+:label: HDBtable
+:align: center
+
+| Street            | Flat Type   | Floor Area (sqm) |   Resale Age |   Resale Price |
+|:------------------|------------:|-----------------:|-------------:|---------------:|
+| ANG MO KIO AVE 10 | 2 ROOM      |               44 |           44 |         267000 |
+| ANG MO KIO AVE 3  | 2 ROOM      |               49 |           46 |         300000 |
+| ANG MO KIO AVE 3  | 2 ROOM      |               44 |           45 |         280000 |
+| ANG MO KIO AVE 3  | 2 ROOM      |               44 |           45 |         282000 |
+| ANG MO KIO AVE 4  | 2 ROOM      |               45 |           37 |         289800 |
+|               ... |         ... |             ...  |          ... |            ... |
+
+:::

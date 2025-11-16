@@ -1,0 +1,106 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram name="Page-1" id="QOv_mdRLTTAcd5iKy9Lc">
+    <mxGraphModel dx="1256" dy="817" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4t4hF6QMe9np_A4yh76c-7" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;The Attributes/Values&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;fontColor=#BF616A;align=center;" parent="1" vertex="1">
+          <mxGeometry x="313.75" y="470" width="252.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-8" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;The Location&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;fontColor=#BF616A;align=center;" parent="1" vertex="1">
+          <mxGeometry x="697.5" y="485" width="205" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-14" value="" style="group;fillColor=none;" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="600" y="660" width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-11" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" parent="4t4hF6QMe9np_A4yh76c-14" vertex="1">
+          <mxGeometry width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-12" value="&lt;h1 style=&quot;text-align: center; margin-top: 0px;&quot;&gt;Point/Locational Pattern&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;" parent="4t4hF6QMe9np_A4yh76c-14" vertex="1">
+          <mxGeometry x="45" y="90" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-15" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="280" y="140" width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-1" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" parent="4t4hF6QMe9np_A4yh76c-15" vertex="1">
+          <mxGeometry width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-2" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Statistical Pattern&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;align=center;" parent="4t4hF6QMe9np_A4yh76c-15" vertex="1">
+          <mxGeometry x="45" y="80" width="230" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-3" value="&lt;ul style=&quot;font-family: Montserrat; text-align: left;&quot;&gt;&lt;li&gt;Frequency Distribution&lt;/li&gt;&lt;li&gt;Central Tendency&lt;/li&gt;&lt;li&gt;Deviation&lt;/li&gt;&lt;li&gt;Analysis of Differences&lt;/li&gt;&lt;li&gt;...&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" parent="4t4hF6QMe9np_A4yh76c-15" vertex="1">
+          <mxGeometry x="25" y="110" width="270" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-16" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="640" y="140" width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-4" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" parent="4t4hF6QMe9np_A4yh76c-16" vertex="1">
+          <mxGeometry width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-5" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Point/Locational Pattern&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;align=center;" parent="4t4hF6QMe9np_A4yh76c-16" vertex="1">
+          <mxGeometry x="50.94" y="60" width="218.12" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-6" value="&lt;ul style=&quot;font-family: Montserrat; text-align: left;&quot;&gt;&lt;li&gt;Global Analysis of Clustering&lt;/li&gt;&lt;li&gt;Random Pattern&lt;/li&gt;&lt;li&gt;Density Estimation&lt;/li&gt;&lt;li&gt;Grouping of Points&lt;/li&gt;&lt;li&gt;...&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" parent="4t4hF6QMe9np_A4yh76c-16" vertex="1">
+          <mxGeometry x="2.5" y="130" width="315" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-17" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="337.5" y="660" width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-9" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" parent="4t4hF6QMe9np_A4yh76c-17" vertex="1">
+          <mxGeometry width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-10" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Statistical Pattern&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;align=center;" parent="4t4hF6QMe9np_A4yh76c-17" vertex="1">
+          <mxGeometry x="87.5" y="90" width="145" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-19" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;The Location of Attributes/Values&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;fontColor=#BF616A;align=center;" parent="1" vertex="1">
+          <mxGeometry x="500" y="1010" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="4t4hF6QMe9np_A4yh76c-18" value="" style="endArrow=classic;html=1;rounded=1;fontColor=#BF616A;strokeColor=#BF616A;startSize=11;endSize=7;strokeWidth=5;curved=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="630" y="850" as="sourcePoint" />
+            <mxPoint x="620" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-1" value="" style="group;fillColor=none;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="556.5" y="1220" width="429.5" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-2" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" vertex="1" parent="30rL5RQDgo7iYiZkgRvw-1">
+          <mxGeometry y="-40" width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-3" value="&lt;h1 style=&quot;text-align: center; margin-top: 0px;&quot;&gt;Point/Locational Pattern&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;" vertex="1" parent="30rL5RQDgo7iYiZkgRvw-1">
+          <mxGeometry x="45" y="20" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-10" value="&lt;ul style=&quot;font-family: Montserrat; text-align: left;&quot;&gt;&lt;li&gt;Global Analysis of Clustering&lt;/li&gt;&lt;li&gt;Random Pattern&lt;/li&gt;&lt;li&gt;Density Estimation&lt;/li&gt;&lt;li&gt;Grouping of Points&lt;/li&gt;&lt;li&gt;...&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" vertex="1" parent="30rL5RQDgo7iYiZkgRvw-1">
+          <mxGeometry x="14.5" y="90" width="315" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-4" value="" style="group" vertex="1" connectable="0" parent="30rL5RQDgo7iYiZkgRvw-1">
+          <mxGeometry x="-262.5" y="-40" width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-5" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" vertex="1" parent="30rL5RQDgo7iYiZkgRvw-4">
+          <mxGeometry width="320" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-6" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Statistical Pattern&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;align=center;" vertex="1" parent="30rL5RQDgo7iYiZkgRvw-4">
+          <mxGeometry x="87.5" y="60" width="145" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-9" value="&lt;ul style=&quot;font-family: Montserrat; text-align: left;&quot;&gt;&lt;li&gt;Frequency Distribution&lt;/li&gt;&lt;li&gt;Central Tendency&lt;/li&gt;&lt;li&gt;Deviation&lt;/li&gt;&lt;li&gt;Analysis of Differences&lt;/li&gt;&lt;li&gt;...&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" vertex="1" parent="30rL5RQDgo7iYiZkgRvw-4">
+          <mxGeometry x="7" y="110" width="270" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-7" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;The Location of Attributes/Values&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;fontColor=#BF616A;align=center;" vertex="1" parent="30rL5RQDgo7iYiZkgRvw-1">
+          <mxGeometry x="-100" y="310" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-8" value="" style="endArrow=classic;html=1;rounded=1;fontColor=#BF616A;strokeColor=#BF616A;startSize=11;endSize=7;strokeWidth=5;curved=0;" edge="1" parent="30rL5RQDgo7iYiZkgRvw-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="30" y="150" as="sourcePoint" />
+            <mxPoint x="20" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-11" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;The Attributes/Values&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;fontColor=#BF616A;align=center;" vertex="1" parent="30rL5RQDgo7iYiZkgRvw-1">
+          <mxGeometry x="-235.5" y="-110" width="252.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="30rL5RQDgo7iYiZkgRvw-12" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;The Location&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Montserrat;fontColor=#BF616A;align=center;" vertex="1" parent="30rL5RQDgo7iYiZkgRvw-1">
+          <mxGeometry x="69.5" y="-90" width="205" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

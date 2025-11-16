@@ -1,0 +1,84 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 1c604af6-8f28-4c31-a4ed-13fff51c09fd
+  title: Geospatial Statistics and Visualisation
+  subtitle: GE5230 | Department of Geography | NUS
+  description: Course materails for GE5230 in NUS
+  keywords:
+    - GIS
+    - GIScience
+    - Cartography
+    - Spatial Analysis
+  authors:
+    - name: Benny Chin
+      affiliations:
+        - GIS Unit, Geography, National University of Singapore
+  github: wcchin/geo-stat-vis
+  copyright: "2025 National University of Singapore"
+  license:
+    content: CC-BY-NC-ND-4.0
+    code: MIT
+  toc:
+    - file: src/index.md
+    - file: src/content/chapter-1-intro.md
+      children:
+        - file: src/content/sec_01-01-Geovisualisation.md
+        - file: src/content/sec_01-02-Visualization.md
+        - file: src/content/sec_01-03-Statistical-Thinking.md
+        - file: src/content/sec_01-04-GeoSpatial-Thinking.md
+    - file: src/content/chapter-2-spatial_data.md
+      children:
+        - file: src/content/sec_02-01-Data-Preparation.md
+        - file: src/content/sec_02-02-Frequency-Distribution.md
+        - file: src/content/sec_02-03-Data-Transformation.md
+        - file: src/content/sec_02-04-Data-Classification.md
+        - file: src/content/sec_02-05-Spatial-Database.md
+    - file: src/content/chapter-3-stat_pattern.md
+      children:
+        - file: src/content/sec_03-01-Hypothesis-Testing.md
+        - file: src/content/sec_03-02-T-test.md
+        - file: src/content/sec_03-03-ANOVA.md
+        - file: src/content/sec_03-04-Non-parametric.md
+        - file: src/content/sec_03-05-Summary.md
+    - file: src/content/chapter-4-point_pattern.md
+      children:
+        - file: src/content/sec_04-01-Complete-Spatial-Randomness.md
+        - file: src/content/sec_04-02-Quadrat-Count-Analysis.md
+        - file: src/content/sec_04-03-Nearest-Neighbor-Analysis.md
+        - file: src/content/sec_04-04-Ripleys-K-Function.md
+        - file: src/content/sec_04-05-A-Demonstration.md
+        - file: src/content/sec_04-06-Global-Local-Point-Pattern.md
+        - file: src/content/sec_04-07-Kernel-Density-Estimation.md
+        - file: src/content/sec_04-08-Spatial-KDE.md
+        - file: src/content/sec_04-09-Spatial-Clustering.md
+        - file: src/content/sec_04-10-K-Means-Clustering.md
+        - file: src/content/sec_04-11-DBSCAN.md
+        - file: src/content/sec_04-12-Visualising-Clusters.md
+    - file: src/content/chapter-5-areal_pattern.md
+      children:
+        - file: src/content/sec_05-01-Spatial-Autocorrelation.md
+        - file: src/content/sec_05-02-Statistical-Spatial-Testing.md
+        - file: src/content/sec_05-03-Morans-I.md
+        - file: src/content/sec_05-04-Local-Moran.md
+        - file: src/content/sec_05-05-Gearys-C-and-Local-C.md
+        - file: src/content/sec_05-06-Getis-Ord-G.md
+    - file: src/content/chapter-6-geovisualisation.md
+      children:
+        - file: src/content/sec_06-01-Geospatial-Data-Storytelling.md
+        - file: src/content/sec_06-02-Key-Components-of-Maps.md
+        - file: src/content/sec_06-03-Visual-Hierarchy.md
+        - file: src/content/sec_06-04-Tools.md
+        - file: src/content/sec_06-05-An-Example.md
+        - file: src/content/sec_06-06-Geospatial-Ethics.md
+        - file: src/content/sec_06-07-A-Final-Closing-Remark.md
+  # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
+site:
+  template: book-theme
+  options:
+    favicon: ./_static/img/favicon.png
+    logo: ./_static/img/logo-light.png
+    logo_dark: ./_static/img/logo-dark.png
+    style: ./_static/css/custom.css
+  parts:
+    footer: footer.md

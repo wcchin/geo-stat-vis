@@ -1,0 +1,92 @@
+
+html[data-theme=dark] {
+  --pst-color-primary:var(--ctp-mocha-blue);
+  --pst-color-secondary:var(--ctp-mocha-lavender);
+  --sbt-color-announcement:var(--ctp-mocha-maroon);
+  --pst-color-background:var(--ctp-mocha-base);
+  --pst-color-muted:var(--ctp-mocha-subtext1);
+  --pst-color-text-base:var(--ctp-mocha-text);
+  --pst-color-text-muted:var(--ctp-mocha-subtext0);
+  --pst-color-surface:var(--ctp-mocha-surface1);
+  --pst-color-on-background:var(--ctp-mocha-surface0);
+  --pst-color-table-row-hover-bg:var(--ctp-mocha-overlay0);
+  --pst-color-accent:var(--ctp-mocha-crust);
+  --pst-color-accent-bg:var(--ctp-mocha-blue);
+  --pst-color-info:var(--ctp-mocha-crust);
+  --pst-color-info-bg:var(--ctp-mocha-lavender);
+  --pst-color-warning:var(--ctp-mocha-crust);
+  --pst-color-warning-bg:var(--ctp-mocha-maroon);
+  --pst-color-success:var(--ctp-mocha-crust);
+  --pst-color-success-bg:var(--ctp-mocha-green);
+  --pst-color-danger:var(--ctp-mocha-crust);
+  --pst-color-danger-bg:var(--ctp-mocha-red);
+}
+.admonition.attention > .admonition-title, 
+div.admonition.attention > .admonition-title,
+.admonition.caution > .admonition-title, 
+div.admonition.caution > .admonition-title,
+.admonition.danger > .admonition-title, 
+div.admonition.danger > .admonition-title,
+.admonition.error > .admonition-title, 
+div.admonition.error > .admonition-title,
+.admonition.hint > .admonition-title, 
+div.admonition.hint > .admonition-title,
+.admonition.important > .admonition-title, 
+div.admonition.important > .admonition-title,
+.admonition.note > .admonition-title, 
+div.admonition.note > .admonition-title,
+.admonition.seealso > .admonition-title, 
+div.admonition.seealso > .admonition-title,
+.admonition.tip > .admonition-title, 
+div.admonition.tip > .admonition-title,
+.admonition.warning > .admonition-title[data-theme=dark], 
+div.admonition.warning > .admonition-title[data-theme=dark] {
+  color:var(--ctp-mocha-crust);
+}
+
+
+
+html[data-theme=light] {
+  --pst-color-primary:var(--ctp-latte-blue);
+  --pst-color-secondary:var(--ctp-latte-lavender);
+  --sbt-color-announcement:var(--ctp-latte-maroon);
+  --pst-color-background:var(--ctp-latte-base);
+  --pst-color-muted:var(--ctp-latte-subtext1);
+  --pst-color-text-base:var(--ctp-latte-text);
+  --pst-color-text-muted:var(--ctp-latte-subtext0);
+  --pst-color-surface:var(--ctp-latte-mantle);
+  --pst-color-on-background:var(--ctp-latte-crust);
+  --pst-color-table-row-hover-bg:var(--ctp-latte-overlay0);
+  --pst-color-accent:var(--ctp-latte-crust);
+  --pst-color-accent-bg:var(--ctp-latte-blue);
+  --pst-color-info:var(--ctp-latte-crust);
+  --pst-color-info-bg:var(--ctp-latte-lavender);
+  --pst-color-warning:var(--ctp-latte-crust);
+  --pst-color-warning-bg:var(--ctp-latte-maroon);
+  --pst-color-success:var(--ctp-latte-crust);
+  --pst-color-success-bg:var(--ctp-latte-green);
+  --pst-color-danger:var(--ctp-latte-crust);
+  --pst-color-danger-bg:var(--ctp-latte-red);
+}
+.admonition.attention > .admonition-title, 
+div.admonition.attention > .admonition-title,
+.admonition.caution > .admonition-title, 
+div.admonition.caution > .admonition-title,
+.admonition.danger > .admonition-title, 
+div.admonition.danger > .admonition-title,
+.admonition.error > .admonition-title, 
+div.admonition.error > .admonition-title,
+.admonition.hint > .admonition-title, 
+div.admonition.hint > .admonition-title,
+.admonition.important > .admonition-title, 
+div.admonition.important > .admonition-title,
+.admonition.note > .admonition-title, 
+div.admonition.note > .admonition-title,
+.admonition.seealso > .admonition-title, 
+div.admonition.seealso > .admonition-title,
+.admonition.tip > .admonition-title, 
+div.admonition.tip > .admonition-title,
+.admonition.warning[data-theme=light] > .admonition-title[data-theme=light], 
+div.admonition.warning[data-theme=light] > .admonition-title[data-theme=light] {
+  color:var(--ctp-latte-crust);
+}
