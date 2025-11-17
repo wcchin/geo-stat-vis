@@ -76,7 +76,7 @@ project:
 site:
   template: book-theme
   options:
-    favicon: ./_static/img/favicon.png
+    favicon: ./_static/img/favicon.ico
     logo: ./_static/img/logo-light.png
     logo_dark: ./_static/img/logo-dark.png
     style: ./_static/css/custom.css
