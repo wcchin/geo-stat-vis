@@ -1,0 +1,523 @@
+# Spatial Database
+
+## Why (do we need to talk about) (Spatial) Database
+
+- **Data Management and Organization**:
+Spatial databases play a crucial role in managing, storing, and querying _large volumes of geospatial data_. A solid understanding of spatial databases helps geovisualization professionals effectively organize and access data, ensuring efficient workflows and accurate analysis.
+
+- **Data Retrieval and Query Performance**:
+Geovisualization often involves working with complex spatial queries and data retrieval tasks. By discussing spatial databases, students can learn how to optimize these queries and improve performance, resulting in _faster and more efficient data retrieval_ for visualization purposes.
+
+- **Data Quality and Consistency**:
+Spatial databases provide tools and techniques for maintaining data quality, consistency, and integrity. This knowledge is vital for geovisualization professionals, as _data quality directly impacts the accuracy and reliability of their visualizations_.
+
+- **Data Analysis and Modeling**:
+Spatial databases support various geospatial analysis and modeling techniques, such as spatial statistics, spatial interpolation, and geostatistics. A strong foundation in spatial databases allows geovisualization professionals _to leverage these advanced methods and create more informative visualizations_.
+
+
+## About Data Management
+
+### How do you manage your photos?
+
+- Most cellphones take nice photos​
+    - Taking 3 photos a day will give you ~1,000 photos a year​
+    - Taking a 5-day vacation would give you 200 photos​
+
+- Ways to managing photos​
+    - Leave them on the phone?​
+    - Organize them into folders?​
+    - Upload them to some cloud services?​
+
+- Which method is the best?​
+
+```{figure} ../resources/w12-img/charles-postiaux-_Ulv6kWf5Gw-unsplash.jpg
+:label:takingphoto
+:alt:Sultan Mosque, Singapore.
+:align: center
+
+Sultan Mosque, Singapore. Photo by <a href="https://unsplash.com/@charlespostiaux?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Charles Postiaux</a> on <a href="https://unsplash.com/photos/selective-focus-photography-of-woman-taking-photo-_Ulv6kWf5Gw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+```
+
+Managing photos is very similar to the way of managing data, and vice versa.
+
+```{figure} ../resources/w12-img/data_management.png
+:label:
+:alt:
+:align: center
+
+The photo management.
+```
+
+
+## Data Management
+### Definition (Oracle)
+
+- Data management is the practice of _collecting, keeping, and using_ data securely, efficiently, and cost-effectively.
+
+- help people, organizations, and connected things
+    - optimize the use of data within the bounds of policy and regulation
+    - (use data to) enable data-driven decision-makings and take actions that maximize the benefit to the organisation
+
+
+### Database Operations - CRUD
+
+- **_C_reate**: The Create operation is used to add new records (or rows) to a database table.
+
+- **_R_ead**: The Read operation is used to retrieve or fetch existing records from a database table.
+
+- **_U_pdate**: The Update operation is used to modify existing records in a database table.
+
+- **_D_elete**: The Delete operation is used to remove existing records from a database table.
+
+
+### What is Database and Spatial Database
+
+**Database**: an integrated set of data on a particular subject, which is often used to store, and organize data
+
+**Spatial (or Geographic) database**: database containing geographic data of a particular subject for a particular area
+
+```{figure} ../resources/w12-img/spatial_database_simple.png
+:label:
+:alt:
+:align: center
+
+Spatial Database
+```
+
+### Characteristics of (spatial) database
+
+- Data is under **centralized control**
+    - Can guarantee data sharing among different users and applications
+    - Different from file management in which files are dispersed
+
+- Data are **independent**
+    - Database is independent of the application systems, and thus can be called by various application systems
+
+- **Data redundancy** is small
+    - Avoid repetitive data storage
+    - Improve data usage efficiency
+
+- Database has **complex data model structure**
+    - The complex data model structure is used for data organization and data management
+    - Vital difference from file management
+
+- Database has the function of **data protection**
+    - A password and permission for access must be set
+
+---
+class: left, middle
+### Database Management Systems (DBMS)
+
+- A system to _perform database operations_ on tables
+    - CRUD (Create, Read, Update, Delete)
+    - providing a systematic way to store, organize, retrieve, and manipulate data.
+
+- It ensures data _consistency, integrity, and security_ while enabling efficient access and data sharing among multiple users or applications.
+
+- A DBMS supports various database models and provides features like backup, recovery, and performance optimization for _effective data management_.
+
+
+Basic and key characteristics of DBMS:
+- **Persistence** across failures --- maintain a consistent system after failures – software, hardware, network failures, etc.
+
+- **Concurrent** access to data
+
+- **Scalability** to search on very large datasets (which do not fit inside main memories of computers)
+
+- **Efficiency**
+
+
+
+### DBMS clients
+
+- an **interface** between users and the DBMS
+
+- allow users to _connect, access, and interact_ with the database
+
+- a software package that _enables_ people to build and manipulate a database
+
+- Examples:
+    - MySQL Workbench,
+    - pgAdmin
+    - SQL Developer
+    - Microsoft Access (dBase file)
+    - dBeaver
+
+
+
+## Relational Database
+
+- It is a collection of tables, also called _relations_
+
+- The tables are _connected to each other_ by keys
+
+- A _primary key_: represents one or more attributes whose values can uniquely identify a record in a table
+
+- A _foreign key_: is one or more attributes that refer to a primary key in another table
+
+
+### Primary key, Foreign key, Composite key
+- Typically, one column, the _primary key_ contains the unique ID (identifier) of the described things, e.g., student IDs, social security numbers
+
+- This primary key column can exist in other tables to establish a relation, i.e., the _foreign key_
+
+- A _composite key_ is typically generated by combining the values of two or more columns in a table,
+e.g., student ID + course ID
+
+```{figure} ../resources/w12-img/keys.png
+:label:
+:alt:
+:align: center
+
+The keys in Relational Database.
+```
+
+
+### Logical relation types
+
+- One-to-one
+<img src="../resources/w12-img/one-to-one-link.png" width="30%" align="center">
+
+- One-to-many
+<img src="../resources/w12-img/one-to-many-link.png" width="30%" align="center">
+
+- Many-to-one
+<img src="../resources/w12-img/many-to-one-link.png" width="30%" align="center">
+
+- Many-to-many
+<img src="../resources/w12-img/many-to-many-link.png" width="30%" align="center">
+
+
+#### One-to-one <img src="../resources/w12-img/one-to-one-link.png" width="20%" align="center">
+
+Every entity on the left can connect to one and only one entity on the right.
+
+```{figure} ../resources/w12-img/one-to-one-demo.png
+:label:
+:alt:
+:align: center
+
+One-to-one demo.
+```
+
+
+#### One-to-many <img src="../resources/w12-img/one-to-many-link.png" width="20%" align="center">
+
+Every entity on the left can connect to multiple entities on the right.
+Every entity on the right can connect to one and only one entity on the left.
+
+```{figure} ../resources/w12-img/one-to-many-demo.png
+:label:
+:alt:
+:align: center
+
+One-to-many demo.
+```
+
+
+#### Many-to-one <img src="../resources/w12-img/many-to-one-link.png" width="20%" align="center">
+
+Every entity on the left can connect to one and only one entity on the right.
+Every entity on the right can connect to multiple entities on the left.
+
+```{figure} ../resources/w12-img/many-to-one-demo.png
+:label:
+:alt:
+:align: center
+
+Many-to-one demo.
+```
+
+
+
+#### Many-to-many <img src="../resources/w12-img/many-to-many-link.png" width="20%" align="center">
+
+Every entity on the left can connect to multiple entities on the right.
+Every entity on the right can connect to multiple entities on the left​.
+
+```{figure} ../resources/w12-img/many-to-many-demo.png
+:label:
+:alt:
+:align: center
+
+Many-to-many demo.
+```
+
+
+```{figure} ../resources/w12-img/database_relational_demo.png
+:label:
+:alt:
+:align: center
+
+A database for food order & delivery system.
+```
+
+
+
+### Advantages of Relational Database
+
+- Each table in the database can be prepared, maintained, and edited _separately from other tables_
+    - This is important as more (GIS) data are being recorded and added
+
+- The tables can remain separate until a query or an analysis requires that attribute data from different tables be _linked (joined) together_, which is favorable to both data management and data processing.
+
+
+### Normalization: Preparing a relational database
+
+- Normalization is the process of decomposition, taking a table with all the attribute data, and breaking it down into small tables while maintaining the necessary linkages between them.
+
+- Objectives of normalization:
+    - To avoid redundant data
+    - To ensure that attribute data in separate tables can be maintained and updated separately and can be linked whenever necessary
+    - To facilitate a distributed database
+
+
+
+### Demonstration of database normalisation
+
+```{figure} ../resources/w12-img/normalization_before.png
+:label:
+:alt:
+:align: center
+
+A demo table, before normalisation.
+```
+
+
+#### Step 0: Observation on the unnormalized table
+
+Database Normalization is mainly _to separate information from different types of entities to separated tables_.
+
+```{figure} ../resources/w12-img/normalization_observe.png
+:label:
+:alt:
+:align: center
+
+First step is to observe the composition and structure of the database: how many and what are the different 'entity' or 'object' in the table.
+```
+
+#### Step 1: Fill Missing Values
+
+Step 1 fills the empty cells, and each cell has one value.
+But the problem of data redundancy has increased.
+
+```{figure} ../resources/w12-img/normalization_missing_value.png
+:label:
+:alt:
+:align: center
+
+The original data may organised in an ordered way such that the repeated values are skipped if it is same as the one before.
+```
+
+
+
+#### Step 2: Table Decomposition
+
+```{figure} ../resources/w12-img/normalization_decompose_1.png
+:label:
+:alt:
+:align: center
+
+Decopmose the table. Still, there are one table with two types of 'object'.
+```
+
+
+#### Step 3: Table Decomposition again
+
+```{figure} ../resources/w12-img/normalization_decompose_2.png
+:label:
+:alt:
+:align: center
+
+Keep decompose the table again, until every table only represent a single type of object.
+```
+
+#### Done Normalisation
+
+```{figure} ../resources/w12-img/normalization_after.png
+:label:
+:alt:
+:align: center
+
+Finalise the table decomposition and the normalisation is complete.
+```
+
+### Table join and relate
+Since now the tables are separated and represent a single object, how to 'combine' them again for other data operation and usage? Table join and relate are the two frequently used database operation in GIS.
+
+#### Table join
+A join operation brings together two tables by using a common field or a primary key and a foreign key.
+
+```{figure} ../resources/w12-img/table_join.png
+:label:
+:alt:
+:align: center
+
+
+```
+
+#### Table relate
+- A relate operation temporarily connects two tables but keeps the tables physically separate
+
+- Does not append the data from one table to another
+
+- Three or more tables can be simultaneously connected
+
+- Support all relationships
+
+].column[
+```{figure} ../resources/w12-img/table_relate.png
+:label:
+:alt:
+:align: center
+
+
+```
+
+
+### Comparison of Join and Relate
+
+#### Join
+- Combines data from two tables _into a single table or layer_.
+
+- Most often used for one-to-one or many-to-one relationships.
+
+- _Requires a common field in both tables._
+
+- Creates a _static connection_ between tables (updates are not synchronized).
+
+- Appended columns are editable, but _changes won't reflect in the original table_.
+
+
+#### Relate
+- Establishes a _temporary, dynamic connection_ between two tables or layers without physically combining them.
+
+- Allows for one-to-one, one-to-many, and many-to-many relationships.
+
+- _Requires a common field in both tables._
+
+- Provides _real-time access_ to related data (updates are reflected when accessing related information).
+
+- Allows for editing related data, but _changes in the target table won't be synchronized back_ to the original related table.
+
+
+
+## The Special of 'Spatial' in 'Spatial Database'
+
+```{figure} ../resources/w12-img/google_map_demo.png
+:label:
+:alt:
+:align: center
+
+What about 'spatial' in spatial database? The location, proximity, and direction in Google Map.
+```
+
+- **Location**:
+Spatial databases store and manage data with a geographical component, allowing users to associate locations with other attributes for enhanced analysis and visualization.​
+
+- **Proximity**:
+Spatial databases enable proximity analysis, facilitating the identification of nearby features, calculation of distances, and exploration of spatial relationships between various data points.​
+
+- **Direction**:
+With spatial databases, direction-based queries and navigation-based queries, enabling route planning, shortest path calculations, and network analysis to optimize movement and travel within spatial data contexts.​
+
+**Spatial is indeed special!**
+
+
+
+### Spatial join
+A spatial join uses a spatial relationship to join two sets of spatial features and their attribute data.
+
+In [](#spatialjoin):
+- (left) Join a school to a county in which the school is located
+- (center) Join a highway to a forest area by which the highway is intersected​
+- (right) Join a villages to a fault line which the village is closest to
+
+```{figure} ../resources/w12-img/spatial_join.png
+:label: spatialjoin
+:alt: Spatial Join Example
+:align: center
+
+'Merging' (join/relate) table by spatial relationships.
+```
+
+### Example of spatial database
+
+- PostgreSQL + PostGIS
+
+- Mysql + Spatial Extension
+
+- SQLite + SpatiaLite
+
+- DuckDB + Spatial Extension
+
+- MongoDB
+
+- CrateDB
+
+
+### Spatial Indexing
+
+Operationaly, what is the addition of SPATIAL to the database?
+
+- Spatial indexing is a crucial and arguably the main component of a spatial database because it's essential for efficiently querying large datasets of geographic or geometric data.
+
+- KD-Tree, QuadTree
+
+- R-Tree
+
+```{figure} ../resources/w12-img/R-tree.svg.png
+:label:
+:alt:
+:align: center
+
+Image source: [Wikipedia: R-tree](https://en.wikipedia.org/wiki/R-tree)
+```
+
+
+### Example of spatial query (PostGIS)
+
+#### Create table
+```sql
+CREATE TABLE public.cities (
+    id serial PRIMARY KEY,
+    name VARCHAR(255),
+    population INT,
+    geom GEOMETRY(Point, 4326) -- Point geometry, SRID 4326 (WGS 84 geographic coordinate system)
+);
+```
+
+#### Insert data rows (point)
+```sql
+INSERT INTO public.cities (name, population, geom) VALUES
+('London', 8982000, ST_SetSRID(ST_MakePoint(-0.1278, 51.5074), 4326)),
+('Paris', 2141000, ST_SetSRID(ST_MakePoint(2.3522, 48.8566), 4326)),
+('New York', 8419000, ST_SetSRID(ST_MakePoint(-74.0060, 40.7128), 4326));
+```
+
+
+### Example of spatial query (PostGIS)
+
+#### Finding cities within a search distance from a point
+```sql
+    SELECT name
+    FROM public.cities
+    WHERE ST_DWithin(
+        geom::geography,
+        ST_SetSRID(ST_MakePoint(-0.1278, 51.5074), 4326)::geography,
+        100000 -- distance in meters
+    );
+```
+
+#### Spatial Joins
+```sql
+-- Assuming another table 'countries' with a 'geom' column (Polygon)
+SELECT c.name AS city_name, co.name AS country_name
+FROM public.cities AS c, public.countries AS co
+WHERE ST_Contains(co.geom, c.geom);
+```
+
+#### Do calculation (area)
+```sql
+    SELECT ST_Area(ST_GeomFromText('POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))', 4326));
+```

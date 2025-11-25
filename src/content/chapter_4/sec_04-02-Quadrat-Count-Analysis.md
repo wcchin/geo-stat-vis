@@ -1,0 +1,75 @@
+# Quadrat Count Analysis
+
+## What is Quadrat Count Analysis?
+
+Quadrat Count Analysis is a method used in spatial point pattern analysis to determine whether a pattern of points is randomly distributed, clustered, or evenly spaced. It involves _dividing the study area into smaller, equal-sized areas called "quadrats"_ (typically square or rectangular in shape) and _counting the number of points fall in each quadrat_.
+
+
+## Calculating Quadrat Count
+
+The main steps in Quadrat Count Analysis are:
+1. Divide the study area into a _grid of quadrats_.
+2. _Count_ the number of points in each quadrat.
+3. Calculate the _expected number of points_ per quadrat under the assumption of Complete Spatial Randomness (CSR).
+4. _Compare_ the observed frequency distribution (the counts) with the expected frequency distribution (under CSR) to assess the degree of similarity or difference between them.
+5. Apply _statistical tests_, such as the chi-squared goodness-of-fit test, to determine whether the observed frequency distribution significantly differs from the expected distribution under CSR---whether the spatial pattern exhibits randomness, clustering, or regularity.
+
+
+## Count the number of points in each quadrat
+
+```{figure} ../resources/w05-img/plot_quadrat_counts.png
+:label:
+:alt:
+:align: center
+
+Counting points in cells
+```
+
+Then, how to compare?
+
+## Chi-squared test
+Use Chi-squared test, which is suitable for comparing frequencies.
+
+The quadrat method partitions the study region into $r$ rows and $c$ columns, which define $m=r\times c$ non-overlapping subregions or quadrats of equal area. This method relies on the fact that, _under CSR, the expected number of observations within any region of equal size is the same_. Let $n$ be the number of observed points, $m$ the number of quadrats of equal size, and $n_i$ the number of points in quadrat $i$. The expected number of points in each quadrat is $N/m$. The test statistic is calculated as
+
+$$
+\chi^2 = \sum_{i=1}^m\frac{\text{observed}_i - \text{expected}}{\text{expected}}
+$$
+
+$$
+\text{expected} = \frac{N}{m}
+$$
+
+**Why?**
+
+> A CSR would have a mean at the average with a non-zero spread (non-zero deviation).
+
+
+Use Chi-squared test, which is suitable for comparing the frequencies against an expected frequency or distribution.
+
+**Clustered example**
+- chi-squared statistic$= 354.332$, p-value$= 2.606e-66$$
+- _significantly different_ from random
+
+**Random example**
+- chi-squared statistic$= 19.332$, p-value$= 0.199$
+- non-significant; the distribution is _not different from random_
+
+**Regular example**
+- chi-squared statistic$= 8.332$, pvalue$= 0.910$
+- non-significant; the distribution is _not different from random_
+
+> Since the expected number of points are the average number of points---the test do not consider the spread mathematically---thus the regular example 'is not different from random'.
+
+
+
+## Key considerations
+
+Some key considerations in Quadrat Count Analysis include:
+- **Quadrat size**: The size of the quadrats should be carefully chosen to ensure that it is appropriate for the scale of the pattern being studied.
+- **Quadrat shape**: While square quadrats are common, other shapes (such as rectangular or circular) may be used depending on the specific study requirements.
+- **Edge effects**: Care should be taken to account for edge effects, which occur when quadrats at the edge of the study area contain fewer points due to the smaller overlapping area.
+
+> Is the analysis result sensitive to the parameter settings?
+
+Quadrat Count Analysis provides a simple and intuitive approach to analyzing spatial point patterns, but it has some limitations compared to more advanced methods, such as **distance-based** or **density-based** approaches. Nonetheless, it is a useful tool for exploratory analysis and can be helpful in understanding the general characteristics of a spatial point pattern.
