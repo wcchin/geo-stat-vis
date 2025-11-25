@@ -29,7 +29,7 @@ This dataset records the location of people sitting on a grass patch in Gordon S
 
 Area: $42 \times 56 \text{m}^2$
 
-Source: [R spatstat dataset](https://search.r-project.org/CRAN/refmans/spatstat.data/html/gordon.html), Baddeley et al. 2013: [DOI:10.18637/jss.v055.i11](https://www.jstatsoft.org/article/view/v055i11)
+Source: [R spatstat dataset](https://search.r-project.org/CRAN/refmans/spatstat.data/html/gordon.html), Baddeley et al. 2013: [DOI:10.18637/jss.v055.i11](https://doi.org/10.18637/jss.v055.i11)
 
 
 ```{figure} ../resources/w05-img/GordonSquare_individual_and_groups_xkcd.png
