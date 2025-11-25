@@ -16,7 +16,7 @@ Let's do a mind travel to  Gordon Square, London, UK. Source: [Google Map](https
 - Can we assume people prefer not to sit too close to strangers?
 - If they go with friends or colleagues, they will sit together.
 
-- _Will the process of .red[people finding comfortable spots for sitting in an open space] result in a random, clustered, or dispersed pattern?_
+- _Will the process of **people finding comfortable spots for sitting in an open space** result in a random, clustered, or dispersed pattern?_
 
 Analyze with:
 1. individual level
