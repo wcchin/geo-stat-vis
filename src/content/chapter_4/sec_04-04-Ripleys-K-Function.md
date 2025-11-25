@@ -66,8 +66,8 @@ More info: [ESRI ArcGIS: How multi-distance spatial cluster analysis works.](htt
 
 ## Testing for K-functions
 
-- __How high is high enough__ to be considered as clustered?
-- To compare them with CSR, __Monte Carlo Simulation__ can be used (again)
+- _How high is high enough_ to be considered as clustered?
+- To compare them with CSR, _Monte Carlo Simulation_ can be used (again)
 
 
 ```{figure} ../resources/w05-img/kfunc_arcGIS_redraw.png
