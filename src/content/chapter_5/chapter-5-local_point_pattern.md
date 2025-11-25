@@ -42,9 +42,13 @@ In most cases, when working with regression models, we _do not focus on the char
 By examining the _collective behavior_ of the data points, we can gain insights into the underlying relationships between variables, assess the model's performance, and make informed predictions or decisions based on the model's output. In other words, _a 'global' understanding_ of the entire dataset.
 
 
-<img src="../resources/w04-img/spatial_patterns_3_basic.png" width="100%">
+```{figure} ../resources/w04-img/spatial_patterns_3_basic.png
+:label:
+:alt:
+:align: center
 
 Is it clustered? not-clustered? random?
+```
 
 
 
