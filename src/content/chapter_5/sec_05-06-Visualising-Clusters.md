@@ -1,14 +1,6 @@
 # Visualising Spatial Clusters
-------
 
-.headnote.square.bold.x-large[Point Pattern III]
-
----
-class: left, middle
-
-.split-50[.column[
-### Visualizing Spatial Clusters
-].column[
+## Visualizing Spatial Clusters
 
 1. point colors
 2. convex hull
@@ -18,64 +10,40 @@ class: left, middle
     - bubble plot
     - heatmap
     - contour map
-]]
 
----
-class: left, middle
 
-.split-50[.column[
-### Visualizing Spatial Clusters
-1. .red[point colors]
-2. convex hull
-3. standard ellipse
-4. voronoi polygon
-].column[
+```{figure} ../resources/w07-img/point_color.png
+:label:
+:alt:
+:align: center
 
-<img src="resources/w07-img/point_color.png" width="80%">
+Point colours
+```
 
-]]
 
----
-class: left, middle
+```{figure} ../resources/w07-img/convex_hull.png
+:label:
+:alt:
+:align: center
 
-.split-50[.column[
-### Visualizing Spatial Clusters
-1. point colors
-2. .red[convex hull]
-3. standard ellipse
-4. voronoi polygon
-].column[
+Convex hull
+```
 
-<img src="resources/w07-img/convex_hull.png" width="80%">
 
-]]
 
----
-class: left, middle
+```{figure} ../resources/w07-img/standard_ellipse.png
+:label:
+:alt:
+:align: center
 
-.split-50[.column[
-### Visualizing Spatial Clusters
-1. point colors
-2. convex hull
-3. .red[standard ellipse]
-4. voronoi polygon
-].column[
+Standard ellipse
+```
 
-<img src="resources/w07-img/standard_ellipse.png" width="80%">
 
-]]
+```{figure} ../resources/w07-img/voronoi_polygon.png
+:label:
+:alt:
+:align: center
 
----
-class: left, middle
-
-.split-50[.column[
-### Visualizing Spatial Clusters
-1. point colors
-2. convex hull
-3. standard ellipse
-4. .red[voronoi polygon]
-].column[
-
-<img src="resources/w07-img/voronoi_polygon.png" width="80%">
-
-]]
+Voronoi polygon
+```

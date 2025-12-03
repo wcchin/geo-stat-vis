@@ -93,3 +93,16 @@ Common methods for Local Spatial Analysis include:
     - Local Getis-Ord Gi*
 
 - Kernel Density Estimation
+
+
+## Two Types Clusters/Clustering in Spatial Analysis
+
+1. some parts of the study area that have very **high concentration of point events**,
+i.e., **'clusters'**
+    - to check if this phenomenon exists in the spatial point data
+    - to identify the location of these clusters
+    - significant tests, CSR
+
+2. **groups of spatial points** that are close to each other,
+i.e., **'clusters'**
+    - identify grouping of points with/without overlap
