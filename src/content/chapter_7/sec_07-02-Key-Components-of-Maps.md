@@ -7,16 +7,16 @@
 - Arrangement
 
 
-### Sizes
+## Sizes
 The size of the map:
 - a 'full' width figure in an A4 paper (e.g., thesis, reports)
-- a 'half' width figure in an A4 paper  
-(i.e., to fit in one column of a two columns layout)
+- a 'half' width figure in an A4 paper (i.e., to fit in one column of a two columns layout)
 - as one of the element inside an A1 poster
 - a full A0 poster-size map
 - in a Powerpoint slide (full-page vs. as an element)
 
-**Map details**
+
+### Map details
 How much detail can be shown in:
 - a small A4-one-column map
 - a full A0 poster-size map
@@ -25,18 +25,17 @@ Two thinking directions:
 - What should be added --- the 'plus'
 - What should be removed --- the 'minus'
 
-
-**DPI**  
-(dots-per-inch): the number of dots that will be drawn or printed within a one-inch span (in a single dimension).
+### Considerations
+- DPI (dots-per-inch): the number of dots that will be drawn or printed within a one-inch span (in a single dimension).
 
 **Think:**
 - What happens when you put an A0-size map/image inside an A4 paper?
 - How does a 2cm line in the original A0 map look on the A4 paper?
 
-**Take home message**:  
+**Take home message**:
 Always plan ahead about what size of map to be drawn.
 
-```{figure} ./resources/w01-img/drawing_sizes_1a.png
+```{figure} ../resources/w01-img/drawing_sizes_1a.png
 :label: effectofsize
 :alt: difference size
 :align: center
@@ -44,7 +43,7 @@ Always plan ahead about what size of map to be drawn.
 The same map export with different size, squeezed to the same display size.
 ```
 
-```{figure} ./resources/w01-img/drawing_sizes_1b.png
+```{figure} ../resources/w01-img/drawing_sizes_1b.png
 :label: zoomin
 :alt: zoom in
 :align: center
@@ -53,10 +52,10 @@ The same 4 maps, zoomed-in.
 ```
 
 
-### Typography
+## Typography
 
 Typography most often serves to label cartographic elements.
-It is a **“functional symbol”** primarily, and secondarily an __aesthetic element​__ meaning that __it carries cartographic meaning​__ and **is not simply “window dressing”**.
+It is a **“functional symbol”** primarily, and secondarily an _aesthetic element_ meaning that _it carries cartographic meaning_ and **is not simply “window dressing”**.
 
 :::{aside} About Typography
 [Typography, from Making Effective Maps: Cartographic Visualization for GIS](https://colorado.pressbooks.pub/makingmaps/chapter/typography/)
@@ -70,7 +69,7 @@ It is a **“functional symbol”** primarily, and secondarily an __aesthetic el
 
 *What is the differences between Sans Serif fonts and Serif fonts?*
 
-```{figure} ./resources/w01-img/drawing-fonts.png
+```{figure} ../resources/w01-img/drawing-fonts.png
 :label: fonts
 :alt: san-serif and serif
 :align: center
@@ -78,12 +77,12 @@ It is a **“functional symbol”** primarily, and secondarily an __aesthetic el
 Some example of Sans-Serif fonts (left) and Serif fonts (right).
 ```
 
-```{figure} ./resources/w01-img/text_elements.png
+```{figure} ../resources/w01-img/text_elements.png
 :label: textele
 :alt: text element
 :align: center
 
-Text elements. 
+Text elements.
 ```
 
 
@@ -97,16 +96,16 @@ Things to be considered:
 **Take home message**:
 The top priority is to ensure that the text is *clear and readable*. Additionally, make sure the fonts are appropriate for your target venue.
 
-### Colours
+## Colours
 
 In the realm of cartography and geovisualization, color is an essential tool that serves to delineate different components and highlight their significance, thereby facilitating effective visual communication. In designing geovisualization, *the application of color goes beyond aesthetics, as it enables the clear differentiation of features and allows for the accurate representation of data*, making it a crucial aspect of geovisualization design.
 
-```{figure} ./resources/w01-img/US_temperature_map.png
-:label: 
-:alt: 
+```{figure} ../resources/w01-img/US_temperature_map.png
+:label:
+:alt:
 :align: center
 
-Temperature of colors. Source: NASA Earth Observatory: [Arctic Chill Sweeps U.S.](https://earthobservatory.nasa.gov/images/152333/arctic-chill-sweeps-us)
+Temperature of colours. Source: NASA Earth Observatory: [Arctic Chill Sweeps U.S.](https://earthobservatory.nasa.gov/images/152333/arctic-chill-sweeps-us)
 ```
 
 
@@ -119,20 +118,20 @@ Things to considered while selecting color(s):
         - discrete: Q1, Q2, Q3, Q4; levels after 'breaks'; age groups...
         - continuous: scaled data from 0 to 1, with a min-value and max-value, exact age...
     - Diverging: with a center value (e.g., 0)
-    -  <img src="resources/w01-img/drawing_continuous_discrete.png" width="40%" align="center">
+    -  <img src="../resources/w01-img/drawing_continuous_discrete.png" width="40%" align="center">
     Discrete vs. Continuous.
 
-- Temperature of colors:
+- Temperature of colours:
     - cold colors for low values,
     - hot colors for high values, etc.
-    - <img src="resources/w01-img/temperature-of-greys.png" width="40%" align="center">
+    - <img src="../resources/w01-img/temperature-of-greys.png" width="40%" align="center">
     [Color temperature](https://en.wikipedia.org/wiki/Color_temperature) from Wikipedia.
 
 - - The meaning of data:
-    - green-series colors for greeneries level, or safety level, etc.
-    - red, orange colors for dangerous level, or warning level...
+    - green-series colours for greeneries level, or safety level, etc.
+    - red, orange colours for dangerous level, or warning level...
 
-```{figure} ./resources/w01-img/matplotlib-colors.png
+```{figure} ../resources/w01-img/matplotlib-colors.png
 :label: cmap
 :alt: colormaps from Matplotlib
 :align: center
@@ -141,7 +140,7 @@ Some example of colormaps from [Matplotlib](https://matplotlib.org/stable/users/
 ```
 
 
-```{figure} ./resources/w01-img/seaborn-qualitative.png
+```{figure} ../resources/w01-img/seaborn-qualitative.png
 :label: seabornquali
 :alt: qualitative colormap from seaborn
 :align: center
@@ -151,7 +150,7 @@ Various qualitative colormap from [Seaborn](https://seaborn.pydata.org/tutorial/
 
 
 
-Two basic color models:
+Two basic colour models:
 - **CMYK**: allows for more precise control over how colors appear on printed materials.
     - four integer values ranging from 0 to 100, each value corresponding to the percentage of ink coverage for Cyan, Magenta, Yellow, and blacK components.
 - **RGB**: allows for precise control over how colors appear on digital devices.
@@ -166,9 +165,9 @@ How to use colors in Python (Matplotlib):
 - specifying RGBA hex code: `'#0f0f0fff'`
 
 
-### Coordinate System
+## Coordinate System
 
-All maps are drawn with a specific coordinate reference system (CRS), which defines how the geographic coordinates of features on the Earth's surface are represented in a flat, two-dimensional plane (i.e., map). There are two main types of CRS: unprojected and projected.
+All maps are drawn with a specific coordinate reference system (CRS), which defines how the geographic coordinates of features on the Earth's surface are represented in a flat, two-dimensional plane (i.e., map). There are two main types of CRS: unprojected and projected. See [proj](https://proj.org/en/5.2/operations/projections/index.html) for a series of different global projections and [The Morphing Map Project](https://wcchin.github.io/map_projection/) to see how projections are different from each other.
 
 1. **Unprojected CRS**
 
@@ -185,7 +184,7 @@ All maps are drawn with a specific coordinate reference system (CRS), which defi
 
    Each map projection serves different purposes and has its own advantages and disadvantages in terms of preserving shape, area, distance, and direction. The choice of projection depends on the specific needs and applications of the map.
 
-```{figure} ./resources/w01-img/morphing_map_project.png
+```{figure} ../resources/w01-img/morphing_map_project.png
 :label: morphing
 :alt: morphing maps
 :align: center
@@ -194,9 +193,9 @@ All maps are drawn with a specific coordinate reference system (CRS), which defi
 ```
 
 
-```{figure} ./resources/w01-img/varying_projections.png
+```{figure} ../resources/w01-img/varying_projections.png
 :label: country_dif
-:alt: Countries in differet projection. 
+:alt: Countries in differet projection.
 :align: center
 
 The four countries in three different projections.
@@ -204,7 +203,9 @@ The four countries in three different projections.
 
 
 
-#### How to use CRS in Python
+### How to use CRS in Python
+
+Here we demonstrate how to change to the Singapore projection See [EPSG:3414](https://epsg.io/3414) and [SLA on SVY21 / Singapore TM](https://app.sla.gov.sg/sirent/About/PlaneCoordinateSystem) for more details.
 
 ```python
 import geopandas as gpd
@@ -226,12 +227,12 @@ sg_prjd = singapore.to_crs(targeted_crs)
 
 
 
-### Arrangement
+## Arrangement
 
 - **Arrangement** is about the position of every element on map.
     - Where to put what
 - **Which area** of a map/paper will be seen first by the readers?
-    - The hierarchy of information
+    - The hierarchy of information (see next section)
 - Should we draw **North arrow** and **scale bar**?
     - If it is a series of maps, the second and later maps could ignore the N-arrow and scale bar, for the sake of simplicity and readability.
 - **Collective/shared legend**, or separate legends for every map?
@@ -241,9 +242,9 @@ sg_prjd = singapore.to_crs(targeted_crs)
     - It is a common practice that if the map comes with a figure caption (e.g., Fig X. figure title) then the title on top of the map should be removed.
 - The **external (out-of-studying-scope) area**
     - It is a better idea to draw these external area with light grey or something less attractive.
-    
 
-### Summary
+
+## Summary
 Basics of mapping
 
 Things to be considered and planned while visualizing spatial patterns:

@@ -1,5 +1,6 @@
-# A Demonstration
+# A Demonstration on Point Patterns
 
+A demonstration for chapter 4.
 
 ```{figure} ../resources/w05-img/gordon_square2.png
 :label:
