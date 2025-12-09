@@ -5,4 +5,4 @@
 
 
 
-<img src="resources/w11-img/recap-overall.drawio.png" width="100%" align="center">
+<img src="../resources/w11-img/recap-overall.drawio.png" width="100%" align="center">

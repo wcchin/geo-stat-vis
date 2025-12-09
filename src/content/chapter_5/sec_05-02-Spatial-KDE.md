@@ -204,8 +204,7 @@ Example of Spatial KDE visualisation: [Yang et al. 2019](https://doi.org/10.3390
 
 Example of Spatial KDE visualisation: [Kuo et al. 2012](https://api.semanticscholar.org/CorpusID:5968823)
 ```
-<img src="resources/w06-img/kde_example_5.png" width="100%">
-.footnote.small.square[
+
 
 ```{figure} ../resources/w06-img/kde_example_6.png
 :label:

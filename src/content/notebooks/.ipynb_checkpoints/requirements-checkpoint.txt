@@ -1,0 +1,18 @@
+## basic processing, numerical and scientific, including spatial kdetree etc. 
+scipy
+numpy
+tqdm
+
+## for data, spatial data and geometry data management in Python
+pandas
+geopandas
+shapely
+
+## for plotting
+matplotlib
+seaborn
+
+## for processing and analysis
+sklearn
+pysal  # include libpysal, mapclassify, esda, pointpats, splot
+pingouin

@@ -122,7 +122,7 @@ The Epanechnikov kernel is optimal for some statistical properties and has a com
 $$
 K(x) =
 \begin{cases}
-\frac{3}{4h} \times (1 - (x / h)^2) & \text{if -h ≤ x ≤ h} \\\\
+\frac{3}{4h} \times (1 - (x / h)^2) & \text{if -h }\leq\text{ x }\leq\text{ h} \\\\
 0 & \text{otherwise} \\
 \end{cases}
 $$
@@ -142,7 +142,7 @@ The Quartic kernel function is another commonly used kernel function in Kernel D
 $$
 K(x) =
 \begin{cases}
-\frac{15}{16h} \times (1 - (x / h)^2)^2  & \text{if -h ≤ x ≤ h} \\\\
+\frac{15}{16h} \times (1 - (x / h)^2)^2  & \text{if -h }\leq\text{ x }\leq\text{ h} \\\\
 0 & \text{otherwise} \\
 \end{cases}
 $$
@@ -162,7 +162,7 @@ The Triangular kernel function is a simple and computationally efficient kernel 
 $$
 K(x) =
 \begin{cases}
-\frac{1 - |x/h|}{h} & \text{if -h ≤ x ≤ h} \\\\
+\frac{1 - |x/h|}{h} & \text{if -h }\leq\text{ x }\leq\text{ h} \\\\
 0 & \text{otherwise} \\
 \end{cases}
 $$
@@ -183,7 +183,7 @@ The uniform kernel assigns equal weights to points within a specific range and z
 $$
 K(x) =
 \begin{cases}
-\frac{1}{2h} & \text{if -h ≤ x ≤ h} \\\\
+\frac{1}{2h} & \text{if -h }\leq\text{ x }\leq\text{ h} \\\\
 0 & \text{otherwise} \\
 \end{cases}
 $$
