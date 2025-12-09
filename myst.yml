@@ -103,5 +103,6 @@ site:
     logo: ./_static/img/logo-light.png
     logo_dark: ./_static/img/logo-dark.png
     style: ./_static/css/custom.css
+    logo_text: "GE5230 - Geospatial Statistics and Visualisation"
   parts:
     footer: footer.md
