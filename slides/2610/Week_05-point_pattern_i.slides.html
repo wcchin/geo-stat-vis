@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Week 05 - Point Pattern I: Spatial Clustering Phenomenon</title>
+    <meta charset="utf-8">
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+          macros: {'\\_': '_'},
+          processEscapes: true
+        }
+      };
+      </script><script type="text/javascript" id="MathJax-script" async src="remarkjs/mathjax-svg.js"></script>
+    <link rel="stylesheet" href="remarkjs/sidebar.css">
+    <link rel="stylesheet" href="remarkjs/searchMod.css">
+    <link rel="stylesheet" href="./remarkjs/Catppuccin.css">
+    <link rel="icon" href="" type="image/x-icon">
+  </head>
+  <body>
+    
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <!-- <a href="#">About</a> -->
+      <div class="tabs"><div class="tab"><input type="radio" name="css-tabs" id="tab-0" checked class="tab-switch"><label for="tab-0" class="tab-label"> 0 </label><div class="tab-content"><a href="#1">1- Point Pattern I</a><a href="#1">1-# Spatial Clustering Phenomenon</a><a href="#2">2-## Two Types Clustering in Spatial Analysis</a><a href="#3">3-## Recap: Three Major types of Point Pattern</a><a href="#4">4-## Measurement strategies</a><a href="#5">5-## Measurement strategies</a><a href="#5">5-### Grid-based</a><a href="#6">6-## Measurement strategies</a><a href="#6">6-### Distance-based</a><a href="#7">7-# Objectives of this lecture</a><a href="#8">8-# Quadrat Count Analysis</a><a href="#9">9-## What is Quadrat Count Analysis? </a><a href="#10">10-## Calculating Quadrat Count Analysis? </a><a href="#11">11-## Count the number of points in each quadrat</a><a href="#12">12-## Chi-squared test</a></div></div><div class="tab"><input type="radio" name="css-tabs" id="tab-1"  class="tab-switch"><label for="tab-1" class="tab-label"> 1 </label><div class="tab-content"><a href="#13">13-## Chi-squared test</a><a href="#14">14-## Why not a t-test?</a><a href="#15">15-## Why not a t-test?</a><a href="#16">16-## Why use a chi-squared test?</a><a href="#17">17-## Why use a chi-squared test?</a><a href="#19">19-## Key considerations</a><a href="#20">20-# Nearest Neighbor Analysis</a><a href="#21">21-## The 2 Distance-based Approaches</a><a href="#22">22-## Clustered or Random</a><a href="#23">23-## Nearest Neighbor Analysis</a><a href="#24">24-## Nearest Neighbor Analysis</a><a href="#25">25-## Monte Carlo Simulation</a><a href="#26">26-## Statistical Testing</a><a href="#27">27-## Statistical Testing</a><a href="#28">28-## Statistical Testing</a></div></div><div class="tab"><input type="radio" name="css-tabs" id="tab-2"  class="tab-switch"><label for="tab-2" class="tab-label"> 2 </label><div class="tab-content"><a href="#29">29-## Statistical Testing</a><a href="#31">31-## Z-test approach</a><a href="#32">32-## Z-test approach</a><a href="#33">33-## Z-test approach</a><a href="#34">34-## Summary</a><a href="#34">34-### Nearest Neighbor Analysis (NNA)</a><a href="#35">35-# Ripley's K-function</a><a href="#36">36-## The 2 Approaches</a><a href="#37">37-### Bus Stops distribution</a><a href="#38">38-## Search Radius approach</a><a href="#39">39-## The Ripley's K-function</a><a href="#40">40-## Testing of K-functions</a><a href="#41">41-## Testing of K-functions</a><a href="#42">42-## Testing of K-functions</a><a href="#44">44-## Summary</a></div></div><div class="tab"><input type="radio" name="css-tabs" id="tab-3"  class="tab-switch"><label for="tab-3" class="tab-label"> 3 </label><div class="tab-content"><a href="#44">44-### Repley's K-function</a><a href="#45">45-# A Demonstration</a><a href="#46">46-# Let's do a mind travel...</a><a href="#48">48-## The question</a><a href="#49">49-## The dataset</a><a href="#51">51-## Nearest Neighbor Analysis</a><a href="#52">52-## Ripley's K-function</a><a href="#53">53-# Closing Remarks</a><a href="#54">54-## Summary</a><a href="#54">54-### NNA & K-function: Key Considerations, Limitations, and Directions</a><a href="#55">55-## Summary</a><a href="#55">55-### NNA & K-function: Key Considerations, Limitations, and Directions</a><a href="#56">56-## Summary</a><a href="#56">56-### NNA & K-function: Key Considerations, Limitations, and Directions</a><a href="#57">57-## What has been covered today</a></div></div><div class="tab"><input type="radio" name="css-tabs" id="tab-4"  class="tab-switch"><label for="tab-4" class="tab-label"> 4 </label><div class="tab-content"><a href="#58">58-## Some notes</a><a href="#59">59-## About Statistical Tests</a><a href="#59">59-### About Tests</a><a href="#61">61-## About Statistical Tests</a><a href="#61">61-### About p-value</a></div></div></div>
+    </div>
+    <!--
+    <div class="menu-toggle" id="menu-toggle" onclick="openNav(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+  </div>-->
+    
+    
+    <div id="searchModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="closeSearch">&times;</span>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="searchText" name="searchText" placeholder="Search" onkeyup="searching(this);" >
+          <button id="clearSearch" type="button" onclick="clearSearch();">Clear</button>
+        </div>
+        <div class="modal-footer">
+          <div class="searchResult" id="searchResult">
+            <span>Searching ...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <textarea id="source">
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+
+# Point Pattern I
+------
+## Spatial Clustering Phenomenon
+&lt;br /&gt;
+
+.x-large.bold[Dr. Benny CHIN]  
+[.underline.square[wcchin@nus.edu.sg]]  
+
+.headnote.square.bold.x-large[GE5230 Geospatial Statistics and Visualization]
+.footnote.square[05 @ Department of Geography, NUS]
+
+---
+layout: false
+class: left, middle
+
+.split-10[.column[].column[
+### Two Types Clustering in Spatial Analysis
+
+1. some parts of the study area that have very high concentration of point events, i.e., .red['clusters']
+    - to check if this phenomenon exists in the spatial point data
+    - to identify the location of these clusters
+    - significant tests, CSR
+
+2. groups of spatial points that are close to each other, i.e., .red['clusters']
+    - identify grouping of points with/without overlap
+
+
+In today's lecture, we focus on the first 'clustering' analysis.
+]]
+
+---
+class: center, top
+### Recap: Three Major types of Point Pattern
+
+&lt;img src="resources/w04-img/spatial_patterns_3_basic.png" width="100%"&gt;
+
+.red.xkcd[How to differentiate clustered from random .bold[(CSR)]?]
+
+.xkcd[CSR: Complete Spatial Randomness]
+
+---
+class: left, middle
+
+.split-50[.column[
+### Measurement strategies
+].column[
+- Grid-based
+- Distance-based
+]]
+
+---
+class: center, middle
+
+### Measurement strategies
+#### Grid-based
+
+&lt;img src="resources/w05-img/three_strategies_for_point_pattern_2c.png" width="70%"&gt;
+
+---
+class: center, middle
+
+### Measurement strategies
+#### Distance-based
+
+&lt;img src="resources/w05-img/three_strategies_for_point_pattern_2b.png" width="70%"&gt;
+
+---
+class: left, middle
+## Objectives of this lecture
+- To learn how to identify Clustering Pattern
+    - Grid-based, counting: Quadrat Count Analysis
+    - Distance-based, sorting: Nearest Neighbor Analysis
+    - Distance-based, searching: Ripley's K-function(s)
+- Monte-Carlo Simulation
+
+---
+class: center, middle, inverse
+
+.xx-large.bold.wide[PART 1]
+## Quadrat Count Analysis
+------
+.square[Definition .dot[] Steps .dot[] Example .dot[] Consideration]
+
+.headnote.square.bold.x-large[Point Pattern I]
+
+---
+class: left, middle
+.split-30[.column[
+### What is Quadrat Count Analysis? 
+].column[
+Quadrat Count Analysis is a method used in spatial point pattern analysis to determine whether a pattern of points is randomly distributed, clustered, or evenly spaced. It involves .red[dividing the study area into smaller, equal-sized areas called "quadrats"] (typically square or rectangular in shape) and .red[counting the number of points fall in each quadrat].
+]]
+
+---
+class: left, middle
+.split-30[.column[
+### Calculating Quadrat Count Analysis? 
+].column[
+The main steps in Quadrat Count Analysis are:
+1. Divide the study area into a .red[grid of quadrats].
+2. .red[Count] the number of points in each quadrat.
+3. Calculate the .red[expected number of points] per quadrat under the assumption of Complete Spatial Randomness (CSR). 
+4. .red[Compare] the observed frequency distribution (the counts) with the expected frequency distribution (under CSR) to assess the degree of similarity or difference between them.
+5. Apply .red[statistical tests], such as the chi-squared goodness-of-fit test, to determine whether the observed frequency distribution significantly differs from the expected distribution under CSR---whether the spatial pattern exhibits randomness, clustering, or regularity.
+]]
+
+---
+class: center, middle
+
+### Count the number of points in each quadrat
+&lt;img src="resources/w05-img/plot_quadrat_counts.png" width="100%"&gt;
+
+---
+class: left, middle
+.split-30[.column[
+### Chi-squared test
+Use Chi-squared test, which is suitable for comparing the frequencies. 
+
+.smaller[Let $n$ be the number of observed points, $m$ the number of quadrats of equal size, and $n_i$ the number of points in quadrat $i$. The expected number of points in each quadrat is $N/m$.]
+].column[
+The quadrat method partitions the study region into $r$ rows and $c$ columns, which define $m=r\times c$ non-overlapping subregions or quadrats of equal area. This method relies on the fact that, .red[under CSR, the expected number of observations within any region of equal size is the same]. The test statistic is calculated as
+
+$$
+\chi^2 = \sum_{i=1}^m\frac{(\text{observed}_i - \text{expected}_i)^2}{\text{expected}_i}
+$$
+
+$$
+\text{expected} = \frac{N}{m}
+$$
+
+.xkcd.red.bold[Why?]
+
+.xkcd[A CSR would have a mean at the average with a spread (non-zero deviation). ]
+
+]]
+
+---
+class: left, middle
+.split-30[.column[
+### Chi-squared test
+Use Chi-squared test, which is suitable for comparing the frequencies against an expected frequency or distribution. 
+].column[
+.bold[Clustered example]
+- chi-squared statistic=354.332, p-value=.red[2.606e-66]
+- .red[significantly different] from random
+
+.bold[Random example]
+- chi-squared statistic=19.332, p-value=0.199
+- non-significant; .red[insufficient evidence against CSR in this test]
+
+.bold[Regular example]
+- chi-squared statistic=8.332, pvalue=0.910
+- non-significant; .red[insufficient evidence against CSR in this test]
+
+.xkcd[This usual upper-tail test targets unusually large variation. It does not establish regularity or prove CSR. ]
+
+]]
+
+---
+class: left, middle
+.split-40[.column[
+### Why not a t-test?
+
+For quadrat analysis, the counts themselves are .red[not just arbitrary numeric measurements]. They arise from a count process. Under CSR, quadrat counts are related to a Poisson process, and we care about whether the distribution of counts across space is compatible with that null model.
+
+].column[
+A **t-test** is mainly designed to compare a **mean** against another mean or reference value.
+
+For quadrat counts, our question .red[is not simply]:
+
+&gt; Is the .red[average number] of points per quadrat different from some value?
+
+Under CSR, the .red[expected mean count is already determined] by the overall point density.
+
+Instead, we want to know:
+
+&gt; Are points .red[distributed] across quadrats in a way that is consistent with spatial randomness?
+
+]]
+
+---
+class: left, middle
+.split-40[.column[
+### Why not a t-test?
+].column[
+
+Consider two patterns:
+
+$$
+A=[3,3,3,3,3,3]
+$$
+
+$$
+B=[0,0,0,6,6,6]
+$$
+
+Both have:
+
+$$
+\bar{x}=3
+$$
+
+but their spatial patterns are very different.
+
+- Pattern A: relatively even
+- Pattern B: strongly uneven / clustered
+
+A test focused only on the **mean** would miss this difference.
+
+]]
+
+---
+class: left, middle
+.split-40[.column[
+### Why use a chi-squared test?
+
+].column[
+
+Quadrat analysis compares:
+
+**Observed .red[counts]**
+
+with
+
+**Expected .red[counts under CSR]**
+
+A chi-squared statistic measures how strongly the observed counts deviate from what we would expect:
+
+$$
+\chi^2
+=
+\sum_{i=1}^{m}
+\frac{(O_i-E_i)^2}{E_i}
+$$
+
+where:
+
+- $O_i$ = observed count in quadrat $i$
+- $E_i$ = expected count under CSR
+]]
+
+
+---
+class: left, middle
+.split-40[.column[
+### Why use a chi-squared test?
+
+].column[
+
+The key distinction is:
+
+.bold[t-test]:  
+**Compare means**
+
+$$
+\mu_1 \quad \text{vs.} \quad \mu_2
+$$
+
+.bold[Chi-squared test]:  
+**Compare observed counts with expected counts**
+
+$$
+O_i \quad \text{vs.} \quad E_i
+$$
+
+For quadrat analysis, the second question is the relevant one.
+
+&gt; Choose a statistical test based on the **question and data-generating process**, not simply because the data contain numbers.
+]]
+
+---
+class: center, middle
+
+ ### Is the analysis result .red[sensitive to the parameter] settings?
+
+
+---
+class: left, middle
+### Key considerations
+.split-50[.column[
+- .bold[Quadrat size and placement]: The size of the quadrats should be carefully chosen to ensure that it is appropriate for the scale of the pattern being studied.
+
+- .bold[Quadrat shape]: While square quadrats are common, other shapes (such as rectangular or circular) may be used depending on the specific study requirements.
+
+- .bold[Edge effects]: Care should be taken to account for edge effects, which occur when quadrats at the edge of the study area contain fewer points due to the smaller overlapping area.
+
+].column[
+- .bold[Loses exact location information]: Once points are converted into counts per quadrat, you no longer know where within each quadrat the points are located.
+
+- .bold[Provides limited information about spatial scale]: A single quadrat analysis does not tell us very well at what distances clustering or dispersion occurs.
+]]
+
+---
+class: center, middle, inverse
+
+.xx-large.bold.wide[PART 2]
+## Nearest Neighbor Analysis
+------
+.square[Steps .dot[] Monte Carlo Simulation .dot[] Testing]
+
+.headnote.square.bold.x-large[Point Pattern I]
+
+---
+class: center, top
+### The 2 Distance-based Approaches
+
+&lt;img src="resources/w05-img/three_strategies_for_point_pattern_2b.png" width="85%"&gt;
+
+---
+class: left, middle
+
+.split-40[.column[
+### Clustered or Random
+
+- Woodlands Regional Centre, Woodlands West, and Woodgrove
+- $2 \text{km} \times 2 \text{km}$ area
+
+].column[
+    &lt;img src="resources/w05-img/four_demo_points.png" width="95%"&gt;
+]]
+
+
+---
+class: left, middle
+
+.split-40[.column[
+### Nearest Neighbor Analysis
+
+- Identifying nearest neighbors for every point
+- Record the nearest neighbor distances
+- Calculate the .red[mean value]
+    - observed average nearest neighbor distance ($D_O$)
+- The average nearest neighbor distance:
+    - short: the points are close to each other
+    - long: the points are far from each other
+
+].column[
+    &lt;img src="resources/w05-img/simulate_nna.gif" width="95%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-40[.column[
+### Nearest Neighbor Analysis
+How short is short enough to be considered as "clustered"?
+
+Let's use the .red[Monte Carlo Simulation] approach to test the .red[difference] between the .red[observed] point pattern and a large number of random patterns generated under the .red[CSR assumption]. 
+].column[
+&lt;img src="resources/w05-img/mean_nearest_negihbor_4cases_b.png" width="95%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-40[.column[
+### Monte Carlo Simulation
+
+- .red[Area size has to match the study area]. 
+    - Area size will affect the distance between points. 
+- .red[The number of points has to match the dataset]. 
+    - Within the same area, more points (higher density) will lead to lower nearest neighbor distances. 
+
+].column[
+&lt;img src="resources/w05-img/monte_carlo_point_pattern.gif" width="95%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-50[.column[
+### Statistical Testing
+
+- After simulating random for M times, we will get M measurement of mean nearest neighbor distances.
+- The M values form an empirical reference distribution; normality is not required. 
+- The reference represents CSR for the stated fixed window and point count. 
+
+].column[
+&lt;img src="resources/w05-img/drawing_normal_testing_0.png" width="100%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-50[.column[
+### Statistical Testing
+
+(1) If the observed value is far from the random, we found a clear evidence that the observed pattern is different from random. 
+- either .red[clustered or dispersed]
+
+].column[
+&lt;img src="resources/w05-img/drawing_normal_testing_1.png" width="100%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-50[.column[
+### Statistical Testing
+
+(2) If the observed value fall within the random range, then, we did not find any evidence to prove that the observed pattern is different from random. 
+- cannot reject the null hypothesis
+- .red[non-significance does not prove randomness]
+
+].column[
+&lt;img src="resources/w05-img/drawing_normal_testing_2.png" width="100%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-50[.column[
+### Statistical Testing
+
+(3) If the observed fall at the edge of the normal distribution
+- check .red[p-value] and your confidence level setting. 
+
+.underline[p-value: probability of a statistic at least as extreme, under the null model]  
+
+.footnote-left[see [ESRI "What is a z-score? What is a p-value?"](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/what-is-a-z-score-what-is-a-p-value.htm) for more details]
+
+].column[
+&lt;img src="resources/w05-img/drawing_normal_testing_3.png" width="100%"&gt;
+]]
+
+???
+Let's say we set the confidence level to 99%, meaning we are willing to accept a 1% risk of being wrong (incorrectly rejecting the null hypothesis, H0).
+If the obtained p-value is 3%, which is higher than our acceptable risk, we cannot reject H0.
+
+---
+class: center, top
+
+.headnote.small.title-font.bold[How the observed mean compared with 10k CSR simulations mean results?]
+
+&lt;img src="resources/w05-img/nna_compare_hist.png" width="90%"&gt;
+
+.footnote.small.title-font.bold[Monte Carlo Simulation] 
+
+???
+The grey area indicates the mean nearest neighbor distance of the 10k random pattern.
+
+---
+class: left, middle
+.split-30[.column[
+### Z-test approach
+
+Z-test is another option for testing the significant levels of how observed nearest neighbor distance ($\bar{D}_O$) is different from the 'expected' average nearest neighbor distance ($\bar{D}_E$) under CSR. 
+.smaller[See [ESRI](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/h-how-average-nearest-neighbor-distance-spatial-st.htm) for detail.]
+
+].column[
+The nearest neighbor distance ratio: 
+$$
+ANN = \frac{\bar{D}_O}{\bar{D}_E}
+$$
+- $ANN&lt;1$: observed neighbours are closer than expected → clustering
+- $ANN\approx1$: close to CSR
+- $ANN&gt;1$: observed neighbours are farther apart → dispersion
+
+The expected mean distance could be calculated using the number of point (n) and the study area (A):
+$$
+\bar{D}_E = \frac{0.5}{\sqrt{n/A}}
+$$
+]]
+
+---
+class: left, middle
+.split-30[.column[
+### Z-test approach
+How many standard errors away from the CSR expectation is the observed mean distance?
+
+.smaller[
+For Clark–Evans nearest-neighbour analysis, the constant 0.26136 comes from the theoretical sampling variability of the mean nearest-neighbour distance under complete spatial randomness (CSR).
+]
+
+].column[
+
+The z-score can then be calculated using $\bar{D}_O$ and $\bar{D}_E$:
+$$
+z = \frac{\bar{D}_O - \bar{D}_E}{SE}
+$$
+
+$$
+SE =
+\frac{0.26136}{\sqrt{n^2 / A}}
+$$
+
+The z-score and p-value for this statistic are sensitive to changes in the study area or changes to the Area parameter. For this reason, only compare z-score and p-value results from this statistic when the study area is fixed. 
+
+]]
+
+---
+class: left, middle
+.split-30[.column[
+### Z-test approach
+
+].column[
+
+&lt;img src="resources/w05-img/ztest.png" width="85%"&gt;
+.footnote-left[see [ESRI "What is a z-score? What is a p-value?"](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/what-is-a-z-score-what-is-a-p-value.htm) for more details]
+]]
+
+
+---
+class: left, middle
+
+.split-30[.column[
+### Summary
+#### Nearest Neighbor Analysis (NNA)
+
+].column[
+
+- This approach calculates the average distance of the nearest neighbor for every point. 
+
+&lt;br&gt;
+- The observed average nearest neighbor distance can be tested using a Monte Carlo Simulation or z-test approaches against the null hypothesis of CSR.
+
+&lt;br&gt;
+- The NNA has an assumption that the points being measured are .red[free to locate anywhere within the study area] (for example, there are no barriers, and all cases or features are located independently of one another). 
+
+]]
+
+
+---
+class: center, middle, inverse
+
+.xx-large.bold.wide[PART 3]
+## Ripley's K-function
+------
+.square[]
+
+.headnote.square.bold.x-large[Point Pattern I]
+
+---
+class: center, top
+### The 2 Approaches
+
+&lt;img src="resources/w05-img/three_strategies_for_point_pattern_2b.png" width="85%"&gt;
+
+---
+class: left, middle
+
+.split-40[.column[
+#### Bus Stops distribution
+
+- Bus stops usually constructed in pairs, at both sides of a street. 
+- The nearest neighbor is at a short distance (opposite of street), but the second nearest may not. 
+- Is it a "real" clustered pattern?
+
+].column[
+&lt;img src="resources/w05-img/Bus_Stop_nearest_neighbor.png" width="90%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-40[.column[
+### Search Radius approach
+
+The Ripley's K-function
+
+- Generate a series of search radius (SR), from low to high
+- Search for pairs of points fall within every SR
+- The implication:
+    - if a lot of pairs are found within a short SR: the points are clustered at this distance.
+
+].column[
+    &lt;img src="resources/w05-img/simulate_kfunc.gif" width="100%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-30[.column[
+### The Ripley's K-function
+].column[
+A common transformation of the K-function:
+$$
+L(d) = \sqrt{\frac{A \times \text{pairs}_d }{\pi n(n-1)}}
+$$
+
+$$
+\text{pairs}\_d = \sum\_{i=1}^n \sum\_{j=1, j\neq i}^n w\_{ij}
+$$
+
+- $L(d)$: the k-function value at search radius $d$
+- $\text{pairs}_d$: the number of pairs of points with distance less than $d$ 
+- $w_{ij}$: equal to 1 if non-weighted; weighting for edge-correction
+- $A$: Area of study
+- $n$: total number of points
+- $n(n-1)$: total number of all pairs
+
+.smaller[More info: https://pro.arcgis.com/en/pro-app/3.1/tool-reference/spatial-statistics/h-how-multi-distance-spatial-cluster-analysis-ripl.htm]
+]]
+
+---
+class: left, middle
+
+.split-40[.column[
+### Testing of K-functions
+
+- How high is high enough to be considered as clustered?
+- To compare them with CSR, Monte Carlo Simulation can be used
+
+
+].column[
+    &lt;img src="resources/w05-img/kfunc_arcGIS_redraw.png" width="100%"&gt;
+]]
+
+
+---
+class: left, middle
+
+.split-40[.column[
+### Testing of K-functions
+
+- How high is high enough to be considered as clustered?
+- To compare them with CSR, Monte Carlo Simulation can be used
+- For demonstration: 10 random patterns are generated
+
+
+].column[
+    &lt;img src="resources/w05-img/k_function_4cases_rand.png" width="100%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-40[.column[
+### Testing of K-functions
+
+- How high is high enough to be considered as clustered?
+- To compare them with CSR, Monte Carlo Simulation can be used
+- For demonstration: 10 random patterns are generated
+- Calculate 95% Confidence envelop
+
+.small[see [ESRI](https://pro.arcgis.com/en/pro-app/3.1/tool-reference/spatial-statistics/h-how-multi-distance-spatial-cluster-analysis-ripl.htm) for more details]
+
+].column[
+    &lt;img src="resources/w05-img/k_function_4cases_ci.png" width="100%"&gt;
+]]
+
+---
+class: center, top
+
+.split-50[.column[
+.headnote.title-font.small.bold[Spatial Point Pattern]
+&lt;img src="resources/w05-img/drawing_nna_res_2.png" width="100%"&gt;
+
+Nearest Neighbor Analysis
+].column[
+&lt;img src="resources/w05-img/k_function_4cases_ci.png" width="100%"&gt;
+
+Ripley's K-function
+]]
+
+
+---
+class: left, middle
+
+.split-30[.column[
+### Summary
+#### Repley's K-function
+].column[
+- Purpose:  
+Ripley's K function is a tool used to analyze spatial point patterns, helping researchers understand the spatial relationships among events or objects in a given study area.
+
+- Functionality:  
+The K function estimates the expected number of points within a given distance from a randomly chosen point, providing insights into clustering, dispersion, or randomness in the spatial pattern.
+
+- Key features:
+    - The K function can be plotted as a function of distance to visualize changes in spatial interactions at different scales.
+    - It can be compared with theoretical models, such as complete spatial randomness (CSR), to assess deviations from expected patterns.
+
+]]
+
+---
+class: center, middle, inverse
+
+.xx-large.bold.wide[PART 4]
+## A Demonstration
+---- 
+
+.headnote.square.bold.x-large[Point Pattern I]
+
+---
+class: center, middle
+background-image: url(resources/w05-img/gordon_square2b.png)
+
+## Let's do a mind travel...
+
+---
+class: left, middle
+background-image: url(resources/w05-img/gordon_square2.png)
+&lt;div class="box"&gt;
+&lt;h3 class="box-text"&gt; Gordon Square &lt;/h3&gt;
+&lt;/div&gt;
+
+.footnote-right.red.title-font.bold[Source: [Google Map](https://maps.app.goo.gl/Qdb1K4hzyG485Btm8)]
+
+---
+class: left, middle
+
+### The question
+
+- Can we assume people randomly find a spot to sit?
+- Can we assume people prefer not to sit too close to strangers?
+- If they go with friends or colleagues, they will sit together.
+&lt;br/&gt;&lt;br/&gt;
+- .underline[Will the process of .red[people finding comfortable spots for sitting in an open space] result in a random, clustered, or dispersed pattern?]
+&lt;br/&gt;&lt;br/&gt;
+- Analyze with:
+    1. individual level
+    2. group level
+
+
+
+---
+class: left, middle
+
+.split-40[.column[
+### The dataset
+
+This dataset records the location of people sitting on a grass patch in Gordon Square, London, at 3pm on a sunny afternoon.
+
+Area: $42 \times 56 \text{m}^2$
+
+Source: [R spatstat dataset](https://search.r-project.org/CRAN/refmans/spatstat.data/html/gordon.html)
+
+.footnote-left.smaller[Baddeley et al. 2013: [DOI:10.18637/jss.v055.i11](https://www.jstatsoft.org/article/view/v055i11)]
+].column[
+&lt;img src="resources/w05-img/Gordon_square_data_individuals_xkcd.png" width="75%"&gt;
+]]
+
+---
+class: center, top
+
+&lt;img src="resources/w05-img/GordonSquare_individual_and_groups_xkcd.png" width="80%"&gt;
+
+
+---
+class: left, middle
+
+.split-50[.column[
+### Nearest Neighbor Analysis
+
+- For individual, the p-value is significant with a negative z-score, indicating people tended to sit together. 
+- For in-group, the p-value is significant, with a positive z-score, suggesting the locations of groups are dispersed. 
+
+].column[
+&lt;img src="resources/w05-img/nna_compare_hist_gordon.png" width="70%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-50[.column[
+### Ripley's K-function
+For individual,
+- radius 4 m resulted in higher than random, indicating people tended to sit together at this scale. 
+- betwen 4 m and 6 m , the observed line is near to the random, but still above the 95% CI. 
+&lt;br&gt;
+
+For in-group, 
+- the search radius less than 7 m resulted in dispersed pattern. 
+- the search radius beyond 8 m presented random pattern. 
+
+].column[
+&lt;img src="resources/w05-img/k_function_ci_gordon.png" width="70%"&gt;
+]]
+
+---
+class: center, middle, inverse
+
+## Closing Remarks
+---- 
+.square[Considerations .dot[] Workflow .dot[] About Tests]
+
+.headnote.square.bold.x-large[Point Pattern I]
+
+---
+class: left, middle
+
+.split-30[.column[
+### Summary
+#### NNA &amp; K-function: Key Considerations, Limitations, and Directions
+
+- .red[Sensitive to study area size and settings]
+- Edge effect (border effect)
+- Population-at-risk
+].column[
+
+- .bold[Sensitive to study area size and settings]:  
+CSR assume points to be scattered all around the study area. Thus, Ripley's K function can be influenced by the size and shape of the study area. .red[Larger study areas] may result in different K function estimates compared to smaller ones, and .red[irregular shapes] can introduce biases. Additionally, the settings used for the K function analysis, such as the bandwidth or edge correction method, can impact the results.
+
+&lt;img src="resources/w05-img/area_size.png" width="100%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-30[.column[
+### Summary
+#### NNA &amp; K-function: Key Considerations, Limitations, and Directions
+
+- Sensitive to study area size and settings
+- .red[Edge effect (border effect)]
+- Population-at-risk
+].column[
+- .bold[Edge effect] (border effect):  
+Points beyond the study area are 'ignored.' .red[Points close to the boundary of the study area may have fewer neighboring points] than those in the interior, which can bias the K function estimates. This is known as the edge effect, and it can introduce inaccuracies when studying spatial patterns. Edge correction methods are often employed to mitigate this issue.
+
+&lt;img src="resources/w05-img/edge_effect.png" width="50%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-30[.column[
+### Summary
+#### NNA &amp; K-function: Key Considerations, Limitations, and Directions
+
+- Sensitive to study area size and settings
+- Edge effect (border effect)
+- .red[Population-at-risk]
+].column[
+- .bold[Population-at-risk]:  
+Ripley's K function assumes that the underlying point process is .red[stationary and homogeneous]. If the population at risk (i.e., the underlying risk of events occurring) is not uniform across the study area, this can violate the assumptions and lead to misleading results. Incorporating information on the population at risk can help refine the analysis and improve the accuracy of the conclusions.
+
+&lt;img src="resources/w05-img/pop_at_risk.png" width="50%"&gt;
+]]
+
+---
+class: left, middle
+
+.split-30[.column[
+### What has been covered today
+
+What is the workflow of analyzing spatial point pattern?
+
+Global Pattern: the overall pattern of the point distribution
+
+Local Pattern: where are the clusters
+
+].column[
+&lt;img src="resources/w05-img/about_point_pattern_analysis Diagram.drawio.png" width="70%"&gt;
+]]
+
+
+---
+class: left, middle
+
+.split-20[.column[
+### Some notes
+].column[
+The three methods explore the spatial pattern with different angle:
+- Quadrat count: the number of points fall in equal size quadrats
+- NNA: how near/far the nearest neighbor is
+- K-function: how many other points could be found for a specific search radius
+
+The latter two methods can be extended:
+- NNA: to k-order nearest neighbor (see: .smaller[[CrimeStat III](https://www.ojp.gov/pdffiles1/nij/grants/209264.pdf)])
+- K-function: weighted K-function (see: .smaller[[ArcGIS Pro](https://pro.arcgis.com/en/pro-app/3.1/tool-reference/spatial-statistics/h-how-multi-distance-spatial-cluster-analysis-ripl.htm)])
+
+Things to considered:
+- .red[Edge effect]: the near border areas could be underestimated due to the external points. (see: .smaller[[DOI:10.2307/3237072](https://doi.org/10.2307/3237072)])
+- .red[Population at risk]: a place with more population could have more events (e.g., crime/disease cases) happens by chance. (see: .smaller[[SaTScan](https://www.satscan.org/cgi-bin/satscan/register.pl/SaTScan_Users_Guide.pdf?todo=process_userguide_download)])  
+]]
+
+---
+class: left, middle
+
+.split-20[.column[
+### About Statistical Tests
+].column[
+
+#### About Tests
+There are so many tests. It is more important to know:   
+- The key considerations for choosing a test:  
+Understand the .red[assumptions, requirements, and limitations of each test], as well as .red[the nature of your data] and .red[research questions], to select the most appropriate test.
+    - Knowing these can help you to choose the appropriate test(s).
+
+- What you're testing and why:  
+Be clear to yourself about the null and alternative hypotheses, .red[the rationale behind them], and .red[the implications of your results].
+    - Are you testing against CSR? Why?
+
+- Explicitly communicate your approach:  
+you have to explicitly tell your readers what, why, and how.
+    - Don't let your readers guess. 
+]]
+
+---
+class: center, middle
+
+.xx-large.xkcd[No single test is suitable for all situations, and it's impossible to memorize every test.] 
+
+Instead, focus on developing a strong foundation in statistical concepts and .red[knowing where to find] relevant information when selecting the appropriate test for your specific needs.
+
+
+---
+class: left, middle
+
+.split-20[.column[
+### About Statistical Tests
+].column[
+
+
+#### About p-value
+- A p-value is conditional on H0; it is not the probability that H0 is true. 
+
+- the common practice is to check if p-value $&lt; \alpha$, and common alpha values are: 
+    - 0.05: 5% Type I error rate under H0, 
+    - 0.01: 1% Type I error rate under H0, and 
+    - 0.001: 0.1% Type I error rate under H0.  
+
+- If p-value is less than the pre-determined $\alpha$, then it is significantly different. 
+
+- That's how far you can get with p-value---.red[don't over-interpret the p-value]. 
+    - Comparing p-values can be problematic, because they may be calculated from different settings, e.g., sample size. 
+
+]]
+</textarea>
+
+    <script src="remarkjs/minisearch.min.js"  type="text/javascript"></script>
+    <script>
+      const contentIndex = [{"id": 1, "title": "Point Pattern I Spatial Clustering Phenomenon", "text": "\n# Point Pattern I\n------\n## Spatial Clustering Phenomenon\n<br />\n\n.x-large.bold[Dr. Benny CHIN]  \n[.underline.square[wcchin@nus.edu.sg]]  \n\n.headnote.square.bold.x-large[GE5230 Geospatial Statistics and Visualization]\n.footnote.square[05 @ Department of Geography, NUS]\n"}, {"id": 2, "title": "Two Types Clustering in Spatial Analysis", "text": "layout: false\nclass: left, middle\n\n.split-10[.column[].column[\n### Two Types Clustering in Spatial Analysis\n\n1. some parts of the study area that have very high concentration of point events, i.e., .red['clusters']\n    - to check if this phenomenon exists in the spatial point data\n    - to identify the location of these clusters\n    - significant tests, CSR\n\n2. groups of spatial points that are close to each other, i.e., .red['clusters']\n    - identify grouping of points with/without overlap\n\n\nIn today's lecture, we focus on the first 'clustering' analysis.\n]]\n"}, {"id": 3, "title": "Recap: Three Major types of Point Pattern", "text": "class: center, top\n### Recap: Three Major types of Point Pattern\n\n<img src=\"resources/w04-img/spatial_patterns_3_basic.png\" width=\"100%\">\n\n.red.xkcd[How to differentiate clustered from random .bold[(CSR)]?]\n\n.xkcd[CSR: Complete Spatial Randomness]\n"}, {"id": 4, "title": "Measurement strategies", "text": "class: left, middle\n\n.split-50[.column[\n### Measurement strategies\n].column[\n- Grid-based\n- Distance-based\n]]\n"}, {"id": 5, "title": "Measurement strategies Grid-based", "text": "class: center, middle\n\n### Measurement strategies\n#### Grid-based\n\n<img src=\"resources/w05-img/three_strategies_for_point_pattern_2c.png\" width=\"70%\">\n"}, {"id": 6, "title": "Measurement strategies Distance-based", "text": "class: center, middle\n\n### Measurement strategies\n#### Distance-based\n\n<img src=\"resources/w05-img/three_strategies_for_point_pattern_2b.png\" width=\"70%\">\n"}, {"id": 7, "title": "Objectives of this lecture", "text": "class: left, middle\n## Objectives of this lecture\n- To learn how to identify Clustering Pattern\n    - Grid-based, counting: Quadrat Count Analysis\n    - Distance-based, sorting: Nearest Neighbor Analysis\n    - Distance-based, searching: Ripley's K-function(s)\n- Monte-Carlo Simulation\n"}, {"id": 8, "title": "Quadrat Count Analysis", "text": "class: center, middle, inverse\n\n.xx-large.bold.wide[PART 1]\n## Quadrat Count Analysis\n------\n.square[Definition .dot[] Steps .dot[] Example .dot[] Consideration]\n\n.headnote.square.bold.x-large[Point Pattern I]\n"}, {"id": 9, "title": "What is Quadrat Count Analysis? ", "text": "class: left, middle\n.split-30[.column[\n### What is Quadrat Count Analysis? \n].column[\nQuadrat Count Analysis is a method used in spatial point pattern analysis to determine whether a pattern of points is randomly distributed, clustered, or evenly spaced. It involves .red[dividing the study area into smaller, equal-sized areas called \"quadrats\"] (typically square or rectangular in shape) and .red[counting the number of points fall in each quadrat].\n]]\n"}, {"id": 10, "title": "Calculating Quadrat Count Analysis? ", "text": "class: left, middle\n.split-30[.column[\n### Calculating Quadrat Count Analysis? \n].column[\nThe main steps in Quadrat Count Analysis are:\n1. Divide the study area into a .red[grid of quadrats].\n2. .red[Count] the number of points in each quadrat.\n3. Calculate the .red[expected number of points] per quadrat under the assumption of Complete Spatial Randomness (CSR). \n4. .red[Compare] the observed frequency distribution (the counts) with the expected frequency distribution (under CSR) to assess the degree of similarity or difference between them.\n5. Apply .red[statistical tests], such as the chi-squared goodness-of-fit test, to determine whether the observed frequency distribution significantly differs from the expected distribution under CSR---whether the spatial pattern exhibits randomness, clustering, or regularity.\n]]\n"}, {"id": 11, "title": "Count the number of points in each quadrat", "text": "class: center, middle\n\n### Count the number of points in each quadrat\n<img src=\"resources/w05-img/plot_quadrat_counts.png\" width=\"100%\">\n"}, {"id": 12, "title": "Chi-squared test", "text": "class: left, middle\n.split-30[.column[\n### Chi-squared test\nUse Chi-squared test, which is suitable for comparing the frequencies. \n\n.smaller[Let $n$ be the number of observed points, $m$ the number of quadrats of equal size, and $n_i$ the number of points in quadrat $i$. The expected number of points in each quadrat is $N/m$.]\n].column[\nThe quadrat method partitions the study region into $r$ rows and $c$ columns, which define $m=r\\times c$ non-overlapping subregions or quadrats of equal area. This method relies on the fact that, .red[under CSR, the expected number of observations within any region of equal size is the same]. The test statistic is calculated as\n\n$$\n\\chi^2 = \\sum_{i=1}^m\\frac{(\\text{observed}_i - \\text{expected}_i)^2}{\\text{expected}_i}\n$$\n\n$$\n\\text{expected} = \\frac{N}{m}\n$$\n\n.xkcd.red.bold[Why?]\n\n.xkcd[A CSR would have a mean at the average with a spread (non-zero deviation). ]\n\n]]\n"}, {"id": 13, "title": "Chi-squared test", "text": "class: left, middle\n.split-30[.column[\n### Chi-squared test\nUse Chi-squared test, which is suitable for comparing the frequencies against an expected frequency or distribution. \n].column[\n.bold[Clustered example]\n- chi-squared statistic=354.332, p-value=.red[2.606e-66]\n- .red[significantly different] from random\n\n.bold[Random example]\n- chi-squared statistic=19.332, p-value=0.199\n- non-significant; .red[insufficient evidence against CSR in this test]\n\n.bold[Regular example]\n- chi-squared statistic=8.332, pvalue=0.910\n- non-significant; .red[insufficient evidence against CSR in this test]\n\n.xkcd[This usual upper-tail test targets unusually large variation. It does not establish regularity or prove CSR. ]\n\n]]\n"}, {"id": 14, "title": "Why not a t-test?", "text": "class: left, middle\n.split-40[.column[\n### Why not a t-test?\n\nFor quadrat analysis, the counts themselves are .red[not just arbitrary numeric measurements]. They arise from a count process. Under CSR, quadrat counts are related to a Poisson process, and we care about whether the distribution of counts across space is compatible with that null model.\n\n].column[\nA **t-test** is mainly designed to compare a **mean** against another mean or reference value.\n\nFor quadrat counts, our question .red[is not simply]:\n\n> Is the .red[average number] of points per quadrat different from some value?\n\nUnder CSR, the .red[expected mean count is already determined] by the overall point density.\n\nInstead, we want to know:\n\n> Are points .red[distributed] across quadrats in a way that is consistent with spatial randomness?\n\n]]\n"}, {"id": 15, "title": "Why not a t-test?", "text": "class: left, middle\n.split-40[.column[\n### Why not a t-test?\n].column[\n\nConsider two patterns:\n\n$$\nA=[3,3,3,3,3,3]\n$$\n\n$$\nB=[0,0,0,6,6,6]\n$$\n\nBoth have:\n\n$$\n\\bar{x}=3\n$$\n\nbut their spatial patterns are very different.\n\n- Pattern A: relatively even\n- Pattern B: strongly uneven / clustered\n\nA test focused only on the **mean** would miss this difference.\n\n]]\n"}, {"id": 16, "title": "Why use a chi-squared test?", "text": "class: left, middle\n.split-40[.column[\n### Why use a chi-squared test?\n\n].column[\n\nQuadrat analysis compares:\n\n**Observed .red[counts]**\n\nwith\n\n**Expected .red[counts under CSR]**\n\nA chi-squared statistic measures how strongly the observed counts deviate from what we would expect:\n\n$$\n\\chi^2\n=\n\\sum_{i=1}^{m}\n\\frac{(O_i-E_i)^2}{E_i}\n$$\n\nwhere:\n\n- $O_i$ = observed count in quadrat $i$\n- $E_i$ = expected count under CSR\n]]\n\n"}, {"id": 17, "title": "Why use a chi-squared test?", "text": "class: left, middle\n.split-40[.column[\n### Why use a chi-squared test?\n\n].column[\n\nThe key distinction is:\n\n.bold[t-test]:  \n**Compare means**\n\n$$\n\\mu_1 \\quad \\text{vs.} \\quad \\mu_2\n$$\n\n.bold[Chi-squared test]:  \n**Compare observed counts with expected counts**\n\n$$\nO_i \\quad \\text{vs.} \\quad E_i\n$$\n\nFor quadrat analysis, the second question is the relevant one.\n\n> Choose a statistical test based on the **question and data-generating process**, not simply because the data contain numbers.\n]]\n"}, {"id": 18, "title": "", "text": "class: center, middle\n\n ### Is the analysis result .red[sensitive to the parameter] settings?\n\n"}, {"id": 19, "title": "Key considerations", "text": "class: left, middle\n### Key considerations\n.split-50[.column[\n- .bold[Quadrat size and placement]: The size of the quadrats should be carefully chosen to ensure that it is appropriate for the scale of the pattern being studied.\n\n- .bold[Quadrat shape]: While square quadrats are common, other shapes (such as rectangular or circular) may be used depending on the specific study requirements.\n\n- .bold[Edge effects]: Care should be taken to account for edge effects, which occur when quadrats at the edge of the study area contain fewer points due to the smaller overlapping area.\n\n].column[\n- .bold[Loses exact location information]: Once points are converted into counts per quadrat, you no longer know where within each quadrat the points are located.\n\n- .bold[Provides limited information about spatial scale]: A single quadrat analysis does not tell us very well at what distances clustering or dispersion occurs.\n]]\n"}, {"id": 20, "title": "Nearest Neighbor Analysis", "text": "class: center, middle, inverse\n\n.xx-large.bold.wide[PART 2]\n## Nearest Neighbor Analysis\n------\n.square[Steps .dot[] Monte Carlo Simulation .dot[] Testing]\n\n.headnote.square.bold.x-large[Point Pattern I]\n"}, {"id": 21, "title": "The 2 Distance-based Approaches", "text": "class: center, top\n### The 2 Distance-based Approaches\n\n<img src=\"resources/w05-img/three_strategies_for_point_pattern_2b.png\" width=\"85%\">\n"}, {"id": 22, "title": "Clustered or Random", "text": "class: left, middle\n\n.split-40[.column[\n### Clustered or Random\n\n- Woodlands Regional Centre, Woodlands West, and Woodgrove\n- $2 \\text{km} \\times 2 \\text{km}$ area\n\n].column[\n    <img src=\"resources/w05-img/four_demo_points.png\" width=\"95%\">\n]]\n\n"}, {"id": 23, "title": "Nearest Neighbor Analysis", "text": "class: left, middle\n\n.split-40[.column[\n### Nearest Neighbor Analysis\n\n- Identifying nearest neighbors for every point\n- Record the nearest neighbor distances\n- Calculate the .red[mean value]\n    - observed average nearest neighbor distance ($D_O$)\n- The average nearest neighbor distance:\n    - short: the points are close to each other\n    - long: the points are far from each other\n\n].column[\n    <img src=\"resources/w05-img/simulate_nna.gif\" width=\"95%\">\n]]\n"}, {"id": 24, "title": "Nearest Neighbor Analysis", "text": "class: left, middle\n\n.split-40[.column[\n### Nearest Neighbor Analysis\nHow short is short enough to be considered as \"clustered\"?\n\nLet's use the .red[Monte Carlo Simulation] approach to test the .red[difference] between the .red[observed] point pattern and a large number of random patterns generated under the .red[CSR assumption]. \n].column[\n<img src=\"resources/w05-img/mean_nearest_negihbor_4cases_b.png\" width=\"95%\">\n]]\n"}, {"id": 25, "title": "Monte Carlo Simulation", "text": "class: left, middle\n\n.split-40[.column[\n### Monte Carlo Simulation\n\n- .red[Area size has to match the study area]. \n    - Area size will affect the distance between points. \n- .red[The number of points has to match the dataset]. \n    - Within the same area, more points (higher density) will lead to lower nearest neighbor distances. \n\n].column[\n<img src=\"resources/w05-img/monte_carlo_point_pattern.gif\" width=\"95%\">\n]]\n"}, {"id": 26, "title": "Statistical Testing", "text": "class: left, middle\n\n.split-50[.column[\n### Statistical Testing\n\n- After simulating random for M times, we will get M measurement of mean nearest neighbor distances.\n- The M values form an empirical reference distribution; normality is not required. \n- The reference represents CSR for the stated fixed window and point count. \n\n].column[\n<img src=\"resources/w05-img/drawing_normal_testing_0.png\" width=\"100%\">\n]]\n"}, {"id": 27, "title": "Statistical Testing", "text": "class: left, middle\n\n.split-50[.column[\n### Statistical Testing\n\n(1) If the observed value is far from the random, we found a clear evidence that the observed pattern is different from random. \n- either .red[clustered or dispersed]\n\n].column[\n<img src=\"resources/w05-img/drawing_normal_testing_1.png\" width=\"100%\">\n]]\n"}, {"id": 28, "title": "Statistical Testing", "text": "class: left, middle\n\n.split-50[.column[\n### Statistical Testing\n\n(2) If the observed value fall within the random range, then, we did not find any evidence to prove that the observed pattern is different from random. \n- cannot reject the null hypothesis\n- .red[non-significance does not prove randomness]\n\n].column[\n<img src=\"resources/w05-img/drawing_normal_testing_2.png\" width=\"100%\">\n]]\n"}, {"id": 29, "title": "Statistical Testing", "text": "class: left, middle\n\n.split-50[.column[\n### Statistical Testing\n\n(3) If the observed fall at the edge of the normal distribution\n- check .red[p-value] and your confidence level setting. \n\n.underline[p-value: probability of a statistic at least as extreme, under the null model]  \n\n.footnote-left[see [ESRI \"What is a z-score? What is a p-value?\"](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/what-is-a-z-score-what-is-a-p-value.htm) for more details]\n\n].column[\n<img src=\"resources/w05-img/drawing_normal_testing_3.png\" width=\"100%\">\n]]\n\n???\nLet's say we set the confidence level to 99%, meaning we are willing to accept a 1% risk of being wrong (incorrectly rejecting the null hypothesis, H0).\nIf the obtained p-value is 3%, which is higher than our acceptable risk, we cannot reject H0.\n"}, {"id": 30, "title": "", "text": "class: center, top\n\n.headnote.small.title-font.bold[How the observed mean compared with 10k CSR simulations mean results?]\n\n<img src=\"resources/w05-img/nna_compare_hist.png\" width=\"90%\">\n\n.footnote.small.title-font.bold[Monte Carlo Simulation] \n\n???\nThe grey area indicates the mean nearest neighbor distance of the 10k random pattern.\n"}, {"id": 31, "title": "Z-test approach", "text": "class: left, middle\n.split-30[.column[\n### Z-test approach\n\nZ-test is another option for testing the significant levels of how observed nearest neighbor distance ($\\bar{D}_O$) is different from the 'expected' average nearest neighbor distance ($\\bar{D}_E$) under CSR. \n.smaller[See [ESRI](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/h-how-average-nearest-neighbor-distance-spatial-st.htm) for detail.]\n\n].column[\nThe nearest neighbor distance ratio: \n$$\nANN = \\frac{\\bar{D}_O}{\\bar{D}_E}\n$$\n- $ANN<1$: observed neighbours are closer than expected → clustering\n- $ANN\\approx1$: close to CSR\n- $ANN>1$: observed neighbours are farther apart → dispersion\n\nThe expected mean distance could be calculated using the number of point (n) and the study area (A):\n$$\n\\bar{D}_E = \\frac{0.5}{\\sqrt{n/A}}\n$$\n]]\n"}, {"id": 32, "title": "Z-test approach", "text": "class: left, middle\n.split-30[.column[\n### Z-test approach\nHow many standard errors away from the CSR expectation is the observed mean distance?\n\n.smaller[\nFor Clark–Evans nearest-neighbour analysis, the constant 0.26136 comes from the theoretical sampling variability of the mean nearest-neighbour distance under complete spatial randomness (CSR).\n]\n\n].column[\n\nThe z-score can then be calculated using $\\bar{D}_O$ and $\\bar{D}_E$:\n$$\nz = \\frac{\\bar{D}_O - \\bar{D}_E}{SE}\n$$\n\n$$\nSE =\n\\frac{0.26136}{\\sqrt{n^2 / A}}\n$$\n\nThe z-score and p-value for this statistic are sensitive to changes in the study area or changes to the Area parameter. For this reason, only compare z-score and p-value results from this statistic when the study area is fixed. \n\n]]\n"}, {"id": 33, "title": "Z-test approach", "text": "class: left, middle\n.split-30[.column[\n### Z-test approach\n\n].column[\n\n<img src=\"resources/w05-img/ztest.png\" width=\"85%\">\n.footnote-left[see [ESRI \"What is a z-score? What is a p-value?\"](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/what-is-a-z-score-what-is-a-p-value.htm) for more details]\n]]\n\n"}, {"id": 34, "title": "Summary Nearest Neighbor Analysis (NNA)", "text": "class: left, middle\n\n.split-30[.column[\n### Summary\n#### Nearest Neighbor Analysis (NNA)\n\n].column[\n\n- This approach calculates the average distance of the nearest neighbor for every point. \n\n<br>\n- The observed average nearest neighbor distance can be tested using a Monte Carlo Simulation or z-test approaches against the null hypothesis of CSR.\n\n<br>\n- The NNA has an assumption that the points being measured are .red[free to locate anywhere within the study area] (for example, there are no barriers, and all cases or features are located independently of one another). \n\n]]\n\n"}, {"id": 35, "title": "Ripley's K-function", "text": "class: center, middle, inverse\n\n.xx-large.bold.wide[PART 3]\n## Ripley's K-function\n------\n.square[]\n\n.headnote.square.bold.x-large[Point Pattern I]\n"}, {"id": 36, "title": "The 2 Approaches", "text": "class: center, top\n### The 2 Approaches\n\n<img src=\"resources/w05-img/three_strategies_for_point_pattern_2b.png\" width=\"85%\">\n"}, {"id": 37, "title": "Bus Stops distribution", "text": "class: left, middle\n\n.split-40[.column[\n#### Bus Stops distribution\n\n- Bus stops usually constructed in pairs, at both sides of a street. \n- The nearest neighbor is at a short distance (opposite of street), but the second nearest may not. \n- Is it a \"real\" clustered pattern?\n\n].column[\n<img src=\"resources/w05-img/Bus_Stop_nearest_neighbor.png\" width=\"90%\">\n]]\n"}, {"id": 38, "title": "Search Radius approach", "text": "class: left, middle\n\n.split-40[.column[\n### Search Radius approach\n\nThe Ripley's K-function\n\n- Generate a series of search radius (SR), from low to high\n- Search for pairs of points fall within every SR\n- The implication:\n    - if a lot of pairs are found within a short SR: the points are clustered at this distance.\n\n].column[\n    <img src=\"resources/w05-img/simulate_kfunc.gif\" width=\"100%\">\n]]\n"}, {"id": 39, "title": "The Ripley's K-function", "text": "class: left, middle\n\n.split-30[.column[\n### The Ripley's K-function\n].column[\nA common transformation of the K-function:\n$$\nL(d) = \\sqrt{\\frac{A \\times \\text{pairs}_d }{\\pi n(n-1)}}\n$$\n\n$$\n\\text{pairs}\\_d = \\sum\\_{i=1}^n \\sum\\_{j=1, j\\neq i}^n w\\_{ij}\n$$\n\n- $L(d)$: the k-function value at search radius $d$\n- $\\text{pairs}_d$: the number of pairs of points with distance less than $d$ \n- $w_{ij}$: equal to 1 if non-weighted; weighting for edge-correction\n- $A$: Area of study\n- $n$: total number of points\n- $n(n-1)$: total number of all pairs\n\n.smaller[More info: https://pro.arcgis.com/en/pro-app/3.1/tool-reference/spatial-statistics/h-how-multi-distance-spatial-cluster-analysis-ripl.htm]\n]]\n"}, {"id": 40, "title": "Testing of K-functions", "text": "class: left, middle\n\n.split-40[.column[\n### Testing of K-functions\n\n- How high is high enough to be considered as clustered?\n- To compare them with CSR, Monte Carlo Simulation can be used\n\n\n].column[\n    <img src=\"resources/w05-img/kfunc_arcGIS_redraw.png\" width=\"100%\">\n]]\n\n"}, {"id": 41, "title": "Testing of K-functions", "text": "class: left, middle\n\n.split-40[.column[\n### Testing of K-functions\n\n- How high is high enough to be considered as clustered?\n- To compare them with CSR, Monte Carlo Simulation can be used\n- For demonstration: 10 random patterns are generated\n\n\n].column[\n    <img src=\"resources/w05-img/k_function_4cases_rand.png\" width=\"100%\">\n]]\n"}, {"id": 42, "title": "Testing of K-functions", "text": "class: left, middle\n\n.split-40[.column[\n### Testing of K-functions\n\n- How high is high enough to be considered as clustered?\n- To compare them with CSR, Monte Carlo Simulation can be used\n- For demonstration: 10 random patterns are generated\n- Calculate 95% Confidence envelop\n\n.small[see [ESRI](https://pro.arcgis.com/en/pro-app/3.1/tool-reference/spatial-statistics/h-how-multi-distance-spatial-cluster-analysis-ripl.htm) for more details]\n\n].column[\n    <img src=\"resources/w05-img/k_function_4cases_ci.png\" width=\"100%\">\n]]\n"}, {"id": 43, "title": "", "text": "class: center, top\n\n.split-50[.column[\n.headnote.title-font.small.bold[Spatial Point Pattern]\n<img src=\"resources/w05-img/drawing_nna_res_2.png\" width=\"100%\">\n\nNearest Neighbor Analysis\n].column[\n<img src=\"resources/w05-img/k_function_4cases_ci.png\" width=\"100%\">\n\nRipley's K-function\n]]\n\n"}, {"id": 44, "title": "Summary Repley's K-function", "text": "class: left, middle\n\n.split-30[.column[\n### Summary\n#### Repley's K-function\n].column[\n- Purpose:  \nRipley's K function is a tool used to analyze spatial point patterns, helping researchers understand the spatial relationships among events or objects in a given study area.\n\n- Functionality:  \nThe K function estimates the expected number of points within a given distance from a randomly chosen point, providing insights into clustering, dispersion, or randomness in the spatial pattern.\n\n- Key features:\n    - The K function can be plotted as a function of distance to visualize changes in spatial interactions at different scales.\n    - It can be compared with theoretical models, such as complete spatial randomness (CSR), to assess deviations from expected patterns.\n\n]]\n"}, {"id": 45, "title": "A Demonstration", "text": "class: center, middle, inverse\n\n.xx-large.bold.wide[PART 4]\n## A Demonstration\n---- \n\n.headnote.square.bold.x-large[Point Pattern I]\n"}, {"id": 46, "title": "Let's do a mind travel...", "text": "class: center, middle\nbackground-image: url(resources/w05-img/gordon_square2b.png)\n\n## Let's do a mind travel...\n"}, {"id": 47, "title": "", "text": "class: left, middle\nbackground-image: url(resources/w05-img/gordon_square2.png)\n<div class=\"box\">\n<h3 class=\"box-text\"> Gordon Square <\/h3>\n<\/div>\n\n.footnote-right.red.title-font.bold[Source: [Google Map](https://maps.app.goo.gl/Qdb1K4hzyG485Btm8)]\n"}, {"id": 48, "title": "The question", "text": "class: left, middle\n\n### The question\n\n- Can we assume people randomly find a spot to sit?\n- Can we assume people prefer not to sit too close to strangers?\n- If they go with friends or colleagues, they will sit together.\n<br/><br/>\n- .underline[Will the process of .red[people finding comfortable spots for sitting in an open space] result in a random, clustered, or dispersed pattern?]\n<br/><br/>\n- Analyze with:\n    1. individual level\n    2. group level\n\n\n"}, {"id": 49, "title": "The dataset", "text": "class: left, middle\n\n.split-40[.column[\n### The dataset\n\nThis dataset records the location of people sitting on a grass patch in Gordon Square, London, at 3pm on a sunny afternoon.\n\nArea: $42 \\times 56 \\text{m}^2$\n\nSource: [R spatstat dataset](https://search.r-project.org/CRAN/refmans/spatstat.data/html/gordon.html)\n\n.footnote-left.smaller[Baddeley et al. 2013: [DOI:10.18637/jss.v055.i11](https://www.jstatsoft.org/article/view/v055i11)]\n].column[\n<img src=\"resources/w05-img/Gordon_square_data_individuals_xkcd.png\" width=\"75%\">\n]]\n"}, {"id": 50, "title": "", "text": "class: center, top\n\n<img src=\"resources/w05-img/GordonSquare_individual_and_groups_xkcd.png\" width=\"80%\">\n\n"}, {"id": 51, "title": "Nearest Neighbor Analysis", "text": "class: left, middle\n\n.split-50[.column[\n### Nearest Neighbor Analysis\n\n- For individual, the p-value is significant with a negative z-score, indicating people tended to sit together. \n- For in-group, the p-value is significant, with a positive z-score, suggesting the locations of groups are dispersed. \n\n].column[\n<img src=\"resources/w05-img/nna_compare_hist_gordon.png\" width=\"70%\">\n]]\n"}, {"id": 52, "title": "Ripley's K-function", "text": "class: left, middle\n\n.split-50[.column[\n### Ripley's K-function\nFor individual,\n- radius 4 m resulted in higher than random, indicating people tended to sit together at this scale. \n- betwen 4 m and 6 m , the observed line is near to the random, but still above the 95% CI. \n<br>\n\nFor in-group, \n- the search radius less than 7 m resulted in dispersed pattern. \n- the search radius beyond 8 m presented random pattern. \n\n].column[\n<img src=\"resources/w05-img/k_function_ci_gordon.png\" width=\"70%\">\n]]\n"}, {"id": 53, "title": "Closing Remarks", "text": "class: center, middle, inverse\n\n## Closing Remarks\n---- \n.square[Considerations .dot[] Workflow .dot[] About Tests]\n\n.headnote.square.bold.x-large[Point Pattern I]\n"}, {"id": 54, "title": "Summary NNA & K-function: Key Considerations, Limitations, and Directions", "text": "class: left, middle\n\n.split-30[.column[\n### Summary\n#### NNA & K-function: Key Considerations, Limitations, and Directions\n\n- .red[Sensitive to study area size and settings]\n- Edge effect (border effect)\n- Population-at-risk\n].column[\n\n- .bold[Sensitive to study area size and settings]:  \nCSR assume points to be scattered all around the study area. Thus, Ripley's K function can be influenced by the size and shape of the study area. .red[Larger study areas] may result in different K function estimates compared to smaller ones, and .red[irregular shapes] can introduce biases. Additionally, the settings used for the K function analysis, such as the bandwidth or edge correction method, can impact the results.\n\n<img src=\"resources/w05-img/area_size.png\" width=\"100%\">\n]]\n"}, {"id": 55, "title": "Summary NNA & K-function: Key Considerations, Limitations, and Directions", "text": "class: left, middle\n\n.split-30[.column[\n### Summary\n#### NNA & K-function: Key Considerations, Limitations, and Directions\n\n- Sensitive to study area size and settings\n- .red[Edge effect (border effect)]\n- Population-at-risk\n].column[\n- .bold[Edge effect] (border effect):  \nPoints beyond the study area are 'ignored.' .red[Points close to the boundary of the study area may have fewer neighboring points] than those in the interior, which can bias the K function estimates. This is known as the edge effect, and it can introduce inaccuracies when studying spatial patterns. Edge correction methods are often employed to mitigate this issue.\n\n<img src=\"resources/w05-img/edge_effect.png\" width=\"50%\">\n]]\n"}, {"id": 56, "title": "Summary NNA & K-function: Key Considerations, Limitations, and Directions", "text": "class: left, middle\n\n.split-30[.column[\n### Summary\n#### NNA & K-function: Key Considerations, Limitations, and Directions\n\n- Sensitive to study area size and settings\n- Edge effect (border effect)\n- .red[Population-at-risk]\n].column[\n- .bold[Population-at-risk]:  \nRipley's K function assumes that the underlying point process is .red[stationary and homogeneous]. If the population at risk (i.e., the underlying risk of events occurring) is not uniform across the study area, this can violate the assumptions and lead to misleading results. Incorporating information on the population at risk can help refine the analysis and improve the accuracy of the conclusions.\n\n<img src=\"resources/w05-img/pop_at_risk.png\" width=\"50%\">\n]]\n"}, {"id": 57, "title": "What has been covered today", "text": "class: left, middle\n\n.split-30[.column[\n### What has been covered today\n\nWhat is the workflow of analyzing spatial point pattern?\n\nGlobal Pattern: the overall pattern of the point distribution\n\nLocal Pattern: where are the clusters\n\n].column[\n<img src=\"resources/w05-img/about_point_pattern_analysis Diagram.drawio.png\" width=\"70%\">\n]]\n\n"}, {"id": 58, "title": "Some notes", "text": "class: left, middle\n\n.split-20[.column[\n### Some notes\n].column[\nThe three methods explore the spatial pattern with different angle:\n- Quadrat count: the number of points fall in equal size quadrats\n- NNA: how near/far the nearest neighbor is\n- K-function: how many other points could be found for a specific search radius\n\nThe latter two methods can be extended:\n- NNA: to k-order nearest neighbor (see: .smaller[[CrimeStat III](https://www.ojp.gov/pdffiles1/nij/grants/209264.pdf)])\n- K-function: weighted K-function (see: .smaller[[ArcGIS Pro](https://pro.arcgis.com/en/pro-app/3.1/tool-reference/spatial-statistics/h-how-multi-distance-spatial-cluster-analysis-ripl.htm)])\n\nThings to considered:\n- .red[Edge effect]: the near border areas could be underestimated due to the external points. (see: .smaller[[DOI:10.2307/3237072](https://doi.org/10.2307/3237072)])\n- .red[Population at risk]: a place with more population could have more events (e.g., crime/disease cases) happens by chance. (see: .smaller[[SaTScan](https://www.satscan.org/cgi-bin/satscan/register.pl/SaTScan_Users_Guide.pdf?todo=process_userguide_download)])  \n]]\n"}, {"id": 59, "title": "About Statistical Tests About Tests", "text": "class: left, middle\n\n.split-20[.column[\n### About Statistical Tests\n].column[\n\n#### About Tests\nThere are so many tests. It is more important to know:   \n- The key considerations for choosing a test:  \nUnderstand the .red[assumptions, requirements, and limitations of each test], as well as .red[the nature of your data] and .red[research questions], to select the most appropriate test.\n    - Knowing these can help you to choose the appropriate test(s).\n\n- What you're testing and why:  \nBe clear to yourself about the null and alternative hypotheses, .red[the rationale behind them], and .red[the implications of your results].\n    - Are you testing against CSR? Why?\n\n- Explicitly communicate your approach:  \nyou have to explicitly tell your readers what, why, and how.\n    - Don't let your readers guess. \n]]\n"}, {"id": 60, "title": "", "text": "class: center, middle\n\n.xx-large.xkcd[No single test is suitable for all situations, and it's impossible to memorize every test.] \n\nInstead, focus on developing a strong foundation in statistical concepts and .red[knowing where to find] relevant information when selecting the appropriate test for your specific needs.\n\n"}, {"id": 61, "title": "About Statistical Tests About p-value", "text": "class: left, middle\n\n.split-20[.column[\n### About Statistical Tests\n].column[\n\n\n#### About p-value\n- A p-value is conditional on H0; it is not the probability that H0 is true. \n\n- the common practice is to check if p-value $< \\alpha$, and common alpha values are: \n    - 0.05: 5% Type I error rate under H0, \n    - 0.01: 1% Type I error rate under H0, and \n    - 0.001: 0.1% Type I error rate under H0.  \n\n- If p-value is less than the pre-determined $\\alpha$, then it is significantly different. \n\n- That's how far you can get with p-value---.red[don't over-interpret the p-value]. \n    - Comparing p-values can be problematic, because they may be calculated from different settings, e.g., sample size. \n\n]]"}]
+      let miniSearch = new MiniSearch({
+        fields: ['title', 'text'], // fields to index for full-text search
+        storeFields: ['title', 'text'], // fields to return with search results
+        searchOptions: { prefix: true }
+      })
+      miniSearch.addAll(contentIndex)
+    </script>
+    <script src="remarkjs/searchMod.js"  type="text/javascript"></script>
+    <script src="remarkjs/sidebar.js"  type="text/javascript"></script>
+    
+    <script src="./remarkjs/remark-0.15.0.js"  type="text/javascript"></script>
+    <script>
+      var options = {};
+      options['ratio'] = "16:9"; 
+      options['navigation'] = {scroll: true, touch: true, click: false};
+      options['highlightStyle'] =  "default";
+      var slideshow = remark.create(options);
+    </script>
+  </body>
+</html>

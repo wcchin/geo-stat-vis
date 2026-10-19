@@ -1,194 +1,172 @@
-# Nearest Neighbor Analysis
+---
+label: nearest-neighbour-analysis
+---
 
+# Nearest Neighbour Analysis
 
-## The 2 Distance-based Approaches
+## When is close unusually close?
 
-```{figure} ../resources/w05-img/three_strategies_for_point_pattern_2b.png
-:label:
-:alt:
-:align: center
+A map may look crowded, but proximity alone does not establish clustering. One hundred events placed independently in a small park will usually be closer together than one hundred events placed independently across a town. We need a reference that accounts for both the number of events and the space in which they could occur.
 
-Everyone look for the nearest neighbor vs. everyone draw a series of search buffer (radius).
-```
+**Nearest Neighbour Analysis (NNA)** asks whether the average distance from an event to its nearest other event is unusually short or long relative to a specified random point process. It summarises the pattern across the study area; it does not identify the location of each cluster.
 
-In this section, we focus on the first approach.
-
-
-## 4 examples of point distribution: Clustered or Random?
+After this section, you should be able to calculate and interpret the nearest-neighbour ratio, explain its CSR reference, and distinguish a descriptive result from evidence against a null model.
 
 ```{figure} ../resources/w05-img/four_demo_points.png
-:label:
-:alt:
+:label: nna-four-patterns
+:alt: Four point patterns in the Woodlands area shown within equally sized study windows.
 :align: center
 
-4 types of points in North Singapore: Woodlands Regional Centre, Woodlands West, and Woodgrove, with an area of $2 \text{km} \times 2 \text{km}$
+Examples from Woodlands Regional Centre, Woodlands West and Woodgrove, each within a 2 km by 2 km window. Predict which has the shortest average nearest-neighbour distance. Would that alone tell you which is most unusual under randomness?
 ```
 
+## From individual distances to one summary
 
-## Nearest Neighbor Analysis Calculation Process: In A Nut Shell
+For each point, find the closest **other** point and record its distance. A point is not its own neighbour. Two points can be each other's nearest neighbours, so one pair can contribute a distance for both observations.
 
-- Identifying nearest neighbors for every point
-- Record the nearest neighbor distances
-- Calculate the _mean value_
-    - observed average nearest neighbor distance ($D_O$)
-- The average nearest neighbor distance:
-    - short: the points are close to each other
-    - long: the points are far from each other
+With $n$ points and nearest-neighbour distance $d_i$ for point $i$, the observed mean is
 
+$$
+\bar{D}_O=\frac{1}{n}\sum_{i=1}^{n}d_i.
+$$
+
+If coordinates are in metres, the mean is in metres. Use a suitable projected coordinate system for local Euclidean analysis; longitude and latitude in degrees are not distances in metres.
 
 ```{figure} ../resources/w05-img/simulate_nna.gif
-:label:
-:alt:
+:label: nna-search-animation
+:alt: Animation connecting each point to its nearest other point.
 :align: center
 
-Searching for the nearest neighbors.
+Each event contributes its nearest-neighbour distance. We average these distances, rather than distances between every possible pair.
 ```
 
+A short observed mean can result from clustering, high overall intensity, or repeated records at identical coordinates. We therefore need an appropriate comparison.
 
-**How short is short enough to be considered as "clustered"?**
+## The CSR reference and nearest-neighbour ratio
 
-Let's use the _Monte Carlo Simulation_ approach to test the _difference_ between the _observed_ point pattern and a large number of random patterns generated under the _CSR assumption_.
+[Complete spatial randomness (CSR)](sec_04-01-Complete-Spatial-Randomness.md) is commonly represented by a homogeneous Poisson process: intensity is constant and events occur independently. Let $A$ be the study area and estimate intensity by $\lambda=n/A$. The theoretical expected nearest-neighbour distance for a homogeneous planar Poisson process is
 
-```{figure} ../resources/w05-img/mean_nearest_negihbor_4cases_b.png
-:label:
-:alt:
-:align: center
+$$
+\bar{D}_E=\frac{1}{2\sqrt{\lambda}}=\frac{0.5}{\sqrt{n/A}}.
+$$
 
-Mean nearest neighbor distances for the four examples.
-```
+The Clark–Evans nearest-neighbour ratio is
 
+$$
+R=\frac{\bar{D}_O}{\bar{D}_E}.
+$$
 
+| Ratio | Descriptive interpretation |
+|---|---|
+| $R<1$ | Neighbours are closer than the theoretical CSR expectation: a tendency towards clustering. |
+| $R\approx1$ | The mean is close to that expectation. |
+| $R>1$ | Neighbours are farther apart: a tendency towards regularity or dispersion. |
 
-## Option 1: Monte Carlo Simulation
+The ratio is dimensionless. Its direction does not by itself establish statistical significance. A ratio near one does not demonstrate that every aspect of a pattern follows CSR.
 
-- **Area size has to match the study area**.
-    - Area size will affect the distance between points.
-- **The number of points has to match the dataset**.
-    - Within the same area, more points (higher density) will lead to lower nearest neighbor distances.
+### A numerical example
+
+Consider an **illustrative dataset**, separate from the Woodlands figures: 100 events in 1 km². Working in metres gives $A=1{,}000{,}000$ m² and
+
+$$
+\bar{D}_E=\frac{0.5}{\sqrt{100/1{,}000{,}000}}=50\text{ m}.
+$$
+
+If the observed mean is 35 m, $R=35/50=0.70$. The observed mean is 30% shorter than the theoretical expectation. This does **not** mean that 70% of points are clustered or that there is a 30% probability of clustering.
+
+## How unusual is the observed distance?
+
+We can use an analytical approximation or construct a reference distribution by simulation. Both require an explicit null model and a question specified before inspecting the result.
+
+A question about **clustering** uses a lower-tail alternative: are distances unusually short? A question about **dispersion** uses the upper tail. A two-sided question permits either departure. Selecting whichever one-sided test looks significant after seeing the data changes the testing procedure.
+
+### Analytical Clark–Evans comparison
+
+The standard error commonly used for the planar CSR approximation is
+
+$$
+SE=\frac{0.26136}{\sqrt{n^2/A}}=0.26136\frac{\sqrt{A}}{n}.
+$$
+
+The z-score measures the difference in standard-error units:
+
+$$
+z=\frac{\bar{D}_O-\bar{D}_E}{SE}.
+$$
+
+For the illustrative example, $SE\approx2.61$ m and $z\approx-5.74$. Under the approximation, this is a very short mean distance relative to CSR. A lower-tail p-value comes from the standard normal distribution.
+
+The simple formula does not correct for boundaries. Its theoretical expectation describes an unbounded planar process, whereas an observation window has edges beyond which possible neighbours are not observed. Do not assume its reference exactly matches a finite-window simulation.
+
+### Monte Carlo comparison
+
+For a rectangle, simulate independent uniform locations within the **same fixed window**, with the **same number of points**, and calculate the same statistic each time. This is the conditional-on-$n$ form of the homogeneous Poisson null model.
 
 ```{figure} ../resources/w05-img/monte_carlo_point_pattern.gif
-:label:
-:alt:
+:label: nna-csr-simulation
+:alt: Repeated random point patterns generated within one fixed study window.
 :align: center
 
-Monte Carlo Simulation for point pattern.
+The window and point count stay fixed while locations change. Each simulation contributes one mean nearest-neighbour distance to the reference distribution.
 ```
 
-### Statistical Testing
+The empirical reference distribution need not be assumed normal. Compare the observed mean directly with the simulations. With $M$ simulated patterns, a lower-tail Monte Carlo p-value is
 
-- After simulating random for M times, we will get $M$ measurement of mean nearest neighbor distances.
-- The frequency distribution of the N values would form a normal distribution.
-- The range where the normal distribution is located represent the "random (CSR)" under the specific area and # point setting.
+$$
+p_{\mathrm{lower}}=\frac{1+\#\{\bar{D}^{(m)}\leq\bar{D}_O\}}{M+1},
+$$
 
-```{figure} ../resources/w05-img/drawing_normal_testing_0.png
-:label:
-:alt:
-:align: center
+where $\bar{D}^{(m)}$ is the mean in simulation $m$. Include ties. The added one prevents a zero p-value; with 999 simulations, the minimum is 0.001. More simulations improve resolution and reduce Monte Carlo variability, but do not guarantee a smaller p-value.
 
-Normal distribution pattern for the frequency of the NNA statistics for the simulated pattern.
-```
-
-
-
-(1) If the observed value is _far from the random_, we found a clear evidence that the observed pattern is different from random.
-- either _clustered or dispersed_
-
-
-```{figure} ../resources/w05-img/drawing_normal_testing_1.png
-:label:
-:alt:
-:align: center
-
-If the oberved value is far from the normal bell shape.
-```
-
-(2) If the observed value _fall within the random range_, then, we did not find any evidence to prove that the observed pattern is different from random.
-- cannot reject the null hypothesis
-- we have no choice but to believe it is random
-
-
-```{figure} ../resources/w05-img/drawing_normal_testing_2.png
-:label:
-:alt:
-:align: center
-
-If the oberved value fall within the normal bell shape.
-```
-
-
-(3) If the observed fall at the edge of the normal distribution
-- check _p-value_ and your confidence level setting.
-
-_p-value: the probability of being wrong to reject null hypothesis_
-
-See [ESRI "What is a z-score? What is a p-value?"(https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/what-is-a-z-score-what-is-a-p-value.htm) for more details]
-
-```{figure} ../resources/w05-img/drawing_normal_testing_3.png
-:label:
-:alt:
-:align: center
-
-If the oberved value fall within or near to the edge of the normal bell shape.
-```
-
-Let's say we set the confidence level to 99%, meaning we are willing to accept a 1% risk of being wrong (incorrectly rejecting the null hypothesis, H0).
-If the obtained p-value is 3%, which is higher than our acceptable risk, then we cannot reject H0.
-
+A finite-window simulation reproduces the window's boundary geometry when observed and simulated statistics use the same procedure. It does not recover missing outside neighbours or make an unsuitable study window appropriate.
 
 ```{figure} ../resources/w05-img/nna_compare_hist.png
-:label:
-:alt:
+:label: nna-reference-histogram
+:alt: Observed mean nearest-neighbour distances compared with reference distributions from CSR simulations.
 :align: center
 
-How the observed mean compared with 10k CSR simulations mean results?
+Read each observed statistic relative to its own reference distribution. How unusual is the distance under that reference, rather than how short does it look in isolation?
 ```
 
+## What can we conclude?
 
-The grey area indicates the mean nearest neighbor distance of the 10k random pattern.
+A small lower-tail p-value provides evidence of clustering at the nearest-neighbour scale under the specified null model. It does not establish a cause, locate individual clusters, or show that every point belongs to a cluster.
 
+A non-significant result means this test has not supplied sufficient evidence against the null model. It does not prove randomness: a pattern may differ from CSR in ways a nearest-neighbour summary misses.
 
-## Option 2: Z-test approach
+A p-value concerns the behaviour of the statistic **assuming the null model**. It is not the probability that the null is true or that a particular rejection is wrong.
 
-Z-test is another option for testing the significant levels of how observed nearest neighbor distance ($\bar{D}_O$) is different from the 'expected' average nearest neighbor distance ($\bar{D}_E$) under CSR.
+## Geographical choices that change the answer
 
-See [ESRI](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/h-how-average-nearest-neighbor-distance-spatial-st.htm) for detail.
+**Study window.** Define where events could have occurred from the question and observation design. Enlarging the window while retaining the same points reduces intensity and increases the expected mean, making the same distances look more clustered. A convenient rectangle may include sea or inaccessible land. A polygonal null window requires sampling within that polygon.
 
-The nearest neighbor distance ratio:
-$$
-\text{ANN} = \frac{\bar{D}_O}{\bar{D}_E}
-$$
-If the index ($\text{ANN}$) is less than 1, the pattern exhibits clustering.
-If the index is greater than 1, the trend is toward dispersion.
+**Observation unit and coincident points.** In the course's HDB example, records represent transactions, not necessarily unique buildings. Several transactions may share coordinates and have zero nearest-neighbour distances. Retaining them asks about transaction events; aggregating them asks a different question about locations. Explain the choice.
 
-The expected mean distance could be calculated using the number of point (n) and the study area (A):
-$$
-\bar{D}_E = \frac{0.5}{\sqrt{n/A}}
-$$
+**Population at risk.** Accidents or disease events may concentrate where roads or people are concentrated. Rejection of homogeneous CSR may reflect uneven opportunity for events rather than interaction among events. Consider whether a network-constrained or inhomogeneous model fits the question better.
 
-The z-score can then be calculated using $\bar{D}_O$ and $\bar{D}_E$:
-$$
-z = \frac{\bar{D}_O - \bar{D}_E}{SE}
-$$
+**Scale.** NNA uses one neighbour per event. [Ripley's K-function](sec_04-04-Ripleys-K-Function.md) examines neighbours within several distances. A pattern can be clustered at one scale and dispersed at another.
 
-The z-score and p-value for this statistic are sensitive to changes in the study area or changes to the Area parameter. For this reason, only compare z-score and p-value results from this statistic when the study area is fixed.
+## Try it yourself
 
+The [NNA self-study notebook](../notebooks/lab-05-nna-self-study.ipynb) uses synthetic data with NumPy, SciPy and Matplotlib, and accepts a projected-coordinate CSV. Compare clustered, CSR and regular patterns, then change one analytical choice at a time.
 
+Follow the [Gordon Square worked example](../worked_examples/sec_04-A-Demonstration-point-pattern.md) to contrast individual people with groups. The [full point-pattern lab](../notebooks/lab-05-point-pattern.ipynb) connects quadrat counts, NNA and K/L functions. Revisit the [Semester 2610 Week 5 slides](../part4.md) for the visual lecture explanation.
 
-```{figure} ../resources/w05-img/ztest.png
-:label:
-:alt:
-:align: center
+### Check your reasoning
 
-Z-test and z-score. See [ESRI "What is a z-score? What is a p-value?"](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/what-is-a-z-score-what-is-a-p-value.htm) for more details.
+```{dropdown} 1. Keep the same points but double the window area. What happens to R?
+The observed mean stays the same. The theoretical expected distance increases by $\sqrt{2}$, so $R$ decreases by that factor. This illustrates window sensitivity; it does not justify choosing a window to obtain a desired answer.
 ```
 
+```{dropdown} 2. A lower-tail test gives p = 0.24. Have we shown randomness?
+No. We have not found sufficient evidence of unusually short mean nearest-neighbour distances under this null model. This does not establish that the whole pattern is random.
+```
 
+```{dropdown} 3. Several transactions share a building coordinate. Should we remove them?
+It depends on the observation unit. Retain records for a question about transaction events, or aggregate for a question about distinct locations. State the choice and its implications for the null model.
+```
 
+## Further reading
 
-## Summary: Nearest Neighbor Analysis (NNA)
-
-- This approach calculates the average distance of the nearest neighbor for every point.
-
-- The observed average nearest neighbor distance can be tested using a Monte Carlo Simulation or z-test approaches against the null hypothesis of CSR.
-
-- The NNA has an assumption that the points being measured are _free to locate anywhere within the study area_ (for example, there are no barriers, and all cases or features are located independently of one another).
+- [ArcGIS: How Average Nearest Neighbor works](https://doc.esri.com/en/arcgis-pro/latest/tool-reference/spatial-statistics/h-how-average-nearest-neighbor-distance-spatial-st.html): equations, assumptions and interpretation.
+- [SciPy: Monte Carlo tests](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.monte_carlo_test.html): empirical reference distributions and alternatives.
