@@ -113,17 +113,19 @@ $$EV^i = D^0 - D^i$$
 
 $$Si = (b_i - a_i) / \text{max}(a_i, b_i)$$
 
-$a_i$ is the average distance between point i and all other points in its own cluster:
+For a point $i$ in cluster $C(i)$ with at least two members, the average distance to the *other* members of its cluster is
 
-$$a_i = \sum \frac{(d(x_i, x_j))}{|C_i|}$$
+$$
+a_i=\frac{1}{|C(i)|-1}\sum_{j\in C(i),\,j\ne i}d(x_i,x_j).
+$$
 
-where, $x_j ∈ C_i$
+The smallest average distance to a different cluster is
 
-$b_i$ is the lowest average distance between point i and all points in any other cluster:
+$$
+b_i=\min_{C\ne C(i)}\frac{1}{|C|}\sum_{j\in C}d(x_i,x_j).
+$$
 
-$$b_i = \text{min} ∑ \frac{(d(x_i, x_j))}{|C_j|}$$
-
-where, $x_j ∈ C_j$ and $j\neq i$
+Use $s_i=(b_i-a_i)/\max(a_i,b_i)$. A singleton cluster has no within-cluster average over other members; standard implementations assign its silhouette value zero. Report the implementation and distance metric when comparing results.
 
 Note that the Silhouette Coefficient ranges between -1 and 1, with higher values indicating better clustering.
 

@@ -30,14 +30,14 @@ Then, how to compare?
 ## Chi-squared test
 Use Chi-squared test, which is suitable for comparing frequencies.
 
-The quadrat method partitions the study region into $r$ rows and $c$ columns, which define $m=r\times c$ non-overlapping subregions or quadrats of equal area. This method relies on the fact that, _under CSR, the expected number of observations within any region of equal size is the same_. Let $n$ be the number of observed points, $m$ the number of quadrats of equal size, and $n_i$ the number of points in quadrat $i$. The expected number of points in each quadrat is $N/m$. The test statistic is calculated as
+The quadrat method partitions the study region into $r$ rows and $c$ columns, which define $m=r\times c$ non-overlapping subregions or quadrats of equal area. This method relies on the fact that, _under CSR, the expected number of observations within any region of equal size is the same_. Let $n$ be the number of observed points, $m$ the number of equal-area quadrats, $O_i$ the observed count in quadrat $i$, and $E_i=n/m$ its expected count under homogeneous CSR. The test statistic is calculated as
 
 $$
-\chi^2 = \sum_{i=1}^m\frac{\text{observed}_i - \text{expected}}{\text{expected}}
+\chi^2 = \sum_{i=1}^m\frac{(O_i-E_i)^2}{E_i}
 $$
 
 $$
-\text{expected} = \frac{N}{m}
+\text{expected} = \frac{n}{m}
 $$
 
 **Why?**
@@ -48,18 +48,24 @@ $$
 Use Chi-squared test, which is suitable for comparing the frequencies against an expected frequency or distribution.
 
 **Clustered example**
-- chi-squared statistic$= 354.332$, p-value$= 2.606e-66$$
+- chi-squared statistic$= 354.332$, p-value$= 2.606\times10^{-66}$
 - _significantly different_ from random
 
 **Random example**
 - chi-squared statistic$= 19.332$, p-value$= 0.199$
-- non-significant; the distribution is _not different from random_
+- non-significant; the distribution is _not significantly different from CSR under this test_
 
 **Regular example**
 - chi-squared statistic$= 8.332$, pvalue$= 0.910$
-- non-significant; the distribution is _not different from random_
+- non-significant; the distribution is _not significantly different from CSR under this test_
 
-> Since the expected number of points are the average number of points---the test do not consider the spread mathematically---thus the regular example 'is not different from random'.
+The usual upper-tail chi-squared test asks whether variation among counts is unusually large. A large p-value does not prove CSR or establish regularity. A test of unusually low variation requires a separately specified lower-tail or two-sided procedure and a suitable reference distribution.
+
+### Why not compare means with a t-test?
+
+Counts $[3,3,3,3,3,3]$ and $[0,0,0,6,6,6]$ both have mean 3, but differ greatly in their variation across cells. Given the point count and study window, the expected mean count is already determined. Here the question concerns the distribution of counts among quadrats, rather than a difference between means.
+
+Very small expected counts can make the analytical chi-squared approximation unreliable. A Monte Carlo comparison should retain the same point count, fixed window and quadrat grid for every simulation. For unequal-area quadrats, expected counts must reflect their areas.
 
 
 

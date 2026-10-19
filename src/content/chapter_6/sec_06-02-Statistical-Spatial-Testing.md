@@ -148,7 +148,7 @@ $$
 **See the last two rows**
 
 Row standardization:
-- is to rescale weights so that for each row i: $\sum(j) w(i,j) = 1$
+- is to rescale weights so that for each row i: $\sum_j w^\prime_{ij}=1$ for each non-isolated row
 
 - $w(i,j)' = \frac{w(i,j)}{\sum_k w(i,k)} $
 
@@ -157,7 +157,7 @@ Row standardization:
 
     - locations with more neighbors, each of its neighbbors will have less weights of influence to the location, such that the total weight of influence from neighbors is the same with any other location
 
-- is non-symmetrical.
+- can become non-symmetric even when the original neighbour relation is symmetric; rows with no neighbours need explicit handling.
 
 The original spatial weight matrix:
 

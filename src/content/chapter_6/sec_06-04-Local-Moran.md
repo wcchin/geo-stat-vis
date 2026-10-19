@@ -33,7 +33,7 @@ Essentially, Local Moran's I provides a way to evaluate spatial patterns and rel
 The target of Local Moran is to identify two types of locations with statistical significance (through permutation):
 - **Clusters**: locations with significantly similar values (hot-spots & cold-spots)
 - **Outliers**: locations with significantly different values.
-- Places with very similar but not far from the means are ignored (as non-significant).
+- Significance depends on the local reference distribution, neighbourhood and observed configuration; proximity to the global mean alone is not a significance rule.
 
 **Clusters**: To identify locations with _positive_ correlation:
 - High-High (HH) clusters: _high_ value locations surrounded by _high_ value neighbors
@@ -45,93 +45,32 @@ The target of Local Moran is to identify two types of locations with statistical
 
 
 
-## Global Moran's I: Formula
+## From global to local: keep the scaling explicit
 
-The lower part (denominator) is a kind of standardizig process to control the range of the resulting values.
-
-$$
-\text{I}=\frac{N}{W} \times \frac{\sum_i^N \sum_j^N w_{i,j}(x_i-\bar{x})(x_j-\bar{x})}{\sum_k (x_k-\bar{x})^2}
-$$
-
-Where:
-- $N$ is the number of spatial units indexed by $i$ and $j$;
-- $x$ is the variable of interest;
-- $\bar{x}$ is the mean of $x$;
-- $w_{i,j}$ is the spatial weight---kind of an indicator variable, equal to 1 or the row-standardized value if $i$ and $j$ are neighbors, 0 otherwise;
-- W is the sum of all $w_{i,j}$.
-
-Let's $z_i = x_i - \bar{x}$ (i.e., deviations from mean), then
+Let $z_i=x_i-\bar{x}$, $Q=\sum_i z_i^2$, and $S_0=\sum_i\sum_jw_{ij}$, with $w_{ii}=0$. The general global statistic is
 
 $$
-\text{I} = \frac{\sum_i \sum_j w_{i,j} \times z_i \times z_j}{\sum_k z_k^2}
+I=\frac{N}{S_0}\frac{\sum_i z_i\sum_jw_{ij}z_j}{Q}.
 $$
 
-
-## Local Moran's I: Formula
-The lower part (denominator, $\sum_k z_k^2$) is a kind of standardizig process to control the range of the resulting values.
+One common local convention uses the population second moment $m_2=Q/N$:
 
 $$
-\text{I} = \frac{\sum_i \sum_j w_{i,j} \times z_i \times z_j}{\sum_k z_k^2}
+I_i=\frac{z_i}{m_2}\sum_jw_{ij}z_j
+=\frac{N}{Q}z_i\sum_jw_{ij}z_j.
 $$
 
-rearrange...
+The same definition can be applied to binary or row-standardised weights. The factor $N/Q$ does not disappear simply because weights are row-standardised. Under this convention,
 
 $$
-\text{I} = \frac{1}{\sum_k z_k^2} \times [\sum_i z_i \sum_j w_{i,j} \times z_j]
+\sum_iI_i=S_0I.
 $$
 
-$\sum_k z_k^2$ will not change with $i$, thus constant and this could be captured by the form of:
+When every row has neighbours and is row-standardised to sum to one, $S_0=N$, so $I=(1/N)\sum_iI_i$. With other weights or isolated observations, retain the general relation.
 
-- $\text{global} = a . [\sum_i \text{component}(i)]$
+A local contribution to the global sum and a scaled Local Moran statistic need not have the same numerical value. Software may use a different moment convention, including a sample-variance factor based on $N-1$. State the convention before comparing numerical values or local-to-global identities. The book notebook's implementation must be checked against its installed package version.
 
-$$
-\text{Local I}_i = \frac{1}{\sum_k z_k^2} \times z_i \sum_j w_{i,j} \times z_j
-$$
-
-
-## Technical aspects of Local Moran('s I)
-The first part ($1 / \sum_k z_k^2$ or $N / \sum_k z_k^2$) is a kind of standardizig process to control the range of the resulting values.
-
-- for row-standardized weights
-(such that $S_0$ and $N$ cancel out in Moran's I)
-
-- variables as deviations from mean ($z_i = x_i - \bar{x}$, positive means greater than mean, and negative means less than mean).
-
-$$
-\text{Local I}_i = \frac{1}{\sum_k z_k^2} \times z_i \sum_j w_{i,j} \times z_j
-$$
-
-- $z_i$ is the deviation from mean for the current location
-- $\sum_j w_{i,j} \times z_j$ is the 'lag' term, how high or low is the (location $i$'s) neighbors'  overall value compared to the mean
-
-- for non-row-standardised
-$$
-\text{Local I}_i = \frac{N}{\sum_k z_k^2} \times z_i \sum_j w_{i,j} \times z_j
-$$
-take note on the $N$...
-
-
-## Link Local - Global: LISA
-
-take note on the $N$:
-$$
-\sum_i \text{Local I}_i = \sum_i \frac{N}{\sum_k z_k^2} \times z_i \sum_j w_{i,j} \times z_j
-$$
-
-$$
-\sum_i \text{Local I}_i = N \times \frac{1}{\sum_k z_k^2} \times \sum_i z_i \sum_j w_{i,j} \times z_j
-$$
-
-$$
-\sum_i \text{Local I}_i = N \times \text{Global I}
-$$
-
-- $\sum_i \text{local}_i = N . \text{global}$
-
-- or $\text{global} = \frac{\sum_i \text{local}_i}{N}$
-
-- the global statistics is the average of local statistics
-
+The product's sign supports interpretation: a positive local statistic represents similar deviations (HH or LL); a negative statistic represents contrasting deviations (HL or LH). Use the focal value and spatial lag to distinguish the two quadrants within each sign, and a local test to assess significance.
 
 ## Statistical Inference
 

@@ -15,18 +15,14 @@ See [Global Moran's I (ArcGIS)](https://pro.arcgis.com/en/pro-app/latest/tool-re
 
 ## Calculation
 
-Moran's I ranges from:
-- -1 (indicating **perfect dispersion** or negative spatial autocorrelation) to
-- +1 (indicating **perfect clustering** or positive spatial autocorrelation), with
-- 0 indicating a **random** spatial pattern (no spatial autocorrelation).
-
+Positive values generally indicate neighbouring units with similar values, while negative values indicate neighbouring units with contrasting values. The attainable range depends on the spatial weights; do not treat Moran's I as an ordinary correlation coefficient with universal bounds of −1 and +1. Inference compares the observed statistic with its null reference, whose expectation is generally slightly negative.
 
 Moran's I is defined as:
 
 $$
-I = \frac{N}{W} =
+I = \frac{N}{W} \times
 \frac{\sum_{i=1}^N \sum_{j=1}^N w_{i,j}(x_i - \bar{x})(x_j - \bar{x}) }
-{\sum_{i=1}^N ((x_i - \bar{x})^2}
+{\sum_{i=1}^N (x_i - \bar{x})^2}
 $$
 
 Where:
@@ -49,7 +45,7 @@ Note that if they are both a lot lower than the mean value, the result would als
 
 ## Moran’s I: Interpretation
 ### Reading I
-- theoretical mean is 1/(N-1), essentially zero for large N
+- Under random reassignment of values, with zero self-weights, $E[I]=-1/(N-1)$; this approaches zero for large $N$.
 
 - positive and significant: clustering of similar value
     - NOT clustering of high or low
@@ -65,7 +61,7 @@ Note that if they are both a lot lower than the mean value, the result would als
 - relative magnitude for **same weights settings** and different variables is **meaningful**
 
 - **NOT for different spatial weights**
-    - use standardized z-value to compare
+    - Changing weights changes the spatial question. Examine sensitivity explicitly; a z-score does not remove this change in meaning.
 
 
 
@@ -117,9 +113,9 @@ The 4 quadrants:
 
 - **even a high Moran's I value does not necessarily indicate significance.**
 
-- the 'p-value' is not the same as the statistical p-value, it should be called pseudo-p-value as it is calculated using a permutation approach from empirical data, rather than estimated with some solid statistical method.
+- A permutation p-value is a statistical p-value estimated from a simulated randomisation distribution. It is often called a pseudo-p-value to distinguish this finite simulation estimate from an analytical calculation. Specify the alternative and the software's tail convention.
 
-- the number of permutation will 'improve' the p-value.
+- More permutations improve numerical resolution and reduce simulation variability; they do not necessarily produce a smaller p-value.
 
 
 
@@ -177,3 +173,8 @@ Moran's I scatter plot of the bus ridership
     - calculation
     - how to read the result
     - permutation
+
+
+### Explore the current teaching example
+
+The Semester 2610 Week 8 notebook distinguishes `p_norm`, `p_rand` and `p_sim`, checks data completeness, and states a positive-autocorrelation alternative explicitly. These distinctions will be carried into the book notebook in the next chapter update. Scatterplot quadrant membership alone is not evidence of a significant local cluster.
