@@ -30,34 +30,34 @@
 
 
 
-```{figure} ../resources/w08-img/Milwaukee_map-1.png
-:label:
-:alt:
+```{figure} ../resources/original/spatial-values-structured.svg
+:label: spatial-values-structured
+:alt: An eight-by-eight grid with four horizontal bands of values from one to four.
 :align: center
 
-Actual Distribution. See [Luc Anselin's lecture on Spatial Autocorrelation](https://youtu.be/M9sMu73ogIE?si=asaiYfVbCIXlYKkv&t=490).
+A synthetic spatial pattern: nearby cells have similar values. Each category occurs 16 times. These are illustrative values, not observations from a real place.
 ```
 
 
 
-```{figure} ../resources/w08-img/Milwaukee_map-2.png
-:label:
-:alt:
+```{figure} ../resources/original/spatial-values-permutation.svg
+:label: spatial-values-permutation
+:alt: The structured grid beside one permutation of the same 64 values.
 :align: center
 
-Randomly swapping the values between spatial units---Random Permutation. See [Luc Anselin's lecture on Spatial Autocorrelation](https://youtu.be/M9sMu73ogIE?si=asaiYfVbCIXlYKkv&t=490).
+Random permutation keeps the spatial units and the set of values fixed, but reshuffles which value belongs to each unit. The histogram is unchanged; the spatial arrangement changes.
 ```
 
 
 
 ### Random Patterns
 
-```{figure} ../resources/w08-img/random_3.png
-:label:
-:alt:
+```{figure} ../resources/original/spatial-values-three-permutations.svg
+:label: spatial-values-three-permutations
+:alt: Three independent random assignments of the same values to an eight-by-eight grid.
 :align: center
 
-Permutated 3 times. Can you spot the difference?
+Three independent permutations of the same values. Chance can produce small local groupings, so visual impressions alone are insufficient evidence of spatial dependence.
 ```
 
 
