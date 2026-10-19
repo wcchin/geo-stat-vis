@@ -95,3 +95,22 @@
 p {
   font-family: var(--jp-content-font-family);
 }
+
+/* The full course title is already in the logo and page metadata. Keep the
+   mobile header compact so its non-shrinking title cannot widen the page. */
+@media (max-width: 640px) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  .myst-home-link > span {
+    display: none;
+  }
+
+  .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}

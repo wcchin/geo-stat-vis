@@ -14,3 +14,9 @@ This is the version 0.1 of the Jupyter Book website. As of now:
 - 2025/11/25 - Restructured the content folder structure, to put the sections into separated chapter folders. Split Chapter 4 into 2 chapter (4 and 5), now we have 7 chapters in total. Completed Chapter 4 and front content of chapter 5, next thing is 5-1 KDE. 
 - 2025/12/09 - Pushing here and there, finally now all 7 chapters are processed, with 2 examples (worked examples), and all the notebooks are pushed to the book. Restructured the toc, so now the first part is Core Chapters, 2nd is Worked Examples, 3rd Datasets and Notebooks. Consider done for the very initial version (as backbone), all actual main text are not written yet, just all the materials. But it is consider done for now, as I should stop for this course (for this AY) and need to go work on another courses for the coming semester.  
 
+
+## Semester 2610 update
+
+The first self-study pilot expands Nearest Neighbour Analysis, adds a standalone practical notebook and a Week 5 lecture-slide entry, and corrects selected equations and inference wording. The remaining chapters are being developed progressively. See [update status and validation](docs/2610-update-status.md) for completed work and the next batches.
+
+To build with the validated tool version: `npm install -g jupyter-book@2.1.7`, then `jupyter-book build --html`. For the pilot calculation checks, install NumPy, SciPy and Matplotlib and run `python scripts/check_nna_pilot.py`.

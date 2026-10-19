@@ -1,6 +1,8 @@
 # A Demonstration on Point Patterns
 
-A demonstration for chapter 4.
+This example connects the [nearest-neighbour explanation](../chapter_4/sec_04-03-Nearest-Neighbor-Analysis.md) with a geographical decision: what should one point represent? Use the [self-study notebook](../notebooks/lab-05-nna-self-study.ipynb) to practise the calculation, and the [Week 5 lecture slides](../part4.md) to revisit the visual demonstration.
+
+The existing figures below illustrate how conclusions change between individuals and groups; they are not newly recomputed results from the synthetic notebook.
 
 ```{figure} ../resources/w05-img/gordon_square2.png
 :label:
@@ -62,12 +64,12 @@ NNA result.
 
 For individual,
 - radius 4 m resulted in higher than random, indicating people tended to sit together at this scale.
-- betwen 4 m and 6 m , the observed line is near to the random, but still above the 95% CI.
+- betwen 4 m and 6 m , the observed line is near to the random, but still above the plotted simulation envelope.
 
 
 For in-group,
 - the search radius less than 7 m resulted in dispersed pattern.
-- the search radius beyond 8 m presented random pattern.
+- beyond about 8 m, the figure provides less evidence of departure from its simulated reference; this does not prove randomness.
 
 
 
@@ -181,15 +183,10 @@ you have to explicitly tell your readers what, why, and how.
 _No single test is suitable for all situations, and it's impossible to memorize every test._
 Instead, focus on developing a strong foundation in statistical concepts and _knowing where to find_ relevant information when selecting the appropriate test for your specific needs.
 
-### About p-value
-- p-value can only tell you how much risk you need to take if you reject H0.
+### About p-values
 
-- the common practice is to check if p-value $< \alpha$, and common alpha values are:
-    - 0.05 for 95% confidence,
-    - 0.01 for 99% confidence, and
-    - 0.001 for 99.9% confidence.
+A p-value describes how unusual the observed statistic, or a more extreme value in the specified direction, would be under the null model. It is not the probability that the null is true or that a particular rejection is wrong.
 
-- If p-value is less than the pre-determined $\alpha$, then it is significantly different.
+Choose the alternative and significance level before inspecting the result. A non-significant result does not establish randomness. For K/L curves, distinguish a pointwise simulation envelope from a simultaneous test across all radii; crossing a pointwise envelope somewhere is not automatically a global 5% test.
 
-- That's how far you can get with p-value---**don't over-interpret the p-value**.
-    - Comparing p-values can be problematic, because they may be calculated from different settings, e.g., sample size.
+The nearest-neighbour result concerns the distance to the closest other event. The K/L result concerns several distances. In this example, changing the point unit from individuals to groups changes the geographical question itself.

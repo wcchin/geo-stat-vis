@@ -19,6 +19,9 @@ project:
   license:
     content: CC-BY-NC-ND-4.0
     code: MIT
+  static_files:
+    - slides
+    - _static/css/fonts
   toc:
     - file: src/index.md
     - title: Part 1 - Core Chapters
@@ -89,12 +92,15 @@ project:
         - file: src/content/notebooks/lab-03-t-test-anova.ipynb
         - file: src/content/notebooks/lab-04-spatially-aggregated.ipynb
         - file: src/content/notebooks/lab-05-point-pattern.ipynb
+        - file: src/content/notebooks/lab-05-nna-self-study.ipynb
         - file: src/content/notebooks/lab-06-spatial-kde.ipynb
         - file: src/content/notebooks/lab-07_1-clustering-random-demo.ipynb
         - file: src/content/notebooks/lab-07_2-clustering-real-data.ipynb
         - file: src/content/notebooks/lab-08-spatial-autocorrelation.ipynb
         - file: src/content/notebooks/lab-09-LISA.ipynb
         - file: src/content/notebooks/lab-10-for-flowmapgl.ipynb
+    - title: Part 4 - Lecture Slides
+      file: src/content/part4.md
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
 site:
   template: book-theme

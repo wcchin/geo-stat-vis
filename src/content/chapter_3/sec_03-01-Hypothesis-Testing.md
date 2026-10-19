@@ -143,12 +143,12 @@ Assume to be normal distribution
 Hypothesis testing is a crucial tool in statistical inference and helps researchers make _data-driven decisions_ about the relationships or differences between variables.
 
 **Null Hypothesis ($\text{H}_0$)**:
-- A statement that assumes _no significant difference_ between the variables.
+- A statement about the population or generating process, often specifying no difference or no effect.
 - The goal of hypothesis testing is to gather _evidence **to reject** the null hypothesis_.
 - Essentially, the null hypothesis reflects the idea of _"no effect" or "no difference."_
 
 **Alternative Hypothesis ($\text{H}_1$ or $\text{H}_a$)**:
-- A statement that _assumes a significant difference_ between the variables.
+- A statement describing the departure being tested, such as a difference in population means.
 - This is the hypothesis _we **aim to support** when rejecting the null hypothesis_.
 - The alternative hypothesis is basically about _"has effect" or "has difference."_
 
@@ -163,7 +163,7 @@ Hypothesis testing is a crucial tool in statistical inference and helps research
 **p-value**:
 - The probability of obtaining the observed results (or more extreme results) under the assumption that _the null hypothesis is true_.
 - A small p-value indicates that the observed results are unlikely to occur by chance alone, providing evidence to reject the null hypothesis.
-- _The risk of being wrong to reject $\text{H}_0$_
+- It is not the probability that the null hypothesis is true or that a particular rejection is wrong.
 
 **Statistical Significance**:
 - When the p-value is less than the chosen significance level ($\alpha$), we _reject the null hypothesis_ and conclude that the results are statistically significant, _supporting the alternative hypothesis ($\text{H}_1$)_.
