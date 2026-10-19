@@ -113,10 +113,10 @@ The window and point count stay fixed while locations change. Each simulation co
 The empirical reference distribution need not be assumed normal. Compare the observed mean directly with the simulations. With $M$ simulated patterns, a lower-tail Monte Carlo p-value is
 
 $$
-p_{\mathrm{lower}}=\frac{1+\#\{\bar{D}^{(m)}\leq\bar{D}_O\}}{M+1},
+p_{\mathrm{lower}}=\frac{k+1}{M+1},
 $$
 
-where $\bar{D}^{(m)}$ is the mean in simulation $m$. Include ties. The added one prevents a zero p-value; with 999 simulations, the minimum is 0.001. More simulations improve resolution and reduce Monte Carlo variability, but do not guarantee a smaller p-value.
+where $k$ is the number of simulated mean distances less than or equal to the observed mean $\bar{D}_O$. Include ties. The added one prevents a zero p-value; with 999 simulations, the minimum is 0.001. More simulations improve resolution and reduce Monte Carlo variability, but do not guarantee a smaller p-value.
 
 A finite-window simulation reproduces the window's boundary geometry when observed and simulated statistics use the same procedure. It does not recover missing outside neighbours or make an unsuitable study window appropriate.
 
