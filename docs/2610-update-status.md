@@ -35,6 +35,10 @@ Browser checks cover the chapter at desktop and 390-pixel mobile widths, the sli
 
 All local slide and nested CSS dependencies were checked. The 61-slide search index and the agreement between slide Markdown and embedded source were verified. Existing book warnings about duplicated identifiers and heading depth remain outside this pilot.
 
+## Dataset distribution
+
+The notebook update also includes public data access without Google Drive mounting. See [dataset inventory and large-file distribution plan](2610-data-inventory.md). Small files can remain in Git; larger per-notebook packages should use versioned Release downloads. The inventory distinguishes existing public data from inputs still requiring transfer. No missing data or release assets have been uploaded by this planning change.
+
 ## Next batches
 
 1. Review this pilot's level of explanation, mathematical detail and balance of figures with prose.
