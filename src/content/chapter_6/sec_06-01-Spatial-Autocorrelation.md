@@ -12,39 +12,38 @@ Spatial autocorrelation concerns the association between values of the **same va
 
 By the end of this section, you should be able to explain autocorrelation in time and space, distinguish positive from negative spatial association, describe a random-label permutation, and separate visual impressions from statistical evidence. You should also be able to explain why an answer depends on the variable, spatial units, definition of neighbours and reference model.
 
-## A regional example near Kuala Lumpur
+## A peninsula-wide income example
 
-Our example covers **nine administrative districts in Selangor, together with Kuala Lumpur and Putrajaya: 11 areas in total**. It is a regional illustration, broader than Greater KL. Kuala Lumpur is one polygon, so the map cannot reveal differences between neighbourhoods inside the city.
+Our example covers **92 mapped areas across Peninsular Malaysia**. Most observations are administrative districts; Kuala Lumpur, Putrajaya and Perlis each contribute one unit, and the source includes Kecil Lojing. This broader extent lets us compare the arrangement of incomes around different parts of the peninsula. Kuala Lumpur is still one polygon, so its internal neighbourhood variation is not visible.
 
 The variable is **median gross monthly household income in 2022**, in Malaysian ringgit (RM), from the Department of Statistics Malaysia (DOSM). It is neither annual income nor an individual worker's salary. Households are assigned by place of residence: a household living in one district and working in another is counted where it lives. See the [official income catalogue](https://open.dosm.gov.my/data-catalogue/hh_income_district) and [DOSM's household-income dashboard](https://open.dosm.gov.my/dashboard/household-income-expenditure) for definitions and survey context.
 
-```{figure} ../resources/original/kl-income-observed.png
-:label: kl-income-observed
-:alt: Median monthly household income in eleven areas of Selangor, Kuala Lumpur and Putrajaya, with blue for lower and red for higher values.
+```{figure} ../resources/original/peninsula-income-observed.png
+:label: peninsula-income-observed
+:alt: Median monthly household income across 92 areas of Peninsular Malaysia, with pale cream for lower and darker orange-red for higher values.
 :align: center
+:width: 70%
 
-Observed area-level median incomes in 2022. Colour classes are calculated from these 11 values and held fixed in subsequent maps. Red represents higher values and blue lower values; the pale middle class is not a significance category. Income: DOSM; boundaries: PLANMalaysia. Original map drawn for this book in WGS 84 / UTM zone 47N (EPSG:32647).
+Observed area-level median incomes in 2022. The sequential OrRd palette runs from pale cream through orange to dark red: darker means higher income. Fixed breaks at RM 3,000, 5,000, 7,000 and 9,000 are used across all maps; no colour represents statistical significance. Income: DOSM; boundaries: PLANMalaysia. Original map drawn for this book in GDM2000 / Peninsula RSO (EPSG:3375). Outlines are generalized at 100 m for this display.
 ```
 
 Before reading further, identify two areas that appear similar in colour and close together. Then identify a transition between different colours. What counts as “close”: a shared boundary, a short road journey, or a short straight-line distance?
 
 A choropleth invites these questions but does not answer them statistically. Large polygons occupy more visual space, even though each is still one observation. Classification hides differences between values assigned to the same class. Inspect the table as well as the map.
 
-| Area | Median monthly household income, 2022 (RM) |
-|---|---:|
-| Gombak | 10,180 |
-| Klang | 8,203 |
-| Kuala Langat | 10,093 |
-| Kuala Selangor | 7,644 |
-| Petaling | 9,618 |
-| Sabak Bernam | 5,533 |
-| Sepang | 12,608 |
-| Ulu Langat | 11,210 |
-| Ulu Selangor | 7,678 |
-| Kuala Lumpur | 10,234 |
-| Putrajaya | 10,056 |
+The table lists selected observations for orientation; the notebook provides all 92 values.
 
-These medians are calculated **within individual areas**. Taking their simple average or median would summarise the 11 area-level estimates; it would not recover the median income of all households in the combined region. The boundary service spells two districts “Hulu”, while DOSM uses “Ulu”; the notebook makes those matches explicitly.
+| Selected area | Median monthly household income, 2022 (RM) |
+|---|---:|
+| Kota Bharu | 4,330 |
+| Kuala Terengganu | 5,872 |
+| Timur Laut | 6,714 |
+| Johor Bahru | 8,232 |
+| Sabak Bernam | 5,533 |
+| Kuala Lumpur | 10,234 |
+| Sepang | 12,608 |
+
+Each income estimate is calculated **within an individual area**. Taking a simple average or median of all 92 area-level estimates would summarise those estimates; it would not recover the median income of all households in the combined region. The notebook explicitly reconciles spelling differences such as Ulu/Hulu, Timur/Timor Laut and Larut dan Matang/Larut & Matang, as well as federal-territory prefixes. Every income observation must match a single map unit.
 
 There is no rule that the centre must have the highest household income. Sepang's median exceeds Kuala Lumpur's here. Central land values, the concentration of workplaces and resident households' incomes are different measurements. Interpret the observed values rather than imposing an expected centre–periphery pattern.
 
@@ -116,22 +115,22 @@ Tobler's first law of geography motivates attention to nearby relationships, but
 
 Our initial reference for these areal data is **random assignment of observed values to fixed spatial units**. Conditional on the observed set of values, every assignment is equally likely under this reference. This is a random-label or permutation model.
 
-Boundaries do not move, areas are not resized and no new income values are invented. We shuffle the 11 observed area medians, preserving their sorted values, mean, variance and histogram. Their association with particular areas changes.
+Boundaries do not move, areas are not resized and no new income values are invented. We shuffle the 92 observed area medians, preserving their sorted values, mean, variance and histogram. Their association with particular areas changes.
 
-```{figure} ../resources/original/kl-income-permutation.png
-:label: kl-income-permutation
-:alt: Observed income values beside a random reassignment of the same eleven estimates to the same polygons.
+```{figure} ../resources/original/peninsula-income-permutation.png
+:label: peninsula-income-permutation
+:alt: Observed income values beside a random reassignment of the same 92 estimates to the same polygons.
 :align: center
 
-Observed assignment (left) and one permutation (right), with identical values, boundaries, extent and classification. The right panel is simulated, not another survey or an income prediction. It preserves the distribution of the 11 area medians, not the underlying household-level distribution. Sources: DOSM and PLANMalaysia.
+Observed assignment (left) and one permutation (right), with identical values, boundaries, extent and classification. The right panel is simulated, not another survey or an income prediction. It preserves the distribution of the 92 area medians, not the underlying household-level distribution. Sources: DOSM and PLANMalaysia.
 ```
 
 This differs from **complete spatial randomness for point events** in Chapter 4. There, we simulate event locations within a study window. Here, locations remain fixed and attributes move between them. The reference models answer different questions.
 
 Random does not mean that no recognisable grouping can appear. A reshuffle can contain similar colours next to one another or an isolated contrasting area by chance. One striking feature is insufficient evidence against a random reference.
 
-```{figure} ../resources/original/kl-income-three-permutations.png
-:label: kl-income-three-permutations
+```{figure} ../resources/original/peninsula-income-three-permutations.png
+:label: peninsula-income-three-permutations
 :alt: Three further random assignments of the same income values, retaining identical boundaries and a shared legend.
 :align: center
 
@@ -150,7 +149,7 @@ $$
 
 where $b$ counts simulated statistics greater than or equal to the observed statistic. Including ties and the added observed assignment avoids a reported p-value of zero. **In a hypothetical test**, if 19 of 999 simulated statistics are at least as large as the observed one, the result is $20/1000=0.020$. This is not a result calculated for the Malaysian data.
 
-The p-value describes unusualness under the specified null procedure. It is not the probability that the null is true, that the conclusion is wrong, or a measure of the importance of income differences. Failure to reject does not establish randomness. Eleven units also provide limited information about complex spatial patterns.
+The p-value describes unusualness under the specified null procedure. It is not the probability that the null is true, that the conclusion is wrong, or a measure of the importance of income differences. Failure to reject does not establish randomness. Even with 92 units, a statistic summarises the selected scale and neighbourhood structure rather than every feature of the map.
 
 **Neither this section nor its notebook reports a spatial autocorrelation coefficient or p-value for the Malaysian data.** They establish the observations and permutation logic. The [Moran's I section](sec_06-03-Morans-I.md) develops the formal statistic, beginning with an explicit neighbourhood definition.
 
@@ -173,25 +172,25 @@ A **global** statistic summarises association across the whole study area. A **l
 | High–low | Relatively high | Relatively low | Contrast |
 | Low–high | Relatively low | Relatively high | Contrast |
 
-These configurations are descriptive until an appropriate local test has been performed. A red polygon is not automatically a significant hotspot, nor a blue polygon a significant coldspot. [Local Moran's I](sec_06-04-Local-Moran.md) distinguishes local similarity from spatial outliers; testing many locations also raises a multiple-comparison question.
+These configurations are descriptive until an appropriate local test has been performed. A dark high-income polygon is not automatically a significant hotspot, nor a pale low-income polygon a significant coldspot. [Local Moran's I](sec_06-04-Local-Moran.md) distinguishes local similarity from spatial outliers; testing many locations also raises a multiple-comparison question.
 
 ## Read the geography before drawing a conclusion
 
-**Aggregation changes what can be observed.** Eleven regional units cannot reveal neighbourhood-level inequalities, and patterns can change with the zoning scheme or spatial scale: part of the modifiable areal unit problem. An area's median does not describe every household. Inferring household relationships from an area-level relationship risks an ecological fallacy.
+**Aggregation changes what can be observed.** District-level observations cannot reveal neighbourhood-level inequalities, and patterns can change with the zoning scheme or spatial scale: part of the modifiable areal unit problem. An area's median does not describe every household. Inferring household relationships from an area-level relationship risks an ecological fallacy.
 
-**Study boundaries limit neighbourhoods.** Edge areas can have important connections outside the selected region. A district can become isolated under a restrictive distance rule despite having real geographical connections. A suitable projected CRS supports metric distances, but does not decide which neighbours are meaningful.
+**Study boundaries limit neighbourhoods.** Edge areas can have important connections outside the selected region. A district can become isolated under a restrictive distance rule despite having real geographical connections. Island units such as Langkawi also require an explicit decision about whether and how to connect them to mainland neighbours. A suitable projected CRS supports metric distances, but does not decide which neighbours are meaningful.
 
-**Maps and estimates have dates.** Income refers to 2022; the PLANMalaysia boundary snapshot was retrieved on 20 October 2026. It is not a reconstruction of 2022 administrative geography. The notebook matches names explicitly, and substantive historical analysis should verify boundary changes and area definitions.
+**Maps and estimates have dates.** Income refers to 2022; the PLANMalaysia boundary snapshot was retrieved on 20 October 2026. It is not a reconstruction of 2022 administrative geography. The notebook matches names explicitly, and substantive historical analysis should verify boundary changes and area definitions. The small display snapshot uses the service's 100 m outline generalization. It must not be used to infer exact shared-border adjacency; obtain full-detail geometries and verify topology for that task.
 
-**Representation affects perception.** Quantile classes assign similar numbers of areas to colour classes, not equal income intervals. Equal intervals or a sequential palette can emphasise different features. Keep classes fixed across permutations so visible changes come from reassignment, and inspect numerical values before interpreting colours.
+**Representation affects perception.** The published maps use a sequential OrRd palette and fixed income breaks. Class widths are not all equal, and the upper class begins at RM 9,000. The notebook can instead calculate quantile breaks, which put similar numbers of observations into classes. Keep classification fixed across permutations so visible changes come from reassignment, and inspect numerical values before interpreting colours.
 
 ## Reproduce, change and explain
 
-Open the [self-study notebook](../notebooks/lab-08-autocorrelation-self-study.ipynb). In the book repository it loads an attributed source snapshot; used alone, it can download the official sources directly. Both routes report fingerprints. It reproduces the three maps with optional Matplotlib `xkcd` styling and Comic Neue lettering, preserving the projected geographic coordinates.
+Open the [self-study notebook](../notebooks/lab-08-autocorrelation-self-study.ipynb). In the book repository it loads an attributed source snapshot; used alone, it can download the official sources directly. Both routes report fingerprints. It reproduces the three maps with optional Matplotlib `xkcd` styling and Comic Neue lettering, using the same projected display layer in every panel. The portrait observed figure, two-column comparison and three-column permutation figure retain equal x/y scale and a shared legend; the peninsula is not stretched to fill a square.
 
-Compare median with mean income, change the random seed and try a different number of classes. Change one setting at a time and explain what stays fixed. A different year is accepted only when every area has an observation; the notebook stops rather than mixing years or silently dropping KL.
+Compare median with mean income, change the random seed and try different fixed breaks or set `CLASS_BREAKS=None` to explore quantile classes. Change one setting at a time and explain what stays fixed. A different year is accepted only when every area has an observation; the notebook stops rather than mixing years or silently dropping KL.
 
-The [source record](../datasets/kl_income_2022/README.md) documents retrieval, projection and matching. Continue to [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md) before calculating an autocorrelation statistic.
+The [source record](../datasets/peninsula_income_2022/README.md) documents retrieval, projection and matching. Continue to [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md) before calculating an autocorrelation statistic.
 
 ## Check your understanding
 

@@ -1,0 +1,8 @@
+{
+  "retrieved": "2026-10-20",
+  "crs": "EPSG:3375",
+  "display_generalization_metres": 100,
+  "income_sha256": "538054fb769e020f0ee2ba46a4166ba55d2eff1cb45e0d4545a96dff483e9f20",
+  "boundaries_sha256": "88cbe2626789b9f07b8c8ae99ee1d6a3785413fabf99f160e23fd05824bb4d45",
+  "query_url": "https://gisdev.planmalaysia.gov.my/server/rest/services/Hosted/Data_Sempadan_Daerah/FeatureServer/0/query?where=kod_negeri+NOT+IN+%28%2712%27%2C%2713%27%2C%2715%27%29&outFields=negeri%2Ckod_negeri%2Cdaerah%2Ckod_daerah&returnGeometry=true&outSR=3375&maxAllowableOffset=100&geometryPrecision=1&f=json"
+}
