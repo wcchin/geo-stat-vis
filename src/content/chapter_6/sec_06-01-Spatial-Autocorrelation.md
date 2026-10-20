@@ -30,34 +30,34 @@
 
 
 
-```{figure} ../resources/w08-img/Milwaukee_map-1.png
-:label:
-:alt:
+```{figure} ../resources/original/milwaukee-income-observed.svg
+:label: milwaukee-income-observed
+:alt: Median household income in 1999 across 417 Milwaukee metropolitan census tracts.
 :align: center
 
-Actual Distribution. See [Luc Anselin's lecture on Spatial Autocorrelation](https://youtu.be/M9sMu73ogIE?si=asaiYfVbCIXlYKkv&t=490).
+Median household income in 1999 (US dollars), mapped from the 2000 Census for 417 tracts in the Milwaukee metropolitan area. Four zero-coded income values are treated as unavailable (grey). Map drawn for this book from [GeoDa Milwaukee data](https://geodacenter.github.io/data-and-lab/milwaukee1/); underlying source: US Census 2000, Summary File 3.
 ```
 
 
 
-```{figure} ../resources/w08-img/Milwaukee_map-2.png
-:label:
-:alt:
+```{figure} ../resources/original/milwaukee-income-permutation.svg
+:label: milwaukee-income-permutation
+:alt: The observed Milwaukee income map beside one random permutation of its 413 positive income values.
 :align: center
 
-Randomly swapping the values between spatial units---Random Permutation. See [Luc Anselin's lecture on Spatial Autocorrelation](https://youtu.be/M9sMu73ogIE?si=asaiYfVbCIXlYKkv&t=490).
+Observed income values (left) and one random reassignment of the same 413 available tract-level values (right). Boundaries, map extent, class breaks and the four unavailable locations stay fixed. The histogram of available values is unchanged; their spatial arrangement changes. The reshuffled map is a simulation, not an alternative Census observation. Data: [GeoDa / US Census 2000](https://geodacenter.github.io/data-and-lab/milwaukee1/).
 ```
 
 
 
 ### Random Patterns
 
-```{figure} ../resources/w08-img/random_3.png
-:label:
-:alt:
+```{figure} ../resources/original/milwaukee-income-three-permutations.svg
+:label: milwaukee-income-three-permutations
+:alt: Three independently reshuffled maps of available Milwaukee median household incomes using the same classification.
 :align: center
 
-Permutated 3 times. Can you spot the difference?
+Three independent random permutations of the available Milwaukee income values. Every panel uses the same 417 tracts, 413 positive incomes, four fixed unavailable locations and colour scale. Chance can produce local groupings; visual impressions alone do not establish statistical significance. Data: [GeoDa / US Census 2000](https://geodacenter.github.io/data-and-lab/milwaukee1/).
 ```
 
 

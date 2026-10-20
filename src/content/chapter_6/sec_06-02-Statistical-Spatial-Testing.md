@@ -1,26 +1,26 @@
 # Defining Distance and neighborhoods
 
 ## Adjacency-based spatial weights
-Spatial relationships based on shared border (a.k.a. rook contiguity). Links on the right show the neighborhood relationship.
+Spatial relationships can be defined using shared borders (rook contiguity). The two figures below show a polygon map and its corresponding neighbour graph.
 
-```{figure} ../resources/w08-img/spatial_weight_share_border.png
-:label:
-:alt:
+```{figure} ../resources/original/rook-polygons.svg
+:label: rook-six-polygons
+:alt: Six labelled synthetic polygons, with unit four inside units one, two and five and units three and six extending to the left.
 :align: center
 
-Polygon spatial units with labels.
+Six synthetic spatial units. Two units are rook neighbours when they share an edge of non-zero length; touching only at a point does not count.
 ```
 
 
-```{figure} ../resources/w08-img/spatial_weight_share_border_graph.png
-:label:
-:alt:
+```{figure} ../resources/original/rook-neighbour-graph.svg
+:label: rook-six-neighbour-graph
+:alt: Six nodes labelled one to six joined by the eight shared-edge relationships in the polygon map.
 :align: center
 
-Converting spatial units to nodes and the 'adjacent relationship' with links.
+The same units represented as a graph. Links connect 1–2, 1–4, 1–5, 2–4, 2–5, 3–5, 3–6 and 4–5. These are exactly the non-zero pairs in the symmetric matrix below.
 ```
 
-Spatial relationships based on shared border (a.k.a. rook contiguity). Links on the left show the neighborhood relationship and the matrix on the right shows the adjacency-matrix / neighborhood matrix.
+The binary adjacency matrix below represents the same graph. Row and column order is 1–6. A weight of 1 indicates a shared edge; the diagonal is 0 because a unit is not its own neighbour.
 
 $$
 \text{W} =
@@ -37,9 +37,9 @@ $$
 
 ## Spatial Contiguity
 - A regular grid,
-- Rook (share edge only) <img src="../resources/w08-img/rook-svgrepo.svg" width="10%">
-- bishop (share point only) <img src="../resources/w08-img/bishop-svgrepo.svg" width="10%">
-- queen (share edge and point) <img src="../resources/w08-img/queen-svgrepo.svg" width="10%">
+- Rook (share edge only)
+- bishop (share point only)
+- queen (share edge and point)
 
 Higher levels contiguity can be done by adding second, third, etc. outer ring of neighborhoods.
 
