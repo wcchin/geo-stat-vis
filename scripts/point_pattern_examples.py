@@ -1,7 +1,7 @@
 """Original point-pattern examples: synthetic coordinates in a 2000 m square.
 
 Run --write to regenerate book SVGs, the coordinate CSV and result record.
-Default invocation verifies the calculations. No empirical lightning data are used.
+Default invocation verifies the calculations. No empirical FIRMS fire data are used.
 """
 from pathlib import Path
 import argparse

@@ -18,15 +18,17 @@ The methods can disagree without any calculation being wrong. Each compresses th
 
 **Quadrat analysis** partitions a study window into non-overlapping cells and compares the observed counts with counts expected under a stated model. In this section, we ask whether variation among counts is unusually large under homogeneous complete spatial randomness (CSR). After reading, you should be able to construct the counts, calculate expected values, interpret a Pearson statistic and distinguish uneven intensity from evidence of interaction among events.
 
-## A regional question: where did lightning occur?
+## A regional question: where was fire activity detected?
 
-Singapore lightning offers a locally meaningful application: during a specified afternoon, were recorded cloud-to-ground detections spread uniformly across a fixed observation window? NEA's [Lightning Observation dataset](https://data.gov.sg/datasets/d_08238953fe0f6dd13f10714ebfbcb9f9/view) distinguishes cloud-to-ground and cloud-to-cloud detections. Its stated average cloud-to-ground location accuracy ranges from 200 m to 2 km. A very fine grid would therefore suggest more spatial precision than the observations support.
+Satellite-detected fire activity in Sumatra provides a regional application that can later connect to the book's areal autocorrelation example. Our proposed question is: **during September 2026, were qualifying FIRMS fire detections distributed uniformly across a fixed land observation window in Sumatra, or concentrated in particular quadrats?** The [NASA FIRMS archive](https://firms.modaps.eosdis.nasa.gov/download/) provides historical active-fire records. The initial design uses one product, VIIRS S-NPP, throughout the selected month, rather than mixing satellite products with different observation opportunities.
 
 ```{note} Data status and observation unit
-The lightning case is the intended regional application. Its event records have not yet been retrieved and validated for this book. The figures and numerical results below are explicitly synthetic; they are not a map or test of observed Singapore lightning.
+The FIRMS case is the intended regional application. Its detection records have not yet been retrieved and validated for this book. Historical archive downloads require Earthdata authentication or an emailed code. The figures and numerical results below are explicitly synthetic; they are not a map or test of observed Indonesian fires.
 ```
 
-For the regional application, select one event type and time interval, check the definition of a record, and avoid counting the same observation repeatedly when collecting successive API responses. Distinct recorded strokes are not necessarily distinct thunderstorms. Define the window from the question and observation coverage, rather than drawing a tight boundary around the detections. Because lightning also occurs over water, a land-only window is not automatically the appropriate choice.
+The observation unit is a **satellite fire detection**, not a distinct ignition or fire event. One persistent fire can generate detections on multiple overpasses. Remove duplicate delivery of the same source record, but do not silently merge repeated observations of an ongoing fire: that would define a different variable and require an explicit event-grouping rule. The example therefore concerns the pattern of recorded detection locations. A detection also does not establish forest land cover; calling the records “forest fires” would require additional evidence.
+
+Fix the time interval, product and confidence filter before analysis. Define a land observation window independently of the realised detections, retain land cells with zero detections, and account for clipped cell areas. Ocean is outside this land-based question, not zero-fire land. Detection gaps, cloud cover and changing observation conditions must be investigated before interpreting spatial differences. A fine grid cannot overcome the measurement and sampling limitations of the source.
 
 ## Count every cell, including empty cells
 
@@ -118,7 +120,7 @@ Include ties. With 999 simulations, the smallest value is 0.001. Record the seed
 :alt: Histogram of quadrat statistics from 999 fixed-count CSR simulations, with the constructed clustered pattern's statistic marked.
 :align: center
 
-The clustered synthetic example is compared with 999 simulations in the same window and grid, each containing 96 points. Simulated locations change; the window, point count and partition stay fixed. This is a teaching construction, not lightning evidence.
+The clustered synthetic example is compared with 999 simulations in the same window and grid, each containing 96 points. Simulated locations change; the window, point count and partition stay fixed. This is a teaching construction, not evidence from FIRMS observations.
 ```
 
 For these reproducible teaching constructions, the calculation gives:
@@ -149,7 +151,7 @@ Changing the observation window is different from changing the grid. The window 
 
 ## What can we conclude?
 
-An unusually large $T$ indicates more variation among cell counts than expected under the stated reference. It does not distinguish interaction among events from a changing background intensity. For lightning, a moving thunderstorm, its spatial footprint and detection coverage can all affect counts. Time aggregation also matters: a whole day combines different stages of a storm.
+An unusually large $T$ indicates more variation among cell counts than expected under the stated reference. It does not distinguish interaction among events from a changing background intensity. For FIRMS, land cover, burning conditions, persistent fires and observation coverage can all affect counts. Time aggregation also matters: a month combines changing conditions and repeated observations. Rejection of homogeneous CSR does not establish fire-to-fire attraction, distinguish separate fire incidents or attribute haze in Singapore to particular sources.
 
 NNA asks a different question about the closest other event. The K-function examines cumulative neighbour relationships across distances. Use those methods to extend the inquiry, rather than expecting quadrat counts to settle every aspect of the pattern.
 
@@ -167,14 +169,14 @@ No. The statistic uses each count and its expectation, not which cells touch. Th
 With the point count and number of cells fixed, the mean count is already $n/m$. Counts $[3,3,3,3,3,3]$ and $[0,0,0,6,6,6]$ have the same mean but different variation. The question concerns allocation among cells.
 ```
 
-```{dropdown} 4. Does rejection prove that lightning events attract one another?
-No. Uneven intensity, storm movement, observation effects or event dependence could all contribute. The test rejects a particular homogeneous reference; it does not identify a mechanism.
+```{dropdown} 4. Does rejection prove that individual fires attract one another?
+No. These records represent detections rather than separate fires. Uneven land conditions, repeated observations of persistent fires, observation effects or dependence could all contribute. The test rejects a particular homogeneous reference; it does not identify a mechanism.
 ```
 
 ## Try it and read further
 
-The [point-pattern lab](../notebooks/lab-05-point-pattern.ipynb) provides the existing course workflow. The new [reproducible teaching source](https://github.com/wcchin/geo-stat-vis/blob/main/scripts/point_pattern_examples.py) generates the original figures; its [data record](../datasets/point_pattern_teaching/README.md) explains the synthetic examples and planned lightning preparation.
+The [point-pattern lab](../notebooks/lab-05-point-pattern.ipynb) provides the existing course workflow. The new [reproducible teaching source](https://github.com/wcchin/geo-stat-vis/blob/main/scripts/point_pattern_examples.py) generates the original figures; its [data record](../datasets/point_pattern_teaching/README.md) explains the synthetic examples and planned FIRMS preparation. Later, aggregated FIRMS counts can support [Moran's I](../chapter_6/sec_06-03-Morans-I.md): quadrat analysis asks about allocation across cells, whereas Moran's I asks about relationships between neighbouring cell values.
 
 - **Foundational reading:** Greig-Smith, P. (1952). [The Use of Random and Contiguous Quadrats in the Study of the Structure of Plant Communities](https://doi.org/10.1093/oxfordjournals.aob.a083317). *Annals of Botany*, 16, 293–316. Read for the historical connection between sampling scale and pattern, rather than treating vegetation quadrats as identical to our event-grid design.
 - **Method reference:** [spatstat: quadrat.test](https://search.r-project.org/CRAN/refmans/spatstat.explore/html/quadrat.test.html). Check the distinction between alternatives, expected counts and simulation designs.
-- **Regional data:** [NEA Lightning Observation](https://data.gov.sg/datasets/d_08238953fe0f6dd13f10714ebfbcb9f9/view). Read the measurement and accuracy notes before selecting a grid.
+- **Regional data:** [NASA FIRMS archive](https://firms.modaps.eosdis.nasa.gov/download/). Record the product, confidence selection, period and download date. Recent near-real-time data can later be replaced by standard science-quality records, so preserve the version used.

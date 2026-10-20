@@ -8,11 +8,13 @@ Scope: the existing quadrat, nearest-neighbour and Ripley K pages, preserving th
 - NNA: retain the established reading and local Woodlands illustrations, connect it to quadrat and K, add two reasoning checks and the original Clark–Evans paper. Remove the London worked-example link from this page to follow the regional-example preference.
 - K: replace the incomplete pair-count expression with an indicator-based estimator; distinguish ordered/unordered pairs, K, L and L-r; explain and implement rectangular translation correction. Retain the local bus-stop motivation and add original synthetic paired-site and simulation-envelope figures. Distinguish pointwise bands from global inference and add published readings.
 
-The same three synthetic patterns support the quadrat and K comparison. The source and result record make the construction auditable; it is never presented as empirical lightning or bus-stop data. Existing older assets are retained for references elsewhere in the book.
+The same three synthetic patterns support the quadrat and K comparison. The source and result record make the construction auditable; it is never presented as empirical FIRMS fire or bus-stop data. Existing older assets are retained for references elsewhere in the book.
 
 ## Data access and remaining work
 
-Singapore lightning remains the agreed regional quadrat application. A historical query to the public data.gov.sg lightning endpoint returned HTTP 403 here. The new reading and data README disclose that no lightning records were obtained. A documented acquisition/validation checklist precedes any empirical figures. The Moran page and Sumatra fire case remain outside this change.
+The agreed regional quadrat case is now **FIRMS fire detections in Sumatra, September 2026**, with VIIRS S-NPP selected consistently. This connects the point-pattern sequence with the later areal-autocorrelation case. Distinguish detection records from separate fires, preserve repeat observations unless the unit is deliberately changed, fix the land window and account for usable area and observation coverage.
+
+Historical FIRMS downloads require Earthdata or email verification. No regional file has been obtained in this change, so the student page and data record explicitly keep empirical results pending. All existing new figures remain synthetic teaching constructions. The Moran page is not modified.
 
 ## Validation
 

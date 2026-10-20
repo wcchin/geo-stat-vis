@@ -167,8 +167,8 @@ No. It includes all qualifying pairs at distances up to 500 m. It is cumulative,
 No. A whole-curve claim needs calibration for the entire prespecified radius interval, not an unadjusted pointwise band inspected at many distances.
 ```
 
-```{dropdown} 4. Can the same planar CSR model be used uncritically for bus stops and lightning?
-No. Bus stops are constrained by a road network and service design; lightning has a different observation process and potential window. The method can be shared while the defensible null models differ.
+```{dropdown} 4. Can the same planar CSR model be used uncritically for bus stops and FIRMS fire detections?
+No. Bus stops are constrained by a road network and service design; FIRMS detections reflect satellite observations, repeated overpasses and a land-based study window. The method can be shared while the defensible null models differ.
 ```
 
 ## Try it and read further

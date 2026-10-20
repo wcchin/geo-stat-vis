@@ -92,7 +92,7 @@ The synthetic constructions on the [quadrat page](sec_04-02-Quadrat-Count-Analys
 | Clustered construction | 35.28 | 0.346 |
 | Spaced construction | 161.92 | 1.586 |
 
-These are descriptive calculations from the committed synthetic coordinates, not results for the Woodlands illustrations or observed lightning. The ratios use the unbounded planar expectation; inferential claims still require the boundary and null-model decisions below. The [K-function comparison](sec_04-04-Ripleys-K-Function.md) reuses these patterns across radii. The [source record](../datasets/point_pattern_teaching/README.md) explains how all three are constructed.
+These are descriptive calculations from the committed synthetic coordinates, not results for the Woodlands illustrations or observed FIRMS fire detections. The ratios use the unbounded planar expectation; inferential claims still require the boundary and null-model decisions below. The [K-function comparison](sec_04-04-Ripleys-K-Function.md) reuses these patterns across radii. The [source record](../datasets/point_pattern_teaching/README.md) explains how all three are constructed.
 
 ## How unusual is the observed distance?
 
