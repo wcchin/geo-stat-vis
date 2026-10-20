@@ -4,3 +4,7 @@ _build
 # Downloads and exports created by the KL self-study notebook
 kl_data_cache/
 kl_figures/
+
+# Peninsula self-study downloads and exports
+peninsula_data_cache/
+peninsula_figures/
