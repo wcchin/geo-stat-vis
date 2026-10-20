@@ -18,20 +18,9 @@ The K figures use the explicitly implemented rectangular translation correction 
 
 The separate bus-stop-inspired construction uses 16 regularly spaced sites, each with two points 30 m apart. It is illustrative and does not appear in the empirical-record CSV. The existing bus-stop image on the page is retained only as motivation; no new empirical result is attributed to it.
 
-## Planned Sumatra FIRMS case
+## Observed Sumatra FIRMS case
 
-Source: NASA [Fire Information for Resource Management System (FIRMS) archive](https://firms.modaps.eosdis.nasa.gov/download/). The selected case is fire-detection locations in a fixed land window within Sumatra during **1–30 September 2026**, using **VIIRS S-NPP** consistently. This connects to the planned regional areal-autocorrelation application. It replaces the earlier lightning proposal.
-
-Historical archive downloads require Earthdata authentication or an email verification code. No September 2026 detection file has been downloaded or processed for this change. All committed numerical data and figures remain explicitly synthetic, with no substitution of simulated points for observed fires.
-
-Before adding regional results:
-
-1. Obtain the selected archive CSV, preserve its source product, date range, download date, version and checksum. Recent near-real-time records may later be replaced by standard science-quality records.
-2. Confirm the source record definition and confidence fields, select and document a confidence filter before analysis, and use one satellite product. The nominal detection-product pixel size is not a guarantee of exact point-location accuracy.
-3. Distinguish duplicate delivery of the same source record from repeat observations of persistent fire activity. Remove delivery duplicates using the product's record key; retain distinct observations unless a separately documented fire-event grouping procedure is the actual question. Detections are not separate fire incidents or necessarily forest fires.
-4. Select a land observation window independently of the realised detections. Exclude ocean from this land-based question, retain zero-detection land cells, and inspect coverage gaps and detectability. No detection is not proof of no fire.
-5. Project to a suitable metric CRS and document the CRS, window and grid origin. Use actual land area for clipped cells and simulate within the same usable window. The existing K implementation is for rectangles; an irregular land mask needs a compatible correction or a clearly stated finite-window comparison.
-6. Report the selected null, alternative, period and scale. Any observed-event map, count map and reference distribution must be generated from validated records. Heterogeneous land conditions, clouds, repeat observations and viewing opportunities qualify the homogeneous CSR reference. A result about detection locations does not attribute haze exposure in Singapore or Malaysia to particular fires.
+The quadrat page now includes two adjoining South Sumatra windows, separately and combined. These use observed September 2026 VIIRS S-NPP detection records. See the [separate empirical data record](../firms_sumatra/README.md) for source provenance, filters, limits and reproduction. The synthetic datasets in this folder remain teaching constructions and are not substituted for observed fires.
 
 ## Verification and attribution
 

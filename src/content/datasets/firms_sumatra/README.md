@@ -1,0 +1,11 @@
+# South Sumatra FIRMS teaching snapshot
+
+Observed satellite detections: 1–30 September 2026 UTC, VIIRS S-NPP only, nominal/high confidence, near-real-time version 2.0NRT. Source: NASA FIRMS, distributed through the public Portolan mirror at https://data.source.coop/portolan-mirrors/firms-catalog/detections/year=2026/detections.parquet . See query.sql and assessment.json for the query, original query-output checksum, filters and exact window bounds. September records were not independently retrieved from the authenticated NASA archive. This is an exploratory teaching snapshot, not a complete or final science-quality fire inventory.
+
+The source query returned 30,020 bounding-box records. Main-Sumatra-island and confidence filtering retained 25,466 records. The two adjoining 100 km windows retain 2,149 and 4,052 records, with no overlap, and detections on all 30 dates in each. The compact CSV contains these 6,201 records, rounded to six decimal places. Locations are WGS84 longitude/latitude; projected coordinates are EPSG:32748. No full-record duplicates were found before export; distinct observations of persistent fires remain.
+
+Natural Earth 1:10m country geometry provides the main-island mask and approximate land areas: https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_10m_admin_0_countries.geojson (public domain). A is 10,000 km²; B is 9,955.73 km². Store cell areas in south-to-north row order and west-to-east column order. The coast is generalized; precise coastal inference needs a finer boundary. NASA FIRMS source data retain their own attribution; the repository content licence does not relicense source data.
+
+The windows were chosen after exploratory inspection of activity and are illustrative. P-values describe a specified homogeneous allocation baseline; they are not a confirmatory regional test, proof of fire interaction, or evidence attributing haze. Clouds, overpasses, land conditions and repeated detections matter. All 30 dates containing records does not establish complete observation coverage.
+
+Run scripts/firms_quadrat_examples.py from the repository root to regenerate the combined map and numerical results. The linked notebook contains the same workflow and can read the public repository snapshot without Google Drive. Half-open window allocation avoids double counting at the shared border.
