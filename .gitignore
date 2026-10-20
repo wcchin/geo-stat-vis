@@ -1,2 +1,6 @@
 # MyST build outputs
 _build
+
+# Downloads and exports created by the KL self-study notebook
+kl_data_cache/
+kl_figures/

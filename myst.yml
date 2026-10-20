@@ -97,6 +97,7 @@ project:
         - file: src/content/notebooks/lab-07_1-clustering-random-demo.ipynb
         - file: src/content/notebooks/lab-07_2-clustering-real-data.ipynb
         - file: src/content/notebooks/lab-08-spatial-autocorrelation.ipynb
+        - file: src/content/notebooks/lab-08-autocorrelation-self-study.ipynb
         - file: src/content/notebooks/lab-09-LISA.ipynb
         - file: src/content/notebooks/lab-10-for-flowmapgl.ipynb
     - title: Part 4 - Lecture Slides
@@ -112,3 +113,4 @@ site:
     logo_text: "GE5230 - Geospatial Statistics and Visualisation"
   parts:
     footer: footer.md
+
