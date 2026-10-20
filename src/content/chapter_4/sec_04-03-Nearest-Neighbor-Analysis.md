@@ -4,6 +4,12 @@ label: nearest-neighbour-analysis
 
 # Nearest Neighbour Analysis
 
+## From counts to nearest-neighbour distances
+
+[Quadrat analysis](sec_04-02-Quadrat-Count-Analysis.md) asks how events are allocated among cells. Nearest Neighbour Analysis instead retains the point locations and asks about the closest other point to each one. Read this section before [Ripley’s K-function](sec_04-04-Ripleys-K-Function.md), which expands the inquiry to multiple distances.
+
+The examples need not represent the same phenomenon. Here the existing Woodlands illustrations give a local urban context; the synthetic notebook makes the calculation reproducible without implying that simulated points are observed urban events.
+
 ## When is close unusually close?
 
 A map may look crowded, but proximity alone does not establish clustering. One hundred events placed independently in a small park will usually be closer together than one hundred events placed independently across a town. We need a reference that accounts for both the number of events and the space in which they could occur.
@@ -62,6 +68,8 @@ $$
 | $R\approx1$ | The mean is close to that expectation. |
 | $R>1$ | Neighbours are farther apart: a tendency towards regularity or dispersion. |
 
+The [quadrat page’s synthetic patterns](sec_04-02-Quadrat-Count-Analysis.md) provide a useful contrast. A grid can conceal very short distances inside its cells, whereas NNA still uses those point-to-point relationships. Conversely, nearest-neighbour distances alone do not reveal how counts are distributed across the entire window.
+
 The ratio is dimensionless. Its direction does not by itself establish statistical significance. A ratio near one does not demonstrate that every aspect of a pattern follows CSR.
 
 ### A numerical example
@@ -73,6 +81,18 @@ $$
 $$
 
 If the observed mean is 35 m, $R=35/50=0.70$. The observed mean is 30% shorter than the theoretical expectation. This does **not** mean that 70% of points are clustered or that there is a 30% probability of clustering.
+
+## A reproducible comparison across the three pages
+
+The synthetic constructions on the [quadrat page](sec_04-02-Quadrat-Count-Analysis.md) each contain 96 points in a 2 km square. Their planar theoretical expected distance is about 102.06 m:
+
+| Synthetic pattern | Observed mean NN distance (m) | $R$ |
+| --- | --- | --- |
+| CSR realisation | 104.75 | 1.026 |
+| Clustered construction | 35.28 | 0.346 |
+| Spaced construction | 161.92 | 1.586 |
+
+These are descriptive calculations from the committed synthetic coordinates, not results for the Woodlands illustrations or observed FIRMS fire detections. The ratios use the unbounded planar expectation; inferential claims still require the boundary and null-model decisions below. The [K-function comparison](sec_04-04-Ripleys-K-Function.md) reuses these patterns across radii. The [source record](../datasets/point_pattern_teaching/README.md) explains how all three are constructed.
 
 ## How unusual is the observed distance?
 
@@ -150,7 +170,7 @@ A p-value concerns the behaviour of the statistic **assuming the null model**. I
 
 The [NNA self-study notebook](../notebooks/lab-05-nna-self-study.ipynb) uses synthetic data with NumPy, SciPy and Matplotlib, and accepts a projected-coordinate CSV. Compare clustered, CSR and regular patterns, then change one analytical choice at a time.
 
-Follow the [Gordon Square worked example](../worked_examples/sec_04-A-Demonstration-point-pattern.md) to contrast individual people with groups. The [full point-pattern lab](../notebooks/lab-05-point-pattern.ipynb) connects quadrat counts, NNA and K/L functions. Revisit the [Semester 2610 Week 5 slides](../part4.md) for the visual lecture explanation.
+The [full point-pattern lab](../notebooks/lab-05-point-pattern.ipynb) connects quadrat counts, NNA and K/L functions. Revisit the [Semester 2610 Week 5 slides](../part4.md) for the visual lecture explanation.
 
 ### Check your reasoning
 
@@ -166,7 +186,19 @@ No. We have not found sufficient evidence of unusually short mean nearest-neighb
 It depends on the observation unit. Retain records for a question about transaction events, or aggregate for a question about distinct locations. State the choice and its implications for the null model.
 ```
 
+```{dropdown} 4. A coarse quadrat grid shows equal counts, but NNA gives a short mean distance. Is this a contradiction?
+No. Each cell can contain a tight group while all cells have the same count. Quadrat counts ignore locations within a cell, whereas NNA responds to those short distances. State the scale and summary used.
+```
+
+```{dropdown} 5. A pair of bus stops lies on opposite sides of a road. Does a short nearest-neighbour distance establish broad clustering?
+No. It can describe paired objects. The observation unit and physical constraint matter, and the spacing of sites at larger distances requires a different summary. The next K-function section develops this example.
+```
+
 ## Further reading
+
+- **Foundational paper:** Clark, P. J. and Evans, F. C. (1954). [Distance to Nearest Neighbor as a Measure of Spatial Relationships in Populations](https://doi.org/10.2307/1931034). *Ecology*, 35, 445–453. Read the definition of the ratio alongside the assumptions and boundary limitations described here.
+
 
 - [ArcGIS: How Average Nearest Neighbor works](https://doc.esri.com/en/arcgis-pro/latest/tool-reference/spatial-statistics/h-how-average-nearest-neighbor-distance-spatial-st.html): equations, assumptions and interpretation.
 - [SciPy: Monte Carlo tests](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.monte_carlo_test.html): empirical reference distributions and alternatives.
+
