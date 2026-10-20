@@ -4,10 +4,10 @@ Goal: replace borrowed illustrations with original course artwork, while retaini
 
 ## Completed in this batch
 
-- Autocorrelation: replace both Milwaukee lecture images and the three-permutation companion with three reproducible synthetic diagrams.
+- Autocorrelation: replace both Milwaukee lecture images and the three-permutation companion with three original maps drawn from Milwaukee Census data. Observed income is real; the companion maps permute the available observed values. See [data and rendering notes](milwaukee-map-source.md).
 - Defining distance: replace the first two figures with an original six-unit polygon map and its matching graph. The eight undirected edges match every non-zero pair in the existing binary weight matrix.
 - Remove the three borrowed SVGRepo chess icons; retain the written rook/bishop/queen definitions.
-- Reproduction: `python scripts/draw_spatial_figures.py` (NumPy and Matplotlib). Fixed random seed; no external images or datasets. SVGs contain editable text.
+- Reproduction: `python scripts/draw_spatial_figures.py` (NumPy and Matplotlib). Fixed random seed; no external artwork. Milwaukee data are downloaded from GeoDa and verified by SHA-256. The neighbourhood map remains synthetic. Matplotlib xkcd styling uses the bundled OFL-licensed Comic Neue font; SVG text is outlined for portable display.
 - Checks: permutation multisets are unchanged; polygon shared-edge relationships and graph edges match the matrix. Figures were visually reviewed before publication.
 
 ## Remaining review
@@ -367,9 +367,9 @@ Figure/image occurrences: 334. Linked source / provenance review: 86; Authorship
 
 | Asset | Status | Caption / evidence |
 | --- | --- | --- |
-| `../resources/original/spatial-values-structured.svg` | Original (reproducible source) | A synthetic spatial pattern: nearby cells have similar values. Each category occurs 16 times. These are illustrative values, not observations from a real place. |
-| `../resources/original/spatial-values-permutation.svg` | Original (reproducible source) | Random permutation keeps the spatial units and the set of values fixed, but reshuffles which value belongs to each unit. The histogram is unchanged; the spatial arrangement changes. |
-| `../resources/original/spatial-values-three-permutations.svg` | Original (reproducible source) | Three independent permutations of the same values. Chance can produce small local groupings, so visual impressions alone are insufficient evidence of spatial dependence. |
+| `../resources/original/milwaukee-income-observed.svg` | Original (reproducible source) | Median household income in 1999 (US dollars), mapped from the 2000 Census for 417 tracts in the Milwaukee metropolitan area. Four zero-coded income values are treated as unavailable (grey). Map drawn for this book from [GeoDa Milwaukee data](https://geodacenter.github.io/data-and-lab/milwaukee1/); underlying source: US Census 2000, Summary File 3. |
+| `../resources/original/milwaukee-income-permutation.svg` | Original (reproducible source) | Observed income values (left) and one random reassignment of the same 413 available tract-level values (right). Boundaries, map extent, class breaks and the four unavailable locations stay fixed. The histogram of available values is unchanged; their spatial arrangement changes. The reshuffled map is a simulation, not an alternative Census observation. Data: [GeoDa / US Census 2000](https://geodacenter.github.io/data-and-lab/milwaukee1/). |
+| `../resources/original/milwaukee-income-three-permutations.svg` | Original (reproducible source) | Three independent random permutations of the available Milwaukee income values. Every panel uses the same 417 tracts, 413 positive incomes, four fixed unavailable locations and colour scale. Chance can produce local groupings; visual impressions alone do not establish statistical significance. Data: [GeoDa / US Census 2000](https://geodacenter.github.io/data-and-lab/milwaukee1/). |
 | `../resources/w08-img/grid_positive_spatial_autocor.png` | Authorship unverified | Similar values (either high or low) are closer to each other on the right, compared to the random pattern (left). |
 | `../resources/w08-img/grid_negative_spatial_autocor.png` | Authorship unverified | On the right, the dissimilar values are closer to each other, generating checkerboard-like pattern. |
 

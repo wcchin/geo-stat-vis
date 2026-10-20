@@ -30,34 +30,34 @@
 
 
 
-```{figure} ../resources/original/spatial-values-structured.svg
-:label: spatial-values-structured
-:alt: An eight-by-eight grid with four horizontal bands of values from one to four.
+```{figure} ../resources/original/milwaukee-income-observed.svg
+:label: milwaukee-income-observed
+:alt: Median household income in 1999 across 417 Milwaukee metropolitan census tracts.
 :align: center
 
-A synthetic spatial pattern: nearby cells have similar values. Each category occurs 16 times. These are illustrative values, not observations from a real place.
+Median household income in 1999 (US dollars), mapped from the 2000 Census for 417 tracts in the Milwaukee metropolitan area. Four zero-coded income values are treated as unavailable (grey). Map drawn for this book from [GeoDa Milwaukee data](https://geodacenter.github.io/data-and-lab/milwaukee1/); underlying source: US Census 2000, Summary File 3.
 ```
 
 
 
-```{figure} ../resources/original/spatial-values-permutation.svg
-:label: spatial-values-permutation
-:alt: The structured grid beside one permutation of the same 64 values.
+```{figure} ../resources/original/milwaukee-income-permutation.svg
+:label: milwaukee-income-permutation
+:alt: The observed Milwaukee income map beside one random permutation of its 413 positive income values.
 :align: center
 
-Random permutation keeps the spatial units and the set of values fixed, but reshuffles which value belongs to each unit. The histogram is unchanged; the spatial arrangement changes.
+Observed income values (left) and one random reassignment of the same 413 available tract-level values (right). Boundaries, map extent, class breaks and the four unavailable locations stay fixed. The histogram of available values is unchanged; their spatial arrangement changes. The reshuffled map is a simulation, not an alternative Census observation. Data: [GeoDa / US Census 2000](https://geodacenter.github.io/data-and-lab/milwaukee1/).
 ```
 
 
 
 ### Random Patterns
 
-```{figure} ../resources/original/spatial-values-three-permutations.svg
-:label: spatial-values-three-permutations
-:alt: Three independent random assignments of the same values to an eight-by-eight grid.
+```{figure} ../resources/original/milwaukee-income-three-permutations.svg
+:label: milwaukee-income-three-permutations
+:alt: Three independently reshuffled maps of available Milwaukee median household incomes using the same classification.
 :align: center
 
-Three independent permutations of the same values. Chance can produce small local groupings, so visual impressions alone are insufficient evidence of spatial dependence.
+Three independent random permutations of the available Milwaukee income values. Every panel uses the same 417 tracts, 413 positive incomes, four fixed unavailable locations and colour scale. Chance can produce local groupings; visual impressions alone do not establish statistical significance. Data: [GeoDa / US Census 2000](https://geodacenter.github.io/data-and-lab/milwaukee1/).
 ```
 
 
