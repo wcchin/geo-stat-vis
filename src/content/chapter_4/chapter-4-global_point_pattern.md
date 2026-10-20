@@ -1,163 +1,78 @@
 # Chapter 4: Global Point Pattern Analysis
 
-The locations of geographical events and objects often reveal distinctive spatial patterns. Disease cases may concentrate in particular neighbourhoods, bus stops may occur in pairs along roads, and trees may be distributed relatively evenly across a managed landscape.
+Fire detections form concentrations across South Sumatra. Housing transactions occur close together in Singapore neighbourhoods. Bus stops on opposite sides of a street form pairs, even where successive stopping locations are widely spaced. Each map contains point locations, but the geographical meaning of proximity differs.
 
-These arrangements raise an important geographical question: **do the observed locations form a meaningful spatial pattern, or could the apparent pattern have arisen by chance?**
-
-A map allows us to explore the distribution of geographical features visually. However, visual inspection alone cannot establish whether a pattern is statistically unusual. What appears to be a cluster may simply reflect the number of points, the size of the study area, or the geographical conditions under which events occur.
-
-**Spatial point-pattern analysis** provides statistical methods for examining the spatial arrangement of points and comparing observed patterns with an appropriate reference model.
-
-In this chapter, we explore three methods—**Quadrat Count Analysis, Nearest Neighbour Analysis, and Ripley's K-function**—to investigate whether points exhibit clustering or dispersion, and how these patterns may vary across spatial scales.
+This chapter asks: **which aspects of an observed arrangement are unusual under a specified spatial reference model?** A map helps us formulate the question. Statistical summaries let us compare the observed arrangement with patterns generated under that model.
 
 ## Learning objectives
 
 After completing this chapter, you should be able to:
 
-1. **Describe** the characteristics of clustered, random, and regular spatial point patterns.
-2. **Explain** Complete Spatial Randomness (CSR) as a reference model for spatial point-pattern analysis.
-3. **Compare** grid-based and distance-based methods for measuring spatial patterns.
-4. **Apply and interpret** Quadrat Count Analysis, Nearest Neighbour Analysis, and Ripley's K-function.
-5. **Evaluate** statistical evidence of clustering or dispersion using appropriate reference models and Monte Carlo simulation.
-6. **Recognise** how study boundaries, spatial scale, and analytical choices influence the interpretation of point patterns.
+1. Define a point pattern's observation unit and study window.
+2. Explain homogeneous complete spatial randomness (CSR), including the distinction between a Poisson model and a fixed-count simulation.
+3. Calculate and interpret quadrat counts, nearest-neighbour summaries and K/L functions.
+4. Compare an observed statistic with an appropriate analytical or simulated reference.
+5. Explain how boundaries, scale, background intensity and observation conditions affect the conclusions.
+6. Distinguish evidence against a reference model from an explanation of the process producing the pattern.
 
-## Understanding spatial point patterns
+## Begin with the geographical question
 
-A **spatial point pattern** describes the geographical arrangement of events or objects represented as points within a defined study area.
+A **spatial point pattern** records the locations of events or objects within a defined study window. Its interpretation depends on what each point represents. A FIRMS record is a satellite detection, which may be a repeated observation of ongoing burning. An HDB transaction is an event that may share a building coordinate with other transactions. A bus stop is a physical object constrained by a transport network.
 
-Depending on the underlying processes, points may appear concentrated in certain locations, spread relatively evenly across space, or distributed without an obvious spatial structure.
+We often describe arrangements as **clustered**, **random** or **regular**. These are useful starting descriptions: points may form groups, arise under a random process, or maintain relatively even separation. They are not conclusions that can be established from appearance alone. A random realisation can contain close pairs and large gaps, and an uneven map can reflect uneven opportunities for events rather than interaction among them.
 
-Three broad patterns are commonly distinguished:
+The reference model makes the comparison precise. Under **homogeneous CSR**, intensity is constant and events are independent. [Section 4.1](sec_04-01-Complete-Spatial-Randomness.md) develops this model and explains when it is a useful baseline. A departure from it may reflect changing background intensity, dependence, geographical constraints or the observation process.
 
-- **Clustered:** Points tend to occur close together, forming concentrations or groups.
-- **Random:** Points are distributed according to a random spatial process, without systematic attraction or inhibition between events.
-- **Regular (dispersed):** Points tend to maintain greater separation from one another, producing a more evenly spaced arrangement.
+## Three complementary questions
 
-```{figure} ../resources/w04-img/spatial_patterns_3_basic.png
-:label: ch4-basic-point-patterns
-:alt: Illustrations comparing regular, random, and clustered spatial point patterns.
-:align: center
+The methods in this chapter summarise different parts of the arrangement.
 
-Three broad types of spatial point patterns: regular, random, and clustered.
-```
+| Method | What is summarised? | Question answered under the chosen reference |
+| --- | --- | --- |
+| [Quadrat count analysis](sec_04-02-Quadrat-Count-Analysis.md) | Counts in cells partitioning the window | Is variation among cell counts unusually large? |
+| [Nearest Neighbour Analysis](sec_04-03-Nearest-Neighbor-Analysis.md) | Each point's distance to its nearest other point | Is the mean nearest-neighbour distance unusually short or long? |
+| [Ripley's K-function](sec_04-04-Ripleys-K-Function.md) | Cumulative neighbour relationships up to each radius | Are there more or fewer nearby pairs than the reference predicts across a range of radii? |
 
-These descriptions help us recognise different spatial arrangements. However, **a visually clustered pattern is not necessarily statistically significant**, and a pattern that appears random may still contain spatial relationships that are difficult to identify by eye.
+Quadrat analysis converts locations into counts. It is easy to interpret, but discards positions within each cell and depends on the grid's size, shape and origin. NNA retains distances between points but uses only the closest other point for each observation. K examines pairs across a range of radii, producing a cumulative curve whose interpretation requires attention to boundaries and simulation envelopes.
 
-We therefore need a statistical reference against which the observed pattern can be evaluated.
+The summaries can disagree without any calculation being wrong. Every quadrat could contain the same number of points, with those points tightly grouped inside each cell. Quadrat counts would then be perfectly even while nearest-neighbour distances would be short. Likewise, paired bus stops can have close first neighbours but wider spacing between stopping locations. A conclusion should identify the summary, scale and reference used rather than give the entire pattern one permanent label.
 
-## What do we mean by spatial clustering?
+## How the examples connect
 
-The term *spatial clustering* can refer to different, but related, geographical questions.
+The chapter uses both observed regional data and explicitly synthetic constructions. The constructions hold the point count and window constant, making it easier to see what changes when the arrangement changes. They are teaching examples, not observations of fires, transactions or bus stops.
 
-One question concerns the **overall spatial arrangement** of points:
+The observed examples give those comparisons geographical meaning:
 
-*Do events tend to occur closer together than would be expected under a specified random spatial process?*
+- **South Sumatra fire detections:** work through quadrat counts in a western square, repeat the analysis in the adjoining eastern square, then combine them to examine how the study boundary changes the reference.
+- **Woodlands point patterns:** compare nearest-neighbour distances while accounting for intensity and window area.
+- **Singapore bus-stop motivation:** consider how close pairs can coexist with wider spacing, then use a synthetic paired-site construction to examine cumulative relationships across distances.
 
-For example, we may examine whether HDB resale transactions across a selected part of Singapore exhibit an overall tendency towards clustering.
+Different case studies need not share the same null model. A uniform planar reference may be a useful teaching baseline, while a substantive analysis of road-constrained objects or uneven fire opportunities may require a more specific model.
 
-A second question concerns the **locations of particular concentrations or groups**:
+## Global summaries and local questions
 
-*Where are the clusters, and which points belong to them?*
+**Global point-pattern analysis** summarises an aspect of the arrangement across the observation window. A global statistic can establish that a particular summary is unusual under a reference, but does not by itself identify every concentration or assign points to clusters. A K curve is also global in this sense, even though it is evaluated at several distances.
 
-For example, we may wish to identify specific neighbourhoods with high concentrations of transactions or distinguish separate groups of commercial activities.
+[Chapter 5](../chapter_5/chapter-5-local_point_pattern.md) turns towards geographical variation, density and groups within a study area. The distinction concerns the question being asked, rather than an absolute division between methods. Quadrat maps, for example, reveal where counts are high, while their overall goodness-of-fit statistic summarises variation across all cells.
 
-These questions require different analytical approaches.
+## Reading the evidence
 
-**Global point-pattern analysis**, the focus of this chapter, summarises spatial relationships across a study area. It helps determine whether the overall arrangement of points departs from a specified reference model.
+Throughout the chapter, follow the same sequence: define the observations and window, select a summary, specify the reference model, then interpret the comparison. Simulations must reproduce the relevant choices, including the point count when conditioning on it, usable area and calculation procedure.
 
-**Local pattern analysis and spatial clustering methods**, introduced in Chapter 5, focus more directly on geographical variation, concentrations, and groups within the study area.
-
-The distinction is not absolute. Some methods can provide information relevant to both objectives. What matters is identifying the geographical question before selecting the analytical method.
-
-## How can we measure spatial patterns?
-
-There are two broad strategies for examining the arrangement of spatial points: **grid-based** and **distance-based** approaches.
-
-### Grid-based approach
-
-A grid-based approach divides the study area into smaller spatial units and counts the number of points within each unit.
-
-If points are distributed relatively evenly, the counts may be similar across the grid. If points are concentrated in particular locations, some cells may contain substantially more points than others.
-
-```{figure} ../resources/w05-img/three_strategies_for_point_pattern_2c.png
-:label: ch4-grid-based-strategy
-:alt: Illustration of grid-based approaches to point-pattern analysis, including point counting and density estimation.
-:align: center
-
-Grid-based approaches summarise the distribution of points within predefined spatial units.
-```
-
-The main advantage of this approach is its simplicity: it transforms point locations into counts that can be compared statistically.
-
-However, the results may depend on the **size, shape, and placement of the grid cells**. The same point pattern can appear more or less concentrated when different grid configurations are used.
-
-In Section 4.2, we introduce **Quadrat Count Analysis** as a grid-based method for examining spatial point patterns.
-
-### Distance-based approach
-
-Instead of dividing space into predefined units, a distance-based approach examines the spatial relationships between individual points.
-
-Two related strategies are particularly useful:
-
-- **Nearest-neighbour distance:** Measure the distance from each point to its closest neighbouring point.
-- **Search-radius distance:** Examine how many neighbouring points fall within a specified distance, and repeat the calculation across different distances.
-
-```{figure} ../resources/w05-img/three_strategies_for_point_pattern_2b.png
-:label: ch4-distance-based-strategy
-:alt: Illustration comparing nearest-neighbour distances with neighbours counted within a search radius.
-:align: center
-
-Distance-based approaches examine spatial relationships between points using nearest-neighbour distances or a series of search radii.
-```
-
-These approaches address related but distinct questions.
-
-Nearest-neighbour distances describe the immediate proximity of points. Search-radius approaches examine spatial relationships over multiple distances, allowing us to investigate whether clustering or dispersion changes with spatial scale.
-
-In Sections 4.3 and 4.4, we introduce **Nearest Neighbour Analysis** and **Ripley's K-function** to explore these relationships.
-
-## From visual patterns to statistical evidence
-
-Recognising a spatial pattern is only the first step. We also need to determine whether the observed arrangement is unusual relative to an appropriate statistical reference.
-
-A commonly used reference in point-pattern analysis is **Complete Spatial Randomness (CSR)**.
-
-Under the standard CSR model, points occur independently and with constant intensity across the study area. Even under these conditions, some points will appear close together while other parts of the study area remain relatively empty.
-
-Consequently, the presence of visible concentrations does not automatically establish that a point pattern is clustered in a statistical sense.
-
-To evaluate the evidence, we compare an observed statistic with the values expected under CSR or another suitable null model. **Monte Carlo simulation** is one way to generate such a reference distribution by repeatedly producing random point patterns under specified conditions.
-
-This comparison helps us distinguish between a descriptive tendency towards clustering or dispersion and statistical evidence against the reference model.
-
-Importantly, rejecting CSR does not necessarily explain *why* the observed pattern occurs. Geographical interpretation still requires consideration of the study area, observation process, population at risk, and other relevant spatial factors.
-
-Section 4.1 develops the concept of CSR and its role in statistical testing.
-
-## Three approaches to global point-pattern analysis
-
-The three methods introduced in this chapter examine different aspects of spatial point distributions.
-
-| Method | What it measures | Central question |
-|---|---|---|
-| **Quadrat Count Analysis** | Variation in point counts across spatial units | Are points distributed unevenly across the study area? |
-| **Nearest Neighbour Analysis** | Average distance to the nearest other point | Are points unusually close together or far apart? |
-| **Ripley's K-function** | Neighbour relationships across increasing distances | At which spatial distances does clustering or dispersion occur? |
-
-No single method provides a complete description of every spatial pattern.
-
-A point distribution may show clustering at short distances but a more regular arrangement at larger distances. Similarly, a pattern that appears clustered using one grid configuration may produce a different result when the analytical scale changes.
-
-The choice of method should therefore reflect the **geographical question, characteristics of the data, and spatial scale of interest**.
+A small p-value supplies evidence against the specified reference; it does not identify the cause of the pattern. A non-significant result does not prove randomness. Repeated observations, uneven population exposure, land conditions and incomplete coverage may all matter to the geographical interpretation.
 
 ### Check your reasoning
 
-Before proceeding, consider the following questions:
+```{dropdown} 1. Two maps have the same point count but different window areas. Does the smaller map establish stronger clustering because distances are shorter?
+No. The smaller window has higher overall intensity, so its random reference also predicts shorter distances. Compare each observed summary with its appropriate reference.
+```
 
-1. Two maps contain the same number of points, but one covers a much larger geographical area. Can we conclude that the smaller-area pattern is more clustered simply because its points are closer together?
-2. If our objective is to identify specific locations where commercial activities concentrate, would a single global point-pattern statistic be sufficient?
-3. Why might Nearest Neighbour Analysis and Ripley's K-function lead to different interpretations of the same point distribution?
+```{dropdown} 2. Would a single global statistic identify which commercial activities belong to each cluster?
+No. It summarises the arrangement across the window. Identifying particular groups requires a method and definition suited to that question.
+```
 
-As you work through the following sections, revisit these questions and consider how each method helps answer them.
+```{dropdown} 3. Why might quadrat analysis and NNA give different impressions?
+Quadrat counts discard positions within cells. NNA responds to the closest other point. Equal cell counts can coexist with tight groups inside the cells.
+```
 
 **Next:** [Spatial Patterns and Complete Spatial Randomness](sec_04-01-Complete-Spatial-Randomness.md).
