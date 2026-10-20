@@ -31,6 +31,9 @@ jobs:
         run: python scripts/draw_spatial_figures.py
       - name: Check autocorrelation self-study notebook offline
         run: python scripts/check_autocorrelation_pilot.py
+      - name: Check Moran worked example
+        run: python scripts/draw_morans_figures.py
       - name: Build book without deploying
         run: jupyter-book build --html
+
 

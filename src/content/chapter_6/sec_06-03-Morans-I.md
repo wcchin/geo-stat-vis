@@ -1,180 +1,308 @@
+---
+label: global-morans-i
+---
+
 # Moran’s I
 
-## Main goal
-Moran's I is a widely-used measure of **global spatial autocorrelation**, developed by Australian statistician Patrick Moran. It quantifies the degree to which the values of a variable are **spatially correlated with their neighboring values** across an entire study area.
 
+When we see many fire detections close together on a map, what exactly have we learned? We have identified a visible concentration of observations. To ask whether areas with high fire activity tend to have similarly high-activity neighbours, we need a variable for each area, a definition of neighbours and a reference against which to assess the resulting pattern.
 
+**Global Moran's I** summarises the association between values at locations and values at their specified neighbours. It turns the idea of spatial similarity from the preceding sections into a statistic. The word *global* matters: the result describes the study area as a whole, rather than identifying individual significant clusters.
 
-```{figure} ../resources/w08-img/morans_i_goals.png
-:label:
-:alt:
-:align: center
+## The regional question
 
-See [Global Moran's I (ArcGIS)](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/spatial-autocorrelation.htm).
+Our running application asks: **During September 2026, do grid cells with high satellite-detected fire activity in Sumatra tend to be near cells with similarly high activity?** This is motivated by regional haze. An official 19 September update reported smoke from Kalimantan and southern Sumatra drifting towards Singapore. [^morans-source-1]
+
+This question concerns the geography of fire activity. Explaining haze exposure in Malaysia or Singapore requires additional evidence about emissions, winds and atmospheric transport. A spatial autocorrelation statistic alone cannot establish the origin or destination of smoke.
+
+## What you should be able to do
+
+After reading, you should be able to define a spatial lag; calculate Moran's I in a small example; explain its scatterplot; distinguish a statistic from evidence under a null model; and qualify a result using the data, scale and neighbourhood choices.
+
+```{note} About the running example
+The September 2026 Sumatra application is a proposed case study; its data preparation and regional results are still to be added. All numerical results and plotted examples on this page use an explicitly hypothetical four-cell dataset. No empirical fire map, Moran coefficient or p-value for 2026 is claimed.
 ```
 
-## Calculation
+Reading route: measurement → neighbours → arithmetic → scatterplot → inference → interpretation → sensitivity → self-check. Read alongside [Autocorrelation & Spatial Autocorrelation](sec_06-01-Spatial-Autocorrelation.md) and [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md).
 
-Positive values generally indicate neighbouring units with similar values, while negative values indicate neighbouring units with contrasting values. The attainable range depends on the spatial weights; do not treat Moran's I as an ordinary correlation coefficient with universal bounds of −1 and +1. Inference compares the observed statistic with its null reference, whose expectation is generally slightly negative.
+## 1. Decide what each number represents
 
-Moran's I is defined as:
+A satellite detection is an observation made by an instrument at a particular time. It is not automatically a distinct fire event. One persistent fire can be observed repeatedly, and a detection does not by itself establish that the land cover is forest. Our variable is therefore called **satellite-detected fire activity**, rather than the number of forest fires.
+
+### From detections to an areal variable
+
+For the proposed Sumatra example, place a regular grid in a suitable projected coordinate system and count qualifying detections inside each retained cell during 1–30 September 2026. Define $x_i$ as that count for cell i. Fix the satellite product, confidence filter, period and study boundary before inspecting Moran's I. A point-location map explains the input; the count map shows the variable actually analysed.
+
+A practical starting design uses 20 km cells, with 10 km cells as a planned sensitivity comparison. Grid origin matters too: moving the same grid changes allocation near its edges. Retain a documented land mask, and decide explicitly how to handle coastal cells and offshore islands. Partial land cells have less land available for detections, so cell counts are not perfectly comparable merely because the original grid squares have equal area.
+
+| Record or cell | Meaning and treatment |
+| --- | --- |
+| Retained land cell, count 0 | No qualifying detection in the selected records. This does not establish that no fire occurred. Keep the cell. |
+| Ocean outside the land mask | Outside the analytical population. Do not insert an artificial zero. |
+| Missing or unusable observations | A data limitation, not a zero. Record the issue and decide how it affects the analysis. |
+| Coastal or isolated land cell | Inspect land fraction and neighbours. Apply an explicit inclusion rule; report its consequences. |
+
+### Counts, rates and transformations ask different questions
+
+Raw counts describe detected activity per retained cell. Detections per square kilometre of land adjust for land area, but tiny land fractions can produce unstable rates. A log(1 + count) transformation reduces the influence of very large counts; it changes the variable and therefore the estimand. It is a sensitivity analysis, not a device for obtaining a preferred p-value.
+
+NASA FIRMS provides archived detections in downloadable formats. Recent near-real-time records can later be replaced by standard science-quality data, so preserve the retrieval date and exact source snapshot. [^morans-source-2] If the intended variable is burned fraction rather than detections, use a burned-area product and define that different question.
+
+## 2. Give “nearby” a precise meaning
+
+Before measuring similarity, decide which pairs of cells count as neighbours. For an initial grid example, use **first-order rook contiguity**: retained cells are neighbours when they share a grid edge. This makes the rule easy to inspect. Queen contiguity also includes corner contacts. Neither rule is automatically the physical pathway through which fire or smoke moves.
+
+Write $a_{ij}=1$ for a selected neighbour pair and $0$ otherwise. Set $a_{ii}=0$: a cell is not its own neighbour. With $k_i=\sum_j a_{ij}>0$ neighbours, row standardisation gives
 
 $$
-I = \frac{N}{W} \times
-\frac{\sum_{i=1}^N \sum_{j=1}^N w_{i,j}(x_i - \bar{x})(x_j - \bar{x}) }
-{\sum_{i=1}^N (x_i - \bar{x})^2}
+w_{ij}=\frac{a_{ij}}{k_i},\qquad \sum_j w_{ij}=1.
 $$
 
-Where:
-- $N$ is the number of spatial units indexed by $i$ and $j$;
-- $x$ is the variable of interest;
-- $\bar{x}$ is the mean of $x$;
-- $w_{i,j}$ is the spatial weight---kind of an indicator variable, equal to 1 or the row-standardized value if $i$ and $j$ are neighbors, 0 otherwise;
-- W is the sum of all $w\_{i,j}$.
+Each nonempty row then sums to one.
 
-A significant Moran's I value suggests that the observed spatial distribution of the variable is not random, and further investigation is warranted to understand the underlying spatial relationships and processes.
+### A spatial lag is a neighbour summary
 
-Each value is compared to the mean value ($\bar{x}$) before the multiplying. Given the value ($x_i$) of a location and one of its neighbor's value ($x_j$), the multiplying result:
-- is a **positive value** because both are at the same direction (both higher or both lower);
-- is a **negative value** if one of which is higher than the mean and the other is lower compared to mean value;
-- will be a **large value** if both the self and neighbor values are very far from the mean value;
-- will be a **small value** (near to zero) if the two values are near to mean.
+The spatial lag of x at cell i is the weighted sum of neighbour values:
 
-Note that if they are both a lot lower than the mean value, the result would also be **a large positive high value**, indicating **positive spatial Autocorrelation**.
+$$
+\left(W\mathbf{x}\right)_i = \sum_{j=1}^{n} w_{ij}x_j
+$$
 
+For equally weighted rook neighbours with row standardisation, this is their arithmetic mean. A cell containing 8 detections might have a lag of 2 if its neighbours each contain only 2. The lag belongs to the focal cell, but its value is calculated from other cells. It is not a prediction and does not imply an effect from neighbours. [^morans-source-3]
 
-## Moran’s I: Interpretation
-### Reading I
-- Under random reassignment of values, with zero self-weights, $E[I]=-1/(N-1)$; this approaches zero for large $N$.
+### Edges, masks and isolated cells
 
-- positive and significant: clustering of similar value
-    - NOT clustering of high or low
-    - could be either or a combination
+An interior grid cell can have four rook neighbours; a boundary cell may have fewer. Row standardisation gives the available neighbours a total weight of one, so each neighbour of a two-neighbour cell receives greater weight than each neighbour of a four-neighbour cell. The choice therefore affects how local relationships contribute to the global statistic.
 
-- negative and significant: alternating values
-    - presence of spatial outliers
-    - spatial heterogeneity (checkerboard pattern)
+Check the neighbour graph after applying the land mask. An island or a narrow coastal fragment can have no rook neighbours. The simplified formula and slope interpretation here assume every included cell has at least one neighbour. The regional implementation must document exclusions or choose a justified alternative rule. Do not silently assign a zero lag and continue as though the same assumptions still hold.
 
-**Comparing the I**
-- Moran's I depends on spatial weights
-
-- relative magnitude for **same weights settings** and different variables is **meaningful**
-
-- **NOT for different spatial weights**
-    - Changing weights changes the spatial question. Examine sensitivity explicitly; a z-score does not remove this change in meaning.
-
-
-
-```{figure} ../resources/w08-img/moran-result-demo.png
-:label:
-:alt:
-:align: center
-
-[see here for more details on the calculation of z-value](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/h-how-spatial-autocorrelation-moran-s-i-spatial-st.htm)
+```{note} Pause and reason
+A cell has values 2, 4 and 9 at its three neighbours. Its row-standardised lag is (2 + 4 + 9) / 3 = 5. The cell's own value is excluded. If an extra neighbour is added, both the neighbour set and the weights change.
 ```
 
+For the fire application, compare rook and queen only after inspecting the graph. A distance-based rule would instead answer a question about a specified spatial reach. A graph chosen to yield the largest I would undermine the intended interpretation.
 
+## 3. Build Moran's I from cross-products
 
-### Moran’s I Scatter Plot
+Let $d_i=x_i-\bar{x}$, where $\bar{x}$ is the mean across the included cells. Two neighbouring cells both above the mean give a positive cross-product. Two below the mean also give a positive product. A pair on opposite sides of the mean gives a negative product.
 
-- X-axis: the standardized crime rate of every location (town)
+$$
+I = \frac{n}{S_0}
+\frac{\displaystyle\sum_{i=1}^{n}\sum_{j=1}^{n}w_{ij}(x_i-\bar{x})(x_j-\bar{x})}
+{\displaystyle\sum_{i=1}^{n}(x_i-\bar{x})^2},
+\qquad S_0=\sum_{i=1}^{n}\sum_{j=1}^{n}w_{ij}.
+$$
 
-- Y-axis: the average of standardized neighborhood's crime rate (spatial-lag of the variable)
+Here n is the number of included cells and $S_0$ is the sum of all weights. The numerator combines neighbour cross-products; the denominator scales by overall variation. A constant variable has a zero denominator and cannot be analysed with this statistic.
 
-- Moran's $I = 0.5237$ (written on top)
-
-
-```{figure} ../resources/w08-img/morans_I_example-1.png
-:label:
-:alt:
+```{figure} ../resources/original/morans-chain.svg
+:label: morans-four-cell-chain
+:alt: Two hypothetical four-cell chains with counts 2, 2, 8, 8 and 2, 8, 2, 8; adjacent cells are linked.
 :align: center
 
-Example of Moran's scatter plot
+Hypothetical counts on the same four-cell chain. Only adjacent cells are neighbours. Both arrangements contain exactly two values of 2 and two of 8; all weights are row-standardised. These are not Indonesian observations.
 ```
 
-The 4 quadrants:
-- **upper right**: self-**High** - lag-**High** (HH), positively autocorrelated with high values, indicate potential hot-spots;
-- **lower left**: self-**Low** - lag-**Low** (LL), positively autocorrelated with low values, indicate potential cold-spots;
-- **upper left**: self-**Low** - lag-**High** (LH), negatively autocorrelated;
-- **lower right**: self-**High** - lag-**Low** (HL), negatively autocorrelated.
-- Required statistical testing to identify significant hot-spots and cold-spots.
+| Cell | $x_i$ | $d_i=x_i-5$ | $(W\mathbf{d})_i$ | $d_i(W\mathbf{d})_i$ |
+| --- | --- | --- | --- | --- |
+| A | 2 | −3 | −3 | 9 |
+| B | 2 | −3 | 0 | 0 |
+| C | 8 | 3 | 0 | 0 |
+| D | 8 | 3 | 3 | 9 |
 
+Each row sums to one, so $S_0=n=4$. The sum of $d_i(W\mathbf{d})_i$ is $18$ and the sum of $d_i^2$ is $36$. Consequently,
 
+$$
+I=\frac{4}{4}\times\frac{18}{36}=0.50.
+$$
 
-## Permutation Approach
+For the alternating arrangement, every cell contrasts with its neighbours and $I=-1.00$.
 
-- Random reshuffling the attributes data, without modifying the locational data
+Positive I indicates an overall tendency towards similar neighbour values; negative I indicates contrast. The attainable range depends on the weights. Moran's I is not an ordinary correlation coefficient with universal bounds of −1 and +1.
 
-- recompute Moran's I each time
+The sum over i and j uses ordered neighbour relationships. Do not count each undirected edge only once while retaining the full-matrix $S_0$. With binary rather than row-standardised weights, the first arrangement gives $I=1/3$: changing weights changes the calculation.
 
-- reconstructing a **reference distribution**
+## 4. Read the Moran scatterplot
 
-- compare the (original data) **observed value of Moran's I** to the reference distribution
+For a plot with comparable axes, standardise the variable using one positive standard deviation $s$ for every observation:
 
-- **even a high Moran's I value does not necessarily indicate significance.**
+$$
+z_i=\frac{x_i-\bar{x}}{s}.
+$$ Plot each cell's z on the horizontal axis and its spatial lag Wz on the vertical axis. A cell appears once; its neighbours are summarised in its vertical coordinate.
 
-- A permutation p-value is a statistical p-value estimated from a simulated randomisation distribution. It is often called a pseudo-p-value to distinguish this finite simulation estimate from an analytical calculation. Specify the alternative and the software's tail convention.
-
-- More permutations improve numerical resolution and reduce simulation variability; they do not necessarily produce a smaller p-value.
-
-
-
-```{figure} ../resources/w08-img/permutation_distribution.png
-:label:
-:alt:
+```{figure} ../resources/original/morans-scatter.svg
+:label: morans-four-cell-scatter
+:alt: Moran scatterplot for the hypothetical four-cell chain, with standardised values on the horizontal axis and spatial lag on the vertical axis.
 :align: center
 
-A demo of the permutation distribution. The observed value (orange vertical line) is far higher than the distribution derived from the random permutations.
+The same hypothetical arrangement [2, 2, 8, 8], standardised using the population standard deviation s = 3. A and B have z = −1; C and D have z = 1. The line is fitted through the origin.
 ```
 
+With nonempty row-standardised weights, $S_0=n$, and the through-origin slope is
 
-## A demonstration
-### Moran's Scatter plot
+$$
+\hat{\beta}=\frac{\sum_i z_i(W\mathbf{z})_i}{\sum_i z_i^2}=I.
+$$
 
-The bus ridership aggregated by incoming flow, during the morning peak (7am-9am) in June 2023. Spatial weights are 2 levels of Queen contiguity.
+Without that weighting condition, the slope needs the $n/S_0$ factor. The axes show $z_i$ and $(W\mathbf{z})_i$; independently standardising the vertical axis would change the slope.
 
-The Moran's I result: 0.03
+| Quadrant | Reading relative to the overall mean |
+| --- | --- |
+| HH: upper right | Above-average focal value; above-average neighbour summary. |
+| LL: lower left | Below-average focal value; below-average neighbour summary. |
+| LH: upper left | Below-average focal value; above-average neighbour summary. |
+| HL: lower right | Above-average focal value; below-average neighbour summary. |
 
-```{figure} ../resources/w08-img/demo_weekday.png
-:label:
-:alt:
+A and D lie in LL and HH respectively. B and C lie on the horizontal axis because each has one low and one high neighbour; their neighbour deviations cancel. Do not force axis points into a strict high/low category.
+
+For Sumatra, “high” would mean above the mean of the selected fire variable, cells and month. It would not mean an official fire-danger threshold. Quadrant membership is descriptive, not a local significance test. Several high-activity cells may also influence the global slope strongly; examine the point cloud rather than reading the coefficient alone.
+
+## 5. Compare the statistic with a null model
+
+A positive coefficient describes similarity under the chosen weights. Whether that coefficient is unusual requires a reference. Our randomisation null holds the included cells and weights fixed and treats the observed values as exchangeable across those cells. It asks what I would look like under random reassignment of this same set of values.
+
+A permutation leaves the histogram of cell values unchanged. It changes which cell receives which value. Recalculate I after each shuffle; do not recompute a new neighbour graph. This is an attribute-randomisation test, not a simulation of random fire ignition points or smoke movement.
+
+```{figure} ../resources/original/morans-exact-permutations.svg
+:label: morans-four-cell-permutations
+:alt: Exact randomisation distribution for six distinct arrangements of two values of 2 and two of 8; two arrangements have Moran I equal to 0.5.
 :align: center
 
-Moran's I scatter plot of the bus ridership
+Exact randomisation distribution for the hypothetical chain. There are six distinct arrangements of two 2s and two 8s. Each is equally likely; two produce I = 0.50. The right-tail exact probability is therefore 2/6 = 0.333.
 ```
 
+This small example has a visibly ordered arrangement and a positive I, yet weak right-tail evidence because similarly high values are not rare under its null. Exhaustive enumeration includes the observed arrangement and uses its exact proportion; it does not need the Monte Carlo adjustment below.
 
-```{figure} ../resources/w08-img/moran-i-weekday_morningpeak.png
-:label:
-:alt:
-:align: center
+### For a larger grid: Monte Carlo permutations
 
-999 times permutation is generated. The observed value (vertical dash line) is somewhere at a higher value range of the distribution.
+Specify the alternative before analysis. For our proposed question, use a **right-tailed test** for larger $I$. With $B$ simulated random permutations and $b$ statistics at least as large as the observed $I$, report
+
+$$
+p_{\mathrm{right}}=\frac{b+1}{B+1},\qquad b=\sum_{r=1}^{B}\mathbf{1}\!\left(I^{(r)}\geq I_{\mathrm{obs}}\right).
+$$
+
+With $B=999$, the smallest reportable value is $0.001$, not zero. This finite Monte Carlo estimate is often called a *pseudo-p-value*. [^morans-source-4]
+
+Under unrestricted random reassignment, zero self-weights and a nonconstant variable,
+
+$$
+\mathbb{E}[I]=-\frac{1}{n-1}.
+$$
+
+For four cells it is $-1/3$, not zero. The exact example verifies this expectation. More permutations improve numerical resolution and Monte Carlo stability; they do not guarantee a smaller p-value.
+
+Exchangeability is a substantive assumption. Major differences in land cover, land fraction or detectability can make unrestricted shuffling an unconvincing baseline. Rejection shows incompatibility with this null, not proof of one fire-generating mechanism.
+
+## 6. Separate statistical outputs from conclusions
+
+A complete result combines the variable, study population, weights, coefficient and inferential convention. A bare statement that “Moran's I is significant” leaves the reader unable to assess what was tested.
+
+| Output | How to read it |
+| --- | --- |
+| Observed I | Magnitude and direction of the global cross-product association for the specified variable and weights. |
+| E[I] | Reference expectation under the stated null; generally slightly negative with zero self-weights. |
+| `p_norm` | Analytical p-value using a normality-based variance and normal reference approximation. |
+| `p_rand` | Analytical p-value using a randomisation-based variance and normal reference approximation. It is not a Monte Carlo permutation count. |
+| Permutation p-value | Probability estimate from simulated reassignments, with the alternative, tail rule and number of permutations explicitly recorded. |
+
+Software output names are not enough. PySAL distinguishes analytical and simulated quantities, and versions differ in how a permutation alternative is configured. The notebook should record the installed version and calculate the intended right-tail exceedance count explicitly, rather than assuming a default `p_sim` always represents our substantive test. [^morans-source-5] [^morans-source-6]
+
+### What would a positive result support?
+
+If the fire application yields a positive I and a small prespecified right-tail permutation p-value, a defensible conclusion would be: “For the retained Sumatra grid cells in September 2026, neighbouring values of the selected detection-count variable were more similar than expected under unrestricted reassignment of those values, using the stated weights.” This is a conditional reporting template, not an observed result.
+
+It would not establish that fire spreads from one cell to the next. Similar activity may reflect shared conditions, land management, observation processes or broad geographical differences. Nor would it identify which cells are significant hotspots or demonstrate which fires contributed smoke to Singapore.
+
+### If the result is not significant
+
+Do not conclude that fires are spatially random in every sense. The test concerns a particular variable, support, neighbour rule, period and null. Opposing local patterns can offset each other in a global measure. A small coefficient can also have strong statistical evidence with many cells, so report magnitude alongside inference.
+
+```{note} Keep the terms distinct
+Global autocorrelation describes an overall association. Local cluster detection asks where unusually similar or contrasting neighbourhoods occur. Smoke-source attribution asks about transport and contribution. These require different evidence.
 ```
 
+## 7. Ask whether the finding survives reasonable choices
 
-## Closing Remarks
+Spatial statistics depend on representation. A useful sensitivity analysis changes one defensible choice at a time and explains the question that changes with it. It should help readers understand the result, not search for a specification that crosses a significance threshold.
 
-- spatial randomness for areal data
+| Choice | Planned comparison | Interpretive question |
+| --- | --- | --- |
+| Grid support | 20 km versus 10 km; document grid origin | Does the conclusion depend on aggregation scale? |
+| Neighbour rule | Rook versus queen on the same retained cells | Does including diagonal relationships change the association? |
+| Variable | Counts versus log(1 + counts) | Is the pattern dominated by a few very large values? |
+| Coastal cells | Record land fraction; test one stated inclusion threshold | Are partial cells driving low-count patterns? |
+| Period | September versus a separately defined month | How does the pattern change through time? |
+| Random seed | Repeat the same Monte Carlo design with another seed | Is simulation variability material to the conclusion? |
 
-- spatial autocorrelation
+Changing grid size changes n and the variable values. Changing weights changes which relationships receive attention. Their raw I values do not measure a universally comparable strength of clustering. A z-score or small p-value does not remove these differences in the spatial question.
 
-- spatial dependency and spatial heterogeneity
+### Do not build the answer into the data
 
-- attributes similarity and locational similarity
+Avoid smoothing a fire-count map before the main Moran calculation. Smoothing already combines nearby values and can manufacture or strengthen the similarity we are trying to describe. If a smoothed field is analysed, make that preprocessing and the changed question explicit.
 
-- spatial weights and row standardization
-    - contiguity (rook, queen) and higher order
-    - distance-based
-    - k-nearest neighbors
+Do not discard zero-count land cells merely because their removal gives a more dramatic map. Such a subset would describe spatial relationships among detected-active cells, rather than fire activity across the defined land grid. Likewise, filling the sea with zeros would introduce a large artificial low-activity region.
 
-- Moran's I
-    - goals to identify positive and negative spatial autocorrelation
-    - calculation
-    - how to read the result
-    - permutation
+### Sampling and the observation process
+
+Keep one satellite product and confidence convention throughout the main example. Record temporal coverage and known gaps. An absence of records can reflect both absence of detectable activity and limitations in observation. A visually coherent pattern is a reason to investigate these possibilities, not a substitute for checking them.
+
+For current-year data, preserve the downloaded files and processing choices. A later science-quality refresh can change the counts; compare versions as a data revision rather than silently replacing the published result.
+
+## 8. Check your understanding
+
+### Try these questions first
+
+**1.** Two neighbouring cells both have below-average fire activity. Does their cross-product contribute positively or negatively to Moran's I? Explain without using a map colour.
+
+**2.** A cell has value 8 and two neighbours with values 2 and 8. What is its row-standardised spatial lag? What information does the lag omit?
+
+**3.** Can an HH point in a Moran scatterplot be called a statistically significant hotspot? What extra analysis would be needed?
+
+**4.** Under our permutation null, which of the following changes: cell geometry, the set of counts, the neighbour graph, or the assignment of counts to cells?
+
+**5.** In 999 random permutations, 19 statistics are at least as large as the observed I. What is the right-tail Monte Carlo p-value? Is it the probability that the null hypothesis is true?
+
+**6.** Why might a map smoothed before analysis give a misleading first demonstration of spatial autocorrelation?
+
+**7.** Suppose Sumatra and Kalimantan have different Moran coefficients. What must you inspect before interpreting this as a difference in spatial organisation?
+
+```{dropdown} Check your answers
 
 
-### Explore the current teaching example
+**1.** Positive: both deviations from the mean are negative, and their product is positive. Similarity includes low-low relationships, not only high-high ones.
 
-The Semester 2610 Week 8 notebook distinguishes `p_norm`, `p_rand` and `p_sim`, checks data completeness, and states a positive-autocorrelation alternative explicitly. These distinctions will be carried into the book notebook in the next chapter update. Scatterplot quadrant membership alone is not evidence of a significant local cluster.
+**2.** The lag is (2 + 8) / 2 = 5. It summarises the neighbour values but conceals their contrast: both neighbours need not have the mean value.
+
+**3.** No. HH describes signs relative to the overall mean. Local inference requires a defined local statistic, a suitable null and attention to multiple testing. The next section develops that question.
+
+**4.** Only the assignment changes. The locations, graph and multiset of values remain fixed.
+
+**5.** (19 + 1) / (999 + 1) = 0.020. It estimates a tail probability for the statistic under the specified randomisation procedure; it is not a posterior probability for the null.
+
+**6.** Smoothing introduces neighbour similarity through processing, so the analysis would partly measure that construction.
+
+**7.** Check variable definitions, observation period and product, grid support, land mask, weights, n, exclusions, distribution and inferential conventions. The coefficients alone are insufficient.
+
+```
+
+**Transfer task.** Return to the Peninsular Malaysian income map. Identify what would replace the fire-count variable, grid support and rook graph. Explain why the same formula can answer a different geographical question.
+
+## Continue the inquiry
+
+The [next section on LISA and Local Moran’s I](sec_06-04-Local-Moran.md) asks where local patterns occur. For a complete regional worked example, the next preparation step is to obtain the September 2026 detections, inspect the retained grid and neighbour graph, and generate the observed map, spatial lag, scatterplot and permutation reference from the same records. The current figures establish the calculation without implying uncomputed regional findings.
+
+## Sources and further reading
+
+[^morans-source-1]: [Meteorological Service Singapore. Haze Situation Update, 19 September 2026. Regional motivation.](https://www.nea.gov.sg/media/news/advisories/index/haze-situation-update-19-september-2026)
+
+[^morans-source-2]: [NASA FIRMS. Archive Download. Product availability, historical access and replacement of near-real-time records.](https://firms.modaps.eosdis.nasa.gov/download/)
+
+[^morans-source-3]: [libpysal. lag_spatial documentation. Definition and row-standardised neighbour average.](https://pysal.org/libpysal/stable/generated/libpysal.weights.lag_spatial.html)
+
+[^morans-source-4]: [Anselin, L. GeoDa Workbook: Global Spatial Autocorrelation (1). Further explanation of the statistic, plot and randomisation.](https://geodacenter.github.io/workbook/5a_global_auto/lab5a.html)
+
+[^morans-source-5]: [PySAL esda. Moran, version 2.9 documentation. Analytical and permutation output fields.](https://pysal.org/esda/v2.9.0/source/generated/esda.Moran.html)
+
+[^morans-source-6]: [PySAL esda. Development documentation for Moran. Version-dependent configuration of permutation alternatives.](https://pysal.org/esda/dev/generated/esda.Moran.html)
+
+All figures on this page are original calculations from the stated hypothetical dataset. Their reproducible source is [`scripts/draw_morans_figures.py`](https://github.com/wcchin/geo-stat-vis/blob/main/scripts/draw_morans_figures.py).
