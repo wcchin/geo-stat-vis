@@ -1,4 +1,4 @@
-name: Check book and NNA pilot
+name: Check book and self-study notebooks
 
 on:
   pull_request:
@@ -24,10 +24,13 @@ jobs:
       - name: Install book builder
         run: npm install -g jupyter-book@2.1.7
       - name: Install pilot notebook dependencies
-        run: python -m pip install numpy scipy matplotlib
+        run: python -m pip install numpy scipy matplotlib pandas ipython nbformat
       - name: Check notebook calculations
         run: python scripts/check_nna_pilot.py
       - name: Check original spatial illustrations
         run: python scripts/draw_spatial_figures.py
+      - name: Check autocorrelation self-study notebook offline
+        run: python scripts/check_autocorrelation_pilot.py
       - name: Build book without deploying
         run: jupyter-book build --html
+

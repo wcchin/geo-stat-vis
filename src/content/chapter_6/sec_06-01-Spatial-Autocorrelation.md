@@ -1,183 +1,226 @@
+---
+label: spatial-autocorrelation
+---
+
 # Autocorrelation & Spatial Autocorrelation
 
+## Does where a value occurs tell us something about its neighbours?
 
-## What is Spatial Randomness
-### The null hypothesis
+Imagine receiving a table of household incomes with the place names removed. You could describe its middle, its spread and the difference between its highest and lowest values. You could not tell whether higher-income places are next to one another or separated by lower-income places. That question requires both **values** and **spatial relationships**.
 
-- Spatial Randomness is **the absence of any pattern**
+Spatial autocorrelation concerns the association between values of the **same variable** at locations connected by a specified spatial relationship. For example, do places with above-average incomes tend to have neighbours whose incomes are also above average? The question is about how values are arranged, rather than only how much they vary.
 
-- Spatial Randomness is not interesting
+By the end of this section, you should be able to explain autocorrelation in time and space, distinguish positive from negative spatial association, describe a random-label permutation, and separate visual impressions from statistical evidence. You should also be able to explain why an answer depends on the variable, spatial units, definition of neighbours and reference model.
 
-- if rejected, then **there is evidence of spatial structure**---spatially structured
+## A regional example near Kuala Lumpur
 
+Our example covers **nine administrative districts in Selangor, together with Kuala Lumpur and Putrajaya: 11 areas in total**. It is a regional illustration, broader than Greater KL. Kuala Lumpur is one polygon, so the map cannot reveal differences between neighbourhoods inside the city.
 
-### How to interpret Spatial Randomness
+The variable is **median gross monthly household income in 2022**, in Malaysian ringgit (RM), from the Department of Statistics Malaysia (DOSM). It is neither annual income nor an individual worker's salary. Households are assigned by place of residence: a household living in one district and working in another is counted where it lives. See the [official income catalogue](https://open.dosm.gov.my/data-catalogue/hh_income_district) and [DOSM's household-income dashboard](https://open.dosm.gov.my/dashboard/household-income-expenditure) for definitions and survey context.
 
-- the observed spatial pattern **is equally likely** as any other spatial pattern
-
-- no structure
-
-- values at one location **does not depend on** values at other locations/parts of the study area
-
-- value at one location **does not tell you anything about** what might be at the nearby locations
-
-
-### Operationalizing Spatial Randomness
-
-- under spatial randomness, the location of values may be altered without affecting the information content of the data
-
-- random permutation or reshuffling of values
-
-
-
-```{figure} ../resources/original/milwaukee-income-observed.svg
-:label: milwaukee-income-observed
-:alt: Median household income in 1999 across 417 Milwaukee metropolitan census tracts.
+```{figure} ../resources/original/kl-income-observed.png
+:label: kl-income-observed
+:alt: Median monthly household income in eleven areas of Selangor, Kuala Lumpur and Putrajaya, with blue for lower and red for higher values.
 :align: center
 
-Median household income in 1999 (US dollars), mapped from the 2000 Census for 417 tracts in the Milwaukee metropolitan area. Four zero-coded income values are treated as unavailable (grey). Map drawn for this book from [GeoDa Milwaukee data](https://geodacenter.github.io/data-and-lab/milwaukee1/); underlying source: US Census 2000, Summary File 3.
+Observed area-level median incomes in 2022. Colour classes are calculated from these 11 values and held fixed in subsequent maps. Red represents higher values and blue lower values; the pale middle class is not a significance category. Income: DOSM; boundaries: PLANMalaysia. Original map drawn for this book in WGS 84 / UTM zone 47N (EPSG:32647).
 ```
 
+Before reading further, identify two areas that appear similar in colour and close together. Then identify a transition between different colours. What counts as “close”: a shared boundary, a short road journey, or a short straight-line distance?
 
+A choropleth invites these questions but does not answer them statistically. Large polygons occupy more visual space, even though each is still one observation. Classification hides differences between values assigned to the same class. Inspect the table as well as the map.
 
-```{figure} ../resources/original/milwaukee-income-permutation.svg
-:label: milwaukee-income-permutation
-:alt: The observed Milwaukee income map beside one random permutation of its 413 positive income values.
+| Area | Median monthly household income, 2022 (RM) |
+|---|---:|
+| Gombak | 10,180 |
+| Klang | 8,203 |
+| Kuala Langat | 10,093 |
+| Kuala Selangor | 7,644 |
+| Petaling | 9,618 |
+| Sabak Bernam | 5,533 |
+| Sepang | 12,608 |
+| Ulu Langat | 11,210 |
+| Ulu Selangor | 7,678 |
+| Kuala Lumpur | 10,234 |
+| Putrajaya | 10,056 |
+
+These medians are calculated **within individual areas**. Taking their simple average or median would summarise the 11 area-level estimates; it would not recover the median income of all households in the combined region. The boundary service spells two districts “Hulu”, while DOSM uses “Ulu”; the notebook makes those matches explicitly.
+
+There is no rule that the centre must have the highest household income. Sepang's median exceeds Kuala Lumpur's here. Central land values, the concentration of workplaces and resident households' incomes are different measurements. Interpret the observed values rather than imposing an expected centre–periphery pattern.
+
+## From correlation to autocorrelation
+
+Ordinary correlation can compare two different variables measured on the same observations, such as income and expenditure. **Autocorrelation** instead relates a variable to another occurrence of itself, with those occurrences linked by time, space or another structure.
+
+For **temporal autocorrelation**, order supplies the relationship. We might compare each month's rainfall with the preceding month's rainfall. A one-month lag is different from a twelve-month lag; changing the lag changes the question. Seasonality can produce association without one month's rainfall directly causing the next month's rainfall.
+
+For **spatial autocorrelation**, there is usually no single natural ordering. A district can have several neighbours in different directions. Shared boundaries, distance bands and nearest-neighbour rules specify different relationships. Rearranging spreadsheet rows should not change geographical neighbours. The [next section](sec_06-02-Statistical-Spatial-Testing.md) explains these choices.
+
+The idea also extends to transport or social networks, where connected nodes supply the relationships. In every case, autocorrelation is defined relative to a structure, rather than only by a list of values.
+
+## Positive and negative spatial association
+
+**Positive spatial autocorrelation** means that similar values tend to occur at neighbouring locations relative to the chosen reference. Similarity includes relatively high values next to high values and relatively low values next to low values. A cluster of low incomes can therefore contribute positively to spatial autocorrelation.
+
+**Negative spatial autocorrelation** means that neighbouring values tend to be dissimilar: relatively high values occur beside relatively low values. An alternating grid makes this visible when neighbours share an edge. If diagonal cells also count as neighbours, the same arrangement includes additional similar-value pairs.
+
+```{figure} ../resources/original/autocorrelation-patterns.svg
+:label: autocorrelation-patterns
+:alt: Three synthetic grids containing identical counts of low and high values, arranged in blocks, a random reshuffle and a checkerboard.
 :align: center
 
-Observed income values (left) and one random reassignment of the same 413 available tract-level values (right). Boundaries, map extent, class breaks and the four unavailable locations stay fixed. The histogram of available values is unchanged; their spatial arrangement changes. The reshuffled map is a simulation, not an alternative Census observation. Data: [GeoDa / US Census 2000](https://geodacenter.github.io/data-and-lab/milwaukee1/).
+Synthetic teaching patterns, separate from the income data. Each panel contains 18 low and 18 high values. Under shared-edge neighbourhoods, blocks emphasise similar neighbours and the checkerboard emphasises dissimilar neighbours. The middle panel is one random assignment: chance groupings can occur, and its coefficient is not guaranteed to be zero.
 ```
 
+Positive and negative describe association, not whether an outcome is good or bad. They do not refer to the sign of income or the colour on the map. “High” and “low” also need a reference: they might mean above and below the study-area mean, rather than categories defined by a government income threshold.
 
+## A worked example: the same values, different neighbours
 
-### Random Patterns
+Four **synthetic** areas form a chain, A–B–C–D. Only consecutive areas are neighbours. Compare two assignments of the same values:
 
-```{figure} ../resources/original/milwaukee-income-three-permutations.svg
-:label: milwaukee-income-three-permutations
-:alt: Three independently reshuffled maps of available Milwaukee median household incomes using the same classification.
+| Assignment | A | B | C | D |
+|---|---:|---:|---:|---:|
+| Grouped | 2 | 2 | 8 | 8 |
+| Alternating | 2 | 8 | 2 | 8 |
+
+Both have mean 5 and the same distribution. Define each deviation as $z_i=x_i-\bar{x}$. The deviations are either $-3$ or $+3$.
+
+For a neighbouring pair, $z_i z_j$ is positive when deviations have the same sign and negative when their signs differ. Two below-average values give $(-3)(-3)=+9$.
+
+| Assignment | A–B | B–C | C–D | Sum over the three edges |
+|---|---:|---:|---:|---:|
+| Grouped | $+9$ | $-9$ | $+9$ | $+9$ |
+| Alternating | $-9$ | $-9$ | $-9$ | $-27$ |
+
+The distribution alone cannot distinguish the assignments; neighbour cross-products can. The grouped arrangement includes two similar-value edges and one contrasting edge. Every edge in the alternating arrangement connects dissimilar values.
+
+This sum is a **teaching quantity, not a normalised autocorrelation coefficient**. It changes with measurement units, the number of edges and the definition of neighbours. Each undirected edge is counted once here. Matrix expressions may count both directions; numerator and denominator conventions must remain consistent.
+
+## Spatial weights make the relationship explicit
+
+A spatial weights matrix records the relationships used in an analysis. An element $w_{ij}$ describes how location $j$ contributes to the neighbourhood of location $i$. A binary matrix uses 1 for neighbours and 0 otherwise, with a zero diagonal to exclude self-neighbourhood.
+
+For mean-centred values, a weighted neighbour summary is
+
+$$
+\ell_i=\sum_j w_{ij}z_j.
+$$
+
+This is a **spatial lag**. For a non-isolated row standardised to sum to one, it is a weighted average of neighbouring deviations. Otherwise it is a weighted sum. Locations without neighbours need explicit handling.
+
+Comparing $z_i$ with $\ell_i$ connects pairwise reasoning to [Moran's I](sec_06-03-Morans-I.md). A high value with a high neighbour average contributes differently from a high value with a low neighbour average. Later sections introduce normalisation and inference.
+
+Tobler's first law of geography motivates attention to nearby relationships, but does not guarantee positive autocorrelation for every variable, scale or neighbourhood. Distance decay is a modelling choice to examine, not a substitute for specifying and checking weights.
+
+## What should a random comparison hold fixed?
+
+Our initial reference for these areal data is **random assignment of observed values to fixed spatial units**. Conditional on the observed set of values, every assignment is equally likely under this reference. This is a random-label or permutation model.
+
+Boundaries do not move, areas are not resized and no new income values are invented. We shuffle the 11 observed area medians, preserving their sorted values, mean, variance and histogram. Their association with particular areas changes.
+
+```{figure} ../resources/original/kl-income-permutation.png
+:label: kl-income-permutation
+:alt: Observed income values beside a random reassignment of the same eleven estimates to the same polygons.
 :align: center
 
-Three independent random permutations of the available Milwaukee income values. Every panel uses the same 417 tracts, 413 positive incomes, four fixed unavailable locations and colour scale. Chance can produce local groupings; visual impressions alone do not establish statistical significance. Data: [GeoDa / US Census 2000](https://geodacenter.github.io/data-and-lab/milwaukee1/).
+Observed assignment (left) and one permutation (right), with identical values, boundaries, extent and classification. The right panel is simulated, not another survey or an income prediction. It preserves the distribution of the 11 area medians, not the underlying household-level distribution. Sources: DOSM and PLANMalaysia.
 ```
 
+This differs from **complete spatial randomness for point events** in Chapter 4. There, we simulate event locations within a study window. Here, locations remain fixed and attributes move between them. The reference models answer different questions.
 
-### Tobler's first law of geography
+Random does not mean that no recognisable grouping can appear. A reshuffle can contain similar colours next to one another or an isolated contrasting area by chance. One striking feature is insufficient evidence against a random reference.
 
-- Everything is related to everything else, but **near things** are more related than **distant things**.
-    - Everything depends on everything else, but closer things more so.
-
-- Structures spatial dependence
-    - places closer to each other tend to have similar values
-    - values of close locations tend to correlated
-
-- the reversed: can we **define distance** by observing how things are correlated with each other?
-    - if observations are correlated a lot, they are 'close'
-    - if they are not correlated, they are 'far'
-
-- Importance of distance decay
-    - Distance measure
-    - Spatial adjacency structure
-
-- **How do you define distance?**: Using some distance metrics to 'structure' the spatial dependence based on 'distance decay' characteristics.
-
-
-## Autocorrelation
-
-- The 'auto-' in autocorrelation means **'oneself'**. The word 'autos' comes from Greek.
-
-- Autocorrelation is a measure of the linear relationship **between values of a variable and its own nearby values**. The 'self'-correlation here refer to the correlation within one variable itself.
-
-- Two common types of autocorrelation:
-    - Temporal: Correlation between values of a variable and its own past or future.
-    - Spatial: Correlation between values of a variable and its own neighbors.
-
-- Other types of autocorrelation:
-    - Network: between values of a variable and the connected neighbors.
-
-
-## What is Spatial Autocorrelation
-- **Rejecting the Null Hypothesis**: rejecting spatial randomness: **the observed spatial pattern is not the result of a random process**.
-    - An evidence of Spatial Dependence: values are autocorrelated spatially
-    - An evidence of Spatial Heterogeneity: the underlying probability is non-stationary
-
-- **Positive Spatial Autocorrelation**: _similar_ values in neighboring locations are found to be more frequent compared to spatial randomness
-    - High and High (HH)
-    - Low and Low (LL)
-
-- **Negative Spatial Autocorrelation**: _dissimilar_ values in neighboring locations are found to be more frequent compared to spatial randomness
-    - High and Low (HL)
-    - Low and High (LH)
-
-
-## Spatial Autocorrelation: Global vs. Local
-
-**Global Spatial Autocorrelation**:
-- analyzing clustering, compared to spatial randomness
-
-- measures the overall degree of spatial clustering or dispersion for the entire study area.
-
-- provides a single value (e.g., Moran's I) that summarizes the extent to which the variable exhibits a clustered, dispersed, or random pattern across the entire area.
-
-- the spatial autocorrelation of the entire study area '**as a whole**'
-
-**Local Spatial Autocorrelation**:
-- identifying clusters, compared to spatial randomness
-
-- calculate the p-value for each location for exploring the probability of becoming a local hot-spot/cold-spot
-
-- provides a map (or a series of maps) that shows where the significant hot-spots/cold-spots
-
-- use the location-based spatial autocorrelation characteristics to detect posisble clusters at **specific locations**
-
-
-## Positive Spatial Autocorrelation
-
-- Impression of clustering
-
-- Clumps of similar values
-
-- 'Similar' can be both high (hot-spots) or both low (cold-spots)
-    - high values near to each other and
-    - low values near to each other, at the same time
-
-- difficult to rely on human perception
-
-
-```{figure} ../resources/w08-img/grid_positive_spatial_autocor.png
-:label:
-:alt:
+```{figure} ../resources/original/kl-income-three-permutations.png
+:label: kl-income-three-permutations
+:alt: Three further random assignments of the same income values, retaining identical boundaries and a shared legend.
 :align: center
 
-Similar values (either high or low) are closer to each other on the right, compared to the random pattern (left).
+Three further permutations generated with a recorded seed. Some assignments can look more structured than others. These illustrate variability under reassignment; three pictures do not supply a sufficient statistical reference distribution. Sources: DOSM and PLANMalaysia.
 ```
 
+## From maps to a statistical comparison
 
-## Negative Spatial Autocorrelation
-].column[
-- checkerboard pattern
-    - high value is surrounded by low values
-    - low value is surrounded by high values
+To ask whether an arrangement is unusual, define neighbours, choose a statistic and specify an alternative. For a statistic that increases with similar neighbouring values, positive association uses an upper-tail comparison. Negative association uses the appropriate lower tail. A two-sided question requires a defined two-sided procedure; do not select the tail after inspecting the result.
 
-- alternating values
+Calculate the statistic for the observed assignment and many random permutations, holding the weights fixed. The simulated statistics form a reference distribution. With $M$ randomly sampled permutations, a common upper-tail Monte Carlo p-value is
 
-- more about variability
+$$
+p_{\mathrm{upper}}=\frac{b+1}{M+1},
+$$
 
-- hard to distinguish from spatial randomness
+where $b$ counts simulated statistics greater than or equal to the observed statistic. Including ties and the added observed assignment avoids a reported p-value of zero. **In a hypothetical test**, if 19 of 999 simulated statistics are at least as large as the observed one, the result is $20/1000=0.020$. This is not a result calculated for the Malaysian data.
 
+The p-value describes unusualness under the specified null procedure. It is not the probability that the null is true, that the conclusion is wrong, or a measure of the importance of income differences. Failure to reject does not establish randomness. Eleven units also provide limited information about complex spatial patterns.
 
-```{figure} ../resources/w08-img/grid_negative_spatial_autocor.png
-:label:
-:alt:
-:align: center
+**Neither this section nor its notebook reports a spatial autocorrelation coefficient or p-value for the Malaysian data.** They establish the observations and permutation logic. The [Moran's I section](sec_06-03-Morans-I.md) develops the formal statistic, beginning with an explicit neighbourhood definition.
 
-On the right, the dissimilar values are closer to each other, generating checkerboard-like pattern.
+## When is permutation a defensible reference?
+
+Random reassignment treats areas as **exchangeable under the null**: values can be interchanged without violating that model. Independent observations are not automatically exchangeable if their distributions vary by location. Distinct urban and rural income-generating conditions, for example, could make unrestricted reassignment an unrealistic reference.
+
+Observed association can reflect neighbour interaction, shared geographical influences, broad trends or several processes together. A common trend can make nearby values similar without direct influence between neighbouring households. Rejecting unrestricted reassignment therefore does not identify a cause or uniquely distinguish dependence from spatial heterogeneity. A research question may require modelling a trend, conditioning on relevant covariates or designing a more restricted randomisation.
+
+Permuting district medians treats the estimates as the available observations. It does not propagate their survey uncertainty, recreate households or account for different household counts between areas. DOSM's survey methodology and uncertainty information matter for substantive comparisons.
+
+## Global patterns and local differences
+
+A **global** statistic summarises association across the whole study area. A **local** statistic examines the relationship around individual locations. A modest global result can coexist with a strong local contrast; a strong global result need not describe every location.
+
+| Configuration | Value at the location | Neighbour summary | Association tendency |
+|---|---|---|---|
+| High–high | Relatively high | Relatively high | Similarity |
+| Low–low | Relatively low | Relatively low | Similarity |
+| High–low | Relatively high | Relatively low | Contrast |
+| Low–high | Relatively low | Relatively high | Contrast |
+
+These configurations are descriptive until an appropriate local test has been performed. A red polygon is not automatically a significant hotspot, nor a blue polygon a significant coldspot. [Local Moran's I](sec_06-04-Local-Moran.md) distinguishes local similarity from spatial outliers; testing many locations also raises a multiple-comparison question.
+
+## Read the geography before drawing a conclusion
+
+**Aggregation changes what can be observed.** Eleven regional units cannot reveal neighbourhood-level inequalities, and patterns can change with the zoning scheme or spatial scale: part of the modifiable areal unit problem. An area's median does not describe every household. Inferring household relationships from an area-level relationship risks an ecological fallacy.
+
+**Study boundaries limit neighbourhoods.** Edge areas can have important connections outside the selected region. A district can become isolated under a restrictive distance rule despite having real geographical connections. A suitable projected CRS supports metric distances, but does not decide which neighbours are meaningful.
+
+**Maps and estimates have dates.** Income refers to 2022; the PLANMalaysia boundary snapshot was retrieved on 20 October 2026. It is not a reconstruction of 2022 administrative geography. The notebook matches names explicitly, and substantive historical analysis should verify boundary changes and area definitions.
+
+**Representation affects perception.** Quantile classes assign similar numbers of areas to colour classes, not equal income intervals. Equal intervals or a sequential palette can emphasise different features. Keep classes fixed across permutations so visible changes come from reassignment, and inspect numerical values before interpreting colours.
+
+## Reproduce, change and explain
+
+Open the [self-study notebook](../notebooks/lab-08-autocorrelation-self-study.ipynb). In the book repository it loads an attributed source snapshot; used alone, it can download the official sources directly. Both routes report fingerprints. It reproduces the three maps with optional Matplotlib `xkcd` styling and Comic Neue lettering, preserving the projected geographic coordinates.
+
+Compare median with mean income, change the random seed and try a different number of classes. Change one setting at a time and explain what stays fixed. A different year is accepted only when every area has an observation; the notebook stops rather than mixing years or silently dropping KL.
+
+The [source record](../datasets/kl_income_2022/README.md) documents retrieval, projection and matching. Continue to [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md) before calculating an autocorrelation statistic.
+
+## Check your understanding
+
+```{dropdown} 1. Can identical histograms accompany different spatial autocorrelation?
+Yes. Histograms record values and frequencies, not their assignment to locations. The chain example and map permutations illustrate this. Autocorrelation also requires specified neighbourhoods.
 ```
 
+```{dropdown} 2. Does a pair of low-income neighbours necessarily contribute negatively?
+No. If both are below the chosen mean, both deviations are negative and their product is positive. Low–low similarity contributes towards positive association. A contribution is not a test of local significance.
+```
 
-### Methods for testing Spatial Autocorrelation
-There are several statistical methods for testing global spatial autocorrelation, which helps determine whether the observed spatial pattern in a dataset deviates significantly from a random pattern.
+```{dropdown} 3. Must a random permutation look patternless?
+No. Chance can produce groupings. Inference compares a defined statistic with a reference distribution instead of declaring randomness from appearance.
+```
 
-- **Moran's I**: Perhaps the most widely used global spatial autocorrelation measure, Moran's I statistic evaluates whether the values of a variable are spatially clustered, dispersed, or randomly distributed. Moran's I ranges from -1 (perfect dispersion) to 1 (perfect clustering), with 0 indicating a random pattern.
-- **Geary's C**: Similar to Moran's I, Geary's C measures the degree of spatial autocorrelation in a dataset. While Moran's I focuses on the correlation between a value and its neighboring values, Geary's C emphasizes the differences between a value and its neighbors. Geary's C also ranges from 0 (perfect spatial autocorrelation) to 2 (perfect dispersion), with 1 indicating a random pattern.
-- **Getis-Ord Global G**: The Getis-Ord Global G statistic assesses whether the observed spatial pattern exhibits high-value clusters (hotspots) or low-value clusters (coldspots). It provides a single measure of clustering for the entire study area and can be used alongside Moran's I or Geary's C to gain additional insights into the data's spatial structure.
-- **Mantel Test**: Originally developed in biology, the Mantel Test is a correlation-based approach that evaluates the relationship between two spatial distance matrices (e.g., geographical and ecological distance matrices). While not strictly a measure of spatial autocorrelation, the Mantel Test can provide valuable insights into the relationship between spatial patterns in different variables.
+```{dropdown} 4. Does this map establish whether income clusters within Kuala Lumpur?
+No. KL is one observation. Its internal neighbourhood variation is not represented. Finer matched data and boundaries are needed for that question.
+```
+
+```{dropdown} 5. Would a small permutation p-value prove neighbouring districts influence each other's incomes?
+No. It provides evidence against a chosen randomisation reference. Shared influences and spatial trends can also produce association. Causal claims require an additional research design and evidence.
+```
+
+```{dropdown} 6. What stays fixed when the notebook's seed changes?
+The selected variable and year, boundaries, sorted values, colour classes and extent. Assignments change. In a formal test, the weights and statistic also stay fixed across permutations.
+```
+
+## Further reading
+
+- [GeoDa Workbook: Global Spatial Autocorrelation](https://geodacenter.github.io/workbook/5a_global_auto/lab5a.html): spatial lags, Moran scatter plots and randomisation inference.
+- [DOSM income by administrative district](https://open.dosm.gov.my/data-catalogue/hh_income_district): definitions, survey coverage, nominal values and attribution.
+- [PLANMalaysia boundary service](https://gisdev.planmalaysia.gov.my/server/rest/services/Hosted/Data_Sempadan_Daerah/FeatureServer/0): boundaries used in the regional illustration.
