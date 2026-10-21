@@ -1,0 +1,113 @@
+{
+  "source": "../firms_sumatra/README.md",
+  "support": "Two adjoining 100 km squares; 20 km cells. Retain only cells with 400 km\u00b2 land in the saved Natural Earth main-island mask; exclude R5C07 and R5C08, 104 detections. No zero-count cells deliberately removed.",
+  "land_area_caveat": "Full-land classification is relative to the generalized source boundary, not a claim of survey-accurate coastal geometry.",
+  "crs": "EPSG:32748",
+  "variable": "Raw nominal/high-confidence S-NPP VIIRS detections, 1\u201330 September 2026 UTC",
+  "global_weights": "I and C: row-standardised rook; General G: binary rook; same graph",
+  "local_weights": "I and C: row-standardised rook. Gi*: binary rook plus self weight 1. This difference is explicit and required by the selected definitions.",
+  "local_null": "Hold focal value fixed; sample k distinct indices from the other n-1 values without replacement. Same random draws for all three local statistics at a focal cell.",
+  "local_p": "Inclusive lower/upper Monte Carlo tails, add one; two-sided=min(1,2*min(p_lower,p_upper)). B=9999; seed=5230. Each method has a separate 48-test BH family.",
+  "BH_caveat": "BH is shown as an exploratory FDR adjustment, not guaranteed control under arbitrary spatial dependence. Bonferroni counts are provided as a dependence-robust family-wise comparison.",
+  "global_null": "Unrestricted permutation of the same counts on fixed cells/weights. I and General G upper-tail; C lower-tail for the stated alternatives.",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3"
+  },
+  "input_sha256": "3f29d27feef78dd9718afee1ad09c09a34b37976b3db08b12b60fc0fc99a443d",
+  "rook": {
+    "Moran_I": {
+      "observed": 0.2314102621615971,
+      "p_lower": 0.9916,
+      "p_upper": 0.0085,
+      "p_two": 0.017
+    },
+    "Geary_C": {
+      "observed": 0.758470393716356,
+      "p_lower": 0.0162,
+      "p_upper": 0.9839,
+      "p_two": 0.0324
+    },
+    "General_G": {
+      "observed": 0.13784271924805466,
+      "p_lower": 0.9988,
+      "p_upper": 0.0013,
+      "p_two": 0.0026
+    },
+    "n": 48,
+    "detections": 6097,
+    "mean": 127.02083333333333,
+    "B": 9999,
+    "seed": 5230,
+    "components": 1,
+    "isolates": 0,
+    "undirected_edges": 80,
+    "min_neighbours": 2,
+    "max_neighbours": 4,
+    "local": {
+      "I": {
+        "unadjusted_005": 4,
+        "BH_005": 0,
+        "Bonferroni_005": 0
+      },
+      "C": {
+        "unadjusted_005": 5,
+        "BH_005": 0,
+        "Bonferroni_005": 0
+      },
+      "Gstar": {
+        "unadjusted_005": 4,
+        "BH_005": 0,
+        "Bonferroni_005": 0
+      }
+    }
+  },
+  "queen_sensitivity": {
+    "Moran_I": {
+      "observed": 0.0889077582911357,
+      "p_lower": 0.9449,
+      "p_upper": 0.0552,
+      "p_two": 0.1104
+    },
+    "Geary_C": {
+      "observed": 0.916512315157776,
+      "p_lower": 0.1948,
+      "p_upper": 0.8053,
+      "p_two": 0.3896
+    },
+    "General_G": {
+      "observed": 0.20661589275613046,
+      "p_lower": 0.9918,
+      "p_upper": 0.0083,
+      "p_two": 0.0166
+    },
+    "n": 48,
+    "detections": 6097,
+    "mean": 127.02083333333333,
+    "B": 9999,
+    "seed": 5230,
+    "components": 1,
+    "isolates": 0,
+    "undirected_edges": 148,
+    "min_neighbours": 3,
+    "max_neighbours": 8,
+    "local": {
+      "I": {
+        "unadjusted_005": 9,
+        "BH_005": 0,
+        "Bonferroni_005": 0
+      },
+      "C": {
+        "unadjusted_005": 7,
+        "BH_005": 0,
+        "Bonferroni_005": 0
+      },
+      "Gstar": {
+        "unadjusted_005": 9,
+        "BH_005": 0,
+        "Bonferroni_005": 0
+      }
+    }
+  }
+}

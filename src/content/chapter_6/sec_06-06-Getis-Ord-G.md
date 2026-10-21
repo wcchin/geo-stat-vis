@@ -1,108 +1,148 @@
-# Getis-Ord G statistics
+---
+label: getis-ord-g
+---
 
-## Getis-Ord General G
-Three things to notice next
+# Getis–Ord G Statistics
 
-- the difference between 'stars': with star means $j$ can equal to $i$
+## A different question about local concentration
 
-- $x_i \times x_j$
+A high-value cell can be surrounded by low-valued neighbours, or lie within a broader high-value neighbourhood. Local Moran distinguishes the focal-versus-neighbour contrast. Getis–Ord statistics instead ask whether relatively large or small values concentrate within the selected neighbourhood.
 
-- The lower part (denominator) is a kind of standardizig process to control the range of the resulting values.
+This section separates **General G**, **local Gi** and **local Gi***. After reading, you should be able to explain self-inclusion, distinguish a raw ratio from a standardised score, interpret conditional permutation results, and choose among the chapter's summaries. The star is part of the statistic's definition, not a marker of significance.
 
-$$\text{global} = a . [\sum_i \text{component}(i)]$$
+## General G is a global statistic
 
-
-### Global version
-General G:
-
-$$
-\text{G} = \frac{\sum_i \sum_{j\neq  i} w_{ij} x_i x_j }{\sum_i\sum_{j\neq  i} x_i x_j}
-$$
-
-General G*:
+For nonnegative values, zero self-weights and binary adjacency $a_{ij}$, use
 
 $$
-\text{G}^{\ast} = \frac{\sum_i \sum_j w_{ij} x_i x_j }{\sum_i\sum_j x_i x_j}
+G=\frac{\displaystyle\sum_i\sum_{j\ne i}a_{ij}x_ix_j}
+{\displaystyle\sum_i\sum_{j\ne i}x_ix_j}.
 $$
 
-
-### Local version
-Gi:
+The denominator is $(\sum_i x_i)^2-\sum_i x_i^2$. It must be positive. The numerator counts products for selected ordered relationships; the denominator includes every ordered pair of distinct observations. Under unrestricted permutation of the values,
 
 $$
-\text{G}_i = \frac{\sum_{j\neq i}w_{ij}x_j}{\sum_{j\neq i}x_j}
+\mathbb{E}[G]=\frac{\sum_i\sum_{j\ne i}a_{ij}}{n(n-1)}.
 $$
 
-Gi*:
+Large positive products arise when large values are connected. A larger-than-reference G supports concentration of high values; a low-tail departure concerns an unusually low selected-pair product sum. G is not a symmetric measure treating low–low and high–high similarity identically, as Moran's mean-centred products do. A global tail does not locate a particular hotspot or coldspot.
+
+The binary rook graph is the same graph used for Moran and Geary, but those two statistics use row-standardised weights in our main analysis. This numerical weighting difference is deliberate and documented; do not attribute every difference in output solely to the statistic's name.
+
+Nonnegative counts are a natural teaching variable here. Arbitrarily adding a constant changes the products and the statistic. Unlike Moran's I and Geary's C, G is not invariant to a shift of origin. Do not mean-centre values before inserting them into this raw-ratio formula.
+
+## Local Gi excludes the focal unit
+
+A local ratio is
 
 $$
-\text{G}_{i}^{\ast} = \frac{\sum_{j}w_{ij} x_j}{\sum_{j} x_j}
+G_i=\frac{\sum_{j\ne i}a_{ij}x_j}{\sum_{j\ne i}x_j}.
 $$
 
+The numerator summarises selected neighbours, excluding the focal unit. The denominator contains all other observations, not just the neighbours. The focal value therefore does not enter either sum. A positive denominator is required.
 
-## The three measures
+For a synthetic five-unit dataset $[2,4,6,8,10]$, suppose the focal value is 6 and its neighbours have values 4 and 8. Binary local Gi is $(4+8)/(2+4+8+10)=12/24=0.5$. The fraction depends on the selected neighbourhood; a large raw ratio is not automatically significant.
 
-**Moran's I**
-- focus on $(x_i - \bar{x})(x_j - \bar{x})$ (deviation from the mean value)
-- **large positive** value (I>0): spatial clusters (HH or LL)
-- **large negative** value (I<0): spatial outliers (HL or LH)
-- near zero (I=0): random
+## Local Gi* includes the focal unit
 
-**Geary's C**
-- focus on $(x_i - x_j)^2$ (squared differences)
-- **small** value (c<1): spatial clusters (HH or LL)
-- **large** value (c>1): spatial outliers (HL or LH)
-- near 1 (c=1): random
+Let $a^*_{ij}=a_{ij}$ for other units and set $a^*_{ii}=1$. Then
 
-**Getis-Ord G\***
-- focus on $x_i \times x_j$ (the intensity of values in local neighborhoods to the global average)
-- **large** value (G\* > mean(G\*)): hot-spot (HH)
-- **small** value (G\* < mean(G\*)): cold-spot (LL)
-- near mean(G\*): random
+$$
+G_i^*=\frac{\sum_j a^*_{ij}x_j}{\sum_jx_j}.
+$$
 
+For the same example, Gi* is $(4+6+8)/30=0.6$. Here self-inclusion means adding both the focal observation to the selected sum and its value to the total denominator. Different diagonal or weight-transformation conventions must be stated explicitly.
 
-## Interpretation
-### Significance Maps
+Gi* can highlight a high-sum neighbourhood containing a locally low focal value, while Local Moran may describe that focal value as an LH contrast. A significant high Gi* score concerns the **neighbourhood concentration**, not necessarily an individually high focal observation. Gi and Gi* do not provide Moran's four focal/lag categories.
 
-```{figure} ../resources/w09-img/guerry_LG_significant_map.png
-:label:
-:alt:
+## Raw ratios, analytical scores and conditional scores
+
+A raw Gi* ratio has no universal zero reference for hot versus cold. Compare it with the distribution implied by the chosen null. One widely used analytical standardisation, with fixed weights $a^*_{ij}$ and unrestricted random assignment, is
+
+$$
+Z_i^*=\frac{\sum_j a^*_{ij}x_j-\bar{x}\sum_j a^*_{ij}}
+{s\sqrt{\dfrac{n\sum_j(a^*_{ij})^2-(\sum_j a^*_{ij})^2}{n-1}}},
+\qquad s^2=\frac{1}{n}\sum_j(x_j-\bar{x})^2.
+$$
+
+A zero denominator is undefined. Normal-approximation inference adds assumptions beyond calculating this score. A z-score is not the raw ratio and is not automatically a calibrated small-sample probability.
+
+Our maps instead use the **fixed-focal-value conditional permutation** design introduced in Section 6.4. Keep $x_i$ fixed, draw the other neighbour values without replacement and add the fixed self term. For binary weights with $k_i$ other neighbours,
+
+$$
+\mathbb{E}[G_i^*\mid x_i]
+=\frac{x_i+k_i\bar{x}_{-i}}{\sum_jx_j},
+\qquad \bar{x}_{-i}=\frac{\sum_{j\ne i}x_j}{n-1}.
+$$
+
+This differs from the unrestricted expectation implicit in the analytical score. The downloadable `Gstar_z_perm` is an observed departure divided by the conditional simulations' standard deviation, **not the analytical $Z_i^*$ above**. P-values are calculated from ranked simulation tails, not a normal approximation to that conditional score.
+
+Our two-sided procedure uses inclusive lower and upper tail counts, the plus-one adjustment and twice the smaller tail, as in Section 6.4. A selected observation above its conditional mean is labelled **Hot** and one below it **Cold**. These are relative statistical labels for detection activity, not fire-temperature measurements or official hazard categories.
+
+### When two methods give the same local p-values
+
+With binary equal-weight neighbours and a fixed focal value, Gi and Gi* are affine functions of the same neighbour sum, so their conditional rank comparisons agree when denominators are positive. For nonzero focal deviation, Local Moran is also an affine function of that sum, possibly reversing its direction. Consequently, our doubled-tail Local Moran and Gi* p-values coincide when using the same random draws. This is a consequence of the stated design, not independent confirmation by two tests. Their descriptive labels and interpretation can still differ. Other inference or weighting conventions need not produce this equivalence.
+
+## Results on the shared FIRMS grid
+
+For the same **48 cells and 6,097 detections**, binary rook General G is **0.1378**. Its unrestricted permutation upper-tail p is **0.0013**. The result concerns concentration of large detection counts under this graph; it is not evidence of a particular smoke-source contribution.
+
+```{figure} ../resources/original/firms-local-gstar.svg
+:label: firms-local-gstar
+:alt: Conditional Gi-star high and low concentration candidates for the South Sumatra grid, compared before and after BH adjustment. The adjusted map has no selected observations.
 :align: center
 
-Significance Maps
+Gi* with binary rook neighbours plus self weight one. Compare unadjusted two-sided p ≤ 0.05 with BH q ≤ 0.05 across 48 tests. Orange denotes selected high-sum departures; purple denotes selected low-sum departures. Grey is not selected and hatching marks excluded coastal cells. The figure does not map raw Gi* ratios or analytical normal scores.
 ```
 
+There are four unadjusted candidates: two high and two low neighbourhood concentrations. None meets BH q ≤ 0.05, and none meets the Bonferroni threshold. Their overlap with the Local Moran candidates follows the conditional rank equivalence just explained; it should not be presented as replication.
 
+Queen weights produce General G = 0.2066 and upper-tail p = 0.0083. More links change both the raw G and its reference expectation, so the larger raw value is not evidence that queen reveals stronger concentration. The graph-specific comparison is the relevant one.
 
-### Cluster Maps
+## Choose a statistic from the question
 
-```{figure} ../resources/w09-img/guerry_LG_cluster_map.png
-:label:
-:alt:
-:align: center
+| Question | Useful starting summary | Interpretation to avoid |
+| --- | --- | --- |
+| Do neighbouring deviations tend to agree overall? | Global Moran's I | Treating a global result as a map of significant hotspots |
+| Are neighbouring values unusually similar in squared-difference terms? | Global/local Geary | Assuming small differences imply a particular HH/LL label |
+| Where does a focal value agree or contrast with its neighbours? | Local Moran | Calling every scatterplot quadrant significant |
+| Do high values concentrate among selected pairs overall? | General G | Inferring locations directly from one global coefficient |
+| Where are unusually high or low neighbourhood sums? | Gi or Gi* | Assuming the focal observation itself must be high or low |
 
-Cluster Maps
+Methods complement geographical reasoning; they do not select a causal explanation. Keep the support, variable and graph explicit, distinguish transformations and self-weights, and report the inferential family. Comparing many methods and retaining only favourable results creates another selection problem beyond the within-map multiple testing shown here.
+
+## Closing the chapter
+
+The Malaysia income maps established why a histogram cannot reveal geographical arrangement. The weights section defined which relationships enter a calculation. The Moran, Geary and Getis–Ord sections then examined different attribute summaries and global/local questions.
+
+The observed Sumatra results add a final lesson: a clear count concentration, a global rejection and an adjusted local discovery are different claims. Here rook-based global evidence coexists with no BH-selected local findings, and some conclusions change under queen weights. Report this structure rather than reducing the analysis to “clustered” or “random”. Neither a zero-detection cell nor a non-selected local test proves absence of fire, and these analyses do not establish which fires caused haze elsewhere.
+
+## Check your reasoning
+
+```{dropdown} 1. Does the star mean statistically significant?
+No. It denotes self-inclusion in the local definition. Significance requires a separate reference comparison.
 ```
 
-## Closing Remarks
+```{dropdown} 2. Is a high raw Gi* ratio automatically a hotspot?
+No. The neighbourhood size, weights, value distribution and reference determine its expected magnitude and unusualness.
+```
 
-### Choosing the appropriate method(s)
-There are so many different methods and equations for spatial autocorrelation, which one should I use?
+```{dropdown} 3. Can a low focal value lie inside a high-sum neighbourhood?
+Yes. Gi* concerns the sum including neighbours. Local Moran can identify the focal-versus-neighbour contrast separately.
+```
 
-**Aim of Visualisation**
-- If you only want to detect high and low clustering phenomena, the **Getis-Ord G statistics** could be sufficient.
-- If your data are expected to have a common middle value (e.g., mean), and you aim to detect hot-spots and cold-spots in relation to this middle value, **Moran's I** is ideal.
-- If you want to detect places with similar values (not necessarily compared to the middle value), **Geary's C** is the way to go.
+```{dropdown} 4. Does Local Moran/Gi* agreement here provide independent confirmation?
+No. Their two-sided conditional rankings coincide under this equal-neighbour-weight, fixed-focal-value design. The same data and draws drive both.
+```
 
-**Scale Sensitivity**
-- **Moran's I** is more sensitive to larger-scale spatial patterns, as every value is compared to the global mean.
-- **Geary's C** is better at detecting local, smaller-scale variations, since it calculates the differences rather than similarity between values.
-- **Getis-Ord G** statistic is also more sensitive to large-scale spatial patterns. The range of the product obtained by multiplying a pair of values implies that it focuses on global high and global low value pairs.
+```{dropdown} 5. What changes when diagonal neighbours are included?
+The graph, selected pair products, neighbourhood sums and corresponding null distributions. Raw coefficients from different graphs are not a common strength scale.
+```
 
-**Comparison with Previous Studies**
-- If you want to compare your results with other research in your field, choose a method that is commonly used in those studies for consistency and ease of comparison.
+## Reproduce and read further
 
+The [shared areal notebook](../notebooks/firms-areal-self-study.ipynb), [source record](../datasets/firms_areal/README.md) and explicit Python implementation reproduce all figures and comparisons. The workbook's existing [local areal lab](../notebooks/lab-09-LISA.ipynb) provides the package-based course workflow; check its definitions and software defaults before expecting identical p-values or category codes.
 
-### What we have learnt so far
-
-<img src="../resources/w09-img/recap-1c.drawio.png" width="60%">
+- **Foundation:** Getis, A. and Ord, J. K. (1992). [The Analysis of Spatial Association by Use of Distance Statistics](https://doi.org/10.1111/j.1538-4632.1992.tb00261.x). *Geographical Analysis*, 24, 189–206.
+- **Standardisation and inference:** Ord, J. K. and Getis, A. (1995). [Local Spatial Autocorrelation Statistics: Distributional Issues and an Application](https://doi.org/10.1111/j.1538-4632.1995.tb00912.x). *Geographical Analysis*, 27, 286–306.
+- **Implementation comparison:** [GeoDa: Getis–Ord statistics](https://geodacenter.github.io/workbook/6b_local_adv/lab6b.html#getis-ord-statistics) and [esda G_Local](https://pysal.org/esda/stable/generated/esda.G_Local.html). Check self-weight, transformation and alternative conventions.
