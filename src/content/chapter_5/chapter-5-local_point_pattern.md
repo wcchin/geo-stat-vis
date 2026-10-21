@@ -1,108 +1,41 @@
-# Chapter 5: Local Point Pattern
+# Chapter 5: Local point patterns
 
-**Objectives of this lecture**
-- To locate where the clusters are.
-- To differentiate spatial clusters.
+Chapter 4 asked whether a point pattern, considered across a study window, departed from a specified model of randomness. A global summary can reveal aggregation without showing where the concentrations lie. It can also conceal differences within the window: a dense centre and a sparse fringe may contribute to the same overall statistic. This chapter turns from an overall summary to the geographical arrangement of concentrations and groups.
 
-## What was covered in previous section
+We develop this question using Singapore HDB resale registrations: **where do transactions in the higher and lower parts of the price distribution occur, and how does our description change with the analytical method?** The example connects an attribute distribution to a spatial pattern. It also introduces a distinction that matters throughout spatial analysis: a concentration of events is not automatically a concentration of unusually high values.
 
-- Point Patterns
-- Complete Spatial Randomness
-- Methods for differentiating various types of point patterns:
-    - clustered,
-    - random,
-    - dispersed
+## The example and its observations
 
-The main purpose and testing hypothesis is:
-Does the entire/overall pattern of point data present some sort of _non-random_ pattern?
+The teaching snapshot contains 5,379 four-room resale registrations from January through June 2026, at 3,236 distinct block-and-street addresses. Registration month defines inclusion. It does not provide an exact sale date. Each record represents a transaction, while the available coordinate represents its HDB block. Several records can therefore occupy exactly the same mapped position.
 
-It does not answer _WHERE_ the pattern occurs.
+Using all selected transactions, the lower price quartile is S\$558,000 and the upper quartile is S\$745,000. We include every record at either cutoff: the lower group contains 1,367 transactions and the upper group contains 1,353. The groups are slightly larger than 25% because prices are tied. Arbitrarily splitting tied prices would create a distinction that is absent from the data.
 
+![All transactions and the two price groups](../datasets/hdb_resale_2026/figures/hdb-overview.png)
 
-## Global Analysis and Local Analysis
+*Figure 5.1. The same map extent and colour scale show all transactions, lower-group transactions and upper-group transactions. Markers count sales at blocks, without jitter. URA MP2019 planning areas provide geographical context. They are not the units of this point analysis.*
 
-- **Terminology**: The term '_GLOBAL_' refers to the _scale of analysis_, which encompasses the _entire study area_, rather than implying an _analysis at the Earth's scale_.
-- **Holistic perspective**: Global analysis provides an _overall view_ of the spatial patterns or trends across the entire study area, enabling a comprehensive understanding of the phenomena under investigation.
-    - Is the crime incidences clustered within the study area?
-- **Spatial autocorrelation**: Global analysis can detect global spatial autocorrelation, a measure of _how similar or dissimilar the values_ of a given attribute _are in nearby locations_.
-    - Do places with more crime incidences near to other places with more crime incidences?
-- **Spatial heterogeneity**: It helps identify global spatial heterogeneity, or _the variation of a given attribute across the study area_, providing insights into the distribution patterns of the phenomena.
-    - Is the crime rate similar across the study area?
-    - Is the crime rate (non-)uniform within the study area?
-- **Modeling and prediction**: Global analysis aids _in developing statistical models and predictions for the entire study area_ by incorporating spatial autocorrelation and heterogeneity into the analysis.
-- **Scale considerations**: The results of global analysis may depend on _the scale or resolution of the study area_, highlighting the importance of selecting appropriate spatial scales for the analysis.
+The lower-price group occupies more selling blocks than the upper-price group: 1,033 compared with 647. This is a descriptive difference in geographical spread. It does not by itself establish statistically significant clustering. A large volume of transactions in one housing estate can produce a concentration in several price categories simply because many sales occurred there.
 
+We therefore retain the all-sales map as a reference throughout the chapter. When discussing expensive sales, ask both “Where are these sales concentrated?” and “Is their concentration distinctive relative to the locations of sales overall?” These are related but different questions.
 
-### Global Analysis
+## What you will learn
 
-Think of a regression model---any model. _Would you focus on a single data point or a subset of data points?_
+By the end of this chapter, you should be able to explain how bandwidth shapes a density estimate; distinguish probability density, event intensity and average attribute values; compare the purposes of k-means and DBSCAN; and describe how a map's symbols and envelopes affect the interpretation of a cluster. You should also be able to explain why a visually compelling concentration is not a statistical significance test.
 
-In most cases, when working with regression models, we _do not focus on the characteristics of a single or a few individual data points_. Instead, we pay attention to the _overall 'pattern' that emerges when considering the entire dataset_. This pattern allows us to calculate crucial components such as regression coefficients ($\beta$), their significance, and relevant statistical tests like $r^2$, pseudo $r^2$, AIC, and others.
+The chapter follows one sequence. We first smooth the distribution of resale prices along a number line. We then smooth transaction locations over a map. Next we consider what it means to assign observations to groups, compare two clustering algorithms and examine ways of displaying the resulting groups.
 
-By examining the _collective behavior_ of the data points, we can gain insights into the underlying relationships between variables, assess the model's performance, and make informed predictions or decisions based on the model's output. In other words, _a 'global' understanding_ of the entire dataset.
+## From a location pattern to a marked point pattern
 
+A point can carry attributes, often called **marks** in point-process analysis. Here the location is the block position and the mark is the transaction price. Analysing locations alone asks where sales occur. Selecting the upper-price group asks where that subset occurs. Including price as a numerical feature in a clustering algorithm asks something else again: which observations are similar under a combined definition of spatial and price difference?
 
-```{figure} ../resources/w04-img/spatial_patterns_3_basic.png
-:label:
-:alt:
-:align: center
+In the main spatial demonstrations, price selects the subset and projected coordinates determine distance. We do not silently add price to the distance calculation. Distances use SVY21 / Singapore TM (EPSG:3414), in metres. Planning-area lines are background context, not barriers or proof of housing-market divisions.
 
-Is it clustered? not-clustered? random?
+**Before continuing:** Why might a district with many expensive sales have an ordinary proportion of expensive sales? Think about the denominator before interpreting a dark patch on a map.
+
+## Data and reproducibility
+
+Contains HDB resale-price information and HDB/OneMap building coordinates, accessed 21–22 October 2026 and made available under the [Singapore Open Data Licence](https://www.onemap.gov.sg/legal/opendatalicence.html). The coordinate snapshot is distributed by [seehiong/autonomous-hdb-deepagents](https://github.com/seehiong/autonomous-hdb-deepagents), with source attribution to HDB and OneMap, © Singapore Land Authority. URA MP2019 planning areas provide the basemap. See the [dataset sources, matching audit and reproducible figure scripts](https://github.com/wcchin/geo-stat-vis/blob/main/src/content/datasets/hdb_resale_2026/README.md).
+
+```{dropdown} Self-check feedback: Why does a concentration of expensive sales need a reference pattern?
+Many sales of every type may occur where housing stock or turnover is large. Compare with all selling locations and make the denominator explicit.
 ```
-
-
-
-
-
-## Local Analysis
-
-As geographers, we are not satisfied with the global understanding, we also want to know _'where'_.
-
-**What is Local Analysis**
-
-- **Local pattern**: Local analysis focuses on _identifying patterns or trends within specific local areas or neighborhoods_ in the study region.
-
-- **Spatial Heterogeneity**: It explores spatial variations by examining how a given attribute behaves differently across various locations in the study area.
-
-- **Identification of location**: Local analysis is crucial for understanding the nuances of spatial data and identifying specific regions that require targeted interventions or further investigation.
-
-
-Key aspects of local analysis include:
-- **Detection of local clusters**: Identifying regions with high or low concentrations of a given attribute, also known as hot spots and cold spots, respectively.
-
-- **Local spatial autocorrelation**: Evaluating how similar or dissimilar the values of a given attribute are in nearby locations within specific local areas.
-
-- **Scale-dependent patterns**: Investigating how local patterns change with different spatial scales or resolutions.
-
-- **Finer details**: Local analysis complements global analysis by providing insights into the finer details of spatial patterns and helping to develop more targeted strategies and solutions for different parts of the study area.
-
-
-The aim of local analysis in geospatial visualization and statistics is _to identify local patterns and spatial variations_ by examining how a given attribute _behaves differently across various locations_ in the study area. This includes understanding the interaction between nearby spatial units and _detecting clusters or hot spots_ where the concentration of the attribute is _significantly_ high or low compared to the surrounding areas.
-
-In other words:
-- **Local** Spatial Analysis is to answer the question of _WHERE are the clusters_?
-- **Global** Spatial Analysis is about the question of _WHAT is the pattern_?
-
-
-## Local Analysis - HOW?
-
-Common methods for Local Spatial Analysis include:
-- Local Indicators of Spatial Association (LISA) for areal data
-    - Local Moran's I
-    - Local Geary's C
-    - Local Getis-Ord Gi*
-
-- Kernel Density Estimation
-
-
-## Two Types Clusters/Clustering in Spatial Analysis
-
-1. some parts of the study area that have very **high concentration of point events**,
-i.e., **'clusters'**
-    - to check if this phenomenon exists in the spatial point data
-    - to identify the location of these clusters
-    - significant tests, CSR
-
-2. **groups of spatial points** that are close to each other,
-i.e., **'clusters'**
-    - identify grouping of points with/without overlap

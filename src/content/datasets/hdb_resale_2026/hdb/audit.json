@@ -1,0 +1,32 @@
+{
+  "transactions": 5379,
+  "addresses": 3236,
+  "matched_transactions": 5379,
+  "q1": 558000.0,
+  "q3": 745000.0,
+  "median": 630000.0,
+  "at_q1": 23,
+  "at_q3": 14,
+  "groups": {
+    "middle": 2659,
+    "lower": 1367,
+    "upper": 1353
+  },
+  "month_counts": {
+    "2026-01": 1061,
+    "2026-02": 725,
+    "2026-03": 890,
+    "2026-04": 841,
+    "2026-05": 948,
+    "2026-06": 914
+  },
+  "psm_q1": 5809.523809523809,
+  "psm_q3": 7849.462365591397,
+  "psm_group_changes": 879,
+  "duplicate_source_rows": 4,
+  "matched_by_group": {
+    "lower": 1367,
+    "middle": 2659,
+    "upper": 1353
+  }
+}

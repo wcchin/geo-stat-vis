@@ -1,292 +1,100 @@
-# Spatial Kernel Density Estimation
+# 5.2 Spatial kernel density estimation
 
-## Spatial Kernel Density Estimation
-Spatial Kernel Density Estimation (Spatial KDE) is an extension of KDE for analyzing geospatial data.
+A point map shows observed positions. When many observations overlap, it becomes difficult to see the broad geographical pattern. Spatial KDE places a two-dimensional kernel over each position and sums the contributions at a grid of evaluation locations. The resulting surface describes how the observed point mass is distributed under a chosen amount of smoothing.
 
-It works with the same approach as KDE, i.e., selecting a Kernel Function, choosing a bandwidth, and calculate the density for every spatial sampling unit (grid cells).
+For a common isotropic bandwidth $h$ in two dimensions,
 
-How every event points contribute to the density of each sample grid cell?
+$$\widehat{f}_h(\mathbf{s})=\frac{1}{nh^2}\sum_{i=1}^{n}K\left(\frac{\mathbf{s}-\mathbf{s}_i}{h}\right).$$
 
-```{figure} ../resources/w06-img/density_based.png
-:label:
-:alt:
-:align: center
+Here $\mathbf{s}_i$ is an observed position and $\mathbf{s}$ is an evaluation position. An isotropic kernel treats directions equally, so its contribution depends on distance rather than direction. With coordinates in metres, the probability density has units of inverse square metres. Multiplication by one million expresses it per square kilometre.
 
-Impacts from near by points to each cell.
+## Choose the quantity before choosing the colours
+
+Three surfaces can look similar while answering different questions.
+
+| Surface | Interpretation | Important denominator |
+|---|---|---|
+| Probability density | Where is a randomly selected transaction from this group likely to occur? | Number of transactions in that group |
+| Event intensity | How many transactions are smoothed into a unit area during the observation period? | Area, with a fixed period |
+| Smoothed price | What average price is associated with nearby observed sales? | Local weighted sales, rather than just area |
+
+For an uncorrected fixed-bandwidth estimate, multiplying probability density by the group's count gives a smoothed event intensity:
+
+$$\widehat{\lambda}_h(\mathbf{s})=n\widehat{f}_h(\mathbf{s}).$$
+
+Our first spatial comparison uses this intensity form, with a common Gaussian bandwidth of 700 m and a shared colour scale. Every transaction has unit weight, including transactions sharing a block position. The values describe registrations over the six-month window, not annual rates.
+
+![All-sales and quartile intensity surfaces](../datasets/hdb_resale_2026/figures/spatial_kde.png)
+
+*Figure 5.3. Uncorrected Gaussian intensity estimates evaluated on a 300 m grid. The same bandwidth, units and colour range apply to all three panels. The surface is displayed within the planning-area union; this display mask is not an edge correction.*
+
+A high value in the upper-group panel means a concentration of upper-group sales. It does not mean that the average local sale price equals a high value: price is not being averaged in this calculation. Likewise, summing price-weighted kernels would represent a smoothed concentration of transaction value, not an average price.
+
+If the aim were to estimate a local average price, one possible descriptive smoother would divide the kernel-weighted sum of prices by the kernel-weighted sum of sales. Such an estimate needs care wherever the denominator is small and would answer a different question from Figure 5.3.
+
+## Bandwidth sets the geographical scale
+
+![Spatial bandwidth comparison](../datasets/hdb_resale_2026/figures/bandwidth.png)
+
+*Figure 5.4. Upper-group probability density with Gaussian bandwidths of 350 m, 700 m and 1,400 m. The panels share a colour scale. These values are standard deviations of Gaussian kernels, not finite search radii.*
+
+A smaller bandwidth reveals estate-scale concentrations and gaps. A larger bandwidth can connect several concentrations into one broad feature. A Gaussian kernel has no finite cutoff, so distant observations still contribute, although increasingly weakly. Software that uses a compact kernel or a search radius can therefore interpret a numerical bandwidth differently. State the implementation as well as the distance.
+
+The grid spacing controls how finely the estimated surface is sampled for display. It is not the bandwidth. Reducing a 300 m grid to 100 m produces more pixels; it does not create more precise source locations or reduce the smoothing scale.
+
+## Coastlines, opportunities and interpretation
+
+The kernels in these figures extend over the whole plane before the display is masked. Some mass falls into the sea or into places with no HDB stock. Simply hiding those cells does not redistribute the lost mass. The surface visible over land therefore need not integrate to the full count or to one. A boundary-corrected or opportunity-adjusted estimate would require an explicitly defined window and a justified correction.
+
+Planning-area outlines provide a detailed geographical reference, but they do not define where a sale could have occurred. Housing stock, eligible flats and the locations of observed sales offer different possible reference populations. A dark upper-group patch may reflect plentiful housing, high turnover, a larger upper-price share, or several of these together.
+
+
+## Dual KDE: compare one distribution with another
+
+Separate surfaces show where each group concentrates. **Dual KDE** relates two smoothed surfaces through an explicitly chosen operation, such as subtraction or division. It is a family of comparisons, rather than a synonym for one particular ratio. The comparison helps us move from “Where are there many expensive sales?” to “Where are expensive sales relatively more common, given the geography of selling locations?”
+
+For the HDB example, let $\widehat f_H$, $\widehat f_L$ and $\widehat f_A$ denote separately normalised probability densities for the high-price group, low-price group and all transactions. Each density integrates to one over the full plane before display masking. We use the same Gaussian kernel, 700 m bandwidth and 300 m grid for all three.
+
+| Comparison | Ratio | Meaning of a value above 1 |
+|---|---|---|
+| High versus all | High-group density divided by all-sales density | High-price sales are overrepresented relative to their overall share |
+| Low versus all | Low-group density divided by all-sales density | Low-price sales are overrepresented relative to their overall share |
+| High versus low | High-group density divided by low-group density | Greater concentration of the high-group distribution than the low-group distribution |
+
+For example,
+
+$$R_H(\mathbf{s})=\frac{\widehat f_H(\mathbf{s})}{\widehat f_A(\mathbf{s})}.$$
+
+The neutral value is one. A ratio of two means that the high-group probability density is twice the all-sales probability density at that location. It does **not** mean that twice as many high-price transactions as total transactions occur there.
+
+### A relative-representation ratio and a local share
+
+The distinction follows from normalisation. Let $p_H=n_H/n_A$ be the high-group proportion across the complete sample. Using the same kernels, its smoothed local share is
+
+$$\widehat p_H(\mathbf{s})=\frac{\widehat\lambda_H(\mathbf{s})}{\widehat\lambda_A(\mathbf{s})}=p_H R_H(\mathbf{s}).$$
+
+Here $p_H$ is about 0.252. A relative-representation ratio of two therefore corresponds to a smoothed local share of about 0.503, or 50.3%. The ratio compares that local share with its overall baseline. Dividing the **count-intensity** surfaces directly gives the share; dividing the **separately normalised probability-density** surfaces gives the baseline-relative ratio. State which calculation the map shows.
+
+High and low are not complementary categories: middle-price transactions remain in the all-sales denominator. For high versus low, a ratio of one means equal normalised densities. Equal local count intensities would instead require allowing for the groups' different total counts.
+
+![Dual KDE ratios for the price groups](../datasets/hdb_resale_2026/figures/dual_kde.png)
+
+*Figure 5.4a. Ratios of separately normalised Gaussian KDEs, displayed on a log₂-spaced scale. Orange indicates a ratio above one and purple below one; the first named group determines the direction of the comparison. Ratios of one-half and two are equally far from the neutral value. Colours saturate outside one-quarter to four. This diverging palette represents departures around a reference value; the earlier observed-count and density maps retain sequential OrRd colours.*
+
+### Avoid ratios supported by almost no data
+
+A Gaussian kernel has positive tails far from the observations. A ratio can therefore be calculated where both densities are extremely small, producing an apparently striking contrast with little local support. We retain high/all and low/all cells only where all-sales intensity is at least 5 transactions per km² over the six months. High/low additionally requires each group's intensity to be at least 1 transaction per km². Other land cells retain the muted basemap and are **not** neutral ratios or zeros.
+
+These thresholds are transparent exploratory choices, not confidence limits. Their sensitivity should be checked before making a substantive claim. No pseudocount is added to the denominator. The comparisons inherit the location uncertainty and bandwidth dependence of the component estimates, and do not remove differences in housing stock, turnover, size or remaining lease. They are descriptive relative patterns, not tests of significant clustering or probabilities for all flats.
+
+### Reading connection: the food-retailing study
+
+[Jansenberger and Staufer-Steinnocher (2004)](https://research.wu.ac.at/en/publications/dual-kernel-density-estimation-as-a-method-for-describing-spatio--4/) examined Upper Austrian food retailing in 1998 and 2001. Their comparison grouped Rewe and Spar against other retailers and used differences between density surfaces to describe changing outlet concentration and dominance. Thus the comparison concerned retail groups, rather than two individual hypermarket stores. We retain it as a methodological reading while using Singapore HDB data for the worked maps.
+
+Their subtraction and our normalised ratios answer different questions: a difference retains the component surfaces' units, while a ratio is dimensionless and emphasises relative representation. Reading task: explain why a large absolute density difference need not imply a large density ratio, and why either result depends on the underlying reference distribution.
+
+**Interpretation task:** Compare a dark patch in the upper-group surface with the all-sales surface. What additional evidence would distinguish a concentration of sales from an unusually high local share of expensive sales?
+
+```{dropdown} Self-check feedback: Does a ratio of two mean twice as many high-price as all sales?
+No. With separately normalised densities it means the local high-price share is twice its overall share. At an overall share near 0.252, this corresponds to a local smoothed share near 0.503.
 ```
-
-```{figure} ../resources/w06-img/SpatialKDE_inanutshell.png
-:label:
-:alt:
-:align: center
-
-Spatial KDE in a nutshell. For more information, please see Bailey and Gatrell 1995. Interactive Spatial Data Analysis. [Anderson 2009](https://pdf.sciencedirectassets.com/271664/1-s2.0-S0001457509X00035/1-s2.0-S0001457508002340/dx.doi.org/10.1016/j.aap.2008.12.014)]
-
-```
-
-
-
-## Calculation of Spatial KDE
-
-The sum of 2-D kernel functions.
-
-```{figure} ../resources/w06-img/summing_KDE_surface2.png
-:label:
-:alt:
-:align: center
-
-The sum of bell shape kernels for every cell in the grid [Levine 2013. Crimestat 4](https://www.ojp.gov/pdffiles1/nij/grants/242960-242995.pdf).
-```
-
-
-
-## Spatial KDE vs. aggregated count by cell
-When using a grid-based approach for spatial data analysis, counting points in each cell might only reveal random distribution if the grid cell size is too small (the lower figure). In such cases, the counting result is not useful in presenting the spatial pattern.
-
-Density estimation techniques, such as spatial KDE (middle figure), can help identify the spatial structure and trends within the data. These methods can effectively highlight areas with high concentration versus low concentration, as well as capture the changing rates and other essential aspects of spatial patterns.
-
-```{figure} ../resources/w06-img/demonstration_KDE-c.png
-:label:
-:alt:
-:align: center
-
-Demonstration of KDE.
-```
-
-## Example of Spatial KDE
-
-```{figure} ../resources/w06-img/cat_health_care.png
-:label:
-:alt:
-:align: center
-
-Health care POI @ Queenstown
-```
-
-
-```{figure} ../resources/w06-img/cat_commercials.png
-:label:
-:alt:
-:align: center
-
-Commercial POI @ Queenstown
-```
-
-
-```{figure} ../resources/w06-img/cat_education.png
-:label:
-:alt:
-:align: center
-
-Education POI @ Queenstown
-```
-
-
-```{figure} ../resources/w06-img/cat_foods.png
-:label:
-:alt:
-:align: center
-
-Food POI @ Queenstown
-```
-
-
-```{figure} ../resources/w06-img/cat_beverages.png
-:label:
-:alt:
-:align: center
-
-Beverages POI @ Queenstown
-```
-
-
-```{figure} ../resources/w06-img/cat_outdoor_activity.png
-:label:
-:alt:
-:align: center
-
-Outdoor Activity POI @ Queenstown
-```
-
-
-## Bandwidth Selection in Spatial KDE
-With smaller bandwidth values, the density estimates are more localized and highlight finer details of the data distribution, which could be similar to the distribution of aggregated count by cell---seems random. As the bandwidth increases, the KDE maps start to emphasize broader spatial patterns and general trends in the data. This smoother representation of density may help identify larger-scale features and regional differences while potentially **overlooking local variations** in the data.
-
-
-```{figure} ../resources/w06-img/kde_queenstown_health.png
-:label:
-:alt:
-:align: center
-
-E.g., Health POI @ Queenstown
-```
-
-
-```{figure} ../resources/w06-img/kde_dif_bw.png
-:label:
-:alt:
-:align: center
-
-KDE with different bandwidths
-```
-
-
-
-## Kernel Functions for Spatial KDE
-(a) Gaussian
-(b) Epanechnikov
-(c) Triangular
-(d) Uniform
-
-All kernel functions have a rounded base shape.
-
-
-```{figure} ../resources/w06-img/kernel_functions_3D.png
-:label:
-:alt:
-:align: center
-
-Kernel functions (height-dimension) for 2D spatial data. See [Fouedjio et al. 2017](http://dx.doi.org/10.1080/03717453.2017.1415114).
-```
-
-
-```{figure} ../resources/w06-img/kde_dif_kernel.png
-:label:
-:alt:
-:align: center
-
-Examples and differences between threee Kernel Functions using the same dataset.
-```
-
-
-## Visualizing Spatial KDE
-```{figure} ../resources/w06-img/kde_example_1.png
-:label:
-:alt:
-:align: center
-
-Example of Spatial KDE visualisation: [Chin 2023](https://dx.doi.org/10.1007/978-981-19-8765-6_8)
-```
-
-
-```{figure} ../resources/w06-img/kde_example_2.png
-:label:
-:alt:
-:align: center
-
-Example of Spatial KDE visualisation: [Xia et al. 2024](https://doi.org/10.1186/s40494-024-01499-5)
-```
-
-
-```{figure} ../resources/w06-img/kde_example_4.png
-:label:
-:alt:
-:align: center
-
-Example of Spatial KDE visualisation: [Wheeler 2014](https://andrewpwheeler.com/tag/kernel-density/)
-```
-
-
-
-```{figure} ../resources/w06-img/kde_example_3.png
-:label:
-:alt:
-:align: center
-
-Example of Spatial KDE visualisation: [Yang et al. 2019](https://doi.org/10.3390/ijgi8020093)
-```
-
-
-```{figure} ../resources/w06-img/kde_example_5.png
-:label:
-:alt:
-:align: center
-
-Example of Spatial KDE visualisation: [Kuo et al. 2012](https://api.semanticscholar.org/CorpusID:5968823)
-```
-
-
-```{figure} ../resources/w06-img/kde_example_6.png
-:label:
-:alt:
-:align: center
-
-Example of Spatial KDE visualisation: [Levine 2013](https://www.ojp.gov/pdffiles1/nij/grants/242960-242995.pdf)
-```
-
-
-## Edge Effects
-Edge effects in KDE refer to the bias and inaccuracy in density estimates near the boundary of the study area due to the lack of data beyond the edges.
-
-```{figure} ../resources/w06-img/cat_outdoor_activity.png
-:label:
-:alt:
-:align: center
-
-Effects of the edges where the external data is not included.
-```
-
-### Methods addressing edge effects
-- **Reflection Method**: Mirror the data points across the boundary, creating a new set of points outside the study area. Apply KDE to this extended dataset, ensuring the density estimates near the boundary are influenced by the reflected points, reducing edge effects.
-- **Gaussian Truncation**: Truncate the Gaussian kernel function used in KDE at the boundary of the study area. This method eliminates the need to make assumptions about the data beyond the boundary, as the truncated kernel function only considers the points within the study area.
-- **Adaptive Kernel Methods**: Utilize adaptive kernel functions, where the kernel shape and bandwidth vary based on the local density of points. By adapting to the local density, these methods can help reduce edge effects and produce more accurate density estimates near the boundary.
-- **Boundary Correction Methods**: Apply boundary correction methods, such as the bias-correction method proposed by Chen and Firth (2000), which adjusts the density estimates near the boundary to compensate for edge effects.
-- **Expansion of the Study Area**: Expand the study area beyond the original boundary, ensuring that the kernel function extends beyond the actual area of interest. This approach eliminates edge effects but may introduce uncertainty in density estimates for areas without data.
-
-
-## Advanced Techniques and Applications
-- Dual KDE
-- Space-time KDE
-- Network KDE
-
-### Dual KDE
-
-```{figure} ../resources/w06-img/advanced_dualkde.png
-:label:
-:alt:
-:align: center
-
-See [Jansenberger & Staufer-Steinnocher 2004](https://www.researchgate.net/publication/252791884_Dual_Kernel_Density_Estimation_as_a_Method_for_Describing_Spatio-Temporal_Changes_in_the_Upper_Austrian_Food_Retailing_Market) for more details
-```
-
-
-### Space-time KDE
-
-```{figure} ../resources/w06-img/advanced_stkde.png
-:label:
-:alt:
-:align: center
-
-See [Hu et al. 2018](https://doi.org/10.1016/j.apgeog.2018.08.001) for more details
-```
-
-
-### Network KDE
-
-```{figure} ../resources/w06-img/advanced_nkde.png
-:label:
-:alt:
-:align: center
-
-See [Tang et al. 2016](https://doi.org/10.1080/13658816.2015.1119279) for more details
-```
-
-
-## Summary
-
-- **Introduction**: Spatial KDE is an extension of KDE for analyzing spatial data, focusing on patterns, trends, and density variations within a geographic context.
-- **Applications**: Spatial KDE is widely used in fields like ecology, crime analysis, epidemiology, and urban planning to identify hot spots, clusters, and spatial relationships.
-- **Spatial Adaptations**: Spatial KDE adapts traditional KDE by incorporating techniques to handle edge effects and the specific characteristics of spatial data.
-- **Kernel Functions**: Different kernel functions can be used in spatial KDE to accommodate various data distributions and spatial patterns, ensuring accurate density estimation.
-- **Bandwidth Selection**: Choosing an appropriate bandwidth for spatial KDE is crucial for accurate density estimation and pattern identification. Methods include rule-of-thumb, cross-validation, and plug-in approaches.
-- **Visualization**: Spatial KDE results are typically visualized as heatmaps, contour plots, or 3D surfaces to facilitate interpretation and communication of spatial patterns and trends.
-
-
-### Capturing Local Point Patterns with Spatial KDE
-
-- Spatial KDE is an effective method for capturing and visualizing local point patterns in spatial data.
-- By estimating density using a moving kernel window, spatial KDE highlights areas of high and low concentration within the study area.
-- Bandwidth selection plays a crucial role in capturing local point patterns, as it controls the level of smoothing and the size of the local neighborhood considered in the density estimate.
-- Smaller bandwidths capture finer details and local variations, while larger bandwidths highlight broader spatial trends and regional differences.
-- Visualizing spatial KDE results as heatmaps or contour plots allows for easy identification of hotspots, clusters, and spatial relationships within the data.
-- Spatial KDE does not provide related statistical tests to assess the significance level of the identified patterns or differences between point patterns. Additional statistical methods may be required for a more comprehensive analysis.
