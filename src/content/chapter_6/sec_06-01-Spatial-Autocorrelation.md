@@ -2,13 +2,15 @@
 label: spatial-autocorrelation
 ---
 
-# Autocorrelation & Spatial Autocorrelation
+# Autocorrelation and Spatial Autocorrelation
 
 ## Does where a value occurs tell us something about its neighbours?
 
 Imagine receiving a table of household incomes with the place names removed. You could describe its middle, its spread and the difference between its highest and lowest values. You could not tell whether higher-income places are next to one another or separated by lower-income places. That question requires both **values** and **spatial relationships**.
 
 Spatial autocorrelation concerns the association between values of the **same variable** at locations connected by a specified spatial relationship. For example, do places with above-average incomes tend to have neighbours whose incomes are also above average? The question is about how values are arranged, rather than only how much they vary.
+
+The chapter introduction distinguished event locations from attributes attached to areas. Here we use the Malaysian income maps to develop that second question before defining a neighbourhood matrix.
 
 By the end of this section, you should be able to explain autocorrelation in time and space, distinguish positive from negative spatial association, describe a random-label permutation, and separate visual impressions from statistical evidence. You should also be able to explain why an answer depends on the variable, spatial units, definition of neighbours and reference model.
 
@@ -82,9 +84,9 @@ Four **synthetic** areas form a chain, A–B–C–D. Only consecutive areas are
 | Grouped | 2 | 2 | 8 | 8 |
 | Alternating | 2 | 8 | 2 | 8 |
 
-Both have mean 5 and the same distribution. Define each deviation as $z_i=x_i-\bar{x}$. The deviations are either $-3$ or $+3$.
+Both have mean 5 and the same distribution. Define each mean-centred deviation as $d_i=x_i-\bar{x}$. The deviations are either $-3$ or $+3$.
 
-For a neighbouring pair, $z_i z_j$ is positive when deviations have the same sign and negative when their signs differ. Two below-average values give $(-3)(-3)=+9$.
+For a neighbouring pair, $d_i d_j$ is positive when deviations have the same sign and negative when their signs differ. Two below-average values give $(-3)(-3)=+9$.
 
 | Assignment | A–B | B–C | C–D | Sum over the three edges |
 |---|---:|---:|---:|---:|
@@ -95,21 +97,11 @@ The distribution alone cannot distinguish the assignments; neighbour cross-produ
 
 This sum is a **teaching quantity, not a normalised autocorrelation coefficient**. It changes with measurement units, the number of edges and the definition of neighbours. Each undirected edge is counted once here. Matrix expressions may count both directions; numerator and denominator conventions must remain consistent.
 
-## Spatial weights make the relationship explicit
+## Neighbour relationships need a definition
 
-A spatial weights matrix records the relationships used in an analysis. An element $w_{ij}$ describes how location $j$ contributes to the neighbourhood of location $i$. A binary matrix uses 1 for neighbours and 0 otherwise, with a zero diagonal to exclude self-neighbourhood.
+The chain calculation used shared links, but the income map does not have just one obvious ordering. A district can have several neighbours, and alternative rules connect different sets of places. These choices determine which value pairs enter a statistic.
 
-For mean-centred values, a weighted neighbour summary is
-
-$$
-\ell_i=\sum_j w_{ij}z_j.
-$$
-
-This is a **spatial lag**. For a non-isolated row standardised to sum to one, it is a weighted average of neighbouring deviations. Otherwise it is a weighted sum. Locations without neighbours need explicit handling.
-
-Comparing $z_i$ with $\ell_i$ connects pairwise reasoning to [Moran's I](sec_06-03-Morans-I.md). A high value with a high neighbour average contributes differently from a high value with a low neighbour average. Later sections introduce normalisation and inference.
-
-Tobler's first law of geography motivates attention to nearby relationships, but does not guarantee positive autocorrelation for every variable, scale or neighbourhood. Distance decay is a modelling choice to examine, not a substitute for specifying and checking weights.
+Tobler's first law of geography motivates attention to nearby relationships, but does not guarantee positive autocorrelation for every variable, scale or neighbourhood. Distance decay is a modelling choice to examine, not a substitute for checking the relationships. [Section 6.2](sec_06-02-Statistical-Spatial-Testing.md) translates those choices into a weights matrix and a spatial lag, then links them to Moran's I.
 
 ## What should a random comparison hold fixed?
 
@@ -139,19 +131,13 @@ Three further permutations generated with a recorded seed. Some assignments can 
 
 ## From maps to a statistical comparison
 
-To ask whether an arrangement is unusual, define neighbours, choose a statistic and specify an alternative. For a statistic that increases with similar neighbouring values, positive association uses an upper-tail comparison. Negative association uses the appropriate lower tail. A two-sided question requires a defined two-sided procedure; do not select the tail after inspecting the result.
+To ask whether an arrangement is unusual, define neighbours, choose a statistic and specify the departure of interest before interpreting the result. Calculate that statistic for the observed assignment and many random permutations, holding the weights fixed. The resulting reference distribution describes variation under the reassignment model.
 
-Calculate the statistic for the observed assignment and many random permutations, holding the weights fixed. The simulated statistics form a reference distribution. With $M$ randomly sampled permutations, a common upper-tail Monte Carlo p-value is
+For a statistic that increases with similar neighbour values, an unusually large observed value can provide evidence of positive association. The direction and calibration depend on the statistic: later sections explain why the same tail rule cannot simply be transferred to every measure. One visually striking permutation is not a substitute for this distribution.
 
-$$
-p_{\mathrm{upper}}=\frac{b+1}{M+1},
-$$
+A permutation p-value describes unusualness under the specified procedure. It is not the probability that the null is true, that the conclusion is wrong, or a measure of the importance of income differences. Failure to reject does not establish randomness in every aspect of the map. Section 6.3 develops the formal calculation and Monte Carlo reporting convention.
 
-where $b$ counts simulated statistics greater than or equal to the observed statistic. Including ties and the added observed assignment avoids a reported p-value of zero. **In a hypothetical test**, if 19 of 999 simulated statistics are at least as large as the observed one, the result is $20/1000=0.020$. This is not a result calculated for the Malaysian data.
-
-The p-value describes unusualness under the specified null procedure. It is not the probability that the null is true, that the conclusion is wrong, or a measure of the importance of income differences. Failure to reject does not establish randomness. Even with 92 units, a statistic summarises the selected scale and neighbourhood structure rather than every feature of the map.
-
-**Neither this section nor its notebook reports a spatial autocorrelation coefficient or p-value for the Malaysian data.** They establish the observations and permutation logic. The [Moran's I section](sec_06-03-Morans-I.md) develops the formal statistic, beginning with an explicit neighbourhood definition.
+**Neither this section nor its notebook reports a spatial autocorrelation coefficient or p-value for the Malaysian data.** They establish the observations and permutation logic. First continue to [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md), then use [Moran's I](sec_06-03-Morans-I.md) to formalise the comparison.
 
 ## When is permutation a defensible reference?
 
@@ -220,6 +206,10 @@ The selected variable and year, boundaries, sorted values, colour classes and ex
 
 ## Further reading
 
+- **Foundational paper:** Tobler, W. R. (1970). [A Computer Movie Simulating Urban Growth in the Detroit Region](https://doi.org/10.2307/143141). *Economic Geography*, 46 (Supplement), 234–240. Read as geographical motivation for considering nearby relationships, not as evidence that every variable must have positive association.
+
 - [GeoDa Workbook: Global Spatial Autocorrelation](https://geodacenter.github.io/workbook/5a_global_auto/lab5a.html): spatial lags, Moran scatter plots and randomisation inference.
 - [DOSM income by administrative district](https://open.dosm.gov.my/data-catalogue/hh_income_district): definitions, survey coverage, nominal values and attribution.
 - [PLANMalaysia boundary service](https://gisdev.planmalaysia.gov.my/server/rest/services/Hosted/Data_Sempadan_Daerah/FeatureServer/0): boundaries used in the regional illustration.
+
+**Next:** [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md). Make the neighbour relationship explicit before calculating a statistic.
