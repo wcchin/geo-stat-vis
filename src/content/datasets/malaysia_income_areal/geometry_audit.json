@@ -1,0 +1,83 @@
+{
+  "retrieved": "2026-10-21",
+  "boundary_query": "https://gisdev.planmalaysia.gov.my/server/rest/services/Hosted/Data_Sempadan_Daerah/FeatureServer/0/query?where=kod_negeri+NOT+IN+%28%2712%27%2C%2713%27%2C%2715%27%29&outFields=negeri%2Ckod_negeri%2Cdaerah%2Ckod_daerah&returnGeometry=true&outSR=3375&f=json",
+  "full_boundary_sha256": "d5aafcfa17d2d28a10d7a9a7b98b1b9d16dc63111b195047a3a85cb7be8f4ad9",
+  "full_boundary_bytes": 23278127,
+  "geometry_count": 92,
+  "invalid_after_conversion": [],
+  "overlaps_over_1m2": [
+    {
+      "i": "0202",
+      "j": "0900",
+      "area_m2": 308935.17222896725
+    },
+    {
+      "i": "0105",
+      "j": "0609",
+      "area_m2": 3274.7238495448437
+    },
+    {
+      "i": "0105",
+      "j": "0103",
+      "area_m2": 47.16175305818837
+    },
+    {
+      "i": "0105",
+      "j": "0104",
+      "area_m2": 53.10612207032575
+    },
+    {
+      "i": "0108",
+      "j": "0105",
+      "area_m2": 35.65246798578238
+    },
+    {
+      "i": "0809",
+      "j": "0804",
+      "area_m2": 1.1843854429226013
+    }
+  ],
+  "geometry_method": "Esri clockwise shells unioned; counterclockwise holes subtracted; make_valid applied to source rings before union. Interior representative_point per full geometry.",
+  "crs": "EPSG:3375",
+  "income_year": 2022,
+  "variable": "median gross monthly household income (RM)",
+  "income_sha256": "538054fb769e020f0ee2ba46a4166ba55d2eff1cb45e0d4545a96dff483e9f20",
+  "diagnostics": {
+    "rook": {
+      "isolates": [
+        "KANGAR",
+        "LANGKAWI"
+      ],
+      "components": 4,
+      "undirected_edges": 213
+    },
+    "queen": {
+      "isolates": [
+        "LANGKAWI"
+      ],
+      "components": 3,
+      "undirected_edges": 214
+    },
+    "union_knn_4": {
+      "components": 1,
+      "isolates": 0,
+      "undirected_edges": 226,
+      "min_degree": 4,
+      "max_degree": 9,
+      "maximum_link_km": 90.4689074510967,
+      "median_link_km": 36.65004663132211
+    },
+    "union_knn_6": {
+      "components": 1,
+      "isolates": 0,
+      "undirected_edges": 333,
+      "min_degree": 6,
+      "max_degree": 11,
+      "maximum_link_km": 110.53142069407313,
+      "median_link_km": 42.6403074671
+    }
+  },
+  "primary": "union_knn_4",
+  "sensitivity": "union_knn_6",
+  "selection": "Rules chosen before computing association: retain all 92 areas including islands; primary symmetric union of four nearest interior representative points, sensitivity six. These are proximity relations, not commuting links or boundary contiguity."
+}

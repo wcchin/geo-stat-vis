@@ -56,13 +56,11 @@ Their mean is 0.5, agreeing with global I. B and C have zero lag because their l
 
 Every non-axis observation has a descriptive quadrant, but only some may be unusual under a chosen local null. A scatterplot quadrant is not a significance classification, and a dark count-map cell is not automatically a statistically supported hotspot.
 
-## A shared South Sumatra analysis
+## The shared Malaysian income analysis
 
-The chapter now uses an observed teaching snapshot from **1–30 September 2026**, retaining nominal/high-confidence S-NPP VIIRS detections. Start with the two adjoining 100 km squares used in the quadrat section and partition them into fifty 20 km cells. For the areal comparison, retain only cells classified as full land by the saved generalized boundary. This removes two coastal cells containing 104 detections, leaving **48 cells and 6,097 detections**. No cell is removed because it has a low or zero count.
+Use the same **92 mapped areas and 2022 median gross monthly household incomes** as in Section 6.3. Every area estimate is retained and receives one observation weight. The symmetric union-4NN graph has 226 undirected links, one component, no isolates and four to nine neighbours. Interior representative points are derived from full-detail geometry in EPSG:3375; display outlines are not used to infer adjacency.
 
-These choices differ from the area-adjusted quadrat example, which retained both coastal cells. Here all retained cell areas are equal, so the count comparison does not introduce different ocean exposure. Classification as full land remains approximate because the source coastline is generalized. The exploratory region and filtering are documented in the [analysis record](../datasets/firms_areal/README.md).
-
-Use a fixed rook graph with row-standardised weights: it has 80 undirected edges, one connected component, no isolates, and two to four neighbours per cell. The observed variable is a detection count, not burned area, distinct ignitions or forest-fire incidents. Repeated overpasses and uneven observation conditions remain relevant.
+This proximity graph retains islands and avoids silently repairing the disconnected contiguity graph. It is not a claim that income travels along these links. The [source record](../datasets/malaysia_income_areal/README.md) documents geometry overlaps, joins, representative-point choices and link lengths. Published medians are treated as observations; the permutations do not propagate survey uncertainty or weight districts by household population.
 
 ## Conditional permutation: what stays fixed?
 
@@ -85,31 +83,33 @@ This doubled-tail convention is conservative for discrete references and has min
 
 ## Reading the observed results
 
-```{figure} ../resources/original/firms-local-moran.svg
-:label: firms-local-moran
-:alt: Local Moran classifications for the 48-cell South Sumatra grid, comparing unadjusted two-sided permutation p-values with Benjamini–Hochberg adjusted values. Excluded coastal cells are hatched.
+```{figure} ../resources/original/malaysia-income-local-moran.png
+:label: malaysia-income-local-moran
+:alt: Local Moran income classifications across 92 Peninsular Malaysian areas before and after BH adjustment.
 :align: center
 
-Original observed-data analysis. Left: quadrant labels shown only where unadjusted two-sided p is at most 0.05. Right: the same results after a separate 48-test BH adjustment. Grey means not selected by that procedure; hatching means outside the retained support. Neither means no fire.
+Original income analysis: unadjusted two-sided p ≤ 0.05 (left) and separate 92-test BH q ≤ 0.05 (right). Orange is HH, purple LL, gold HL and teal LH where selected. Grey means not selected by the stated procedure. Income: DOSM; display boundaries: PLANMalaysia.
 ```
 
-Four cells meet the unadjusted threshold: two HH and two LL. For example, R3C06 has 1,207 detections and an HH configuration, with unadjusted two-sided p = 0.0182. **None of the 48 cells is selected at BH-adjusted q ≤ 0.05**, and none meets the Bonferroni threshold. Thus the data offer exploratory local candidates under the unadjusted procedure, not multiplicity-adjusted discoveries at this level.
+Twenty-five areas meet the unadjusted threshold: nine HH, fifteen LL and one LH. After BH adjustment, **fourteen remain: seven HH and seven LL**. Nine meet the stricter Bonferroni threshold. The adjusted HH group includes Kuala Lumpur, Putrajaya and several Selangor districts; the LL group includes seven Kelantan districts. These are relationships relative to this sample mean and graph, not official income-group categories.
 
-Cell identifiers count rows south to north and columns west to east. A classified focal cell is not the same as a delineated fire perimeter or a cluster membership assignment for individual detections. Neighbourhoods overlap, and their local statistics are related.
+Kuala Lumpur has median income RM 10,234, an HH configuration and two-sided permutation p = 0.0002 (BH q ≈ 0.0026). Bentong, with median RM 4,691, is an unadjusted LH candidate (p = 0.0240), but is not selected after BH adjustment (q ≈ 0.1162). This contrast helps separate a descriptive outlier configuration from adjusted evidence.
+
+Neighbourhoods overlap. A selected focal area does not mean every household shares its median, nor does it assign every district to a mutually exclusive economic region.
 
 ## Why multiple testing changes the map
 
-Testing 48 locations creates more opportunities for small p-values than a single test. Under a complete null with valid tests at level 0.05, the expected number of false rejections is at most $48\times0.05=2.4$. This expectation does not require independence, but the joint error behaviour does depend on the tests' relationships.
+Testing 92 locations creates more opportunities for small p-values than a single test. Under a complete null with valid tests at level 0.05, the expected number of false rejections is at most $92\times0.05=4.6$. This expectation does not require independence, but the joint error behaviour does depend on the tests' relationships.
 
-**Bonferroni** compares each p-value with $0.05/48\approx0.00104$ and controls family-wise error without requiring independence, assuming valid individual p-values. **Benjamini–Hochberg (BH)** sorts the p-values and compares ordered $p_{(r)}$ with $r\alpha/48$ using a step-up rule. It targets false discovery rate under suitable assumptions. Spatially overlapping tests are dependent; ordinary BH is not a universal guarantee under arbitrary dependence. We show it as an exploratory adjustment and provide the Bonferroni comparison as well.
+**Bonferroni** compares each p-value with $0.05/92\approx0.000543$ and controls family-wise error without requiring independence, assuming valid individual p-values. **Benjamini–Hochberg (BH)** sorts the p-values and compares ordered $p_{(r)}$ with $r\alpha/92$ using a step-up rule. It targets false discovery rate under suitable assumptions. Spatially overlapping tests are dependent; ordinary BH is not a universal guarantee under arbitrary dependence. We show it as an exploratory adjustment and provide the Bonferroni comparison as well.
 
 An adjusted q-value is not the probability that its cell is a false discovery. Nor does changing a threshold identify a different physical pattern: it changes the evidence rule applied to the same estimates. Do not tune the number of permutations, seed or weights until coloured cells appear.
 
 ## Relate local results back to global association
 
-On the same rook graph, global I = 0.2314 with upper-tail permutation p = 0.0085. This does not contradict the absence of BH-selected local findings. The global test pools contributions into one statistic; the local analysis uses 48 conditional comparisons with a different inferential family.
+Global I = 0.6646 with upper-tail p = 0.0001 describes pooled neighbour similarity. Fourteen BH-selected local findings provide a different, location-specific result. A global rejection does not imply significance for every district or determine the number of selected local observations.
 
-Queen weights give global I = 0.0889 and upper-tail p = 0.0552. This sensitivity matters: the evidence concerns the chosen neighbour relationships, not a universal property of the region. Both graphs and all sensitivity outputs are saved. Low counts, broad intensity differences, clouds and repeat observations may affect either result.
+Under the six-neighbour sensitivity graph, global I is 0.6593 and 23 local Moran observations meet the BH threshold. Thus global similarity persists while the local footprint changes. Both specifications are reported; neither is chosen because it produces more selected locations. Urbanisation, labour-market access, household composition and spatial trends remain possible explanations requiring additional evidence.
 
 ## Check your reasoning
 
@@ -121,17 +121,17 @@ Yes. A below-mean focal value with a below-mean neighbour lag is LL and gives a 
 The focal value, observation support and weights. The other values are reassigned. The observed neighbour values are not fixed.
 ```
 
-```{dropdown} 3. Do four unadjusted findings establish four corrected hotspots?
-No. Two are LL rather than HH, and none survives the reported BH or Bonferroni procedure. State the exact inference rule.
+```{dropdown} 3. Is Bentong an adjusted spatial-outlier finding?
+No. It is an unadjusted LH candidate but does not meet the reported BH threshold. State the configuration and inference rule separately.
 ```
 
-```{dropdown} 4. Does an all-grey adjusted map prove the absence of local structure?
-No. It reports no selected findings under that procedure. It does not prove the null or erase the observed variation.
+```{dropdown} 4. Do unselected districts have no spatial relationships?
+No. Non-selection means insufficient evidence under that test and threshold. It does not erase observed variation or prove randomness.
 ```
 
 ## Reproduce and read further
 
-The [shared areal notebook](../notebooks/firms-areal-self-study.ipynb) reproduces the retained grid, statistics, maps and sensitivity comparison from the repository snapshot. The [source and result record](../datasets/firms_areal/README.md) defines every calculation. These new empirical maps replace the earlier Guerry illustrations.
+The [shared areal notebook](../notebooks/malaysia-income-areal-self-study.ipynb) reproduces the observations, graph, statistics, maps and sensitivity comparison from the repository snapshot. The [source and result record](../datasets/malaysia_income_areal/README.md) defines every calculation. These new empirical maps replace the earlier Guerry illustrations.
 
 - **Foundation:** Anselin, L. (1995). [Local Indicators of Spatial Association—LISA](https://doi.org/10.1111/j.1538-4632.1995.tb00338.x). *Geographical Analysis*, 27, 93–115. Read the local-to-global argument alongside the stated normalisation.
 - **Multiplicity:** Benjamini, Y. and Hochberg, Y. (1995). [Controlling the False Discovery Rate](https://doi.org/10.1111/j.2517-6161.1995.tb02031.x). *JRSS B*, 57, 289–300. Distinguish false discovery rate from family-wise error and note the assumptions.

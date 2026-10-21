@@ -8,7 +8,7 @@ label: gearys-c-and-local-geary
 
 Moran's I combines products of deviations from the overall mean. **Geary's C** instead compares the squared difference between each observation and its neighbours. Both use attribute values and a specified spatial graph, but compress those relationships differently.
 
-This section develops the global statistic, a clearly scaled local version and a comparison on the same South Sumatra grid. After reading, you should be able to interpret C relative to its null expectation, calculate a local squared-difference summary, and explain why Local Geary does not automatically inherit Moran's HH/LL/HL/LH labels.
+This section develops the global statistic, a clearly scaled local version and a comparison on the same Malaysian income observations. After reading, you should be able to interpret C relative to its null expectation, calculate a local squared-difference summary, and explain why Local Geary does not automatically inherit Moran's HH/LL/HL/LH labels.
 
 For an individual pair, consider these synthetic values with overall mean 10:
 
@@ -80,23 +80,23 @@ The selected tail and p-value remain in the downloadable results. These labels d
 
 A more elaborate implementation may subdivide local similarity into high–high, low–low and other positive association, or use different label codes. Those classifications require additional information and rules. Our map does not claim to reproduce a package's categorical output. In particular, Local Geary alone cannot distinguish a high value among low neighbours from a low value among high neighbours using the sign of $c_i$: all its terms are squared.
 
-## Results for the shared FIRMS grid
+## Results for the shared Malaysian income data
 
-Use exactly the same **48 full-land 20 km cells, 6,097 September detections and rook graph** as in Sections 6.3–6.4. Global Geary C = **0.7585**, with a lower-tail permutation p = **0.0162** from 9,999 unrestricted shuffles. These values support overall neighbour similarity relative to the stated allocation reference. The result does not identify fire spread or distinguish separate ignitions.
+Use the same **92 income estimates and union-4NN graph** as in Sections 6.3–6.4. Global C = **0.3176**, with lower-tail permutation p = **0.0001** from 9,999 unrestricted shuffles. This supports neighbour similarity under the stated reference, not direct influence between household incomes. The p-value is the simulation resolution limit.
 
-```{figure} ../resources/original/firms-local-geary.svg
-:label: firms-local-geary
-:alt: Local Geary conditional similarity or dissimilarity on the South Sumatra grid, comparing unadjusted two-sided p-values and BH-adjusted values. The adjusted map has no selected cells.
+```{figure} ../resources/original/malaysia-income-local-geary.png
+:label: malaysia-income-local-geary
+:alt: Local Geary conditional similarity and dissimilarity classifications on the Peninsular Malaysian income map, before and after BH adjustment.
 :align: center
 
-Observed-data Local Geary analysis on the same retained grid and rook graph. Gold denotes selected low-difference departures and purple denotes selected high-difference departures, where present. Grey means not selected; hatched coastal cells are excluded. The categories follow the stated equations, not software-specific numeric labels.
+Same income observations and primary graph. Gold denotes selected low-difference departures; purple denotes selected high-difference departures. Grey is not selected. Categories follow the stated equations rather than software-specific numeric labels. Income: DOSM; boundaries: PLANMalaysia.
 ```
 
-Five cells meet the unadjusted two-sided 0.05 threshold, all in the “Similar” category. **None survives BH q ≤ 0.05 or Bonferroni correction across the 48 local tests.** Report both outcomes rather than presenting the unadjusted map as a set of established local clusters.
+Forty areas meet the unadjusted two-sided 0.05 threshold: 38 similar and two dissimilar. **Twenty-four remain under BH q ≤ 0.05**, all in the similarity category; seven meet Bonferroni correction. The adjusted map is therefore different from Local Moran's, even though the data and graph are unchanged.
 
-One instructive comparison is R3C05, containing 481 detections. It is HH under Moran's descriptive quadrants and meets the unadjusted Local Moran threshold, but its Geary departure does not meet the unadjusted threshold. A high neighbour average does not mean every neighbour is close to the focal value. Squared differences retain information about contrast that can be obscured by that average. This observed comparison motivates inspecting individual neighbour values; it does not establish that one statistic is correct and the other is wrong.
+Perlis illustrates the distinction: its median RM 4,713 is fairly close to the overall mean. Local Geary selects it as unusually similar to its selected neighbours (BH q ≈ 0.0288), while Local Moran does not (q ≈ 0.9211). Conversely, Kota Bharu is BH-selected LL under Moran (q ≈ 0.0226) but not selected by Local Geary (q ≈ 0.3137). A neighbour mean and the separate squared differences retain different information. These are not disagreements about which data are correct.
 
-With queen rather than rook weights, global C becomes 0.9165 and its lower-tail permutation p becomes 0.1948. Adding diagonal relationships changes the comparison substantially. State the graph with the result; do not generalise the rook finding to all neighbourhood definitions.
+The six-neighbour sensitivity graph gives global C = 0.3365 and lower-tail p = 0.0001, with 38 BH-selected local Geary observations. Global similarity persists, but local classification remains dependent on the neighbourhood definition.
 
 ## Compare Geary and Moran carefully
 
@@ -124,12 +124,12 @@ No. It sums nonnegative weighted squares. A high-tail departure can suggest diss
 ```
 
 ```{dropdown} 4. Does agreement between the global Moran and Geary tests prove a mechanism?
-No. They are related summaries of the same observations and graph. Neither identifies direct fire interaction or removes observation bias.
+No. They are related summaries of the same observations and graph. Neither identifies direct neighbour influence or removes observation and survey limitations.
 ```
 
 ## Reproduce and read further
 
-Use the [shared areal notebook](../notebooks/firms-areal-self-study.ipynb) and [analysis record](../datasets/firms_areal/README.md) to inspect every cell's statistic, tails and adjustment.
+Use the [shared areal notebook](../notebooks/malaysia-income-areal-self-study.ipynb) and [analysis record](../datasets/malaysia_income_areal/README.md) to inspect every cell's statistic, tails and adjustment.
 
 - **Foundation:** Geary, R. C. (1954). [The Contiguity Ratio and Statistical Mapping](https://doi.org/10.2307/2986645). *The Statistician*, 5, 115–141. Read the ratio of neighbour differences to overall variation.
 - **Local framework:** Anselin, L. (1995). [Local Indicators of Spatial Association—LISA](https://doi.org/10.1111/j.1538-4632.1995.tb00338.x). *Geographical Analysis*, 27, 93–115.

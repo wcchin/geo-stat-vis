@@ -14,6 +14,24 @@ After reading, you should be able to translate a neighbour rule into a matrix, d
 
 **Rook contiguity** connects polygons sharing a boundary segment of positive length. **Queen contiguity** also permits contact at a point. On a regular square grid these resemble chess moves: an interior cell has four first-order rook neighbours or eight first-order queen neighbours. Queen includes rook contacts; it does not require every neighbour to share both an edge and a corner.
 
+
+```{figure} ../resources/w08-img/demo_contiguity.png
+:label: neighbour-chess-contiguity
+:alt: Regular grid comparing rook, diagonal-only bishop and queen neighbours of a central cell.
+:align: center
+
+The chess analogy on a regular grid. Rook selects shared edges; the diagonal-only bishop illustration selects corner contacts; queen includes both. The focal cell is excluded from its own neighbourhood.
+```
+
+
+```{figure} ../resources/w08-img/Rook_vs_Queen_Contiguity.png
+:label: neighbour-singapore-rook-queen
+:alt: Singapore subzone maps comparing rook and queen neighbours of Chong Boon.
+:align: center
+
+Chong Boon, Singapore: the same focal subzone has additional neighbours under queen contiguity because point contacts are included. The highlighted areas show neighbour membership, not income values or statistical significance.
+```
+
 ```{figure} ../resources/original/rook-polygons.svg
 :label: rook-six-polygons
 :alt: Six labelled synthetic polygons illustrating shared-edge contiguity.
@@ -51,6 +69,15 @@ Graph distance counts the minimum number of links needed to reach another unit. 
 
 For unit 6, the first-order neighbour is 3 and the exactly second-order neighbour is 5. The cumulative set through order two is therefore {3, 5}. Matrix powers count walks and can include repeated routes and returns to the focal unit; they are not automatically the desired binary higher-order neighbourhood.
 
+
+```{figure} ../resources/w08-img/higher_order_Contiguity.png
+:label: neighbour-singapore-higher-order
+:alt: Four Singapore maps comparing exactly second-order and cumulative first-plus-second-order rook and queen neighbours of Chong Boon.
+:align: center
+
+Higher-order neighbourhoods around Chong Boon. The upper panels show exactly second order; the lower panels combine first and second order. Compare these different sets before interpreting an order parameter.
+```
+
 ### Topology is not a display detail
 
 Small gaps, overlaps or generalised coastlines can create missing or spurious contacts. Use geometries suitable for the analysis and inspect the graph. The Peninsular Malaysia income maps use generalised display outlines; those outlines should not be used to infer exact shared-border adjacency. Island units also require an explicit decision: lack of land contact need not imply lack of a meaningful geographical connection.
@@ -66,6 +93,24 @@ $$
 This expression assumes distinct representative coordinates. Coincident locations require a separate rule, rather than silently excluding a pair because its distance is zero. For polygon data, specify whether distance is between centroids, interior points, population centres or another representation. A geometric centroid may fall outside an irregular polygon and does not necessarily represent where people live.
 
 A fixed distance band has a consistent distance threshold but can produce very different neighbour counts in dense and sparse regions. It may leave some units without neighbours. Straight-line distance also need not represent travel or environmental connectivity across barriers.
+
+
+```{figure} ../resources/w08-img/distance_based_1200m.png
+:label: neighbour-singapore-distance-band
+:alt: Singapore distance-band illustration showing a focal location, its distance threshold and selected neighbouring spatial units.
+:align: center
+
+Fort Canning, Singapore, with a 1,200 m distance band. Membership is based on representative points falling within the displayed threshold; a polygon can be selected without sharing a border with the focal polygon.
+```
+
+
+```{figure} ../resources/w08-img/distance_based_differ_size.png
+:label: neighbour-singapore-distance-comparison
+:alt: Singapore maps comparing distance-band neighbourhoods around Fort Canning and Holland Road at two thresholds.
+:align: center
+
+Fort Canning has 16 neighbours at 1,200 m and 23 at 1,500 m in this illustration; Holland Road has zero and one respectively. Increasing the threshold changes the selected set. Inspect the thresholds and representative locations rather than interpreting polygon size as distance.
+```
 
 Distance-based weights need not be binary. For distinct locations, one option is inverse-distance weighting within a stated cutoff:
 
@@ -87,6 +132,15 @@ Consider four synthetic points on a line at 0, 1, 3 and 10 km. With $k=1$, their
 Choosing $k\geq1$ avoids empty outgoing neighbour sets, but does not guarantee that the entire graph is connected. Separate groups can select neighbours only within themselves. Equal-distance ties and coincident coordinates need documented handling; arbitrary coordinate jitter changes the geometry and should not be an unexplained default.
 
 If a symmetric relation is required, distinguish the **union rule** (connect a pair if either selects the other) from the **mutual rule** (connect only if both select each other). Symmetrising changes neighbour counts, and a mutual rule can create isolates. [libpysal's KNN documentation](https://pysal.org/libpysal/stable/generated/libpysal.weights.KNN.html) describes its implementation and tie handling.
+
+
+```{figure} ../resources/w08-img/knn_example.png
+:label: neighbour-singapore-knn
+:alt: Singapore subzone maps comparing k-nearest-neighbour selections for k equal to four and twelve.
+:align: center
+
+The Singapore kNN example selects four neighbours in the upper panels and twelve in the lower panels. Fixing the neighbour count allows the geographical reach to vary between focal locations. These membership maps do not imply symmetric directed selections.
+```
 
 ## Row standardisation changes the summary
 
@@ -139,7 +193,7 @@ Possible responses include revisiting a justified threshold, using a substantive
 
 Match matrix row/column identifiers to table and geometry identifiers. Reordering a table without reordering its matrix assigns values to the wrong units. After dropping missing observations, reconstruct or correctly subset and restandardise the weights as required; neighbour counts can change.
 
-For the Sumatra grid, rook contiguity links shared cell edges and queen also links corners. Masks can remove a cell and sever a connection. For Malaysian districts, geometry quality and islands raise different issues. Neither specification automatically represents fire spread, commuting or income transmission.
+For Malaysian districts, geometry quality, islands and unequal unit sizes require inspection. The Singapore illustrations show how rules change membership; the chapter's empirical income analysis uses its own explicitly documented graph. Neither adjacency nor distance automatically represents commuting or income transmission.
 
 ## Choose and report a defensible specification
 
