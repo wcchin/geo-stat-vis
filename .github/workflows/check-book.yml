@@ -35,6 +35,8 @@ jobs:
         run: python scripts/draw_morans_figures.py
       - name: Check point-pattern examples
         run: python scripts/point_pattern_examples.py
+      - name: Check observed FIRMS areal analysis
+        run: python scripts/firms_areal_analysis.py --check
       - name: Build book without deploying
         run: jupyter-book build --html
 

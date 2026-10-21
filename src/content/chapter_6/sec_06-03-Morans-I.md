@@ -20,7 +20,7 @@ This question concerns the geography of fire activity. Explaining haze exposure 
 After reading, you should be able to define a spatial lag; calculate Moran's I in a small example; explain its scatterplot; distinguish a statistic from evidence under a null model; and qualify a result using the data, scale and neighbourhood choices.
 
 ```{note} About the running example
-The September 2026 Sumatra application is a proposed case study; its data preparation and regional results are still to be added. All numerical results and plotted examples on this page use an explicitly hypothetical four-cell dataset. No empirical fire map, Moran coefficient or p-value for 2026 is claimed.
+The four-cell diagrams remain explicitly hypothetical and explain the calculation. The observed South Sumatra application is now included in Section 8 below: a separate, attributed September 2026 snapshot is aggregated to 48 retained cells. Read the source and observation limitations with the empirical results; do not confuse them with the four-cell arithmetic.
 ```
 
 Reading route: measurement → neighbours → arithmetic → scatterplot → inference → interpretation → sensitivity → self-check. Read alongside [Autocorrelation & Spatial Autocorrelation](sec_06-01-Spatial-Autocorrelation.md) and [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md).
@@ -31,7 +31,7 @@ A satellite detection is an observation made by an instrument at a particular ti
 
 ### From detections to an areal variable
 
-For the proposed Sumatra example, place a regular grid in a suitable projected coordinate system and count qualifying detections inside each retained cell during 1–30 September 2026. Define $x_i$ as that count for cell i. Fix the satellite product, confidence filter, period and study boundary before inspecting Moran's I. A point-location map explains the input; the count map shows the variable actually analysed.
+For the Sumatra example, place a regular grid in a suitable projected coordinate system and count qualifying detections inside each retained cell during 1–30 September 2026. Define $x_i$ as that count for cell i. For a confirmatory analysis, fix the satellite product, confidence filter, period and study boundary before inspecting Moran's I. Our two teaching windows were selected after exploratory inspection, so their tests are illustrative rather than prespecified regional hypotheses. A point-location map explains the input; the count map shows the variable actually analysed.
 
 A practical starting design uses 20 km cells, with 10 km cells as a planned sensitivity comparison. Grid origin matters too: moving the same grid changes allocation near its edges. Retain a documented land mask, and decide explicitly how to handle coastal cells and offshore islands. Partial land cells have less land available for detections, so cell counts are not perfectly comparable merely because the original grid squares have equal area.
 
@@ -128,7 +128,9 @@ For a plot with comparable axes, standardise the variable using one positive sta
 
 $$
 z_i=\frac{x_i-\bar{x}}{s}.
-$$ Plot each cell's z on the horizontal axis and its spatial lag Wz on the vertical axis. A cell appears once; its neighbours are summarised in its vertical coordinate.
+$$
+
+Plot each cell's z on the horizontal axis and its spatial lag Wz on the vertical axis. A cell appears once; its neighbours are summarised in its vertical coordinate.
 
 ```{figure} ../resources/original/morans-scatter.svg
 :label: morans-four-cell-scatter
@@ -248,7 +250,40 @@ Keep one satellite product and confidence convention throughout the main example
 
 For current-year data, preserve the downloaded files and processing choices. A later science-quality refresh can change the counts; compare versions as a data revision rather than silently replacing the published result.
 
-## 8. Check your understanding
+## 8. Observed South Sumatra results
+
+The shared empirical analysis uses nominal/high-confidence **S-NPP VIIRS detections during 1–30 September 2026 UTC**, obtained through the public FIRMS mirror. It starts from the two adjoining 100 km windows introduced in Chapter 4 and their fifty 20 km cells. Retain only cells classified as full land by the saved generalized main-island boundary: two coastal cells containing 104 detections are excluded, leaving **48 cells and 6,097 detections**. This is a different support rule from the area-adjusted quadrat analysis, which retained the partial cells.
+
+The [source record](../datasets/firms_areal/README.md) gives the input checksum, exclusions, conventions and complete results. The source is near-real-time version 2.0NRT; the September records have not been independently re-downloaded from the authenticated NASA archive. Full-land classification is approximate, and records on every date do not verify uniform or complete observation coverage.
+
+```{figure} ../resources/original/firms-areal-support.svg
+:label: firms-areal-support
+:alt: Observed detection counts and rook neighbour counts on the retained South Sumatra grid, with two excluded coastal cells hatched.
+:align: center
+
+Observed values and the graph used for analysis. All retained cells have the same 400 km² grid area. There are 80 undirected rook links, one connected component and no isolates. Hatching marks exclusions rather than observed zero activity. The divider identifies the western and eastern teaching windows.
+```
+
+```{figure} ../resources/original/firms-moran-observed.svg
+:label: firms-moran-observed
+:alt: Moran scatterplot and global permutation reference for the 48 South Sumatra cell counts, with observed Moran I marked.
+:align: center
+
+The observed scatterplot uses population-standardised counts and row-standardised rook lags. Its through-origin slope is I = 0.2314. The reference is generated by 9,999 unrestricted permutations of the same 48 counts on the fixed graph, seed 5230.
+```
+
+For rook weights, **I = 0.2314**, with upper-tail Monte Carlo **p = 0.0085**. Under unrestricted reassignment, the expected I is $-1/47\approx-0.0213$. Thus the chosen summary shows greater neighbour similarity than the reference predicts for this exploratory region. This is not a statement that all high-count cells are significant local hotspots, that distinct fires attract one another, or that these detections caused haze in Singapore.
+
+| Neighbour rule | Global I | Upper-tail permutation p |
+| --- | ---: | ---: |
+| Rook | 0.2314 | 0.0085 |
+| Queen | 0.0889 | 0.0552 |
+
+Queen adds diagonal relationships on the same retained cells and variable. Its graph has 148 undirected links and no isolates. The change in result should be reported: evidence under rook does not establish the same conclusion for every neighbour definition. These p-values use the same simulation count and seed, not a search for the most favourable graph. The 10 km, temporal and transformed-variable comparisons listed earlier remain possible extensions, not completed empirical checks.
+
+Local analyses in the following pages use the same retained observations and neighbour relation, while stating each statistic's weighting and self-inclusion convention. The [shared notebook](../notebooks/firms-areal-self-study.ipynb) reproduces the figures and all recorded outputs.
+
+## 9. Check your understanding
 
 ### Try these questions first
 
@@ -289,7 +324,7 @@ For current-year data, preserve the downloaded files and processing choices. A l
 
 ## Continue the inquiry
 
-The [next section on LISA and Local Moran’s I](sec_06-04-Local-Moran.md) asks where local patterns occur. For a complete regional worked example, the next preparation step is to obtain the September 2026 detections, inspect the retained grid and neighbour graph, and generate the observed map, spatial lag, scatterplot and permutation reference from the same records. The current figures establish the calculation without implying uncomputed regional findings.
+The [next section on LISA and Local Moran’s I](sec_06-04-Local-Moran.md) asks where local patterns occur. The observed map, spatial lag, scatterplot and permutation reference above now provide the shared regional input. Continue with the same cells and weights, keeping global and local inferential questions distinct.
 
 ## Sources and further reading
 
@@ -305,4 +340,6 @@ The [next section on LISA and Local Moran’s I](sec_06-04-Local-Moran.md) asks 
 
 [^morans-source-6]: [PySAL esda. Development documentation for Moran. Version-dependent configuration of permutation alternatives.](https://pysal.org/esda/dev/generated/esda.Moran.html)
 
-All figures on this page are original calculations from the stated hypothetical dataset. Their reproducible source is [`scripts/draw_morans_figures.py`](https://github.com/wcchin/geo-stat-vis/blob/main/scripts/draw_morans_figures.py).
+The four-cell figures are original calculations from the stated hypothetical dataset. Their reproducible source is [`scripts/draw_morans_figures.py`](https://github.com/wcchin/geo-stat-vis/blob/main/scripts/draw_morans_figures.py).
+
+The empirical South Sumatra figures use [`scripts/firms_areal_analysis.py`](https://github.com/wcchin/geo-stat-vis/blob/main/scripts/firms_areal_analysis.py) and the attributed source snapshot. They are distinct from the hypothetical four-cell diagrams.

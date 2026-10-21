@@ -99,6 +99,7 @@ project:
         - file: src/content/notebooks/lab-08-spatial-autocorrelation.ipynb
         - file: src/content/notebooks/lab-08-autocorrelation-self-study.ipynb
         - file: src/content/notebooks/lab-09-LISA.ipynb
+        - file: src/content/notebooks/firms-areal-self-study.ipynb
         - file: src/content/notebooks/lab-10-for-flowmapgl.ipynb
     - title: Part 4 - Lecture Slides
       file: src/content/part4.md
