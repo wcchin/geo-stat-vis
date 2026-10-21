@@ -176,7 +176,7 @@ Open the [self-study notebook](../notebooks/lab-08-autocorrelation-self-study.ip
 
 Compare median with mean income, change the random seed and try different fixed breaks or set `CLASS_BREAKS=None` to explore quantile classes. Change one setting at a time and explain what stays fixed. A different year is accepted only when every area has an observation; the notebook stops rather than mixing years or silently dropping KL.
 
-The [source record](../datasets/peninsula_income_2022/README.md) documents retrieval, projection and matching. Continue to [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md) before calculating an autocorrelation statistic.
+The [source record](../datasets/peninsula_income_2022/README.md) documents retrieval, projection and matching. The formal [shared income analysis](../datasets/malaysia_income_areal/README.md) now uses full-detail geometry for its audit and representative points, with separate proximity weights; the display notebook remains a map/permutation introduction. Continue to [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md) before calculating an autocorrelation statistic.
 
 ## Check your understanding
 

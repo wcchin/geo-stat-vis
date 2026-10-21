@@ -4,7 +4,7 @@ label: areal-pattern-analysis
 
 # Chapter 6: Spatial Association in Areal Data
 
-In Chapter 4, we examined where point events occur. Here, we begin with spatial units that already have values: median household income in a district, or the number of satellite fire detections in a grid cell. The question changes from the arrangement of event locations to the **arrangement of attribute values across connected places**.
+In Chapter 4, we examined where point events occur. Here, we begin with spatial units that already have values: median household income in each administrative area. The question changes from the arrangement of event locations to the **arrangement of attribute values across connected places**.
 
 Two maps can contain the same values and have identical histograms, yet show very different geographical patterns. Higher values might occur beside other higher values, alternate with lower values, or form several distinct regional configurations. Spatial association concerns that relationship between values and their geographical arrangement.
 
@@ -32,7 +32,7 @@ There are two separate ingredients:
 
 A short geographical distance is not the same as a small difference in income. Likewise, two districts with similar incomes are not necessarily geographical neighbours. Spatial association combines an attribute comparison with a defined spatial relationship.
 
-The chapter uses **Peninsular Malaysian household income** to introduce the arrangement of values on administrative areas. A **Sumatra fire-detection grid** provides the regional setting for the Moran's I inquiry. Small, explicitly synthetic examples make calculations transparent. A teaching construction is not an observed regional result; each page distinguishes the two.
+The chapter uses **Peninsular Malaysian household income** to introduce the arrangement of values on administrative areas. The same income observations continue through the global and local statistics, providing one coherent regional example. Small, explicitly synthetic examples make calculations transparent. A teaching construction is not an observed regional result; each page distinguishes the two.
 
 ## A connected reading sequence
 

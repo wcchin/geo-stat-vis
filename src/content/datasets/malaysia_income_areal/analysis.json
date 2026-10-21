@@ -1,0 +1,106 @@
+{
+  "variable": "2022 median gross monthly household income, nominal RM, by residence",
+  "support": "92 matched mapped areas; most administrative districts; Perlis, Kuala Lumpur and Putrajaya each contribute one unit; includes Kecil Lojing. Equal observation weight, not household population weighting.",
+  "primary_weights": "Symmetric union of 4 nearest interior representative points, then row-standardise for I/C. Binary graph for General G and Gi*, plus diagonal 1 for Gi*.",
+  "sensitivity_weights": "Symmetric union 6NN; all other inputs unchanged.",
+  "B": 9999,
+  "seed": 5230,
+  "local_null": "Hold focal value fixed; sample k distinct other indices without replacement. Shared draws per focal unit across methods.",
+  "tails": "Inclusive plus-one tails; local two-sided=min(1,2*min(lower,upper)); equality tolerance 1e-12. Global I/G upper, C lower.",
+  "adjustment": "Separate 92-test BH families; exploratory under spatial dependence. Bonferroni comparison also reported.",
+  "source_geometry_audit": "geometry_audit.json",
+  "primary": {
+    "Moran_I": {
+      "observed": 0.6646304398185675,
+      "p_lower": 1.0,
+      "p_upper": 0.0001,
+      "p_two": 0.0002
+    },
+    "Geary_C": {
+      "observed": 0.31755673451643546,
+      "p_lower": 0.0001,
+      "p_upper": 1.0,
+      "p_two": 0.0002
+    },
+    "General_G": {
+      "observed": 0.059297299559405936,
+      "p_lower": 1.0,
+      "p_upper": 0.0001,
+      "p_two": 0.0002
+    },
+    "n": 92,
+    "value_sum": 487308.0,
+    "mean": 5296.826086956522,
+    "B": 9999,
+    "seed": 5230,
+    "components": 1,
+    "isolates": 0,
+    "undirected_edges": 226,
+    "min_neighbours": 4,
+    "max_neighbours": 9,
+    "local": {
+      "I": {
+        "unadjusted_005": 25,
+        "BH_005": 14,
+        "Bonferroni_005": 9
+      },
+      "C": {
+        "unadjusted_005": 40,
+        "BH_005": 24,
+        "Bonferroni_005": 7
+      },
+      "Gstar": {
+        "unadjusted_005": 25,
+        "BH_005": 14,
+        "Bonferroni_005": 9
+      }
+    }
+  },
+  "sensitivity": {
+    "Moran_I": {
+      "observed": 0.6593450490907115,
+      "p_lower": 1.0,
+      "p_upper": 0.0001,
+      "p_two": 0.0002
+    },
+    "Geary_C": {
+      "observed": 0.33654448443407764,
+      "p_lower": 0.0001,
+      "p_upper": 1.0,
+      "p_two": 0.0002
+    },
+    "General_G": {
+      "observed": 0.08568224042748332,
+      "p_lower": 0.9999,
+      "p_upper": 0.0002,
+      "p_two": 0.0004
+    },
+    "n": 92,
+    "value_sum": 487308.0,
+    "mean": 5296.826086956522,
+    "B": 9999,
+    "seed": 5230,
+    "components": 1,
+    "isolates": 0,
+    "undirected_edges": 333,
+    "min_neighbours": 6,
+    "max_neighbours": 11,
+    "local": {
+      "I": {
+        "unadjusted_005": 30,
+        "BH_005": 23,
+        "Bonferroni_005": 13
+      },
+      "C": {
+        "unadjusted_005": 45,
+        "BH_005": 38,
+        "Bonferroni_005": 12
+      },
+      "Gstar": {
+        "unadjusted_005": 30,
+        "BH_005": 23,
+        "Bonferroni_005": 13
+      }
+    }
+  }
+}

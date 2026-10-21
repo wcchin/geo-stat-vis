@@ -27,9 +27,9 @@ $$
 
 Large positive products arise when large values are connected. A larger-than-reference G supports concentration of high values; a low-tail departure concerns an unusually low selected-pair product sum. G is not a symmetric measure treating low–low and high–high similarity identically, as Moran's mean-centred products do. A global tail does not locate a particular hotspot or coldspot.
 
-The binary rook graph is the same graph used for Moran and Geary, but those two statistics use row-standardised weights in our main analysis. This numerical weighting difference is deliberate and documented; do not attribute every difference in output solely to the statistic's name.
+The binary union-4NN graph is the same graph used for Moran and Geary, but those two statistics use row-standardised weights in our main analysis. This numerical weighting difference is deliberate and documented; do not attribute every difference in output solely to the statistic's name.
 
-Nonnegative counts are a natural teaching variable here. Arbitrarily adding a constant changes the products and the statistic. Unlike Moran's I and Geary's C, G is not invariant to a shift of origin. Do not mean-centre values before inserting them into this raw-ratio formula.
+Nonnegative income estimates are suitable for this raw-ratio example. Arbitrarily adding a constant changes the products and the statistic. Unlike Moran's I and Geary's C, G is not invariant to a shift of origin. Do not mean-centre values before inserting them into this raw-ratio formula.
 
 ## Local Gi excludes the focal unit
 
@@ -77,27 +77,29 @@ $$
 
 This differs from the unrestricted expectation implicit in the analytical score. The downloadable `Gstar_z_perm` is an observed departure divided by the conditional simulations' standard deviation, **not the analytical $Z_i^*$ above**. P-values are calculated from ranked simulation tails, not a normal approximation to that conditional score.
 
-Our two-sided procedure uses inclusive lower and upper tail counts, the plus-one adjustment and twice the smaller tail, as in Section 6.4. A selected observation above its conditional mean is labelled **Hot** and one below it **Cold**. These are relative statistical labels for detection activity, not fire-temperature measurements or official hazard categories.
+Our two-sided procedure uses inclusive lower and upper tail counts, the plus-one adjustment and twice the smaller tail, as in Section 6.4. A selected observation above its conditional mean is labelled **Hot** and one below it **Cold**. These are statistical labels for relative income concentration, not literal temperature or official income-group categories.
 
 ### When two methods give the same local p-values
 
 With binary equal-weight neighbours and a fixed focal value, Gi and Gi* are affine functions of the same neighbour sum, so their conditional rank comparisons agree when denominators are positive. For nonzero focal deviation, Local Moran is also an affine function of that sum, possibly reversing its direction. Consequently, our doubled-tail Local Moran and Gi* p-values coincide when using the same random draws. This is a consequence of the stated design, not independent confirmation by two tests. Their descriptive labels and interpretation can still differ. Other inference or weighting conventions need not produce this equivalence.
 
-## Results on the shared FIRMS grid
+## Results on the shared Malaysian income data
 
-For the same **48 cells and 6,097 detections**, binary rook General G is **0.1378**. Its unrestricted permutation upper-tail p is **0.0013**. The result concerns concentration of large detection counts under this graph; it is not evidence of a particular smoke-source contribution.
+For the same **92 median household incomes**, binary union-4NN General G = **0.05930**, with unrestricted upper-tail permutation p = **0.0001**. Its null expectation is $452/(92\times91)\approx0.05399$, so the observed value is interpreted relative to that reference, not zero.
 
-```{figure} ../resources/original/firms-local-gstar.svg
-:label: firms-local-gstar
-:alt: Conditional Gi-star high and low concentration candidates for the South Sumatra grid, compared before and after BH adjustment. The adjusted map has no selected observations.
+```{figure} ../resources/original/malaysia-income-local-gstar.png
+:label: malaysia-income-local-gstar
+:alt: Conditional Gi-star high and low income concentration classifications across Peninsular Malaysia before and after BH adjustment.
 :align: center
 
-Gi* with binary rook neighbours plus self weight one. Compare unadjusted two-sided p ≤ 0.05 with BH q ≤ 0.05 across 48 tests. Orange denotes selected high-sum departures; purple denotes selected low-sum departures. Grey is not selected and hatching marks excluded coastal cells. The figure does not map raw Gi* ratios or analytical normal scores.
+Binary union-4NN neighbours plus self weight one. Compare unadjusted two-sided p ≤ 0.05 with BH q ≤ 0.05 across 92 tests. Orange denotes high-sum departures and purple low-sum departures; grey is not selected. The figure uses conditional permutations, not analytical normal scores. Income: DOSM; boundaries: PLANMalaysia.
 ```
 
-There are four unadjusted candidates: two high and two low neighbourhood concentrations. None meets BH q ≤ 0.05, and none meets the Bonferroni threshold. Their overlap with the Local Moran candidates follows the conditional rank equivalence just explained; it should not be presented as replication.
+Twenty-five unadjusted candidates comprise ten high-sum and fifteen low-sum neighbourhoods. **Fourteen survive BH adjustment: seven high and seven low**; nine meet Bonferroni correction. Their inferential overlap with Local Moran follows the conditional rank equivalence explained above, not independent confirmation.
 
-Queen weights produce General G = 0.2066 and upper-tail p = 0.0083. More links change both the raw G and its reference expectation, so the larger raw value is not evidence that queen reveals stronger concentration. The graph-specific comparison is the relevant one.
+Bentong makes the interpretive difference concrete. Its median is below the overall mean, but its selected neighbours have a high average. It is an unadjusted LH candidate under Local Moran and an unadjusted high-sum candidate under conditional Gi*. Neither finding survives BH adjustment. A low focal value can therefore appear in a high-concentration neighbourhood without contradiction.
+
+The union-6NN graph gives General G = 0.08568 and upper-tail p = 0.0002. Its additional links increase the raw statistic and its expected reference value. The larger raw number is not evidence that six neighbours reveal stronger concentration.
 
 ## Choose a statistic from the question
 
@@ -115,7 +117,9 @@ Methods complement geographical reasoning; they do not select a causal explanati
 
 The Malaysia income maps established why a histogram cannot reveal geographical arrangement. The weights section defined which relationships enter a calculation. The Moran, Geary and Getis–Ord sections then examined different attribute summaries and global/local questions.
 
-The observed Sumatra results add a final lesson: a clear count concentration, a global rejection and an adjusted local discovery are different claims. Here rook-based global evidence coexists with no BH-selected local findings, and some conclusions change under queen weights. Report this structure rather than reducing the analysis to “clustered” or “random”. Neither a zero-detection cell nor a non-selected local test proves absence of fire, and these analyses do not establish which fires caused haze elsewhere.
+The Malaysian income results show that a global coefficient, an unadjusted local candidate and a multiplicity-adjusted local finding are different claims. Global similarity persists under both proximity graphs, while the selected local footprint changes. Geary highlights some modest deviations with small neighbour differences; Moran and Gi* interpret the same conditional neighbour-sum comparisons differently.
+
+Report the observation unit, variable, year, graph and evidence rule with each conclusion. The district-level patterns do not establish household-level relationships, identify causal neighbour effects or account automatically for survey uncertainty and historical boundary changes.
 
 ## Check your reasoning
 
@@ -141,7 +145,7 @@ The graph, selected pair products, neighbourhood sums and corresponding null dis
 
 ## Reproduce and read further
 
-The [shared areal notebook](../notebooks/firms-areal-self-study.ipynb), [source record](../datasets/firms_areal/README.md) and explicit Python implementation reproduce all figures and comparisons. The workbook's existing [local areal lab](../notebooks/lab-09-LISA.ipynb) provides the package-based course workflow; check its definitions and software defaults before expecting identical p-values or category codes.
+The [shared areal notebook](../notebooks/malaysia-income-areal-self-study.ipynb), [source record](../datasets/malaysia_income_areal/README.md) and explicit Python implementation reproduce all figures and comparisons. The workbook's existing [local areal lab](../notebooks/lab-09-LISA.ipynb) provides the package-based course workflow; check its definitions and software defaults before expecting identical p-values or category codes.
 
 - **Foundation:** Getis, A. and Ord, J. K. (1992). [The Analysis of Spatial Association by Use of Distance Statistics](https://doi.org/10.1111/j.1538-4632.1992.tb00261.x). *Geographical Analysis*, 24, 189–206.
 - **Standardisation and inference:** Ord, J. K. and Getis, A. (1995). [Local Spatial Autocorrelation Statistics: Distributional Issues and an Application](https://doi.org/10.1111/j.1538-4632.1995.tb00912.x). *Geographical Analysis*, 27, 286–306.
