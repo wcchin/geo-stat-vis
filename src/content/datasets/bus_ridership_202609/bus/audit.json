@@ -1,0 +1,18 @@
+{
+  "node_rows": 202959,
+  "stops": 5207,
+  "paired_stops": 5161,
+  "mapped_paired_stops": 5161,
+  "unmatched_codes": [
+    "07522",
+    "44711",
+    "67708",
+    "70372"
+  ],
+  "weekday_higher_fraction": 0.8331718659174578,
+  "weekday_mean": 793.6099064663297,
+  "weekend_mean": 643.7638296841698,
+  "missing_hour_rows": 5,
+  "missing_hour_boardings": 0,
+  "missing_hour_alightings": 13
+}

@@ -1,101 +1,39 @@
-# Summary
+# 3.5 From a statistical result to a geographical interpretation
 
-- Hypothesis testing is a key to quantify the differences in data.
-- Null hypothesis are usually 'no effects' or 'no differences'.
-- T-test, ANOVA, and non-parametric tests could be used in various conditions.
-- T-test and ANOVA were designed with some assumptions and base distribution (t-distribution and F-distribution), which are prefered if the assumptions are met.
-- If the assumptions are violated, the statistical estimation is compromised and the accuracy is unknown.
-- Non-parametric tests can be used in that situation.
+The bus example provides a clear descriptive finding: most paired stops have higher weekday daily-average boardings in September 2026, and the mean difference exceeds the median difference. The maps, distributions and summaries describe where and how activity differs in the supplied snapshot. Explaining those differences, or extending them to another period, requires additional evidence.
 
+## Build an interpretation in a useful order
 
+Begin with the observation and period. Here the unit is a stop, the measurements are monthly day-type totals converted to daily averages, and the paired comparison includes only stops reporting both day types. State what was excluded or left missing. Then report the size and direction of the observed difference in meaningful units.
 
-## How to think statistically?
+Next explain the model, if an inferential calculation is used. A paired t-test targets a mean difference; a signed-rank test addresses a different distributional null; a sign summary describes the balance of directions. An ANOVA across categories requires categories that were not defined from the outcome being tested. The test name is not a substitute for identifying its target.
 
-Some key points:
-- How to measure data quantitatively (or qualitatively)
-    - nominal, ordinal, interval, ratio
-    - binary, numerical, categorical
-- Are them different? Are them same?
-    - designing the hypothesis
-    - how to formulate a question
-- Are them related?
-    - correlation, regression (not covered)
-- How to test/assess the hypothesis?
-    - parametric, non-parametric
-    - the assumptions behind each method
-- How to read the results (interpretation)?
-    - significant at what level?
-    - effect size?
-    - how confidence are we?
-- Relating to the big picture
-    - what this means in your big-aim / Reseearch Questions (RQ)
-    - how visualisation can help linking back to your study
+Finally, relate the result to geography. Shared routes and neighbourhoods connect stop observations. Interchanges and ordinary roadside stops have different functions and distributions. Group boundaries and naming rules affect comparisons. These issues belong in the reasoning that leads to an interpretation, not only in a final sentence about limitations.
 
+## An example of a supported statement
 
+> Among 5,161 bus stops with both day types reported in September 2026, 4,300 had higher weekday daily-average boardings. Across those stops, the mean weekday-minus-weekend difference was about 150 boardings per day and the median about 63. These summaries describe the supplied month. Conventional independent-stop tests do not account for shared routes and spatial dependence, and the aggregate data do not reveal day-to-day variability.
 
-## How to use these techniques and thinking in spatial data?
+This statement distinguishes an observed comparison from a broader claim. It does not require us to pretend the data are uninformative merely because a simple inference model is imperfect.
 
-:::{table} A slice of HDB data table.
-:label: HDBtable
-:align: center
+## Questions to carry into spatial analysis
 
-| Street            | Flat Type   | Floor Area (sqm) |   Resale Age |   Resale Price |
-|:------------------|------------:|-----------------:|-------------:|---------------:|
-| ANG MO KIO AVE 10 | 2 ROOM      |               44 |           44 |         267000 |
-| ANG MO KIO AVE 3  | 2 ROOM      |               49 |           46 |         300000 |
-| ANG MO KIO AVE 3  | 2 ROOM      |               44 |           45 |         280000 |
-| ANG MO KIO AVE 3  | 2 ROOM      |               44 |           45 |         282000 |
-| ANG MO KIO AVE 4  | 2 ROOM      |               45 |           37 |         289800 |
-|               ... |         ... |             ...  |          ... |            ... |
+A difference between geographical groups may reflect their composition, their context or both. A stop category with higher boardings may contain more centrally located stops, larger facilities or more services. A comparison alone cannot establish that its label causes the difference.
 
-:::
+Subsequent work could add daily observations, service frequency, independently verified stop functions and surrounding land use. A model could then distinguish specific relationships while accounting for repeated and spatial observations. The additional variables should follow a stated question rather than become a search for any statistically significant association.
 
+Chapters 4 and 5 investigate the arrangement of point events and local concentrations. Chapter 6 examines similarity of attributes across neighbouring areas. Together these topics extend the current chapter's central lesson: a valid interpretation depends on how observations are represented, related and compared.
 
-```{figure} ../resources/w02-img/frequency_distribution_kdeplot.png
-:label:
-:alt:
-:align: center
+## Self-study feedback
 
-The differences between flat type?
-```
+**Why are the 22 weekdays not 22 observed replicates?** The source reports their combined volume. Individual daily values and their variation cannot be recovered from a total alone.
 
+**Why retain pairing?** Weekday and weekend values refer to the same stop. The within-stop difference preserves that connection and answers a question about changes within those units.
 
+**Why can a large sample still have a misleading standard error?** The conventional calculation depends on independence. Common routes and spatially related environments can connect many observations.
 
-```{figure} ../resources/w03-img/HDB_price_points_13.png
-:label:
-:alt:
-:align: center
+**Why do ranks not solve spatial dependence?** Ranking changes numerical information while leaving the relationships among stops intact.
 
-The differences between regions?
-```
+**Why define groups before inspecting their volumes?** Groups derived from volumes would already be separated by the response, so a subsequent comparison would partly restate the construction rule.
 
-
-```{figure} ../resources/w03-img/HDB_price_points_13_23.png
-:label:
-:alt:
-:align: center
-
-The differences between the two years?
-```
-
-
-
-## Strategies to investigate spatial data differences
-
-- _individual level_ comparison
-    - directly analyzing the data table
-    - transactions between flat types, between regions, between time, ...
-    - each data point is considered independent from other data point
-    - use statistical methods
-
-- _spatially aggregated_ comparison
-    - aggregate the data by spatial units (subzone, planning area)
-    - the average price for 4 rooms for every subzone, ...
-    - each spatial unit is considered independent from other spatial unit
-    - use statistical methods
-
-- consider _spatial relationship_ (nearby) effects
-    - spatial relationship between data points or spatial units
-    - the prices of the same type of house unit within the neighborhood (a search distance)...
-    - data points or spatial units are consider spatially dependent
-    - use spatial statistic methods
+**Why show means and medians together?** A mean describes total activity per stop on average, while a median describes the middle stop. In a skewed distribution they answer different questions.

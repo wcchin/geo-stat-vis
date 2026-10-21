@@ -1,189 +1,47 @@
-# The T-test
+# 3.2 Comparing means with t-tests
 
-## Assumptions of t-tests
+A t-test compares a mean, or a difference of means, with a null value relative to an estimated standard error. Several tests share that idea, but they represent different designs. The first decision is whether the measurements are independent or linked through the same observational units.
 
-To ensure the validity of the results, the t-test relies on certain assumptions:
-- .bold[Continuous]:
-The data (target variable) should be continuous (interval/ratio).
-- .bold[Normality]:
-The data should be approximately normally distributed.
-- .bold[Independence]:
-Observations .red[within and between groups] should be independent (not influence one another).
-- .bold[Homogeneity of variances]:
-The variances (or standard deviations) of the groups should be approximately equal (this assumption can be relaxed for some t-tests).
+| Design | Example question | Quantity being compared |
+|---|---|---|
+| One-sample | Does a defined stop population have mean weekday activity equal to a prespecified benchmark? | One mean minus the benchmark |
+| Independent samples | Do two separately observed categories have different means? | Difference between group means |
+| Paired samples | Does weekday activity differ from weekend activity at the same stops? | Mean of within-stop differences |
 
-```{figure} ../resources/w03-img/demo_datapoint_2dist.png
-:label:
-:alt:
-:align: center
+A benchmark must have a substantive justification. Choosing it after inspecting the data so that a test produces a desired result undermines its interpretation.
 
-The distributions of two groups of students.
-```
+## The paired t-test
 
+For our main question, each stop has two measurements. We first calculate $D_i=W_i-E_i$. The paired test is a one-sample t-test on these differences:
 
-## Two Types of 'Groups': Between vs. Within
+$$t=\frac{\overline{D}-\mu_{D,0}}{s_D/\sqrt{n}}.$$
 
-**'Between'-Group Analysis**
-- Number of subject groups: 2 or more
-- Number of target variables: 1 (for every subject)
-- Purpose: To compare differences among distinct groups of subjects.
+The null value $\mu_{D,0}$ is zero for the equality-of-means question. The sample standard deviation $s_D$ describes variation among the stop differences. Under the usual independent, normally distributed differences model, the statistic follows a t distribution with $n-1$ degrees of freedom under the null.
 
-**'Within'-Group Analysis**
-- Number subject groups: 1
-- Number of target variables: 2 or more (for every subject)
-- Purpose: To examine the differences or changes within a single group over time or under different conditions.
+Pairing matters because a stop with a large baseline level often remains busy on both day types. Subtracting its own weekend value retains that connection. The normality assumption for the conventional exact paired test concerns the **differences**, not a requirement that each of the two marginal distributions be normal.
 
+![Paired differences and normal Q–Q plot](../datasets/bus_ridership_202609/bus/paired_differences.png)
 
-## Types of t-tests
+*Figure 3.4. The histogram focuses on −2,000 to 4,000 daily boardings and omits more extreme differences from that panel. The Q–Q plot includes all paired differences and shows strong tail departures from a normal shape.*
 
-There are three main types of t-tests:
-1. One sample t-test
-2. Independent samples t-test
-3. Paired samples t-test
+## A calculation with its assumptions attached
 
-```{figure} ../resources/w03-img/Types_of_t-test.png
-:label:
-:alt:
-:align: center
+For the 5,161 paired stops, the observed mean difference is 149.85 daily boardings and the standard deviation of differences is 434.25. If we temporarily impose the independent-stop model, the standard error is 6.04, the statistic is 24.79 and the degrees of freedom are 5,160. The two-sided p-value is approximately $2.85\times10^{-128}$.
 
-Source: [Datatab](https://datatab.net/tutorial/t-test)
-```
+Under that same model, the conventional 95% interval for the mean difference is approximately **138.00 to 161.70 boardings per day**. These calculations demonstrate how the test works. The p-value and interval do not account for connected routes and spatial dependence, and they do not quantify variation between individual days. The observed mean difference remains a valid description of the supplied stops even when the inferential model is questionable.
 
+## Independent samples and Welch's test
 
-### One sample t-test
-- _Compares the mean of a single group to a known population mean._
-- E.g., the students' performances from one school compared to the national mean; the air polution level compared to the safety standards...
-- _Each individual or observation in the sample contributes to a single group_ being _compared to the known population mean_.
+If two groups contain different observational units, a paired test is inappropriate. A pooled two-sample t-test assumes a common population variance. Welch's t-test allows different variances and uses a different standard error and degrees-of-freedom approximation:
 
-```{figure} ../resources/w03-img/Example_one-sample_t-test.png
-:label:
-:alt:
-:align: center
+$$t_W=\frac{\overline{X}-\overline{Y}}{\sqrt{s_X^2/n_X+s_Y^2/n_Y}}.$$
 
-Source: [Datatab](https://datatab.net/tutorial/t-test)
-```
+For example, comparing weekday activity between stops labelled as interchanges and stops labelled as terminals would involve different stops. Their variability and group sizes differ greatly, so a pooled equal-variance calculation would need strong justification. Welch's method addresses unequal variances; it does not repair spatial dependence, classification error or an unclear target population.
 
-#### An example
-A factory claims that their light bulbs have an average lifespan of $1,000$ hours. A consumer group selects a random sample of $25$ bulbs and finds that the sample has an average lifespan of $985$ hours with a standard deviation of $50$ hours. **The consumer group wants to determine whether the factory's claim is accurate.**
+## Transformations change the estimand
 
-```
-[ 935,  969,  917,  922,  906, 1022,  984, 1023, 1042,  944,
-  982, 1054,  923, 1012,  963, 1011,  924, 1026, 1081,  932,
- 1027,  947,  994, 1016, 1069 ]
-```
-```{figure} ../resources/w03-img/ttest_one_sample.png
-:label:
-:alt:
-:align: center
+Taking a logarithm can reduce the influence of large observations. It also changes the quantity being compared. A mean difference on a log scale is not a difference in arithmetic mean boardings on the original scale. Adding one to accommodate zeros creates another specific transformation that should be stated and interpreted.
 
-The one sample t-test example.
-```
+A transformation should serve a defensible question or model rather than be chosen merely to obtain a smaller p-value. Inspect both the original units, which communicate substantive size, and any transformed analysis used for modelling.
 
-.bold[Finding]:
-The consumer group _cannot conclude_ that the factory's claim is inaccurate based on this sample. There is _not enough evidence to reject the null hypothesis_ that the average lifespan of the light bulbs is 1,000 hours.
-
-Steps involved in the one-sample t-test:
-- Formulate the _null hypothesis_ ($\text{H}_0$) and the _alternative hypothesis_ ($\text{H}_1$):
-    - $\text{H}_0$: The average lifespan of the light bulbs is 1,000 hours ($\mu = 1,000$.
-    - $\text{H}_1$: The average lifespan of the light bulbs is not 1,000 hours ($\mu \neq 1,000$).
-- Calculate the _t-test statistic_ (t) using the formula:
-    - t = (sample mean - population mean) / (standard error of the mean)
-    - standard error of the mean $= \text{std} / \sqrt{n} = 50 / \sqrt{25} = 50/5 = 10$
-    - Plugging in the values: $t \approx (985 - 1,000) / 10 = -1.5$
-- Determine the _degrees of freedom_ (df), which is equal to
-    - the sample size minus 1 (df = n - 1);
-    - $\text{df} = 25 - 1 = 24$.
-- Using the t-value (-1.5) and degrees of freedom (24), find the _p-value_ associated with the test statistic from the t-distribution table or by using statistical software:
-- The _p-value is approximately 0.16_.
-    - Since the p-value (0.16) is greater than the conventional significance level of 0.05, we fail to reject the null hypothesis.
-
-### Independent samples t-test
-- _Compares the means of two independent groups._
-- E.g., the scores of students from two classes; the effect of treatment vs. placebo-control groups...
-- _Every individual will only appear in only one of the two groups._
-
-```{figure} ../resources/w03-img/Example_of_a_t-test_for_independent_samples.png
-:label:
-:alt:
-:align: center
-
-Source: [Datatab](https://datatab.net/tutorial/t-test)
-```
-
-
-In each subplot, the mean of two Iris species were compared.
-
-```{figure} ../resources/w03-img/analysis_differences--ttest.png
-:label:
-:alt:
-:align: center
-
-The differences in petal length between the three species, with t-test results.
-```
-
-
-### Paired samples t-test
-- _Compares the means of two related or paired groups._
-- E.g., pre-test and post-test scores from the same group of individuals; differences between spouses or siblings...
-- Every individual in the pre-test group must also be present in the post-test group, or _each individual in one group should have a specific counterpart in the other group._
-
-```{figure} ../resources/w03-img/Example_of_the_t-test_for_paired_samples.png
-:label:
-:alt:
-:align: center
-
-Source: [Datatab](https://datatab.net/tutorial/t-test)
-```
-
-
-```{figure} ../resources/w03-img/psychology_data_lineplot-b.png
-:label:
-:alt:
-:align: center
-
-The changes of psychological indexes before and after a VR treatment. T-test and significant levels are shown at top right. [10.1016/j.jenvp.2023.102012](https://doi.org/10.1016/j.jenvp.2023.102012)
-```
-
-
-## T-Test Statistic and Interpretation
-**t-value** (aka T-statistic)
-
-The t-test calculates a t-value by dividing the difference between the group means by the standard error of the difference. _A higher t-value (positive or negative) suggests a larger inter-group difference_ relative to the intra-group variability.
-
-**p-value**
-
-The t-test also provides a p-value, which represents the probability of observing a t-value at least as extreme as the one calculated, assuming the null hypothesis is true. _A lower p-value indicates stronger evidence_ against the null hypothesis, suggesting a significant difference between the groups.
-
-**Degrees of Freedom**
-
-Degrees of freedom (df) are used to determine the appropriate t-distribution for calculating p-values. For independent samples t-test, $df = n_1 + n_2 - 2$, where $n_1$ and $n_2$ are the sample sizes of the two groups.
-
-
-**Effect Size**
-
-To assess the _practical significance of the difference between group means_, effect size measures like Cohen's d, Eta-squared, and Hedge's g can be calculated. Cohen's d indicates the magnitude of the difference between the groups in standard deviation units.
-
-- Cohen's d:
-Cohen's d is a standardized measure of effect size, often used in comparing the means of two groups. It expresses the difference between group means in terms of standard deviations, making it a useful metric for comparing effects across different studies. The guidelines proposed by Jacob Cohen for interpreting d are:
-    - Small effect: d = 0.2
-    - Medium effect: d = 0.5
-    - Large effect: d = 0.8
-
-- Eta-squared (η²):
-Eta-squared is often reported in the context of ANOVA (Analysis of Variance) tests. It describes the proportion of variance in the dependent variable that can be explained by the independent variable. Eta-squared values range from 0 to 1, with higher values indicating larger effects. Here are some general guidelines for interpreting η²:
-    - Small effect: η² = 0.01
-    - Medium effect: η² = 0.06
-    - Large effect: η² = 0.14
-
-- Hedge's g:
-Hedge's g, like Cohen's d, is a standardized effect size measure for comparing two group means. However, it includes a correction for bias in small samples, making it more appropriate than Cohen's d when sample sizes are small. The interpretation guidelines for Hedge's g are similar to Cohen's d:
-    - Small effect: g = 0.2
-    - Medium effect: g = 0.5
-    - Large effect: g = 0.8
-
-- Common Language Effect Size (CLES):
-The Common Language Effect Size (CLES) is a non-parametric effect size measure that communicates the likelihood that a randomly selected observation from one group will be greater than a randomly selected observation from another group. CLES offers a more intuitive understanding of statistical results, making it easier for researchers and non-experts to interpret the practical significance of findings.
-
-## Summary
-
-The t-test is widely used in various fields to compare group means and evaluate the effectiveness of treatments, interventions, or different conditions. It serves as an essential tool for hypothesis testing and data analysis.
+**Self-check:** Why is a paired t-test on weekdays versus weekends different from comparing their totals as two independent groups? Identify the observational unit and the source of replication in each proposed analysis.
