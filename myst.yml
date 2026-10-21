@@ -114,4 +114,5 @@ site:
     logo_text: "GE5230 - Geospatial Statistics and Visualisation"
   parts:
     footer: footer.md
+    primary_sidebar_footer: _static/empty-sidebar-footer.md
 
