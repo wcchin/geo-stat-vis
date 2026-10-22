@@ -8,6 +8,14 @@ $$H_0:\mu_D=0,\qquad H_1:\mu_D\ne0.$$
 
 Here $\mu_D$ denotes the mean difference in the process or population to which the model refers. It is not the observed mean $\overline{D}$. Our dataset can have a nonzero observed mean even under a model whose mean is zero, because the model allows variation. A test asks whether that observed departure is unusual under the specified model.
 
+## Relationships, differences and uncertainty answer different questions
+
+Before selecting a procedure, distinguish three tasks. A description reports the observations, an association summarises how variables vary together, and a model-based inference assesses a specified target under stated assumptions. A correlation between weekday and weekend activity across stops does not answer whether the average paired difference is zero: a close association can coexist with a systematic difference.
+
+Pearson correlation describes linear association; Spearman correlation describes association between ranks and can represent monotonic relationships. Choosing between them is not simply a choice between “normal” and “non-normal” data. Regression describes a specified conditional relationship and can support prediction or inference under an appropriate design and model. A fitted association alone does not identify a causal mechanism.
+
+Keep the quantity and its uncertainty separate. A mean difference needs its units and reference population or process; a confidence interval describes uncertainty from a particular construction. The interval and error discussion below develops these ideas, rather than treating “confidence” as a substitute for checking coverage or representativeness. These distinctions expand the introductory questions in Chapter 1; the later sections here focus on paired differences, group comparisons and their assumptions.
+
 ## What exactly does a p-value say?
 
 A p-value is the probability, **under the null model and its assumptions**, of obtaining a test statistic at least as extreme as the one observed. For a two-sided test, departures in both directions contribute. It is not the probability that the null hypothesis is true, nor the probability that the observations were caused by chance alone.
@@ -41,3 +49,4 @@ The map reveals that nearby stops are embedded in common corridors and neighbour
 The appropriate response depends on the target. Describing this snapshot may require no significance test. Studying changes over time needs repeated temporal observations. Studying an underlying spatial process may require a model or resampling design that represents its dependence. Later chapters develop tools for examining spatial structure explicitly.
 
 **Self-check:** Explain why “the p-value is small, so weekday demand causes more boardings” contains more than one unsupported step.
+

@@ -1,97 +1,44 @@
-# Geovisualisation
-The comic [](#catprox) is a visualization of the relationship between human proximity to cat and the intelligence of the person.
+# Geovisualisation: different views reveal different things
 
-Visualization is .mark[the process of representing data or information] in a graphical or pictorial form to communicate an idea, concept, or pattern more effectively.
+A table, chart, map and flow diagram can show the same observations while helping us notice different relationships. Choosing a view is therefore part of forming a question. We ask what the representation makes easy to inspect and what information a reader still needs.
 
-```{figure} ../resources/w01-img/xkcd_cat_proximity.png
-:label: catprox
-:alt: Cat Proximity
-:align: center
+Geovisualisation uses visual representations of geographic information to support exploration, analysis and communication. Interactive maps and linked displays play an important role in its development, but the underlying habit is accessible with a small table and a few carefully chosen views. We use a display to think, then use what we learn to improve both the question and the display.
 
-[Cat Proximity (xkcd.com/231)](https://xkcd.com/231/).
+## One small example, four views
+
+Consider two reported directions in the September 2026 train OD data: Bishan to Marymount has 256 trips, and Marymount to Bishan has 50, for the selected weekday hour category 08. These are aggregates across the reporting month. They do not describe one particular morning or count unique travellers.
+
+```{figure} ../resources/chapter_1_original/01_several_views.png
+:label: ch1-several-views
+:alt: A table, bar chart, schematic endpoint layout and flow diagram display the same two reported MRT directions: 256 trips from Bishan to Marymount and 50 in the reverse direction.
+
+The counts are real records from the supplied LTA extract used in Chapter 2. The location sketch and flow layout are schematic. Arrows show OD relationships, not observed railway routes; their widths distinguish magnitude but are not a calibrated proportional scale.
 ```
 
-## General purpose map
-**General purpose map** (e.g., [](#topomap)) is mainly for wayfinding and navigation, as it displays a wide range of geographical features such as roads, cities, rivers, and political boundaries.
+The table helps us retrieve exact values and inspect the field meanings. The chart makes the difference in counts easy to compare. A location view orients us to the endpoints. The flow diagram emphasises direction and connection. We can move between these views without changing the observations.
 
-This type of map aims to provide a comprehensive representation of an area, allowing users to orient themselves and plan routes efficiently (e.g., [](#localitymap)).
+The difference raises questions rather than supplying a cause. Does it persist at other hours? What activities occur around the endpoints? Is the selected hour representative of a longer period? The two records alone cannot answer those questions, but they help us identify the additional evidence we would like.
 
+## Maps have different purposes
 
-```{figure} ../resources/w01-img/general_purpose_map.jpg
-:label: topomap
-:alt: General purpose map
-:align: center
+A reference map provides orientation: roads, landmarks, stations and other features help us locate a place or plan a journey. A thematic map emphasises a selected variable or relationship, such as resale price, income or movement. The distinction concerns purpose. One map may provide reference context around a thematic layer.
 
-A topographic map showing the land, street networks, and boundary between Singapore and Malaysia (Johor).
-```
+Every display makes selections. A station symbol may locate a reference point while leaving out platforms and entrances. An area colour may summarise several observations while hiding variation within its boundary. A connection between endpoints does not establish the path between them. Reading a map involves understanding those representational choices as well as recognising locations.
 
+## Points, areas and relationships
 
-```{figure} ../resources/w01-img/SMRT_localitymap_Chinese_Garden.jpg
-:label: localitymap
-:alt: SMRT map
-:align: center
+A point-pattern question asks about the arrangement of locations: for example, where fire detections occur within a study window. An areal question examines quantities attached to units such as districts: for example, whether neighbouring income values resemble one another. A flow question examines relationships between origins and destinations. A statistical view may compare the distributions behind any of these representations.
 
-SMRT Locality map Chinese Garden Exit C, by [SMRT](http://journey.smrt.com.sg/journey/station_info/chinese-garden/map/)
-```
+These are complementary views, rather than a rigid taxonomy in which every dataset has only one home. A fire record can have a location, detection time and measured attributes. An HDB sale can contribute to a point display or an area summary. Choosing a representation changes which differences become visible and which operations are meaningful.
 
+## A first reading habit
 
-## Thematic map
+When meeting an unfamiliar figure, identify the quantity, observation unit, period and visual encoding. Then describe one visible feature in ordinary language. “This selected direction has more reported trips” stays close to the evidence. An explanation of why requires additional reasoning and observations.
 
-A **thematic map** (e.g., John Snow's map at [](#choleramap) and urban movement map at [](#clinicflow)) is a visual representation of a specific theme, subject, or data attribute that emphasizes .red.bold[spatial patterns], relationships, or trends within a geographical area.
+[Chapter 2](../chapter_2/chapter-2-spatial_data.md) develops the data definitions behind the MRT example. [Chapter 7](../chapter_7/sec_07-02-Key-Components-of-Maps.md) explains how scale, colour, typography, legends and layout support a visual argument. Here, the aim is to recognise that a change of view can open a new question.
 
-Through the use of various .red[symbols, colors, or shading], thematic maps visually illustrate the spatial arrangement and distribution of features, revealing the relationships, trends, or correlations that constitute spatial patterns.
+**Further reading:** Çöltekin, A., Janetzko, H., & Fabrikant, S. I. (2018). *Geovisualization*. GIS&T Body of Knowledge. [Article](https://gistbok-ltb.ucgis.org/current/concept/CV-05-035). Read for how visual thinking and interaction support geographic inquiry.
 
-Spatial pattern encompasses the way elements are organized, positioned, or clustered in a particular space. By analyzing spatial patterns, researchers can gain valuable insights into underlying processes, trends, or correlations in diverse fields, including geography, ecology, urban planning, and epidemiology.
-
-
-A **map** is a tool for **storytelling** and a medium for **communication**.
-**Spatial patterns** are the **information and insight** we can observe from a (thematic) map.
-
-```{figure} ../resources/w01-img/Snow-cholera-map-1.jpg
-:label: choleramap
-:alt: John Snow Cholera Map
-:align: center
-
-John Snow's 1854 Cholera Map: the distribution of cases and water pumps. See: [Wikipedia](https://en.wikipedia.org/wiki/File:Snow-cholera-map-1.jpg) for description.
-```
-
-```{figure} ../resources/w01-img/clinic_flow_radiation.png
-:label: clinicflow
-:alt: Clinic Flow Map
-:align: center
-
-A flow map of estimated urban movement for accessing clinics. See [Interactive map on FlowMap.gl](https://app.flowmap.city/public/67249d1d-4c21-40e3-8ddb-fd5124907c99)
-```
-
-
-## Geospatial Visualization Patterns
-
-### Point pattern
-
-```{figure} ../resources/w01-img/point-hdb_resaleprice.png
-:label: hdbprice
-:alt: HDB resale price map
-:align: center
-
-The highest and lowest price of 10 yo, 4-room HDB flat in 2023.
-```
-
-### Areal pattern
-
-```{figure} ../resources/w01-img/areal-education_level-b.png
-:label: hdbpricearea
-:alt: HDB resale price map
-:align: center
-
-Education level by Planning Area.
-```
-
-### Statistical pattern
-
-```{figure} ../resources/w01-img/stat-subzone_bus_flow.png
-:label: busflow
-:alt: Bus flow ridership
-:align: center
-
-Subzone-to-subzone daily flow ridership.
+```{dropdown} Self-check: Which view would help you compare exact counts, and which would help you investigate direction?
+A table preserves exact values clearly; an aligned chart supports magnitude comparison; a flow diagram foregrounds origins, destinations and direction. The best choice follows the question. More than one view can be useful, especially when the reader can trace the same observations between them.
 ```

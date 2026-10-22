@@ -1,0 +1,9 @@
+# Chapter 1 gateway illustrations
+
+Three original plates accompany the five introductory reading pages. Run `python draw_figures.py` from this directory with Python, numpy, pandas and matplotlib installed. Inputs are bundled and no network access is required. PNG and SVG figures are written to `src/content/resources/chapter_1_original`. The shared Comic Neue font and its OFL licence are in `_static/css/fonts` at the repository root.
+
+Figure 1 uses two actual instructor-supplied LTA train OD records: September 2026, WEEKDAY, hour category 08; Bishan to Marymount = 256 and Marymount to Bishan = 50. These are monthly category aggregates, not one morning, daily averages or unique travellers. The source extract SHA256 and selection are in `data/provenance.json`, reusing the approved Chapter 2 pilot. The location sketch and flow layout are schematic; arrows are OD connections rather than observed railway routes. Widths distinguish the two counts without claiming a calibrated proportional scale.
+
+Figures 2 and 3 are explicitly invented conceptual illustrations. The housing example uses areas A and B, a common illustrative upper-price threshold, counts 20 and 10, and all-sales denominators 100 and 20. These are not HDB findings. The spatial-perspectives diagram uses invented points, links and familiarity cues, not measured perceptions. The chapter links the concepts to published readings, including Feng, Chin, Gao, Chua and Ho (2024), https://doi.org/10.1111/tgis.13235 . No published artwork is copied.
+
+Data attribution: LTA DataMall, https://datamall.lta.gov.sg/ . Retain originating source terms and acknowledgement; this directory does not grant a replacement data licence. Original artwork does not imply ownership of source records or geographical theories. `SHA256SUMS.txt` covers the reproduction script and input snapshots.
