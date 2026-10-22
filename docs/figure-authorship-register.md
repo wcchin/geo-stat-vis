@@ -10,6 +10,15 @@ Goal: replace borrowed illustrations with original course artwork, while retaini
 - Reproduction: `python scripts/draw_spatial_figures.py` (NumPy and Matplotlib). Fixed random seed; no external artwork. Milwaukee data are downloaded from GeoDa and verified by SHA-256. The neighbourhood map remains synthetic. Matplotlib xkcd styling uses the bundled OFL-licensed Comic Neue font; SVG text is outlined for portable display.
 - Checks: permutation multisets are unchanged; polygon shared-edge relationships and graph edges match the matrix. Figures were visually reviewed before publication.
 
+## Chapter 1 gateway revision — 22 October 2026
+
+All active Chapter 1 figures now use three original project plates under `src/content/resources/chapter_1_original`, supplied in PNG and SVG. The earlier Chapter 1 inventory below is historical and superseded for the five revised pages; unused resource files are retained.
+
+- `01_several_views`: table, chart, schematic endpoint view and flow diagram of two selected actual LTA OD records. Layouts do not claim distance or travelled route.
+- `02_denominator`: explicitly invented housing count/share example, not empirical HDB findings.
+- `03_spatial_perspectives`: explicitly invented conceptual positions, connections and perception cues; no measured mental-space attributes are claimed.
+- Reproduction script and source attribution: `src/content/datasets/chapter_1_gateway`. The local space–place reading cites Feng, Chin, Gao, Chua and Ho (2024); no published figures are copied. Companion detail is relocated to Chapters 3 and 7 as documented in `docs/chapter-1-content-relocation.md`.
+
 ## Remaining review
 
 This is a source-text inventory of core-chapter and worked-example Markdown, not an assertion that every unattributed image belongs to the author. A linked source may cite a dataset, method, coauthored paper or the author's own work, rather than borrowed artwork. These cases require inspection before replacement. In particular, retain attribution for external data used in an original plot.
@@ -565,3 +574,4 @@ Figure/image occurrences: 334. Linked source / provenance review: 86; Authorship
 | `../resources/w11-img/sankey_flowmap-bokeh.png` | Linked source / provenance review | [Interactive Map Link](https://wcchin.github.io/sg_health_access/interactive/holoviews_sankey_pln_flow.html) |
 | `../resources/w11-img/mobility-by-region.png` | Linked source / provenance review | [Interactive Map Link](https://wcchin.github.io/sg_health_access/#histogram) |
 | `../resources/w11-img/accessibility-keplergl.png` | Linked source / provenance review | [Interactive Map Link](https://wcchin.github.io/sg_health_access/interactive/keplergl_accessibility_clinic.html) |
+

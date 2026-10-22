@@ -1,123 +1,41 @@
-# Statistical Thinking
+# Statistical thinking: what would count as convincing evidence?
 
-## What is statistics?
-From data to information.
+Statistical thinking begins when we ask how observations vary, what comparison matters, and how much confidence a claim deserves. It is useful before we know a test's name. The first task is to connect a question with an observation unit and a meaningful reference.
 
-The two main types of statistics:
+Suppose a busy bus stop has higher weekday than weekend boardings. Before explaining that difference, we need to know whether the figures cover the same number of days, whether the same stop is compared, and whether a typical day or a monthly total is the quantity of interest. The calculation follows those decisions.
 
-1. **Descriptive Statistics** is about _how we describe data_. This branch focuses on summarizing and describing the main features of data, such as mean, median, standard deviation, and correlation. Descriptive statistics helps **visualize** and **interpret** data through graphical methods like histograms, scatter plots, box plots, and maps.
+## Describe what was observed
 
-2. **Inferential Statistics** is about _what we can learn from the data_. This branch involves drawing conclusions about a population based on a sample by using probability theory. Inferential statistics allows us to **make predictions**, **<u>test hypotheses</u>**, and **evaluate the reliability** of conclusions. Some common methods in inferential statistics include regression analysis, hypothesis testing, and confidence intervals.
+Description summarises the observations we have. A centre describes a typical or average value; spread describes variation; a distribution shows how observations occupy the range. These summaries complement a map by helping us inspect what the colours and symbols represent.
 
-## Descriptive Statistics
-The three types of measures in descriptive statistics
-- **Measures of Central Tendency**: These measures provide an indication of the "center" or "middle" of a dataset. They include: mean, median, mode.
-- **Measures of Spread** (Variability): These measures describe how spread out or dispersed the data is. They include: range, variance, standard deviation.
-- **Measures of Shape**: These measures help characterize the shape or distribution of the data, including: skewness, kurtosis.
+One average can hide important differences. A few busy stops can pull a mean above the values seen at most stops. An area average can hide a mixture of smaller and larger values. [Chapter 2](../chapter_2/sec_02-02-Frequency-Distribution.md) explains means, medians, spread, distribution shape and cumulative distributions using the MRT example. Here, carry forward a simple habit: inspect variation alongside a headline summary.
 
-### Measures of Central Tendency
-help us understand the central or 'average' values in a dataset.
+## State the comparison
 
-```{figure} ../resources/w01-img/measures_central.png
-:label: centraltend
-:alt: Central Tendency
-:align: center
+A difference becomes interpretable when its reference is clear. We might compare weekdays with weekends at the same stops, a selected price group with all observed sales, or an event arrangement with patterns generated under a specified model. Each comparison asks something different.
 
-The means of the three IRIS species.
+The word “random” also needs a definition. Uniformly placing points within a rectangle creates one expectation. Allowing event likelihood to vary with available habitat creates another. A departure from the first expectation might reflect that varying background rather than interaction between events. The point-pattern chapters introduce these choices through explicit study windows and reference models.
+
+## Ask where uncertainty comes from
+
+If we have the reported records for a particular month, we can calculate their descriptive average. Generalising to other months, unobserved places or an underlying process raises another question: what makes these observations informative about that target?
+
+Sampling, measurement, incomplete coverage and model assumptions can each introduce uncertainty. More records may improve some estimates while leaving systematic coverage errors unresolved. Nearby stops can share routes and passengers; treating them as independent observations can therefore misrepresent how much independent evidence we have.
+
+Inference uses a stated model or design to reason beyond a direct summary of the available records. A test or interval does not supply its own justification. [Chapter 3](../chapter_3/sec_03-01-Hypothesis-Testing.md) develops effect estimates, confidence intervals, hypothesis tests and comparison designs, including why an impressive number of records cannot replace an appropriate model.
+
+## Separate a relationship from its explanation
+
+If higher sale prices occur near busy transport locations, we have a possible association to investigate. Several processes could contribute: accessibility, centrality, housing characteristics, land use or selection into the observed sales. A visual association alone cannot identify which explanation is responsible.
+
+An explanation becomes more credible when the study design and additional evidence help distinguish alternatives. A useful conclusion may be narrower than our initial story: the records show a descriptive contrast, and a proposed mechanism remains a question. That is a productive outcome because it tells us what to investigate next.
+
+## Five questions to keep nearby
+
+Before interpreting a pattern, ask: what constitutes one observation; compared with what; over which places and period; what could change the result; and what evidence would distinguish the proposed explanation from alternatives? You do not need to answer every question immediately. Recognising an unanswered question helps you choose the next observation or analysis.
+
+For example, a satellite fire detection is not automatically one distinct fire. Repeated detections and the observation process matter. Similarly, a resale registration describes an observed transaction rather than every household's housing conditions. These distinctions connect statistical thinking directly to data preparation in Chapter 2.
+
+```{dropdown} Self-check: We have more than 5,000 stops. Does that settle the uncertainty question?
+No. First identify the target and source of uncertainty. Stops can share routes and geographical conditions, and one month's aggregates do not provide repeated observations of individual days. The number of rows alone does not establish independence, coverage or generalisability.
 ```
-
-
-### Measures of Spread
-(variability) describe how the data is spread or dispersed around the central values.
-
-```{figure} ../resources/w01-img/measures_spread.png
-:label: spread
-:alt: Measuring Spread
-:align: center
-
-The spread of the three IRIS species.
-```
-
-
-### Measures of Shape
-describe the shape of the distribution, which could be steep/flat, skewed, or non-normal.
-
-```{figure} ../resources/w01-img/measures_shapes.png
-:label: shape
-:alt: steep or flat
-:align: center
-
-The skewness and kurtosis of the three IRIS species.
-```
-
-
-
-## Inferential Statistics
-
-- **Analysis of Relationship**:
-How one variable is related to another? How a series of independent variables could be related to one of the dependent variables?
-- **Analysis of Differences**:
-Are them significantly different?
-- **Analysis of Confidence**:
-How confident are we about the sampling result?
-
-
-### Analysis of Relationship
-Assessing the strength and direction of associations between variables. Examples include correlation (Pearson's r for parametric data and Spearman's rho for non-parametric data), and regression analysis (linear, multiple, and logistic regression). These output could further be used for further analysis and predictions.
-
-```{figure} ../resources/w01-img/analysis_correlation.png
-:label: relationshpi
-:alt: relationship
-:align: center
-
-The relationships between petal length and petal weight for the three IRIS species.
-```
-
-
-### Analysis of Differences
-Evaluating whether observed differences between groups or conditions are statistically significant. Hypothesis testing forms the foundation for these measures. Parametric tests, such as t-tests and ANOVA, are used when data meets certain assumptions (e.g., normality). Non-parametric tests, such as Mann-Whitney U test, Wilcoxon signed-rank test, and Kruskal-Wallis test, are used when assumptions are violated or with non-normal data.
-
-```{figure} ../resources/w01-img/analysis_differences-b.png
-:label: difference
-:alt: analysis of differences
-:align: center
-
-The differences in petal length between the three species.
-```
-
-
-### Analysis of Confidence
-Provide insights into the reliability and generalizability of statistical findings. Estimation involves calculating point estimates and confidence intervals to infer .red[population] parameters. Sampling distributions and standard errors help quantify the variability of sample statistics. Statistical power and effect size measures ensure that studies have adequate sample sizes and detect meaningful effects.
-
-```{figure} ../resources/w01-img/analysis_confidence.png
-:label: confidence
-:alt: analysis of confidence
-:align: center
-
-The confidence interval (CI) of the actual population mean could fall within the 95% CI.
-```
-
-
-
-## Summary
-Thinking **Statistically** while doing **Geospatial Visualization**
-
-- Measures of **Central Tendency & Spreads**: Spatial Aggregation---
-What is the median resale price of HDB flats in each district?
-
-- Measures of **Shape**: Data Categorization---
-Which data breaking scheme is more appropriate for mapping the variable?
-Is data transformation needed?
-
-- Analysis of **Relationship**: Spatial Interaction---
-Is mental wellness related to the distribution of greenery?
-Can Socio-Economic Status be explained or predicted by the distribution of various types of POIs and property prices?
-
-- Analysis of **Differences**: Spatial Patterns---
-Are there significant clusters of crime cases in the study area?
-Are the spatial patterns of university-level and secondary-school-level residences different from each other?
-
-- Analysis of **Confidence**: Samples vs. Population---
-Is the sample data representative of the population?
-
-These are some of the key concerns when we are reading/mapping a spatial pattern.

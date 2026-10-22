@@ -1,123 +1,44 @@
-# Why visualization?
+# Why visualisation? From seeing to investigating
 
-In [](#datainfo), on the left is the mapped flow of people between towns in Singapore, while the right shows the key flow structure---the information---that was analyzed from the data in the left.
-```{figure} ../resources/w01-img/drawing_compare_data_info-b.png
-:label: datainfo
-:alt: Data vs. Information
-:align: center
+Visualisation gives us something to inspect, compare and question. Its value is especially clear when an initial impression changes after we add context. That change can be the most useful result of an exploratory figure: we learn that our first question was incomplete.
 
-Data vs. Information
+## A concentration needs a comparison
+
+Imagine two areas displayed in a housing study. Area A has 20 upper-price-group sales and Area B has 10. A display of these counts makes A more prominent. Now add all-sales totals: A has 100 sales overall, while B has 20. The upper-group shares are 20% and 50% respectively.
+
+```{figure} ../resources/chapter_1_original/02_denominator.png
+:label: ch1-denominator
+:alt: Invented example comparing 20 versus 10 upper-group sales with their shares of all sales: 20 out of 100 in Area A and 10 out of 20 in Area B.
+
+Invented teaching numbers, not findings about HDB neighbourhoods. Both views are arithmetically correct. Counts identify more selected transactions; shares describe their composition relative to the chosen denominator. Neither view establishes the cause of a difference.
 ```
 
-## From Data to Information, then Insights
+A reader interested in the number of selected sales may need the first view. A reader interested in their prevalence among all observed sales needs the second. The useful question is “which comparison serves our purpose?” Chapter 5 returns to this issue with real HDB data and density comparisons.
 
-- **Data**: Raw facts, figures, or observations collected and recorded] in various forms, such as text, numbers, or images. Data is the basic building block for understanding and analyzing phenomena or trends.
+An extra layer of context does not necessarily settle the inquiry. Different flat types, sizes, remaining leases and transaction periods could still matter. Visual exploration progresses by identifying consequential questions and finding ways to examine them.
 
-- **Information**: Organized, structured, and processed data that provides context and meaning, making it useful and relevant to specific users or situations. Information helps answer questions and guide decision-making.
+## Exploration and communication
 
-- **Insights**: Deep, meaningful conclusions and understanding derived from analyzing and interpreting information. Insights uncover patterns, trends, or cause-and-effect relationships, enabling informed decisions and new perspectives.
+During exploration, a display helps the analyst discover possibilities. You might change a boundary, inspect a subset or compare another variable. During communication, a display helps another person follow an interpretation and assess its evidence. These purposes can overlap: a well-designed teaching figure may guide an initial reading and invite further exploration.
 
-```{figure} ../resources/w01-img/drawing-data_info_insight.png
-:label: data2insights
-:alt: Data, Information, Insights.
-:align: center
+An exploratory display can be unfinished and still useful. A public-facing figure needs enough context to stand on its own, including units, period and source. A busy interactive dashboard does not automatically offer deeper exploration, and an elegant static figure does not automatically provide strong evidence. Its usefulness depends on the task it enables.
 
-Data, Information, Insights.
+Research in geovisualisation treats visual thinking as part of inquiry, extending the role of maps beyond presenting final results. MacEachren and Kraak (2001) provide one foundation for that perspective. We keep the detailed design decisions for Chapter 7, where we can connect them to an audience and a complete example sequence.
+
+## Data, information and an interpretation we can defend
+
+Recorded values become informative when we know what they measure and how they relate to a question. An interpretation connects that information to a claim. It becomes more persuasive when a reader can follow the connection, inspect the comparison and identify what could change the conclusion.
+
+This progression is iterative. A map may reveal an error in a table. A calculation may show that a visually striking contrast is small relative to the reference quantity. A local expert may explain that two apparently comparable facilities serve different functions. Meaning develops through those checks; it is not a guaranteed final product of drawing a figure.
+
+## A short visual-thinking guideline
+
+The course uses **Observe, Think, Assess, Show (OTAS)** as a practical reminder. Observe the records and representations. Think about possible interpretations and alternative explanations. Assess the data handling and the evidence needed to distinguish them. Show an interpretation that a reader can inspect, and use their feedback to return to earlier questions.
+
+This is a flexible course guideline, not a mandatory sequence or a claim that every investigation begins with a finished dataset. A question may motivate new observation, and assessment may send us back to the source. The fuller planning activities, communication choices and feedback loop now sit in [Chapter 7's storytelling section](../chapter_7/sec_07-01-Geospatial-Data-Storytelling.md).
+
+**Further reading:** MacEachren, A. M., & Kraak, M.-J. (2001). *Research Challenges in Geovisualization*. Cartography and Geographic Information Science, 28(1), 3–12. [Publisher record](https://doi.org/10.1559/152304001782173970).
+
+```{dropdown} Self-check: Which area has more upper-price-group sales, and which has the larger share?
+A has more selected sales: 20 rather than 10. B has the larger share of its observed sales: 50% rather than 20%. A statement about “more” needs to identify the quantity being compared.
 ```
-
-Geovisualisation is a series of explorations and analyses, that includes using various techniques and methods, e.g., thematic mapping, exploratory spatial data analysis, to uncover the underlying patterns, to get better understanding of geographical phenomena.
-
-```{figure} ../resources/w01-img/drawing-how_maps_are_used.png
-:label: cartocube
-:alt: Data, Information, Insights.
-:align: center
-
-MacEachren's cartographic cube.
-```
-
-## The Key Steps of Data Visualisation: **OTAS**
-
-- Observe
-- Think
-- Assess
-- Show
-
-
-```{figure} ../resources/w01-img/otas_01.png
-:label: otas01
-:alt: Data, Information, Insights.
-:align: center
-
-**OTAS**.
-```
-
-### Observe
-- **What can be SEEN?**
-- Ensure you understand the **metadata**.
-- Look into the data.
-- Get your hand dirty: **Create relevant plots or maps** using the data.
-	- whatever plots/maps that you can think of, sky is the limit
-- Look at those plots and maps...
-- **Divergent thinking, brainstorming**
-
-### Think
-- **What are the CAUSES?**
-- How does it look?
-- Are there any **familiar or expected** patterns? (that you may have seen somewhere before)
-- Is there anything looks **unusual and strange**? (something that really stands out)
-	- Is there anything wrong?
-- Are there any **unexpected** patterns? (something beyond your expectation)
-	- unexpected patterns are usually the interesting one, if they are real
-	- counter-intuitive
-- What could be the **possible reasons** behind these patterns?
-- **Expanding and synthesizing from the brainstorming step**
-
-
-### Assess
-
-- **How to VERIFY them?**
-- Review and (re)evaluate your **initial ideas or thoughts**, even if they seem **immature, unconventional, or funny**.
-- **Test your hypotheses or thoughts** to ensure their validity.
-- Double-check for any possible *(stupid) mistakes* made during
-	- data processing,
-	- calculation,
-	- unit transformation,
-	- map projection, or
-	- visualization.
-- **Literature review** for confirmation/contrasting the findings.
-- **Convergent thinking, rigourously evaluating every idea**
-
-
-### Show
-- **How to VISUALISE them?**
-- **(Re)Drawing** the plots & maps
-- Think about the **layouts**
-	- potrait, landscape
-	- combining multiple subplots
-	- sequences
-	- colours
-	- text font family, size, and positions
-- **Show** it to people
-- **Communicate** based on it
-- Getting **feedbacks**
-
-### OTAS Flow
-
-```{figure} ../resources/w01-img/otas_flow.png
-:label: otasflow
-:alt: The workflow of OTAS.
-:align: center
-
-OTAS workflow.
-```
-
-### Summary
-
-- There is **no strict rules** for doing data visualisation
-- The four OTAS steps are just a quick guideline for the **"visual thinking process"**
-	- Observe: divergent thinking & brainstorming
-	- Think: extending & synthesing
-	- Assess: convergent thinking & double checking
-	- Show: presentation
-- **Some people skip the Think and Assess** steps and jump from drawing initial plots/maps step to the last showing/communicating step.
-	- Their results could be bias, not comprehensively capture the thoughts

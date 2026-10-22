@@ -1,147 +1,60 @@
-# GeoSpatial Thinking: Describing Space in Geography
+# Geospatial thinking: why locations and relationships matter
 
-## How People See 'Space' and 'Spatial'
+Imagine two amenities equally distant from your home on a straight-line sketch. One has a direct path; the other requires crossing a major road and finding an entrance. Now imagine a friend farther away who is easy to reach by a direct train connection. Familiarity, mobility and purpose may change which journey you consider convenient.
 
-From Oxford Learners Dictionaries: about ['Space'](https://www.oxfordlearnersdictionaries.com/definition/english/space_1)
+These are ordinary experiences, but they expose an important analytical choice. Coordinates, proximity, connections and lived meanings describe different aspects of a place. Geospatial thinking asks which aspect matters to the question and how to represent it.
 
-> **Space** *noun*
+## Several perspectives on the same setting
 
-1. uncountable - the area outside the earth’s atmosphere where all the other planets and stars are
-2. countable - an area or a place that is empty
-3. uncountable - an amount of an area or of a place that is empty or that is available for use
-4. countable, uncountable - a place, especially a room or a building, that can be used for a particular purpose
+**Absolute space** provides a positional reference: where is a station, home or event? Coordinates help us locate and compare features within a defined system. A reference point may be appropriate for one task while an entrance, building footprint or route is needed for another.
 
+**Relative space** concerns relationships such as distance, travel time and accessibility. “Nearby” depends on the measure and circumstances. A radius gives one explicit definition, while a pedestrian route or public-transport journey gives another. Relative space is broader than a buffer around a point.
 
-From Oxford Learners Dictionaries: about ['Spatial'](https://www.oxfordlearnersdictionaries.com/definition/english/spatial?q=spatial) and ['Geospatial'](https://www.oxfordlearnersdictionaries.com/definition/english/geospatial?q=geospatial)
+**Relational space** foregrounds connections and the relationships through which places acquire roles. Social ties, movements and exchanges can link distant places and give significance to an otherwise unremarkable location. A network diagram offers one representation of those relationships, rather than a complete account of relational space.
 
-> **Spatial** *adjective*
-relating to space and the position, size, shape, etc. of things in it
+**Mental space** brings perceptions, familiarity, memories and meanings into view. The same route can feel straightforward to one person and unfamiliar to another. Understanding that experience may require interviews, diaries or other observations beyond coordinates and aggregate counts. A numerical attribute attached to a point does not, by itself, measure perception.
 
-> **Geospatial** *adjective, only before noun*
-relating to information that is associated with a particular location
+```{figure} ../resources/chapter_1_original/03_spatial_perspectives.png
+:label: ch1-spatial-perspectives
+:alt: Four schematic panels emphasise a reference location, a distance neighbourhood, selected connections and hypothetical familiarity in the same setting.
 
-
-## How AI See 'Space' and 'Spatial'
-
-generated and modified based on [Pi.ai](https://pi.ai/talk)'s response
-
-**Spatial** refers to anything related to space, including the location, size, shape, and orientation of objects or elements within a given area or environment. It's a broad term that's used in many different fields and contexts, such as *geography, architecture, interior design, and psychology*.
-
-Some examples of spatial concepts include:
-- **Spatial awareness/perception**: This refers to an individual's ability to understand and navigate their surroundings, including the ability to perceive and judge distances, directions, and relationships between objects.
-- **Spatial reasoning**: This involves understanding and reasoning about spatial relationships between objects, such as their relative positions, distances, and orientations.
-- **Spatial planning**: This involves the organization and layout of physical spaces, such as the design of buildings, cities, or public spaces, to maximize functionality, efficiency, and aesthetics.
-- **Spatial data**: This includes any information or datasets that relate to the location, shape, or other spatial characteristics of objects or features, such as maps, satellite images, or GPS coordinates.
-
-In general, .red**spatial refers to anything that involves the arrangement or characteristics of objects or elements within a physical space**.
-
-So, what is **Space**, **Spatial**, and **Geospatial**?
-
-- Space is a two- or three-dimensional physical realm that encompasses and contextualizes the location of objects and beings within it.
-- Spatial-[some object] is the information related to the positional or geographical aspects and relationships of a specific object.
-- Geospatial: space and spatial can refer to any 'space' and 'spatial'; to differentiate and specifying geographical space, we use the term geospatial.
-
-Here, the two terms spatial and geospatial can be used interchangeably, both refer to the space in geographical context.
-
-## How Geographers See 'Space' and 'Spatial'
-
-### The space–place ('splatial') Framework
-
-Adapted from [Understanding the New Human Dynamics in Smart Spaces and Places: Toward a Splatial Framework](https://doi.org/10.1080/24694452.2019.1631145)
-
-```{figure} ../resources/w04-img/drawing-fourspaces.png
-:label:
-:alt:
-:align: center
-
-The splatial framework.
+Original conceptual illustration. All positions, connections and perception cues are invented. The four panels are teaching lenses informed by space–place scholarship; they are not separate stages that a place passes through or an exhaustive classification of geographical theory.
 ```
 
+The space–place, or “splatial,” framework discussed by Shaw and Sui (2020) motivates attention to multiple spatial perspectives. This chapter uses a simplified interpretation to help us ask questions. The distinction should expand the inquiry: it should not reduce absolute space to a coordinate, relative space to a circle, relational space to a graph, or mental space to an arbitrary score.
 
-### Absolute Space
+## Neighbourhoods, scale and boundaries
 
-Absolute space is about _the location itself_---where are the studying object?
+An area boundary can organise data, but its analytical meaning depends on the task. A planning area may be useful for reporting; a walking catchment may be more useful for reaching a facility. Changing the boundary or aggregation scale can change the visible pattern, even when the underlying records stay fixed. We therefore carry the definition of the study area and neighbourhood with the result.
 
-```{figure} ../resources/w04-img/splatial_absolute_space.png
-:label:
-:alt:
-:align: center
+This also affects statements about people. An area's average income does not tell us the income of every resident. A block's observed resale median does not describe every flat's value. Moving between individual, point, block and area representations requires careful interpretation. Chapter 2 develops observation units and aggregation; [Chapter 6](../chapter_6/sec_06-02-Statistical-Spatial-Testing.md) develops explicit neighbourhood structures.
 
-Absolute Space. The red-X marker shows where the current location is.
+## Similarity and difference both deserve attention
+
+Nearby observations may resemble each other because of shared environments, interaction or common processes. Tobler's first law is a useful prompt to examine such relationships, rather than a guarantee that every neighbouring pair must be similar. Roads, coastlines, institutions and other boundaries can create sharp differences over short distances. Distant places can also be connected through transport, trade or social relationships.
+
+**Spatial dependence** concerns relationships between observations across space. **Spatial heterogeneity** concerns geographical differences in distributions or processes. Both can matter: observations may be related within a region while the relationships or conditions vary between regions. We introduce those ideas here so that later methods have a geographical purpose, rather than becoming calculations detached from places.
+
+## A short reflection on AI and representation
+
+An AI system might describe a neighbourhood from text, classify an image or compare numerical location features. Those inputs make different aspects of a place available to the system. A plausible explanation still needs to be checked against the observations, task and representation. Ask which geographical relationships the inputs capture, and which experiences or processes would require other evidence. This is a question about analytical representation, not an assumption that all AI systems perceive space in one way.
+
+## A local reading that brings the perspectives together
+
+Feng, Chin, Gao, Chua and Ho (2024) examine older adults' activity spaces in Singapore through absolute, relative, relational and mental perspectives. Their study offers a local example of why locations, social connections and experiences can contribute complementary evidence about everyday life. Read it as an invitation to consider what a location-only dataset leaves open; a fuller worked case can be developed later in the book.
+
+**Further reading**
+
+- Shaw, S.-L., & Sui, D. (2020). *Understanding the New Human Dynamics in Smart Spaces and Places: Toward a Splatial Framework*. Annals of the American Association of Geographers, 110(2), 339–348. [Publisher record](https://doi.org/10.1080/24694452.2019.1631145).
+- Feng, C.-C., Chin, W. C. B., Gao, S., Chua, V., & Ho, E. L.-E. (2024). *Illustrating a Splatial Framework to Aging: Absolute, Relative, Relational, and Mental Space in Singapore*. Transactions in GIS, 28(7), 2281–2294. [Open-access article](https://onlinelibrary.wiley.com/doi/full/10.1111/tgis.13235).
+- Tobler, W. R. (1970). *A Computer Movie Simulating Urban Growth in the Detroit Region*. Economic Geography, 46(sup1), 234–240. [Publisher record](https://doi.org/10.2307/143141). This foundational reading motivates the discussion of geographical relationships; our teaching examples remain regional.
+
+## Your question, ready for data
+
+Return to the place or journey you chose at the start of the chapter. Identify one observation that would help investigate your question. Would it record a location, an event, a connection, an area summary or a person's experience? What period and geographical representation would it need?
+
+That is the bridge to [Chapter 2](../chapter_2/chapter-2-spatial_data.md). Before choosing a method, we learn to ask **what our observations actually represent**—and how to prepare them so that the analysis remains connected to the question.
+
+```{dropdown} Self-check: Is the nearest facility necessarily the easiest one to use?
+The answer depends on the definition of nearest and the person's purpose and circumstances. Straight-line distance, network distance, travel time, entrances and familiarity can point to different comparisons. State which meaning your data can support, and identify what else you would need.
 ```
-
-
-
-### Relative Space
-
-Relative space is about _the nearby area_---relative to the current target/space.
-
-```{figure} ../resources/w04-img/splatial_relative_space.png
-:label:
-:alt:
-:align: center
-
-Relative Space. The buffer zone shows the neighborhood of current location.
-```
-
-
-
-### Relational Space
-
-Relational space is about _the connectivity and the structure of connections_---how connected are them?
-
-```{figure} ../resources/w04-img/splatial_relational_space.png
-:label:
-:alt:
-:align: center
-
-Relational Space. The links show the connections between spatial units. Those connected to the current location are highlighted in blue.
-```
-
-
-
-### Mental Space
-
-Mental space is about _how people think about the location_.
-
-In modelling, we can go beyond 'mental', and makes it any type of attribute.
-
-```{figure} ../resources/w04-img/splatial_mental_space.png
-:label:
-:alt:
-:align: center
-
-Mental Space. The size of point shows the familiarity of a person who stay at the current location.
-```
-
-
-
-## Summary
-
-In general, what does space means?
-- outer space
-- a physical location/place/area that is empty, i.e., a gap
-- a physical location/venue serves a particular urban function/purpose.
-
-How geographers see 'space'?
-The 4 types/levels of space:
-- **Absolute Space**: the locations (coordinates)
-- **Relative Space**: the nearby area (buffer, search radius)
-- **Relational Space**: the connections & topological structure
-- **Mental Space**: how people think about the space, a dimension beyond physical space
-
-
-As a geographer / geospatial data analyst, what is 'spatial information'?
-- data related to the 4 types of **space**
-    - where is it?
-    - what is found next to it?
-    - what is connected to it?
-    - how people describe it?
-
-- attributes data (statistical, non-spatial) that **attached to the space**, e.g.,
-    - the size (capacity)
-    - the type (urban functions)
-    - the crowdedness
-    - the ranking
-    - the demographic structure
-    - etc.

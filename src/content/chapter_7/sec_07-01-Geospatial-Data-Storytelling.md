@@ -35,6 +35,20 @@ Our six-frame sequence starts with a recognisable question and ends with a revis
 
 Notice that the story does not finish with a winning town. Its resolution is a change in understanding. The opening word “convenient” sounded like a single property. By the end, the reader can see that it depends on needs, measures and boundaries. That intellectual payoff can be engaging without a sensational conclusion.
 
+## From visual thinking to a communication plan: OTAS
+
+Chapter 1 introduces the course guideline **Observe, Think, Assess, Show**. Here we use it to plan and revise the neighbourhood example. OTAS is a flexible teaching guideline, rather than a named research framework or a rule that every project must follow in one order. The creative brief identifies the audience and purpose; the guideline helps connect exploratory work with the eventual story.
+
+**Observe.** Read the metadata and inspect both source records and initial displays. In the neighbourhood example, check what a selling block, a bus stop and a park reference point represent. Compare distributions and local contexts before choosing a headline. Record the selection and temporal coverage with each provisional view.
+
+**Think.** Write down possible interpretations and alternatives. Equal nearby stop counts may suggest similar provision, while boarding activity raises another question about use. List the further evidence needed to compare service quality or accessibility. The aim is to develop explanations worth checking, rather than infer causes directly from a striking map.
+
+**Assess.** Check identifiers, joins, units, coordinate systems, denominators and case selection. Test whether another radius or price measure changes the comparison. Use relevant literature to examine possible mechanisms and contrary evidence. A successful check increases support for a specific claim; it does not verify every explanation that could be attached to the display. If a check exposes a problem, return to the observations or reconsider the question.
+
+**Show.** Choose the views and sequence that help the intended reader inspect the supported interpretation. Decide how to arrange panels, label units, use colour and type, and state the source and limits. Show a draft to a reader and ask what they think it claims. Their answer may reveal a need to revise the analysis, wording or hierarchy. The map-components and hierarchy sections develop these design decisions in detail.
+
+The loop is useful because exploratory discoveries and presentation choices influence each other. A new question can lead to another observation, a sensitivity check can reshape the central idea, and reader feedback can expose an ambiguity. Keep those returns possible while making the final reading path clear.
+
 ## Selecting examples without selecting the answer
 
 For the local comparison, we fixed three illustrative towns—Bishan, Tampines and Woodlands—before examining their amenity results. Within each town, we selected the block with at least three sample transactions whose median resale price was closest to the town's transaction median. Alphabetical address order breaks a tie. Each selected block happens to have five transactions.
@@ -42,3 +56,4 @@ For the local comparison, we fixed three illustrative towns—Bishan, Tampines a
 This transparent rule avoids hand-picking a block because its POI pattern makes a dramatic map. It does not make the three blocks statistically representative of their towns. A town transaction median also weights blocks with more transactions more heavily. We therefore name the block in each panel and describe the results as local illustrations.
 
 **Try it.** Rewrite the six-frame sequence for a transport planner. Which frame would you replace with service frequency or journey-time evidence? Explain why a new audience changes the required data as well as the wording.
+

@@ -1,0 +1,25 @@
+{
+  "source": "instructor-supplied LTA origin_destination_train_202609.csv.xz",
+  "source_sha256": "9663cfd7e5be5a05da1384664f3c64f0cb1a6ed1c0631760a8c11655dbf67025",
+  "selection": {
+    "month": "2026-09",
+    "day_type": "WEEKDAY",
+    "hour_category": 8,
+    "pairs": [
+      [
+        "NS17/CC15",
+        "CC16"
+      ],
+      [
+        "CC16",
+        "NS17/CC15"
+      ]
+    ]
+  },
+  "source_counts": [
+    256,
+    50
+  ],
+  "base_main": "31dfdc3392746aa80c54376641e547025d2c9ead",
+  "chapter2_destination_pr": 19
+}

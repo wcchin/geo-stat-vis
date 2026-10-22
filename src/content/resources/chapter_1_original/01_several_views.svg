@@ -1,0 +1,2633 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="840.402554pt" height="572.24pt" viewBox="0 0 840.402554 572.24" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-22T09:43:28.104961</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 572.24 
+L 840.402554 572.24 
+L 840.402554 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="table_1">
+    <g id="patch_2">
+     <path d="M 105.48 145.610323 
+L 195.703881 145.610323 
+L 195.703881 121.610323 
+L 105.48 121.610323 
+z
+" style="fill: #ffffff; stroke: #000000; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_1">
+     <!-- Origin -->
+     <g transform="translate(135.129753 136.508135) scale(0.12 -0.12)">
+      <defs>
+       <path id="ComicNeue-Regular-4f" d="M 1920 -38 
+Q 1453 -38 1085 221 
+Q 717 480 512 937 
+Q 307 1395 307 1965 
+Q 307 2605 563 3149 
+Q 819 3693 1254 4009 
+Q 1690 4326 2195 4326 
+Q 2669 4326 3033 4067 
+Q 3398 3808 3603 3347 
+Q 3808 2886 3808 2317 
+Q 3808 1677 3552 1136 
+Q 3296 595 2861 278 
+Q 2426 -38 1920 -38 
+z
+M 1946 358 
+Q 2330 358 2659 620 
+Q 2989 883 3187 1331 
+Q 3386 1779 3386 2298 
+Q 3386 2778 3226 3149 
+Q 3066 3520 2787 3725 
+Q 2509 3930 2163 3930 
+Q 1786 3930 1453 3670 
+Q 1120 3411 925 2963 
+Q 730 2515 730 1978 
+Q 730 1491 893 1123 
+Q 1056 755 1331 556 
+Q 1606 358 1946 358 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-72" d="M 704 -38 
+Q 627 -38 563 19 
+Q 499 77 499 147 
+L 499 2963 
+Q 499 3046 560 3100 
+Q 621 3155 704 3155 
+Q 794 3155 851 3100 
+Q 909 3046 909 2963 
+L 909 2419 
+Q 1088 2733 1353 2953 
+Q 1619 3174 1978 3174 
+Q 2259 3174 2384 3017 
+Q 2509 2861 2509 2643 
+L 2509 2438 
+Q 2509 2355 2451 2300 
+Q 2394 2246 2310 2246 
+Q 2214 2246 2169 2304 
+Q 2125 2362 2125 2445 
+L 2125 2592 
+Q 2125 2778 1907 2778 
+Q 1530 2778 1126 2240 
+Q 1030 2112 969 1920 
+Q 909 1728 909 1562 
+L 902 147 
+Q 902 77 841 19 
+Q 781 -38 704 -38 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-69" d="M 749 3661 
+Q 666 3661 608 3718 
+Q 550 3776 550 3859 
+L 557 4122 
+Q 557 4198 621 4256 
+Q 685 4314 762 4314 
+Q 838 4314 896 4253 
+Q 954 4192 954 4115 
+L 947 3853 
+Q 947 3770 886 3715 
+Q 826 3661 749 3661 
+z
+M 710 -38 
+Q 627 -38 563 22 
+Q 499 83 499 166 
+L 538 2944 
+Q 538 3027 602 3091 
+Q 666 3155 749 3155 
+Q 832 3155 893 3094 
+Q 954 3034 954 2944 
+L 915 166 
+Q 915 83 854 22 
+Q 794 -38 710 -38 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-67" d="M 1510 -1203 
+Q 1152 -1203 730 -1107 
+Q 659 -1094 614 -1040 
+Q 570 -986 570 -915 
+Q 570 -832 630 -774 
+Q 691 -717 774 -717 
+Q 806 -717 922 -742 
+Q 1210 -806 1504 -806 
+Q 1978 -806 2192 -566 
+Q 2406 -326 2426 115 
+L 2438 435 
+Q 2272 211 2048 92 
+Q 1824 -26 1568 -32 
+Q 1210 -32 918 166 
+Q 627 365 460 713 
+Q 294 1062 294 1491 
+Q 294 1920 496 2307 
+Q 698 2694 1043 2928 
+Q 1389 3162 1811 3162 
+Q 2138 3162 2496 2970 
+Q 2496 3232 2694 3232 
+Q 2778 3232 2838 3174 
+Q 2899 3117 2899 3027 
+L 2829 102 
+Q 2816 -550 2454 -876 
+Q 2093 -1203 1510 -1203 
+z
+M 1517 352 
+Q 1907 352 2185 665 
+Q 2464 979 2464 1670 
+L 2464 2573 
+Q 2362 2656 2186 2710 
+Q 2010 2765 1837 2765 
+Q 1517 2765 1248 2595 
+Q 979 2426 819 2131 
+Q 659 1837 659 1478 
+Q 659 1222 752 960 
+Q 845 698 1040 525 
+Q 1235 352 1517 352 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-6e" d="M 704 -38 
+Q 621 -38 560 19 
+Q 499 77 499 147 
+L 499 2970 
+Q 499 3053 560 3107 
+Q 621 3162 704 3162 
+Q 787 3162 844 3107 
+Q 902 3053 902 2970 
+L 902 1958 
+Q 1088 2534 1417 2844 
+Q 1747 3155 2163 3155 
+Q 2515 3155 2720 2976 
+Q 2925 2797 3014 2409 
+Q 3104 2022 3104 1370 
+Q 3104 730 3098 531 
+L 3098 166 
+Q 3098 83 3043 22 
+Q 2989 -38 2906 -38 
+Q 2829 -38 2771 22 
+Q 2714 83 2714 160 
+L 2714 518 
+Q 2707 717 2707 1344 
+Q 2707 1939 2646 2246 
+Q 2586 2554 2461 2666 
+Q 2336 2778 2106 2778 
+Q 1888 2778 1677 2618 
+Q 1466 2458 1306 2163 
+Q 1094 1779 1001 1440 
+Q 909 1101 902 742 
+L 896 173 
+Q 896 83 841 22 
+Q 787 -38 704 -38 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#ComicNeue-Regular-4f"/>
+      <use xlink:href="#ComicNeue-Regular-72" transform="translate(64.299988 0)"/>
+      <use xlink:href="#ComicNeue-Regular-69" transform="translate(103.999985 0)"/>
+      <use xlink:href="#ComicNeue-Regular-67" transform="translate(126.699982 0)"/>
+      <use xlink:href="#ComicNeue-Regular-69" transform="translate(179.699966 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6e" transform="translate(202.399963 0)"/>
+     </g>
+    </g>
+    <g id="patch_3">
+     <path d="M 195.703881 145.610323 
+L 285.927761 145.610323 
+L 285.927761 121.610323 
+L 195.703881 121.610323 
+z
+" style="fill: #ffffff; stroke: #000000; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_2">
+     <!-- Destination -->
+     <g transform="translate(212.478946 136.508135) scale(0.12 -0.12)">
+      <defs>
+       <path id="ComicNeue-Regular-44" d="M 1478 -45 
+Q 1126 -45 691 64 
+Q 621 83 576 140 
+Q 531 198 531 269 
+L 531 4115 
+Q 531 4198 592 4256 
+Q 653 4314 742 4314 
+Q 1402 4314 2070 4118 
+Q 2739 3923 3228 3382 
+Q 3718 2842 3718 1888 
+Q 3718 1242 3424 806 
+Q 3130 371 2624 163 
+Q 2118 -45 1478 -45 
+z
+M 1478 365 
+Q 2330 365 2816 752 
+Q 3302 1139 3302 1888 
+Q 3302 2893 2649 3373 
+Q 1997 3853 947 3904 
+L 947 429 
+Q 1286 365 1478 365 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-65" d="M 1888 -38 
+Q 1421 -38 1056 170 
+Q 691 378 492 730 
+Q 294 1082 294 1498 
+Q 294 1933 476 2313 
+Q 659 2694 985 2924 
+Q 1312 3155 1734 3155 
+Q 2118 3155 2390 3008 
+Q 2662 2861 2800 2656 
+Q 2938 2451 2938 2291 
+Q 2938 2176 2784 2086 
+L 800 954 
+Q 960 646 1235 489 
+Q 1510 333 1882 333 
+Q 2086 333 2313 435 
+Q 2541 538 2675 678 
+Q 2720 742 2803 742 
+Q 2886 742 2940 688 
+Q 2995 634 2995 550 
+Q 2995 486 2944 422 
+Q 2771 224 2473 93 
+Q 2176 -38 1888 -38 
+z
+M 2541 2342 
+Q 2451 2560 2259 2669 
+Q 2067 2778 1741 2778 
+Q 1434 2778 1190 2608 
+Q 947 2438 809 2150 
+Q 672 1862 666 1517 
+Q 666 1389 678 1312 
+L 2541 2342 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-73" d="M 1318 -51 
+Q 954 -51 688 99 
+Q 422 250 284 451 
+Q 147 653 147 794 
+Q 147 877 201 931 
+Q 256 986 339 986 
+Q 480 986 518 851 
+Q 608 595 819 454 
+Q 1030 314 1338 314 
+Q 1645 314 1843 480 
+Q 2042 646 2042 877 
+Q 2042 1011 1981 1104 
+Q 1920 1197 1763 1280 
+Q 1606 1363 1306 1453 
+Q 787 1613 556 1824 
+Q 326 2035 326 2381 
+Q 326 2726 611 2940 
+Q 896 3155 1427 3155 
+Q 1907 3155 2166 2960 
+Q 2426 2765 2426 2426 
+Q 2426 2272 2374 2192 
+Q 2323 2112 2227 2112 
+Q 2144 2112 2086 2166 
+Q 2029 2221 2029 2291 
+Q 2029 2323 2038 2361 
+Q 2048 2400 2048 2432 
+Q 2048 2605 1894 2704 
+Q 1741 2803 1427 2803 
+Q 1082 2803 893 2691 
+Q 704 2579 704 2374 
+Q 704 2176 867 2061 
+Q 1030 1946 1434 1811 
+Q 1818 1683 2026 1568 
+Q 2234 1453 2326 1296 
+Q 2419 1139 2419 896 
+Q 2419 659 2281 441 
+Q 2144 224 1894 86 
+Q 1645 -51 1318 -51 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-74" d="M 864 -45 
+Q 781 -45 720 12 
+Q 659 70 659 147 
+L 659 2758 
+L -51 2758 
+Q -134 2758 -192 2819 
+Q -250 2880 -250 2963 
+Q -250 3053 -186 3107 
+Q -122 3162 -38 3162 
+L 659 3162 
+L 659 4038 
+Q 659 4122 720 4182 
+Q 781 4243 864 4243 
+Q 954 4243 1008 4182 
+Q 1062 4122 1062 4038 
+L 1062 3162 
+L 1779 3162 
+Q 1869 3162 1926 3104 
+Q 1984 3046 1984 2963 
+Q 1984 2880 1923 2819 
+Q 1862 2758 1779 2758 
+L 1062 2758 
+L 1062 147 
+Q 1062 70 1001 12 
+Q 941 -45 864 -45 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-61" d="M 2605 -90 
+Q 2509 -90 2457 -29 
+Q 2406 32 2406 122 
+L 2406 301 
+Q 2234 147 1990 54 
+Q 1747 -38 1504 -38 
+Q 1158 -38 883 134 
+Q 608 307 451 624 
+Q 294 941 294 1344 
+Q 294 1779 476 2198 
+Q 659 2618 1008 2886 
+Q 1357 3155 1830 3155 
+Q 2125 3155 2349 3078 
+Q 2573 3002 2803 2893 
+L 2803 122 
+Q 2803 32 2745 -29 
+Q 2688 -90 2605 -90 
+z
+M 1504 339 
+Q 1754 339 2003 457 
+Q 2253 576 2387 710 
+L 2413 2650 
+Q 2310 2694 2147 2736 
+Q 1984 2778 1843 2778 
+Q 1530 2778 1267 2592 
+Q 1005 2406 854 2083 
+Q 704 1760 704 1357 
+Q 704 890 928 614 
+Q 1152 339 1504 339 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-6f" d="M 1594 -38 
+Q 1229 -38 931 157 
+Q 634 352 464 688 
+Q 294 1024 294 1434 
+Q 294 1869 489 2265 
+Q 685 2662 1030 2908 
+Q 1376 3155 1792 3155 
+Q 2150 3155 2448 2960 
+Q 2746 2765 2915 2429 
+Q 3085 2093 3085 1690 
+Q 3085 1229 2880 832 
+Q 2675 435 2332 198 
+Q 1990 -38 1594 -38 
+z
+M 1619 326 
+Q 1894 326 2137 512 
+Q 2381 698 2528 1005 
+Q 2675 1312 2675 1658 
+Q 2675 1958 2553 2217 
+Q 2432 2477 2224 2633 
+Q 2016 2790 1760 2790 
+Q 1478 2790 1238 2601 
+Q 998 2413 854 2102 
+Q 710 1792 710 1446 
+Q 710 1114 835 861 
+Q 960 608 1171 467 
+Q 1382 326 1619 326 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#ComicNeue-Regular-44"/>
+      <use xlink:href="#ComicNeue-Regular-65" transform="translate(62.899994 0)"/>
+      <use xlink:href="#ComicNeue-Regular-73" transform="translate(112.999985 0)"/>
+      <use xlink:href="#ComicNeue-Regular-74" transform="translate(154.599976 0)"/>
+      <use xlink:href="#ComicNeue-Regular-69" transform="translate(183.199966 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6e" transform="translate(205.899963 0)"/>
+      <use xlink:href="#ComicNeue-Regular-61" transform="translate(261.199951 0)"/>
+      <use xlink:href="#ComicNeue-Regular-74" transform="translate(312.799942 0)"/>
+      <use xlink:href="#ComicNeue-Regular-69" transform="translate(341.399933 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6f" transform="translate(364.09993 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6e" transform="translate(416.999924 0)"/>
+     </g>
+    </g>
+    <g id="patch_4">
+     <path d="M 285.927761 145.610323 
+L 376.151642 145.610323 
+L 376.151642 121.610323 
+L 285.927761 121.610323 
+z
+" style="fill: #ffffff; stroke: #000000; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_3">
+     <!-- Trips -->
+     <g transform="translate(318.481889 136.508135) scale(0.12 -0.12)">
+      <defs>
+       <path id="ComicNeue-Regular-54" d="M 1670 -38 
+Q 1587 -38 1529 22 
+Q 1472 83 1472 166 
+L 1472 3885 
+L 262 3885 
+Q 179 3885 118 3942 
+Q 58 4000 58 4083 
+Q 58 4166 118 4227 
+Q 179 4288 262 4288 
+L 3085 4288 
+Q 3168 4288 3225 4230 
+Q 3283 4173 3283 4083 
+Q 3283 4000 3225 3942 
+Q 3168 3885 3085 3885 
+L 1875 3885 
+L 1875 166 
+Q 1875 83 1814 22 
+Q 1754 -38 1670 -38 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-70" d="M 704 -1267 
+Q 621 -1267 560 -1206 
+Q 499 -1146 499 -1069 
+L 499 2957 
+Q 499 3046 560 3104 
+Q 621 3162 704 3162 
+Q 787 3162 844 3101 
+Q 902 3040 902 2957 
+L 902 2694 
+Q 1293 3162 2067 3162 
+Q 2387 3162 2624 2957 
+Q 2861 2752 2982 2425 
+Q 3104 2099 3104 1728 
+Q 3104 1043 2784 528 
+Q 2464 13 1696 13 
+Q 1331 13 902 192 
+L 902 -1069 
+Q 902 -1146 841 -1206 
+Q 781 -1267 704 -1267 
+z
+M 1734 416 
+Q 2259 416 2499 765 
+Q 2739 1114 2739 1728 
+Q 2739 1971 2668 2217 
+Q 2598 2464 2435 2633 
+Q 2272 2803 2016 2803 
+Q 1594 2803 1312 2627 
+Q 1030 2451 902 2266 
+L 902 621 
+Q 1357 416 1734 416 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#ComicNeue-Regular-54"/>
+      <use xlink:href="#ComicNeue-Regular-72" transform="translate(52.199997 0)"/>
+      <use xlink:href="#ComicNeue-Regular-69" transform="translate(91.899994 0)"/>
+      <use xlink:href="#ComicNeue-Regular-70" transform="translate(114.599991 0)"/>
+      <use xlink:href="#ComicNeue-Regular-73" transform="translate(167.699982 0)"/>
+     </g>
+    </g>
+    <g id="patch_5">
+     <path d="M 105.48 169.610323 
+L 195.703881 169.610323 
+L 195.703881 145.610323 
+L 105.48 145.610323 
+z
+" style="fill: #ffffff; stroke: #000000; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_4">
+     <!-- Bishan -->
+     <g transform="translate(114.502388 160.508135) scale(0.12 -0.12)">
+      <defs>
+       <path id="ComicNeue-Regular-42" d="M 794 -51 
+Q 531 -51 531 192 
+L 531 4096 
+Q 531 4179 592 4240 
+Q 653 4301 736 4301 
+L 1888 4301 
+Q 2349 4301 2665 4144 
+Q 2982 3987 3139 3740 
+Q 3296 3494 3296 3232 
+Q 3296 2918 3177 2694 
+Q 3059 2470 2874 2336 
+Q 3674 2042 3674 1280 
+Q 3674 640 2950 294 
+Q 2227 -51 794 -51 
+z
+M 2150 2445 
+Q 2355 2445 2528 2553 
+Q 2701 2662 2797 2841 
+Q 2893 3021 2893 3213 
+Q 2893 3520 2624 3715 
+Q 2355 3910 1888 3910 
+L 947 3910 
+L 947 2445 
+L 2150 2445 
+z
+M 947 333 
+Q 1958 339 2611 576 
+Q 3264 813 3264 1280 
+Q 3264 1626 2976 1840 
+Q 2688 2054 2208 2054 
+L 947 2054 
+L 947 333 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-68" d="M 704 -45 
+Q 621 -45 560 16 
+Q 499 77 499 154 
+L 499 4154 
+Q 499 4237 560 4297 
+Q 621 4358 704 4358 
+Q 794 4358 848 4297 
+Q 902 4237 902 4154 
+L 902 2189 
+Q 1094 2586 1436 2880 
+Q 1779 3174 2138 3174 
+Q 2611 3174 2803 2649 
+Q 2995 2125 2995 1005 
+Q 2995 371 2976 154 
+Q 2970 70 2918 16 
+Q 2867 -38 2784 -38 
+Q 2707 -38 2646 19 
+Q 2586 77 2586 154 
+Q 2586 250 2592 333 
+L 2598 960 
+Q 2598 2042 2457 2410 
+Q 2317 2778 2106 2778 
+Q 1869 2778 1638 2582 
+Q 1408 2387 1238 2147 
+Q 1069 1907 998 1754 
+Q 902 1562 902 1203 
+L 902 166 
+Q 902 70 844 12 
+Q 787 -45 704 -45 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#ComicNeue-Regular-42"/>
+      <use xlink:href="#ComicNeue-Regular-69" transform="translate(61.999985 0)"/>
+      <use xlink:href="#ComicNeue-Regular-73" transform="translate(84.699982 0)"/>
+      <use xlink:href="#ComicNeue-Regular-68" transform="translate(126.299973 0)"/>
+      <use xlink:href="#ComicNeue-Regular-61" transform="translate(179.899963 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6e" transform="translate(231.499954 0)"/>
+     </g>
+    </g>
+    <g id="patch_6">
+     <path d="M 195.703881 169.610323 
+L 285.927761 169.610323 
+L 285.927761 145.610323 
+L 195.703881 145.610323 
+z
+" style="fill: #ffffff; stroke: #000000; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_5">
+     <!-- Marymount -->
+     <g transform="translate(204.726269 160.48376) scale(0.12 -0.12)">
+      <defs>
+       <path id="ComicNeue-Regular-4d" d="M 454 -38 
+Q 365 -38 313 19 
+Q 262 77 262 141 
+Q 262 218 288 301 
+L 1133 4160 
+Q 1146 4237 1200 4278 
+Q 1254 4320 1331 4320 
+Q 1402 4320 1453 4281 
+Q 1504 4243 1523 4186 
+L 2592 794 
+L 3821 4192 
+Q 3846 4250 3900 4285 
+Q 3955 4320 4026 4320 
+Q 4090 4320 4141 4275 
+Q 4192 4230 4205 4160 
+L 5062 320 
+Q 5094 211 5094 141 
+Q 5094 70 5036 16 
+Q 4979 -38 4896 -38 
+Q 4819 -38 4764 3 
+Q 4710 45 4698 122 
+L 3968 3398 
+L 2771 90 
+Q 2752 32 2697 -3 
+Q 2643 -38 2579 -38 
+Q 2515 -38 2464 0 
+Q 2413 38 2394 102 
+L 1363 3341 
+L 653 122 
+Q 640 45 585 3 
+Q 531 -38 454 -38 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-79" d="M 800 -1280 
+Q 717 -1280 659 -1219 
+Q 602 -1158 602 -1075 
+Q 602 -1030 627 -986 
+L 1248 371 
+L 6 2848 
+Q -19 2912 -19 2957 
+Q -19 3046 41 3104 
+Q 102 3162 186 3162 
+Q 250 3162 301 3123 
+Q 352 3085 378 3027 
+L 1466 845 
+L 2470 3040 
+Q 2534 3168 2662 3168 
+Q 2746 3168 2803 3110 
+Q 2861 3053 2861 2970 
+Q 2861 2912 2842 2880 
+L 992 -1152 
+Q 922 -1280 800 -1280 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-6d" d="M 704 -38 
+Q 621 -38 560 19 
+Q 499 77 499 154 
+L 499 2957 
+Q 499 3034 560 3094 
+Q 621 3155 704 3155 
+Q 787 3155 844 3094 
+Q 902 3034 902 2957 
+L 902 2221 
+Q 1114 2637 1450 2896 
+Q 1786 3155 2112 3155 
+Q 2387 3155 2608 2992 
+Q 2829 2829 2912 2432 
+Q 3142 2803 3430 2979 
+Q 3718 3155 4000 3155 
+Q 4390 3155 4624 2867 
+Q 4858 2579 4858 1971 
+L 4858 154 
+Q 4858 77 4797 19 
+Q 4736 -38 4653 -38 
+Q 4570 -38 4512 19 
+Q 4454 77 4454 154 
+L 4454 2016 
+Q 4454 2413 4326 2595 
+Q 4198 2778 3949 2778 
+Q 3757 2778 3523 2630 
+Q 3290 2483 3123 2214 
+Q 2957 1946 2957 1600 
+L 2957 154 
+Q 2957 77 2899 19 
+Q 2842 -38 2758 -38 
+Q 2675 -38 2614 19 
+Q 2554 77 2554 154 
+L 2554 2016 
+Q 2554 2419 2438 2598 
+Q 2323 2778 2061 2778 
+Q 1843 2778 1612 2595 
+Q 1382 2413 1190 2150 
+Q 1018 1907 960 1696 
+Q 902 1485 902 1107 
+L 902 154 
+Q 902 77 844 19 
+Q 787 -38 704 -38 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-75" d="M 1370 -58 
+Q 1011 -58 803 102 
+Q 595 262 499 646 
+Q 403 1030 403 1715 
+Q 403 2451 480 2925 
+Q 499 3053 547 3107 
+Q 595 3162 685 3162 
+Q 762 3162 816 3110 
+Q 870 3059 870 2970 
+Q 870 2874 851 2720 
+Q 794 2259 794 1562 
+Q 794 890 928 595 
+Q 1062 301 1376 301 
+Q 1664 301 1955 451 
+Q 2246 602 2368 742 
+Q 2445 832 2445 1030 
+L 2470 2982 
+Q 2470 3059 2528 3110 
+Q 2586 3162 2662 3162 
+Q 2739 3162 2796 3110 
+Q 2854 3059 2854 2982 
+L 2854 160 
+Q 2854 83 2790 22 
+Q 2726 -38 2643 -38 
+Q 2541 -38 2480 26 
+Q 2419 90 2419 186 
+L 2419 429 
+Q 2278 243 1987 92 
+Q 1696 -58 1370 -58 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#ComicNeue-Regular-4d"/>
+      <use xlink:href="#ComicNeue-Regular-61" transform="translate(83.799988 0)"/>
+      <use xlink:href="#ComicNeue-Regular-72" transform="translate(135.399979 0)"/>
+      <use xlink:href="#ComicNeue-Regular-79" transform="translate(175.099976 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6d" transform="translate(219.799973 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6f" transform="translate(302.499954 0)"/>
+      <use xlink:href="#ComicNeue-Regular-75" transform="translate(355.399948 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6e" transform="translate(406.499939 0)"/>
+      <use xlink:href="#ComicNeue-Regular-74" transform="translate(461.799927 0)"/>
+     </g>
+    </g>
+    <g id="patch_7">
+     <path d="M 285.927761 169.610323 
+L 376.151642 169.610323 
+L 376.151642 145.610323 
+L 285.927761 145.610323 
+z
+" style="fill: #ffffff; stroke: #000000; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_6">
+     <!-- 256 -->
+     <g transform="translate(294.950149 160.508135) scale(0.12 -0.12)">
+      <defs>
+       <path id="ComicNeue-Regular-32" d="M 416 192 
+Q 416 704 573 1062 
+Q 730 1421 979 1661 
+Q 1229 1901 1606 2144 
+Q 1946 2355 2115 2483 
+Q 2285 2611 2403 2796 
+Q 2522 2982 2522 3226 
+Q 2522 3520 2288 3718 
+Q 2054 3917 1715 3917 
+Q 1389 3917 1145 3757 
+Q 902 3597 787 3462 
+Q 723 3392 688 3363 
+Q 653 3334 589 3334 
+Q 499 3334 441 3398 
+Q 384 3462 384 3539 
+Q 384 3597 422 3654 
+Q 461 3712 570 3808 
+Q 1088 4314 1715 4314 
+Q 2061 4314 2336 4170 
+Q 2611 4026 2768 3776 
+Q 2925 3526 2925 3226 
+Q 2925 2880 2781 2633 
+Q 2637 2387 2432 2224 
+Q 2227 2061 1862 1824 
+Q 1549 1619 1344 1443 
+Q 1139 1267 992 1008 
+Q 845 749 826 397 
+L 2778 397 
+Q 2861 397 2921 336 
+Q 2982 275 2982 192 
+Q 2982 115 2921 57 
+Q 2861 0 2778 0 
+L 416 0 
+L 416 192 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-35" d="M 1613 -38 
+Q 1280 -38 1011 86 
+Q 742 211 576 374 
+Q 410 538 352 666 
+Q 326 698 326 762 
+Q 326 845 387 902 
+Q 448 960 531 960 
+Q 595 960 630 937 
+Q 666 915 704 858 
+Q 896 614 1107 489 
+Q 1318 365 1613 365 
+Q 1888 365 2134 534 
+Q 2381 704 2528 989 
+Q 2675 1274 2675 1600 
+Q 2675 2042 2435 2358 
+Q 2195 2675 1741 2675 
+Q 1427 2675 1219 2553 
+Q 1011 2432 851 2272 
+Q 781 2202 698 2202 
+Q 602 2202 541 2269 
+Q 480 2336 493 2432 
+L 659 4090 
+Q 666 4166 730 4217 
+Q 794 4269 864 4269 
+L 2694 4269 
+Q 2778 4269 2838 4211 
+Q 2899 4154 2899 4070 
+Q 2899 3987 2838 3929 
+Q 2778 3872 2694 3872 
+L 1043 3872 
+L 941 2854 
+Q 1338 3072 1741 3072 
+Q 2118 3072 2422 2886 
+Q 2726 2701 2899 2368 
+Q 3072 2035 3072 1600 
+Q 3072 1158 2867 780 
+Q 2662 403 2326 182 
+Q 1990 -38 1613 -38 
+z
+" transform="scale(0.015625)"/>
+       <path id="ComicNeue-Regular-36" d="M 1747 -38 
+Q 1382 -38 1072 122 
+Q 762 282 570 640 
+Q 378 998 378 1562 
+Q 378 2611 883 3280 
+Q 1389 3949 2074 4288 
+Q 2150 4320 2202 4320 
+Q 2285 4320 2336 4269 
+Q 2387 4218 2387 4134 
+Q 2387 4070 2358 4025 
+Q 2330 3981 2278 3962 
+Q 1818 3757 1466 3395 
+Q 1114 3034 947 2586 
+Q 1370 2829 1843 2829 
+Q 2189 2829 2464 2678 
+Q 2739 2528 2902 2237 
+Q 3066 1946 3066 1530 
+Q 3066 1062 2890 707 
+Q 2714 352 2413 157 
+Q 2112 -38 1747 -38 
+z
+M 1754 346 
+Q 2022 346 2236 493 
+Q 2451 640 2572 909 
+Q 2694 1178 2694 1530 
+Q 2694 1984 2457 2214 
+Q 2221 2445 1843 2445 
+Q 1472 2445 1206 2304 
+Q 941 2163 787 2010 
+Q 755 1824 755 1562 
+Q 755 941 1024 643 
+Q 1293 346 1754 346 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#ComicNeue-Regular-32"/>
+      <use xlink:href="#ComicNeue-Regular-35" transform="translate(52.299988 0)"/>
+      <use xlink:href="#ComicNeue-Regular-36" transform="translate(106.499985 0)"/>
+     </g>
+    </g>
+    <g id="patch_8">
+     <path d="M 105.48 193.610323 
+L 195.703881 193.610323 
+L 195.703881 169.610323 
+L 105.48 169.610323 
+z
+" style="fill: #ffffff; stroke: #000000; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_7">
+     <!-- Marymount -->
+     <g transform="translate(114.502388 184.48376) scale(0.12 -0.12)">
+      <use xlink:href="#ComicNeue-Regular-4d"/>
+      <use xlink:href="#ComicNeue-Regular-61" transform="translate(83.799988 0)"/>
+      <use xlink:href="#ComicNeue-Regular-72" transform="translate(135.399979 0)"/>
+      <use xlink:href="#ComicNeue-Regular-79" transform="translate(175.099976 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6d" transform="translate(219.799973 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6f" transform="translate(302.499954 0)"/>
+      <use xlink:href="#ComicNeue-Regular-75" transform="translate(355.399948 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6e" transform="translate(406.499939 0)"/>
+      <use xlink:href="#ComicNeue-Regular-74" transform="translate(461.799927 0)"/>
+     </g>
+    </g>
+    <g id="patch_9">
+     <path d="M 195.703881 193.610323 
+L 285.927761 193.610323 
+L 285.927761 169.610323 
+L 195.703881 169.610323 
+z
+" style="fill: #ffffff; stroke: #000000; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_8">
+     <!-- Bishan -->
+     <g transform="translate(204.726269 184.508135) scale(0.12 -0.12)">
+      <use xlink:href="#ComicNeue-Regular-42"/>
+      <use xlink:href="#ComicNeue-Regular-69" transform="translate(61.999985 0)"/>
+      <use xlink:href="#ComicNeue-Regular-73" transform="translate(84.699982 0)"/>
+      <use xlink:href="#ComicNeue-Regular-68" transform="translate(126.299973 0)"/>
+      <use xlink:href="#ComicNeue-Regular-61" transform="translate(179.899963 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6e" transform="translate(231.499954 0)"/>
+     </g>
+    </g>
+    <g id="patch_10">
+     <path d="M 285.927761 193.610323 
+L 376.151642 193.610323 
+L 376.151642 169.610323 
+L 285.927761 169.610323 
+z
+" style="fill: #ffffff; stroke: #000000; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_9">
+     <!-- 50 -->
+     <g transform="translate(294.950149 184.508135) scale(0.12 -0.12)">
+      <defs>
+       <path id="ComicNeue-Regular-30" d="M 1882 -38 
+Q 1466 -38 1133 246 
+Q 800 531 611 1011 
+Q 422 1491 422 2042 
+Q 422 2643 636 3174 
+Q 851 3706 1219 4026 
+Q 1587 4346 2022 4346 
+Q 2432 4346 2765 4061 
+Q 3098 3776 3286 3296 
+Q 3475 2816 3475 2259 
+Q 3475 1651 3260 1123 
+Q 3046 595 2678 278 
+Q 2310 -38 1882 -38 
+z
+M 1882 358 
+Q 2195 358 2473 614 
+Q 2752 870 2921 1305 
+Q 3091 1741 3091 2246 
+Q 3091 2694 2950 3084 
+Q 2810 3475 2566 3712 
+Q 2323 3949 2022 3949 
+Q 1702 3949 1424 3693 
+Q 1146 3437 979 2998 
+Q 813 2560 813 2054 
+Q 813 1613 950 1222 
+Q 1088 832 1331 595 
+Q 1574 358 1882 358 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#ComicNeue-Regular-35"/>
+      <use xlink:href="#ComicNeue-Regular-30" transform="translate(54.199997 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="text_10">
+    <!-- Table: which records and values? -->
+    <g transform="translate(139.139446 70.32) scale(0.144 -0.144)">
+     <defs>
+      <path id="ComicNeue-Regular-62" d="M 698 -38 
+Q 621 -38 560 16 
+Q 499 70 499 147 
+L 499 4179 
+Q 499 4256 560 4307 
+Q 621 4358 704 4358 
+Q 781 4358 838 4307 
+Q 896 4256 896 4179 
+L 896 2611 
+Q 1101 2848 1395 2976 
+Q 1690 3104 2010 3104 
+Q 2515 3104 2822 2723 
+Q 3130 2342 3130 1696 
+Q 3130 934 2781 470 
+Q 2432 6 1734 6 
+Q 1517 6 1286 60 
+Q 1056 115 890 186 
+L 890 134 
+Q 890 70 832 16 
+Q 774 -38 698 -38 
+z
+M 1683 390 
+Q 2746 390 2746 1696 
+Q 2746 2170 2544 2435 
+Q 2342 2701 2003 2701 
+Q 1696 2701 1443 2585 
+Q 1190 2470 1043 2272 
+Q 896 2074 896 1837 
+L 896 550 
+Q 1018 499 1238 444 
+Q 1459 390 1683 390 
+z
+" transform="scale(0.015625)"/>
+      <path id="ComicNeue-Regular-6c" d="M 704 -38 
+Q 627 -38 563 16 
+Q 499 70 499 141 
+L 499 4166 
+Q 499 4250 556 4304 
+Q 614 4358 704 4358 
+Q 781 4358 841 4300 
+Q 902 4243 902 4166 
+L 902 141 
+Q 902 70 841 16 
+Q 781 -38 704 -38 
+z
+" transform="scale(0.015625)"/>
+      <path id="ComicNeue-Regular-3a" d="M 627 2221 
+Q 525 2221 464 2294 
+Q 403 2368 403 2483 
+Q 403 2598 486 2694 
+Q 570 2790 678 2790 
+Q 774 2790 838 2720 
+Q 902 2650 902 2541 
+Q 902 2406 819 2313 
+Q 736 2221 627 2221 
+z
+M 442 -38 
+Q 339 -38 278 35 
+Q 218 109 218 224 
+Q 218 346 301 438 
+Q 384 531 493 531 
+Q 589 531 656 457 
+Q 723 384 723 282 
+Q 723 147 640 54 
+Q 557 -38 442 -38 
+z
+" transform="scale(0.015625)"/>
+      <path id="ComicNeue-Regular-20" transform="scale(0.015625)"/>
+      <path id="ComicNeue-Regular-77" d="M 896 -38 
+Q 819 -38 761 10 
+Q 704 58 685 134 
+L 109 2867 
+L 96 2970 
+Q 96 3046 150 3104 
+Q 205 3162 288 3162 
+Q 365 3162 419 3114 
+Q 474 3066 486 2989 
+L 934 736 
+L 1722 3014 
+Q 1741 3072 1798 3117 
+Q 1856 3162 1926 3162 
+Q 1997 3162 2057 3110 
+Q 2118 3059 2131 2989 
+L 2682 704 
+L 3366 3002 
+Q 3386 3066 3440 3110 
+Q 3494 3155 3558 3155 
+Q 3642 3155 3702 3097 
+Q 3763 3040 3763 2957 
+Q 3763 2938 3753 2918 
+Q 3744 2899 3744 2893 
+L 2861 115 
+Q 2803 -38 2662 -38 
+Q 2598 -38 2544 3 
+Q 2490 45 2470 122 
+L 1901 2368 
+L 1082 109 
+Q 1056 45 1005 3 
+Q 954 -38 896 -38 
+z
+" transform="scale(0.015625)"/>
+      <path id="ComicNeue-Regular-63" d="M 1690 -38 
+Q 1318 -38 995 144 
+Q 672 326 483 646 
+Q 294 966 294 1350 
+Q 294 1786 496 2205 
+Q 698 2624 1030 2889 
+Q 1363 3155 1722 3155 
+Q 2054 3155 2268 3046 
+Q 2483 2938 2682 2707 
+Q 2733 2656 2733 2573 
+Q 2733 2490 2678 2432 
+Q 2624 2374 2541 2374 
+Q 2451 2374 2394 2445 
+Q 2253 2611 2105 2697 
+Q 1958 2784 1734 2784 
+Q 1478 2784 1235 2579 
+Q 992 2374 838 2044 
+Q 685 1715 685 1363 
+Q 685 1043 835 809 
+Q 986 576 1219 454 
+Q 1453 333 1690 333 
+Q 2240 333 2547 774 
+Q 2630 890 2726 890 
+Q 2810 890 2867 832 
+Q 2925 774 2925 698 
+Q 2925 634 2861 550 
+Q 2694 307 2380 134 
+Q 2067 -38 1690 -38 
+z
+" transform="scale(0.015625)"/>
+      <path id="ComicNeue-Regular-64" d="M 1408 -38 
+Q 1094 -38 841 134 
+Q 589 307 441 636 
+Q 294 966 294 1408 
+Q 294 2227 659 2688 
+Q 1024 3149 1664 3149 
+Q 2093 3149 2515 2925 
+L 2547 4198 
+Q 2547 4282 2611 4342 
+Q 2675 4403 2758 4403 
+Q 2835 4403 2896 4339 
+Q 2957 4275 2957 4192 
+L 2861 154 
+Q 2861 70 2800 16 
+Q 2739 -38 2656 -38 
+Q 2566 -38 2508 29 
+Q 2451 96 2458 186 
+L 2464 448 
+Q 1965 -38 1408 -38 
+z
+M 1414 339 
+Q 1709 339 1952 460 
+Q 2195 582 2332 752 
+Q 2470 922 2477 1050 
+L 2509 2528 
+Q 2368 2611 2141 2688 
+Q 1914 2765 1683 2765 
+Q 1190 2765 940 2413 
+Q 691 2061 691 1427 
+Q 691 915 886 627 
+Q 1082 339 1414 339 
+z
+" transform="scale(0.015625)"/>
+      <path id="ComicNeue-Regular-76" d="M 1306 -45 
+Q 1178 -45 1120 96 
+L -19 2886 
+Q -32 2938 -32 2957 
+Q -32 3040 29 3097 
+Q 90 3155 179 3155 
+Q 301 3155 365 3021 
+L 1306 646 
+L 2253 3040 
+Q 2278 3091 2326 3126 
+Q 2374 3162 2438 3162 
+Q 2522 3162 2582 3101 
+Q 2643 3040 2643 2963 
+Q 2643 2925 2618 2874 
+L 1491 83 
+Q 1434 -45 1306 -45 
+z
+" transform="scale(0.015625)"/>
+      <path id="ComicNeue-Regular-3f" d="M 1062 1062 
+Q 979 1062 924 1120 
+Q 870 1178 870 1261 
+Q 870 1350 941 1402 
+Q 1376 1773 1709 2086 
+Q 1754 2125 1962 2320 
+Q 2170 2515 2288 2729 
+Q 2406 2944 2406 3168 
+Q 2406 3552 2153 3827 
+Q 1901 4102 1370 4102 
+Q 1094 4102 892 3974 
+Q 691 3846 506 3635 
+Q 467 3584 384 3584 
+Q 301 3584 240 3641 
+Q 179 3699 179 3782 
+Q 179 3859 320 4013 
+Q 499 4211 768 4352 
+Q 1037 4493 1370 4493 
+Q 1792 4493 2115 4326 
+Q 2438 4160 2614 3859 
+Q 2790 3558 2790 3168 
+Q 2790 2842 2659 2586 
+Q 2528 2330 2381 2179 
+Q 2234 2029 1958 1798 
+L 1446 1338 
+L 1235 1152 
+Q 1146 1062 1062 1062 
+z
+M 851 -38 
+Q 749 -38 685 38 
+Q 621 115 621 224 
+Q 621 346 704 438 
+Q 787 531 896 531 
+Q 992 531 1059 457 
+Q 1126 384 1126 282 
+Q 1126 147 1043 54 
+Q 960 -38 851 -38 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#ComicNeue-Regular-54"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(52.199997 0)"/>
+     <use xlink:href="#ComicNeue-Regular-62" transform="translate(103.799988 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6c" transform="translate(157.299973 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(179.199966 0)"/>
+     <use xlink:href="#ComicNeue-Regular-3a" transform="translate(229.299957 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(247.399948 0)"/>
+     <use xlink:href="#ComicNeue-Regular-77" transform="translate(280.799942 0)"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(340.59993 0)"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(394.199921 0)"/>
+     <use xlink:href="#ComicNeue-Regular-63" transform="translate(416.899918 0)"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(465.099915 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(518.699905 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(552.099899 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(591.799896 0)"/>
+     <use xlink:href="#ComicNeue-Regular-63" transform="translate(641.899887 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(690.099884 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(742.999878 0)"/>
+     <use xlink:href="#ComicNeue-Regular-64" transform="translate(782.699875 0)"/>
+     <use xlink:href="#ComicNeue-Regular-73" transform="translate(835.69986 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(877.29985 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(910.699844 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(962.299835 0)"/>
+     <use xlink:href="#ComicNeue-Regular-64" transform="translate(1017.599823 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(1070.599808 0)"/>
+     <use xlink:href="#ComicNeue-Regular-76" transform="translate(1103.999802 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(1145.799789 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6c" transform="translate(1197.39978 0)"/>
+     <use xlink:href="#ComicNeue-Regular-75" transform="translate(1219.299774 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(1270.399765 0)"/>
+     <use xlink:href="#ComicNeue-Regular-73" transform="translate(1320.499756 0)"/>
+     <use xlink:href="#ComicNeue-Regular-3f" transform="translate(1362.099747 0)"/>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_11">
+    <path d="M 560.208358 238.900645 
+L 830.88 238.900645 
+L 830.88 76.32 
+L 560.208358 76.32 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 560.208358 149.399179 
+L 780.182772 149.399179 
+L 780.182772 83.710029 
+L 560.208358 83.710029 
+z
+" clip-path="url(#pe8b51141d0)" style="fill: #a85d1d"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 560.208358 231.510616 
+L 603.172111 231.510616 
+L 603.172111 165.821466 
+L 560.208358 165.821466 
+z
+" clip-path="url(#pe8b51141d0)" style="fill: #efc889"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m0565ed69aa" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m0565ed69aa" x="560.208358" y="238.900645" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <!-- 0 -->
+      <g transform="translate(556.553983 254.071895) scale(0.12 -0.12)">
+       <use xlink:href="#ComicNeue-Regular-30"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m0565ed69aa" x="603.172111" y="238.900645" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <!-- 50 -->
+      <g transform="translate(596.265548 254.071895) scale(0.12 -0.12)">
+       <use xlink:href="#ComicNeue-Regular-35"/>
+       <use xlink:href="#ComicNeue-Regular-30" transform="translate(54.199997 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m0565ed69aa" x="646.135864" y="238.900645" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <!-- 100 -->
+      <g transform="translate(636.451489 254.071895) scale(0.12 -0.12)">
+       <defs>
+        <path id="ComicNeue-Regular-31" d="M 621 0 
+Q 538 0 480 57 
+Q 422 115 422 198 
+Q 422 282 480 342 
+Q 538 403 621 403 
+L 1158 403 
+L 1210 3610 
+L 749 3117 
+Q 691 3053 602 3053 
+Q 518 3053 460 3113 
+Q 403 3174 403 3258 
+Q 403 3334 461 3392 
+L 1267 4269 
+Q 1293 4294 1334 4313 
+Q 1376 4333 1408 4333 
+Q 1498 4333 1555 4272 
+Q 1613 4211 1613 4128 
+L 1562 403 
+L 1984 403 
+Q 2080 403 2137 342 
+Q 2195 282 2195 198 
+Q 2195 115 2134 57 
+Q 2074 0 1997 0 
+L 621 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#ComicNeue-Regular-31"/>
+       <use xlink:href="#ComicNeue-Regular-30" transform="translate(39.599991 0)"/>
+       <use xlink:href="#ComicNeue-Regular-30" transform="translate(100.499985 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m0565ed69aa" x="689.099616" y="238.900645" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <!-- 150 -->
+      <g transform="translate(679.817429 254.071895) scale(0.12 -0.12)">
+       <use xlink:href="#ComicNeue-Regular-31"/>
+       <use xlink:href="#ComicNeue-Regular-35" transform="translate(39.599991 0)"/>
+       <use xlink:href="#ComicNeue-Regular-30" transform="translate(93.799988 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m0565ed69aa" x="732.063369" y="238.900645" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <!-- 200 -->
+      <g transform="translate(721.616806 254.071895) scale(0.12 -0.12)">
+       <use xlink:href="#ComicNeue-Regular-32"/>
+       <use xlink:href="#ComicNeue-Regular-30" transform="translate(52.299988 0)"/>
+       <use xlink:href="#ComicNeue-Regular-30" transform="translate(113.199982 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m0565ed69aa" x="775.027122" y="238.900645" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <!-- 250 -->
+      <g transform="translate(764.982747 254.071895) scale(0.12 -0.12)">
+       <use xlink:href="#ComicNeue-Regular-32"/>
+       <use xlink:href="#ComicNeue-Regular-35" transform="translate(52.299988 0)"/>
+       <use xlink:href="#ComicNeue-Regular-30" transform="translate(106.499985 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m0565ed69aa" x="817.990874" y="238.900645" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <!-- 300 -->
+      <g transform="translate(807.646499 254.071895) scale(0.12 -0.12)">
+       <defs>
+        <path id="ComicNeue-Regular-33" d="M 1510 -38 
+Q 1133 -38 861 106 
+Q 589 250 448 410 
+Q 307 570 262 666 
+Q 230 717 230 794 
+Q 230 877 284 928 
+Q 339 979 422 979 
+Q 550 979 602 870 
+Q 704 691 925 528 
+Q 1146 365 1498 365 
+Q 1728 365 1945 467 
+Q 2163 570 2300 778 
+Q 2438 986 2438 1280 
+Q 2438 1632 2252 1843 
+Q 2067 2054 1824 2137 
+Q 1581 2221 1389 2221 
+Q 1306 2221 1251 2278 
+Q 1197 2336 1197 2419 
+Q 1197 2509 1254 2563 
+Q 1312 2618 1395 2618 
+Q 1613 2618 1833 2723 
+Q 2054 2829 2195 3001 
+Q 2336 3174 2336 3373 
+Q 2336 3514 2237 3648 
+Q 2138 3782 1949 3865 
+Q 1760 3949 1504 3949 
+Q 1222 3949 1056 3878 
+Q 890 3808 755 3706 
+Q 672 3642 614 3642 
+Q 518 3642 467 3702 
+Q 416 3763 416 3840 
+Q 416 3968 634 4109 
+Q 800 4211 1024 4281 
+Q 1248 4352 1504 4352 
+Q 1843 4352 2128 4221 
+Q 2413 4090 2576 3866 
+Q 2739 3642 2739 3373 
+Q 2739 3085 2572 2838 
+Q 2406 2592 2131 2432 
+Q 2470 2278 2652 1971 
+Q 2835 1664 2835 1280 
+Q 2835 832 2624 534 
+Q 2413 237 2105 99 
+Q 1798 -38 1510 -38 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#ComicNeue-Regular-33"/>
+       <use xlink:href="#ComicNeue-Regular-30" transform="translate(50.599991 0)"/>
+       <use xlink:href="#ComicNeue-Regular-30" transform="translate(111.499985 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_18">
+     <!-- Reported trips -->
+     <g transform="translate(659.173867 268.703145) scale(0.12 -0.12)">
+      <defs>
+       <path id="ComicNeue-Regular-52" d="M 736 -38 
+Q 653 -38 592 22 
+Q 531 83 531 166 
+L 531 4038 
+Q 531 4160 566 4217 
+Q 602 4275 704 4294 
+Q 806 4314 1037 4314 
+L 1222 4314 
+Q 2304 4314 2886 3968 
+Q 3469 3622 3469 2989 
+Q 3469 2144 2310 1734 
+Q 2611 1542 2972 1168 
+Q 3334 794 3603 256 
+Q 3629 224 3629 166 
+Q 3629 83 3571 22 
+Q 3514 -38 3424 -38 
+Q 3315 -38 3245 77 
+Q 2349 1555 1523 1555 
+Q 1312 1555 934 1498 
+L 934 166 
+Q 934 83 876 22 
+Q 819 -38 736 -38 
+z
+M 934 1894 
+Q 1434 1907 1923 2025 
+Q 2413 2144 2739 2387 
+Q 3066 2630 3066 2989 
+Q 3066 3443 2579 3680 
+Q 2093 3917 1203 3917 
+Q 1024 3917 934 3910 
+L 934 1894 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#ComicNeue-Regular-52"/>
+      <use xlink:href="#ComicNeue-Regular-65" transform="translate(59.599991 0)"/>
+      <use xlink:href="#ComicNeue-Regular-70" transform="translate(109.699982 0)"/>
+      <use xlink:href="#ComicNeue-Regular-6f" transform="translate(162.799973 0)"/>
+      <use xlink:href="#ComicNeue-Regular-72" transform="translate(215.699966 0)"/>
+      <use xlink:href="#ComicNeue-Regular-74" transform="translate(255.399963 0)"/>
+      <use xlink:href="#ComicNeue-Regular-65" transform="translate(283.999954 0)"/>
+      <use xlink:href="#ComicNeue-Regular-64" transform="translate(334.099945 0)"/>
+      <use xlink:href="#ComicNeue-Regular-20" transform="translate(387.09993 0)"/>
+      <use xlink:href="#ComicNeue-Regular-74" transform="translate(420.499924 0)"/>
+      <use xlink:href="#ComicNeue-Regular-72" transform="translate(449.099915 0)"/>
+      <use xlink:href="#ComicNeue-Regular-69" transform="translate(488.799911 0)"/>
+      <use xlink:href="#ComicNeue-Regular-70" transform="translate(511.499908 0)"/>
+      <use xlink:href="#ComicNeue-Regular-73" transform="translate(564.599899 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_8">
+      <defs>
+       <path id="m3a054382cf" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m3a054382cf" x="560.208358" y="116.554604" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <!-- Bishan → Marymount -->
+      <g transform="translate(441.874608 120.640229) scale(0.12 -0.12)">
+       <defs>
+        <path id="DejaVuSans-2192" d="M 5050 2147 
+L 5050 1866 
+L 3822 638 
+L 3447 1013 
+L 4175 1741 
+L 366 1741 
+L 366 2272 
+L 4175 2272 
+L 3447 3000 
+L 3822 3375 
+L 5050 2147 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#ComicNeue-Regular-42"/>
+       <use xlink:href="#ComicNeue-Regular-69" transform="translate(61.999985 0)"/>
+       <use xlink:href="#ComicNeue-Regular-73" transform="translate(84.699982 0)"/>
+       <use xlink:href="#ComicNeue-Regular-68" transform="translate(126.299973 0)"/>
+       <use xlink:href="#ComicNeue-Regular-61" transform="translate(179.899963 0)"/>
+       <use xlink:href="#ComicNeue-Regular-6e" transform="translate(231.499954 0)"/>
+       <use xlink:href="#ComicNeue-Regular-20" transform="translate(286.799942 0)"/>
+       <use xlink:href="#DejaVuSans-2192" transform="translate(320.199936 0)"/>
+       <use xlink:href="#ComicNeue-Regular-20" transform="translate(403.988998 0)"/>
+       <use xlink:href="#ComicNeue-Regular-4d" transform="translate(437.388992 0)"/>
+       <use xlink:href="#ComicNeue-Regular-61" transform="translate(521.18898 0)"/>
+       <use xlink:href="#ComicNeue-Regular-72" transform="translate(572.788971 0)"/>
+       <use xlink:href="#ComicNeue-Regular-79" transform="translate(612.488968 0)"/>
+       <use xlink:href="#ComicNeue-Regular-6d" transform="translate(657.188965 0)"/>
+       <use xlink:href="#ComicNeue-Regular-6f" transform="translate(739.888947 0)"/>
+       <use xlink:href="#ComicNeue-Regular-75" transform="translate(792.78894 0)"/>
+       <use xlink:href="#ComicNeue-Regular-6e" transform="translate(843.888931 0)"/>
+       <use xlink:href="#ComicNeue-Regular-74" transform="translate(899.188919 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m3a054382cf" x="560.208358" y="198.666041" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <!-- Marymount → Bishan -->
+      <g transform="translate(441.874608 202.751666) scale(0.12 -0.12)">
+       <use xlink:href="#ComicNeue-Regular-4d"/>
+       <use xlink:href="#ComicNeue-Regular-61" transform="translate(83.799988 0)"/>
+       <use xlink:href="#ComicNeue-Regular-72" transform="translate(135.399979 0)"/>
+       <use xlink:href="#ComicNeue-Regular-79" transform="translate(175.099976 0)"/>
+       <use xlink:href="#ComicNeue-Regular-6d" transform="translate(219.799973 0)"/>
+       <use xlink:href="#ComicNeue-Regular-6f" transform="translate(302.499954 0)"/>
+       <use xlink:href="#ComicNeue-Regular-75" transform="translate(355.399948 0)"/>
+       <use xlink:href="#ComicNeue-Regular-6e" transform="translate(406.499939 0)"/>
+       <use xlink:href="#ComicNeue-Regular-74" transform="translate(461.799927 0)"/>
+       <use xlink:href="#ComicNeue-Regular-20" transform="translate(490.399918 0)"/>
+       <use xlink:href="#DejaVuSans-2192" transform="translate(523.799911 0)"/>
+       <use xlink:href="#ComicNeue-Regular-20" transform="translate(607.588974 0)"/>
+       <use xlink:href="#ComicNeue-Regular-42" transform="translate(640.988968 0)"/>
+       <use xlink:href="#ComicNeue-Regular-69" transform="translate(702.988953 0)"/>
+       <use xlink:href="#ComicNeue-Regular-73" transform="translate(725.68895 0)"/>
+       <use xlink:href="#ComicNeue-Regular-68" transform="translate(767.28894 0)"/>
+       <use xlink:href="#ComicNeue-Regular-61" transform="translate(820.888931 0)"/>
+       <use xlink:href="#ComicNeue-Regular-6e" transform="translate(872.488922 0)"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="patch_14">
+    <path d="M 560.208358 238.900645 
+L 560.208358 76.32 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 560.208358 238.900645 
+L 830.88 238.900645 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_21">
+    <!-- 256 -->
+    <g transform="translate(784.479147 119.452417) scale(0.12 -0.12)">
+     <use xlink:href="#ComicNeue-Regular-32"/>
+     <use xlink:href="#ComicNeue-Regular-35" transform="translate(52.299988 0)"/>
+     <use xlink:href="#ComicNeue-Regular-36" transform="translate(106.499985 0)"/>
+    </g>
+   </g>
+   <g id="text_22">
+    <!-- 50 -->
+    <g transform="translate(607.468486 201.563854) scale(0.12 -0.12)">
+     <use xlink:href="#ComicNeue-Regular-35"/>
+     <use xlink:href="#ComicNeue-Regular-30" transform="translate(54.199997 0)"/>
+    </g>
+   </g>
+   <g id="text_23">
+    <!-- Chart: how do the counts compare? -->
+    <g transform="translate(585.342554 70.32) scale(0.144 -0.144)">
+     <defs>
+      <path id="ComicNeue-Regular-43" d="M 2157 -38 
+Q 1651 -38 1228 198 
+Q 806 435 556 867 
+Q 307 1299 307 1862 
+Q 307 2490 592 3062 
+Q 877 3635 1334 3980 
+Q 1792 4326 2278 4326 
+Q 2554 4326 2752 4259 
+Q 2950 4192 3130 4077 
+Q 3149 4115 3193 4140 
+Q 3238 4166 3296 4166 
+Q 3379 4166 3436 4108 
+Q 3494 4051 3494 3968 
+L 3494 3558 
+Q 3494 3475 3433 3414 
+Q 3373 3354 3290 3354 
+Q 3206 3354 3145 3411 
+Q 3085 3469 3085 3552 
+L 3085 3603 
+Q 2944 3738 2758 3830 
+Q 2573 3923 2278 3923 
+Q 1901 3923 1542 3635 
+Q 1184 3347 957 2870 
+Q 730 2394 730 1862 
+Q 730 1408 928 1069 
+Q 1126 730 1452 547 
+Q 1779 365 2157 365 
+Q 2893 365 3354 966 
+Q 3392 1011 3427 1027 
+Q 3462 1043 3514 1043 
+Q 3597 1043 3657 988 
+Q 3718 934 3718 838 
+Q 3718 762 3680 717 
+Q 3411 352 3014 157 
+Q 2618 -38 2157 -38 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#ComicNeue-Regular-43"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(61.399994 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(114.999985 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(166.599976 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(206.299973 0)"/>
+     <use xlink:href="#ComicNeue-Regular-3a" transform="translate(234.899963 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(252.999954 0)"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(286.399948 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(339.999939 0)"/>
+     <use xlink:href="#ComicNeue-Regular-77" transform="translate(392.899933 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(452.699921 0)"/>
+     <use xlink:href="#ComicNeue-Regular-64" transform="translate(486.099915 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(539.099899 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(591.999893 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(625.399887 0)"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(653.999878 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(707.599869 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(757.69986 0)"/>
+     <use xlink:href="#ComicNeue-Regular-63" transform="translate(791.099854 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(839.29985 0)"/>
+     <use xlink:href="#ComicNeue-Regular-75" transform="translate(892.199844 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(943.299835 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(998.599823 0)"/>
+     <use xlink:href="#ComicNeue-Regular-73" transform="translate(1027.199814 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(1068.799805 0)"/>
+     <use xlink:href="#ComicNeue-Regular-63" transform="translate(1102.199799 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(1150.399796 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6d" transform="translate(1203.299789 0)"/>
+     <use xlink:href="#ComicNeue-Regular-70" transform="translate(1285.999771 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(1339.099762 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(1390.699753 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(1430.39975 0)"/>
+     <use xlink:href="#ComicNeue-Regular-3f" transform="translate(1480.499741 0)"/>
+    </g>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="PathCollection_1">
+    <defs>
+     <path id="m9c32a06a1d" d="M 0 4.743416 
+C 1.257969 4.743416 2.464584 4.24362 3.354102 3.354102 
+C 4.24362 2.464584 4.743416 1.257969 4.743416 0 
+C 4.743416 -1.257969 4.24362 -2.464584 3.354102 -3.354102 
+C 2.464584 -4.24362 1.257969 -4.743416 0 -4.743416 
+C -1.257969 -4.743416 -2.464584 -4.24362 -3.354102 -3.354102 
+C -4.24362 -2.464584 -4.743416 -1.257969 -4.743416 0 
+C -4.743416 1.257969 -4.24362 2.464584 -3.354102 3.354102 
+C -2.464584 4.24362 -1.257969 4.743416 0 4.743416 
+z
+" style="stroke: #a85d1d"/>
+    </defs>
+    <g clip-path="url(#p1feda5f9f6)">
+     <use xlink:href="#m9c32a06a1d" x="159.614328" y="427.494194" style="fill: #a85d1d; stroke: #a85d1d"/>
+     <use xlink:href="#m9c32a06a1d" x="308.483731" y="373.842581" style="fill: #a85d1d; stroke: #a85d1d"/>
+    </g>
+   </g>
+   <g id="text_24">
+    <!-- Marymount -->
+    <g transform="translate(130.190891 450.255484) scale(0.12 -0.12)">
+     <use xlink:href="#ComicNeue-Regular-4d"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(83.799988 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(135.399979 0)"/>
+     <use xlink:href="#ComicNeue-Regular-79" transform="translate(175.099976 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6d" transform="translate(219.799973 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(302.499954 0)"/>
+     <use xlink:href="#ComicNeue-Regular-75" transform="translate(355.399948 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(406.499939 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(461.799927 0)"/>
+    </g>
+   </g>
+   <g id="text_25">
+    <!-- Bishan -->
+    <g transform="translate(291.276856 352.707097) scale(0.12 -0.12)">
+     <use xlink:href="#ComicNeue-Regular-42"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(61.999985 0)"/>
+     <use xlink:href="#ComicNeue-Regular-73" transform="translate(84.699982 0)"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(126.299973 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(179.899963 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(231.499954 0)"/>
+    </g>
+   </g>
+   <g id="text_26">
+    <!-- Illustrative layout; no distance scale -->
+    <g transform="translate(165.026758 477.894194) scale(0.1 -0.1)">
+     <defs>
+      <path id="ComicNeue-Regular-49" d="M 448 0 
+Q 358 0 297 57 
+Q 237 115 237 198 
+Q 237 282 297 336 
+Q 358 390 448 390 
+L 1056 390 
+L 1056 3898 
+L 448 3898 
+Q 358 3898 297 3955 
+Q 237 4013 237 4096 
+Q 237 4179 297 4233 
+Q 358 4288 448 4288 
+L 2067 4288 
+Q 2150 4288 2208 4233 
+Q 2266 4179 2266 4096 
+Q 2266 4013 2208 3955 
+Q 2150 3898 2067 3898 
+L 1466 3898 
+L 1466 390 
+L 2067 390 
+Q 2157 390 2211 336 
+Q 2266 282 2266 198 
+Q 2266 115 2208 57 
+Q 2150 0 2067 0 
+L 448 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="ComicNeue-Regular-3b" d="M 742 2221 
+Q 640 2221 579 2294 
+Q 518 2368 518 2483 
+Q 518 2598 601 2694 
+Q 685 2790 794 2790 
+Q 890 2790 954 2720 
+Q 1018 2650 1018 2541 
+Q 1018 2406 934 2313 
+Q 851 2221 742 2221 
+z
+M 371 -627 
+Q 301 -627 249 -579 
+Q 198 -531 198 -461 
+Q 198 -435 211 -397 
+L 358 -6 
+Q 288 90 288 186 
+Q 288 307 371 400 
+Q 454 493 563 493 
+Q 659 493 726 422 
+Q 794 352 794 269 
+Q 794 186 765 102 
+Q 736 19 653 -186 
+L 595 -326 
+Q 525 -512 486 -569 
+Q 448 -627 371 -627 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#ComicNeue-Regular-49"/>
+     <use xlink:href="#ComicNeue-Regular-6c" transform="translate(39.199997 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6c" transform="translate(61.099991 0)"/>
+     <use xlink:href="#ComicNeue-Regular-75" transform="translate(82.999985 0)"/>
+     <use xlink:href="#ComicNeue-Regular-73" transform="translate(134.099976 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(175.699966 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(204.299957 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(243.999954 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(295.599945 0)"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(324.199936 0)"/>
+     <use xlink:href="#ComicNeue-Regular-76" transform="translate(346.899933 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(388.699921 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(438.799911 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6c" transform="translate(472.199905 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(494.099899 0)"/>
+     <use xlink:href="#ComicNeue-Regular-79" transform="translate(545.69989 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(590.399887 0)"/>
+     <use xlink:href="#ComicNeue-Regular-75" transform="translate(643.299881 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(694.399872 0)"/>
+     <use xlink:href="#ComicNeue-Regular-3b" transform="translate(722.999863 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(742.899857 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(776.29985 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(831.599838 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(884.499832 0)"/>
+     <use xlink:href="#ComicNeue-Regular-64" transform="translate(917.899826 0)"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(970.899811 0)"/>
+     <use xlink:href="#ComicNeue-Regular-73" transform="translate(993.599808 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(1035.199799 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(1063.799789 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(1115.39978 0)"/>
+     <use xlink:href="#ComicNeue-Regular-63" transform="translate(1170.699768 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(1218.899765 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(1268.999756 0)"/>
+     <use xlink:href="#ComicNeue-Regular-73" transform="translate(1302.39975 0)"/>
+     <use xlink:href="#ComicNeue-Regular-63" transform="translate(1343.999741 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(1392.199738 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6c" transform="translate(1443.799728 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(1465.699722 0)"/>
+    </g>
+   </g>
+   <g id="text_27">
+    <!-- Location sketch: where are the endpoints? -->
+    <g transform="translate(110.680321 310.939355) scale(0.144 -0.144)">
+     <defs>
+      <path id="ComicNeue-Regular-4c" d="M 730 -38 
+Q 653 -45 592 22 
+Q 531 90 531 166 
+L 531 4122 
+Q 531 4198 592 4259 
+Q 653 4320 736 4320 
+Q 819 4320 880 4259 
+Q 941 4198 941 4122 
+L 941 378 
+L 2918 512 
+Q 3008 518 3065 460 
+Q 3123 403 3123 314 
+Q 3123 237 3065 179 
+Q 3008 122 2931 115 
+L 730 -38 
+z
+" transform="scale(0.015625)"/>
+      <path id="ComicNeue-Regular-6b" d="M 704 -38 
+Q 627 -38 566 22 
+Q 506 83 506 160 
+L 493 4166 
+Q 493 4250 550 4304 
+Q 608 4358 691 4358 
+Q 774 4358 835 4297 
+Q 896 4237 896 4154 
+L 902 1638 
+Q 1190 1837 1670 2297 
+Q 2150 2758 2483 3187 
+Q 2541 3277 2643 3277 
+Q 2726 3277 2784 3219 
+Q 2842 3162 2842 3085 
+Q 2842 3040 2797 2963 
+Q 2605 2714 2294 2387 
+Q 1984 2061 1760 1862 
+Q 1914 1651 2509 915 
+L 2989 320 
+Q 3046 250 3046 192 
+Q 3046 109 2992 45 
+Q 2938 -19 2848 -19 
+Q 2746 -19 2688 51 
+Q 2214 691 1459 1632 
+Q 1190 1414 909 1248 
+L 909 160 
+Q 909 83 848 22 
+Q 787 -38 704 -38 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#ComicNeue-Regular-4c"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(49.999985 0)"/>
+     <use xlink:href="#ComicNeue-Regular-63" transform="translate(102.899979 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(151.099976 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(202.699966 0)"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(231.299957 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(253.999954 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(306.899948 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(362.199936 0)"/>
+     <use xlink:href="#ComicNeue-Regular-73" transform="translate(395.59993 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6b" transform="translate(437.199921 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(485.599915 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(535.699905 0)"/>
+     <use xlink:href="#ComicNeue-Regular-63" transform="translate(564.299896 0)"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(612.499893 0)"/>
+     <use xlink:href="#ComicNeue-Regular-3a" transform="translate(666.099884 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(684.199875 0)"/>
+     <use xlink:href="#ComicNeue-Regular-77" transform="translate(717.599869 0)"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(777.399857 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(830.999847 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(881.099838 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(920.799835 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(970.899826 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(1004.29982 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(1055.899811 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(1095.599808 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(1145.699799 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(1179.099792 0)"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(1207.699783 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(1261.299774 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(1311.399765 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(1344.799759 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(1394.89975 0)"/>
+     <use xlink:href="#ComicNeue-Regular-64" transform="translate(1450.199738 0)"/>
+     <use xlink:href="#ComicNeue-Regular-70" transform="translate(1503.199722 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(1556.299713 0)"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(1609.199707 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(1631.899704 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(1687.199692 0)"/>
+     <use xlink:href="#ComicNeue-Regular-73" transform="translate(1715.799683 0)"/>
+     <use xlink:href="#ComicNeue-Regular-3f" transform="translate(1757.399673 0)"/>
+    </g>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="PathCollection_2">
+    <defs>
+     <path id="m1f367f0bdf" d="M 0 5.244044 
+C 1.390737 5.244044 2.7247 4.691499 3.708099 3.708099 
+C 4.691499 2.7247 5.244044 1.390737 5.244044 0 
+C 5.244044 -1.390737 4.691499 -2.7247 3.708099 -3.708099 
+C 2.7247 -4.691499 1.390737 -5.244044 0 -5.244044 
+C -1.390737 -5.244044 -2.7247 -4.691499 -3.708099 -3.708099 
+C -4.691499 -2.7247 -5.244044 -1.390737 -5.244044 0 
+C -5.244044 1.390737 -4.691499 2.7247 -3.708099 3.708099 
+C -2.7247 4.691499 -1.390737 5.244044 0 5.244044 
+z
+" style="stroke: #a85d1d"/>
+    </defs>
+    <g clip-path="url(#p72569512a8)">
+     <use xlink:href="#m1f367f0bdf" x="608.929254" y="398.229677" style="fill: #a85d1d; stroke: #a85d1d"/>
+    </g>
+   </g>
+   <g id="PathCollection_3">
+    <g clip-path="url(#p72569512a8)">
+     <use xlink:href="#m1f367f0bdf" x="782.159104" y="398.229677" style="fill: #a85d1d; stroke: #a85d1d"/>
+    </g>
+   </g>
+   <g id="patch_16">
+    <path d="M 618.771746 392.33019 
+Q 695.54652 347.276087 768.464307 390.069386 
+" clip-path="url(#p72569512a8)" style="fill: none; stroke: #a85d1d; stroke-width: 4; stroke-linecap: round"/>
+    <path d="M 764.564304 384.070221 
+L 768.464307 390.069386 
+L 761.324974 389.589889 
+z
+" clip-path="url(#p72569512a8)" style="fill: #a85d1d; stroke: #a85d1d; stroke-width: 4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 772.316612 405.754972 
+Q 695.541839 450.809074 620.020586 406.487879 
+" clip-path="url(#p72569512a8)" style="fill: none; stroke: #a85d1d; stroke-width: 1.3; stroke-linecap: round"/>
+    <path d="M 623.920589 412.487043 
+L 620.020586 406.487879 
+L 627.159919 406.967375 
+z
+" clip-path="url(#p72569512a8)" style="fill: #a85d1d; stroke: #a85d1d; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="text_28">
+    <!-- Bishan -->
+    <g transform="translate(591.722379 458.384516) scale(0.12 -0.12)">
+     <use xlink:href="#ComicNeue-Regular-42"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(61.999985 0)"/>
+     <use xlink:href="#ComicNeue-Regular-73" transform="translate(84.699982 0)"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(126.299973 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(179.899963 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(231.499954 0)"/>
+    </g>
+   </g>
+   <g id="text_29">
+    <!-- Marymount -->
+    <g transform="translate(752.735667 458.384516) scale(0.12 -0.12)">
+     <use xlink:href="#ComicNeue-Regular-4d"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(83.799988 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(135.399979 0)"/>
+     <use xlink:href="#ComicNeue-Regular-79" transform="translate(175.099976 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6d" transform="translate(219.799973 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(302.499954 0)"/>
+     <use xlink:href="#ComicNeue-Regular-75" transform="translate(355.399948 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(406.499939 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(461.799927 0)"/>
+    </g>
+   </g>
+   <g id="text_30">
+    <!-- 256 -->
+    <g transform="translate(685.901992 352.707097) scale(0.12 -0.12)">
+     <use xlink:href="#ComicNeue-Regular-32"/>
+     <use xlink:href="#ComicNeue-Regular-35" transform="translate(52.299988 0)"/>
+     <use xlink:href="#ComicNeue-Regular-36" transform="translate(106.499985 0)"/>
+    </g>
+   </g>
+   <g id="text_31">
+    <!-- 50 -->
+    <g transform="translate(688.637617 447.003871) scale(0.12 -0.12)">
+     <use xlink:href="#ComicNeue-Regular-35"/>
+     <use xlink:href="#ComicNeue-Regular-30" transform="translate(54.199997 0)"/>
+    </g>
+   </g>
+   <g id="text_32">
+    <!-- Flow diagram: which direction carries more? -->
+    <g transform="translate(557.885804 310.939355) scale(0.144 -0.144)">
+     <defs>
+      <path id="ComicNeue-Regular-46" d="M 742 -45 
+Q 659 -45 595 19 
+Q 531 83 531 166 
+L 531 4083 
+Q 531 4166 592 4227 
+Q 653 4288 742 4288 
+L 3450 4288 
+Q 3539 4288 3596 4230 
+Q 3654 4173 3654 4083 
+Q 3654 4000 3593 3939 
+Q 3533 3878 3450 3878 
+L 947 3878 
+L 947 2438 
+L 2886 2438 
+Q 2970 2438 3030 2377 
+Q 3091 2317 3091 2227 
+Q 3091 2144 3030 2083 
+Q 2970 2022 2886 2022 
+L 947 2022 
+L 947 166 
+Q 947 77 886 16 
+Q 826 -45 742 -45 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#ComicNeue-Regular-46"/>
+     <use xlink:href="#ComicNeue-Regular-6c" transform="translate(57.699997 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(79.599991 0)"/>
+     <use xlink:href="#ComicNeue-Regular-77" transform="translate(132.499985 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(192.299973 0)"/>
+     <use xlink:href="#ComicNeue-Regular-64" transform="translate(225.699966 0)"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(278.699951 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(301.399948 0)"/>
+     <use xlink:href="#ComicNeue-Regular-67" transform="translate(352.999939 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(405.999924 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(445.699921 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6d" transform="translate(497.299911 0)"/>
+     <use xlink:href="#ComicNeue-Regular-3a" transform="translate(579.999893 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(598.099884 0)"/>
+     <use xlink:href="#ComicNeue-Regular-77" transform="translate(631.499878 0)"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(691.299866 0)"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(744.899857 0)"/>
+     <use xlink:href="#ComicNeue-Regular-63" transform="translate(767.599854 0)"/>
+     <use xlink:href="#ComicNeue-Regular-68" transform="translate(815.79985 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(869.399841 0)"/>
+     <use xlink:href="#ComicNeue-Regular-64" transform="translate(902.799835 0)"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(955.79982 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(978.499817 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(1018.199814 0)"/>
+     <use xlink:href="#ComicNeue-Regular-63" transform="translate(1068.299805 0)"/>
+     <use xlink:href="#ComicNeue-Regular-74" transform="translate(1116.499802 0)"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(1145.099792 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(1167.799789 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6e" transform="translate(1220.699783 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(1275.999771 0)"/>
+     <use xlink:href="#ComicNeue-Regular-63" transform="translate(1309.399765 0)"/>
+     <use xlink:href="#ComicNeue-Regular-61" transform="translate(1357.599762 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(1409.199753 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(1448.89975 0)"/>
+     <use xlink:href="#ComicNeue-Regular-69" transform="translate(1488.599747 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(1511.299744 0)"/>
+     <use xlink:href="#ComicNeue-Regular-73" transform="translate(1561.399734 0)"/>
+     <use xlink:href="#ComicNeue-Regular-20" transform="translate(1602.999725 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6d" transform="translate(1636.399719 0)"/>
+     <use xlink:href="#ComicNeue-Regular-6f" transform="translate(1719.099701 0)"/>
+     <use xlink:href="#ComicNeue-Regular-72" transform="translate(1771.999695 0)"/>
+     <use xlink:href="#ComicNeue-Regular-65" transform="translate(1811.699692 0)"/>
+     <use xlink:href="#ComicNeue-Regular-3f" transform="translate(1861.799683 0)"/>
+    </g>
+   </g>
+  </g>
+  <g id="text_33">
+   <!-- The same observations can answer different visual questions -->
+   <g transform="translate(198.176875 20.81875) scale(0.2 -0.2)">
+    <defs>
+     <path id="ComicNeue-Regular-66" d="M 755 -38 
+Q 672 -38 611 19 
+Q 550 77 550 147 
+L 550 2790 
+L 102 2790 
+Q 32 2790 -25 2848 
+Q -83 2906 -83 2982 
+Q -83 3053 -28 3110 
+Q 26 3168 90 3168 
+L 557 3168 
+Q 557 3616 691 3878 
+Q 826 4141 1104 4253 
+Q 1382 4365 1843 4365 
+Q 2112 4365 2112 4179 
+Q 2112 4096 2061 4038 
+Q 2010 3981 1920 3981 
+Q 1523 3981 1328 3923 
+Q 1133 3866 1046 3696 
+Q 960 3526 954 3168 
+L 1798 3162 
+Q 1862 3162 1923 3107 
+Q 1984 3053 1984 2982 
+Q 1984 2906 1929 2848 
+Q 1875 2790 1798 2790 
+L 954 2790 
+L 954 147 
+Q 954 77 893 19 
+Q 832 -38 755 -38 
+z
+" transform="scale(0.015625)"/>
+     <path id="ComicNeue-Regular-71" d="M 2509 -1190 
+Q 2432 -1190 2377 -1123 
+Q 2323 -1056 2330 -973 
+L 2374 346 
+Q 2298 198 2122 80 
+Q 1946 -38 1645 -38 
+Q 1248 -38 941 144 
+Q 634 326 464 643 
+Q 294 960 294 1350 
+Q 294 1888 512 2291 
+Q 730 2694 1120 2912 
+Q 1510 3130 2029 3130 
+Q 2234 3130 2477 3091 
+L 2477 3142 
+Q 2483 3213 2537 3264 
+Q 2592 3315 2669 3315 
+Q 2746 3315 2803 3257 
+Q 2861 3200 2861 3117 
+L 2714 -986 
+Q 2707 -1088 2652 -1139 
+Q 2598 -1190 2509 -1190 
+z
+M 1587 326 
+Q 1952 326 2176 518 
+Q 2400 710 2406 1056 
+L 2458 2733 
+Q 2202 2765 2029 2765 
+Q 1414 2765 1036 2390 
+Q 659 2016 659 1344 
+Q 659 1050 784 819 
+Q 909 589 1123 457 
+Q 1338 326 1587 326 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#ComicNeue-Regular-54"/>
+    <use xlink:href="#ComicNeue-Regular-68" transform="translate(52.199997 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(105.799988 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(155.899979 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(189.299973 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(230.899963 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6d" transform="translate(282.499954 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(365.199936 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(415.299927 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(448.699921 0)"/>
+    <use xlink:href="#ComicNeue-Regular-62" transform="translate(501.599915 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(555.099899 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(596.69989 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(646.799881 0)"/>
+    <use xlink:href="#ComicNeue-Regular-76" transform="translate(686.499878 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(728.299866 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(779.899857 0)"/>
+    <use xlink:href="#ComicNeue-Regular-69" transform="translate(808.499847 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(831.199844 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(884.099838 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(939.399826 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(980.999817 0)"/>
+    <use xlink:href="#ComicNeue-Regular-63" transform="translate(1014.399811 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(1062.599808 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(1114.199799 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(1169.499786 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(1202.89978 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(1254.499771 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(1309.799759 0)"/>
+    <use xlink:href="#ComicNeue-Regular-77" transform="translate(1351.39975 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(1411.199738 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(1461.299728 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(1500.999725 0)"/>
+    <use xlink:href="#ComicNeue-Regular-64" transform="translate(1534.399719 0)"/>
+    <use xlink:href="#ComicNeue-Regular-69" transform="translate(1587.399704 0)"/>
+    <use xlink:href="#ComicNeue-Regular-66" transform="translate(1610.099701 0)"/>
+    <use xlink:href="#ComicNeue-Regular-66" transform="translate(1637.999695 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(1665.899689 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(1715.99968 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(1755.699677 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(1805.799667 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(1861.099655 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(1889.699646 0)"/>
+    <use xlink:href="#ComicNeue-Regular-76" transform="translate(1923.09964 0)"/>
+    <use xlink:href="#ComicNeue-Regular-69" transform="translate(1964.899628 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(1987.599625 0)"/>
+    <use xlink:href="#ComicNeue-Regular-75" transform="translate(2029.199615 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(2080.299606 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6c" transform="translate(2131.899597 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(2153.799591 0)"/>
+    <use xlink:href="#ComicNeue-Regular-71" transform="translate(2187.199585 0)"/>
+    <use xlink:href="#ComicNeue-Regular-75" transform="translate(2239.19957 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(2290.299561 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(2340.399551 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(2381.999542 0)"/>
+    <use xlink:href="#ComicNeue-Regular-69" transform="translate(2410.599533 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(2433.29953 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(2486.199524 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(2541.499512 0)"/>
+   </g>
+  </g>
+  <g id="text_34">
+   <!-- Real counts: supplied LTA Sep 2026 WEEKDAY, hour category 08; monthly aggregates, not one morning. Sketches are schematic; arrows represent OD relationships, not railway routes. -->
+   <g style="fill: #6a5b49" transform="translate(7.2 563.04) scale(0.1 -0.1)">
+    <defs>
+     <path id="ComicNeue-Regular-41" d="M 3328 -45 
+Q 3264 -45 3209 -6 
+Q 3155 32 3136 96 
+L 2611 1619 
+L 1018 1267 
+L 550 90 
+Q 531 32 480 -3 
+Q 429 -38 365 -38 
+Q 282 -38 227 19 
+Q 173 77 173 166 
+Q 173 205 198 275 
+L 550 1178 
+Q 493 1158 435 1158 
+Q 358 1165 307 1219 
+Q 256 1274 256 1357 
+Q 256 1427 301 1484 
+Q 346 1542 410 1555 
+L 730 1626 
+L 1754 4243 
+Q 1779 4301 1836 4336 
+Q 1894 4371 1952 4371 
+Q 2016 4371 2067 4336 
+Q 2118 4301 2144 4237 
+L 3494 307 
+Q 3533 192 3533 154 
+Q 3533 77 3475 16 
+Q 3418 -45 3328 -45 
+z
+M 2470 2003 
+L 1926 3597 
+L 1190 1728 
+L 2470 2003 
+z
+" transform="scale(0.015625)"/>
+     <path id="ComicNeue-Regular-53" d="M 1747 -38 
+Q 1178 -38 778 208 
+Q 378 454 218 851 
+Q 179 915 179 979 
+Q 179 1069 243 1129 
+Q 307 1190 397 1190 
+Q 557 1190 608 1024 
+Q 717 723 1033 534 
+Q 1350 346 1747 346 
+Q 2061 346 2307 454 
+Q 2554 563 2691 748 
+Q 2829 934 2829 1165 
+Q 2829 1459 2585 1676 
+Q 2342 1894 1760 2054 
+Q 422 2419 422 3245 
+Q 422 3558 598 3801 
+Q 774 4045 1110 4185 
+Q 1446 4326 1894 4326 
+Q 2528 4326 2880 4086 
+Q 3232 3846 3232 3443 
+Q 3232 3360 3174 3299 
+Q 3117 3238 3034 3238 
+Q 2957 3238 2902 3289 
+Q 2848 3341 2842 3411 
+Q 2810 3654 2550 3808 
+Q 2291 3962 1875 3962 
+Q 1376 3962 1104 3776 
+Q 832 3590 832 3264 
+Q 832 2989 1085 2797 
+Q 1338 2605 1862 2458 
+Q 2554 2266 2896 1955 
+Q 3238 1645 3238 1197 
+Q 3238 851 3033 566 
+Q 2829 282 2483 122 
+Q 2138 -38 1747 -38 
+z
+" transform="scale(0.015625)"/>
+     <path id="ComicNeue-Regular-57" d="M 1491 -38 
+Q 1427 -38 1372 0 
+Q 1318 38 1306 102 
+L 128 3981 
+Q 96 4083 96 4128 
+Q 96 4211 150 4265 
+Q 205 4320 288 4320 
+Q 358 4320 409 4281 
+Q 461 4243 486 4179 
+L 1498 838 
+L 2579 4186 
+Q 2630 4320 2778 4320 
+Q 2842 4320 2896 4281 
+Q 2950 4243 2963 4179 
+L 3885 832 
+L 5101 4198 
+Q 5126 4262 5177 4297 
+Q 5229 4333 5293 4333 
+Q 5376 4333 5433 4275 
+Q 5491 4218 5491 4147 
+Q 5491 4115 5478 4051 
+L 4051 90 
+Q 4032 32 3981 -3 
+Q 3930 -38 3866 -38 
+Q 3712 -38 3667 109 
+L 2758 3418 
+L 1690 102 
+Q 1645 -38 1491 -38 
+z
+" transform="scale(0.015625)"/>
+     <path id="ComicNeue-Regular-45" d="M 742 0 
+Q 659 0 595 64 
+Q 531 128 531 211 
+L 531 4083 
+Q 531 4166 592 4227 
+Q 653 4288 742 4288 
+L 3450 4288 
+Q 3539 4288 3596 4230 
+Q 3654 4173 3654 4083 
+Q 3654 4000 3593 3939 
+Q 3533 3878 3450 3878 
+L 941 3878 
+L 941 2438 
+L 3142 2438 
+Q 3232 2438 3286 2384 
+Q 3341 2330 3341 2240 
+Q 3341 2150 3283 2089 
+Q 3226 2029 3142 2029 
+L 941 2029 
+L 941 410 
+L 3437 410 
+Q 3526 410 3584 352 
+Q 3642 294 3642 211 
+Q 3642 122 3581 61 
+Q 3520 0 3437 0 
+L 742 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="ComicNeue-Regular-4b" d="M 3258 -45 
+Q 3187 -45 3136 0 
+L 934 1722 
+L 934 166 
+Q 934 83 873 22 
+Q 813 -38 730 -38 
+Q 646 -38 588 22 
+Q 531 83 531 166 
+L 531 4122 
+Q 531 4205 588 4262 
+Q 646 4320 730 4320 
+Q 813 4320 873 4262 
+Q 934 4205 934 4122 
+L 934 2502 
+L 3002 4275 
+Q 3066 4326 3136 4326 
+Q 3213 4326 3270 4262 
+Q 3328 4198 3328 4122 
+Q 3328 4032 3264 3974 
+L 1082 2106 
+L 3386 314 
+Q 3456 256 3456 160 
+Q 3456 77 3398 16 
+Q 3341 -45 3258 -45 
+z
+" transform="scale(0.015625)"/>
+     <path id="ComicNeue-Regular-59" d="M 1197 -38 
+Q 1114 -38 1056 26 
+Q 998 90 998 166 
+Q 998 230 1037 288 
+L 1664 1344 
+L 122 3994 
+Q 77 4058 77 4122 
+Q 77 4198 141 4259 
+Q 205 4320 288 4320 
+Q 333 4320 381 4291 
+Q 429 4262 454 4218 
+L 1901 1741 
+L 3373 4218 
+Q 3430 4320 3546 4320 
+Q 3622 4320 3686 4262 
+Q 3750 4205 3750 4122 
+Q 3750 4064 3693 3974 
+L 1370 64 
+Q 1344 19 1296 -9 
+Q 1248 -38 1197 -38 
+z
+" transform="scale(0.015625)"/>
+     <path id="ComicNeue-Regular-2c" d="M 371 -627 
+Q 301 -627 249 -579 
+Q 198 -531 198 -461 
+Q 198 -435 211 -397 
+L 358 -6 
+Q 288 90 288 186 
+Q 288 307 371 400 
+Q 454 493 563 493 
+Q 659 493 726 422 
+Q 794 352 794 269 
+Q 794 186 765 102 
+Q 736 19 653 -186 
+L 595 -326 
+Q 525 -512 486 -569 
+Q 448 -627 371 -627 
+z
+" transform="scale(0.015625)"/>
+     <path id="ComicNeue-Regular-38" d="M 1645 -38 
+Q 1267 -38 963 115 
+Q 659 269 492 534 
+Q 326 800 326 1133 
+Q 333 1574 566 1849 
+Q 800 2125 1171 2317 
+Q 877 2458 704 2672 
+Q 531 2886 531 3213 
+Q 531 3558 691 3814 
+Q 851 4070 1123 4208 
+Q 1395 4346 1715 4346 
+Q 2048 4346 2307 4214 
+Q 2566 4083 2713 3849 
+Q 2861 3616 2861 3315 
+Q 2861 2976 2678 2749 
+Q 2496 2522 2195 2362 
+Q 2566 2170 2768 1866 
+Q 2970 1562 2970 1197 
+Q 2970 851 2797 566 
+Q 2624 282 2323 122 
+Q 2022 -38 1645 -38 
+z
+M 1683 2554 
+Q 2131 2726 2297 2918 
+Q 2464 3110 2464 3354 
+Q 2464 3622 2249 3782 
+Q 2035 3942 1715 3942 
+Q 1382 3942 1152 3756 
+Q 922 3571 922 3238 
+Q 922 2989 1098 2829 
+Q 1274 2669 1683 2554 
+z
+M 1645 358 
+Q 1875 358 2089 448 
+Q 2304 538 2441 723 
+Q 2579 909 2579 1178 
+Q 2579 1536 2329 1776 
+Q 2080 2016 1709 2138 
+Q 1370 1984 1187 1878 
+Q 1005 1773 861 1581 
+Q 717 1389 717 1094 
+Q 717 774 985 566 
+Q 1254 358 1645 358 
+z
+" transform="scale(0.015625)"/>
+     <path id="ComicNeue-Regular-2e" d="M 448 -38 
+Q 346 -38 282 38 
+Q 218 115 218 224 
+Q 218 346 301 438 
+Q 384 531 493 531 
+Q 589 531 656 457 
+Q 723 384 723 282 
+Q 723 147 640 54 
+Q 557 -38 448 -38 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#ComicNeue-Regular-52"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(59.599991 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(109.699982 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6c" transform="translate(161.299973 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(183.199966 0)"/>
+    <use xlink:href="#ComicNeue-Regular-63" transform="translate(216.59996 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(264.799957 0)"/>
+    <use xlink:href="#ComicNeue-Regular-75" transform="translate(317.699951 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(368.799942 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(424.09993 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(452.699921 0)"/>
+    <use xlink:href="#ComicNeue-Regular-3a" transform="translate(494.299911 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(512.399902 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(545.799896 0)"/>
+    <use xlink:href="#ComicNeue-Regular-75" transform="translate(587.399887 0)"/>
+    <use xlink:href="#ComicNeue-Regular-70" transform="translate(638.499878 0)"/>
+    <use xlink:href="#ComicNeue-Regular-70" transform="translate(691.599869 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6c" transform="translate(744.69986 0)"/>
+    <use xlink:href="#ComicNeue-Regular-69" transform="translate(766.599854 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(789.29985 0)"/>
+    <use xlink:href="#ComicNeue-Regular-64" transform="translate(839.399841 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(892.399826 0)"/>
+    <use xlink:href="#ComicNeue-Regular-4c" transform="translate(925.79982 0)"/>
+    <use xlink:href="#ComicNeue-Regular-54" transform="translate(975.799805 0)"/>
+    <use xlink:href="#ComicNeue-Regular-41" transform="translate(1027.999802 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(1086.099792 0)"/>
+    <use xlink:href="#ComicNeue-Regular-53" transform="translate(1119.499786 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(1174.699783 0)"/>
+    <use xlink:href="#ComicNeue-Regular-70" transform="translate(1224.799774 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(1277.899765 0)"/>
+    <use xlink:href="#ComicNeue-Regular-32" transform="translate(1311.299759 0)"/>
+    <use xlink:href="#ComicNeue-Regular-30" transform="translate(1363.599747 0)"/>
+    <use xlink:href="#ComicNeue-Regular-32" transform="translate(1424.499741 0)"/>
+    <use xlink:href="#ComicNeue-Regular-36" transform="translate(1476.799728 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(1530.999725 0)"/>
+    <use xlink:href="#ComicNeue-Regular-57" transform="translate(1564.399719 0)"/>
+    <use xlink:href="#ComicNeue-Regular-45" transform="translate(1651.099701 0)"/>
+    <use xlink:href="#ComicNeue-Regular-45" transform="translate(1711.399689 0)"/>
+    <use xlink:href="#ComicNeue-Regular-4b" transform="translate(1771.699677 0)"/>
+    <use xlink:href="#ComicNeue-Regular-44" transform="translate(1827.699661 0)"/>
+    <use xlink:href="#ComicNeue-Regular-41" transform="translate(1890.599655 0)"/>
+    <use xlink:href="#ComicNeue-Regular-59" transform="translate(1948.699646 0)"/>
+    <use xlink:href="#ComicNeue-Regular-2c" transform="translate(2008.09964 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(2024.499634 0)"/>
+    <use xlink:href="#ComicNeue-Regular-68" transform="translate(2057.899628 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(2111.499619 0)"/>
+    <use xlink:href="#ComicNeue-Regular-75" transform="translate(2164.399612 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(2215.499603 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(2255.1996 0)"/>
+    <use xlink:href="#ComicNeue-Regular-63" transform="translate(2288.599594 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(2336.799591 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(2388.399582 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(2416.999573 0)"/>
+    <use xlink:href="#ComicNeue-Regular-67" transform="translate(2467.099564 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(2520.099548 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(2572.999542 0)"/>
+    <use xlink:href="#ComicNeue-Regular-79" transform="translate(2612.699539 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(2657.399536 0)"/>
+    <use xlink:href="#ComicNeue-Regular-30" transform="translate(2690.79953 0)"/>
+    <use xlink:href="#ComicNeue-Regular-38" transform="translate(2751.699524 0)"/>
+    <use xlink:href="#ComicNeue-Regular-3b" transform="translate(2803.199509 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(2823.099503 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6d" transform="translate(2856.499496 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(2939.199478 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(2992.099472 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(3047.39946 0)"/>
+    <use xlink:href="#ComicNeue-Regular-68" transform="translate(3075.999451 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6c" transform="translate(3129.599442 0)"/>
+    <use xlink:href="#ComicNeue-Regular-79" transform="translate(3151.499435 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(3196.199432 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(3229.599426 0)"/>
+    <use xlink:href="#ComicNeue-Regular-67" transform="translate(3281.199417 0)"/>
+    <use xlink:href="#ComicNeue-Regular-67" transform="translate(3334.199402 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(3387.199387 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(3426.899384 0)"/>
+    <use xlink:href="#ComicNeue-Regular-67" transform="translate(3476.999374 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(3529.999359 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(3581.59935 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(3610.199341 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(3660.299332 0)"/>
+    <use xlink:href="#ComicNeue-Regular-2c" transform="translate(3701.899323 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(3718.299316 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(3751.69931 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(3806.999298 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(3859.899292 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(3888.499283 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(3921.899277 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(3974.799271 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(4030.099258 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(4080.199249 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6d" transform="translate(4113.599243 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(4196.299225 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(4249.199219 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(4288.899216 0)"/>
+    <use xlink:href="#ComicNeue-Regular-69" transform="translate(4344.199203 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(4366.8992 0)"/>
+    <use xlink:href="#ComicNeue-Regular-67" transform="translate(4422.199188 0)"/>
+    <use xlink:href="#ComicNeue-Regular-2e" transform="translate(4475.199173 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(4490.499161 0)"/>
+    <use xlink:href="#ComicNeue-Regular-53" transform="translate(4523.899155 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6b" transform="translate(4579.099152 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(4627.499146 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(4677.599136 0)"/>
+    <use xlink:href="#ComicNeue-Regular-63" transform="translate(4706.199127 0)"/>
+    <use xlink:href="#ComicNeue-Regular-68" transform="translate(4754.399124 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(4807.999115 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(4858.099106 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(4899.699097 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(4933.099091 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(4984.699081 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(5024.399078 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(5074.499069 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(5107.899063 0)"/>
+    <use xlink:href="#ComicNeue-Regular-63" transform="translate(5149.499054 0)"/>
+    <use xlink:href="#ComicNeue-Regular-68" transform="translate(5197.699051 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(5251.299042 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6d" transform="translate(5301.399033 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(5384.099014 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(5435.699005 0)"/>
+    <use xlink:href="#ComicNeue-Regular-69" transform="translate(5464.298996 0)"/>
+    <use xlink:href="#ComicNeue-Regular-63" transform="translate(5486.998993 0)"/>
+    <use xlink:href="#ComicNeue-Regular-3b" transform="translate(5535.19899 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(5555.098984 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(5588.498978 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(5640.098969 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(5679.798965 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(5719.498962 0)"/>
+    <use xlink:href="#ComicNeue-Regular-77" transform="translate(5772.398956 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(5832.198944 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(5873.798935 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(5907.198929 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(5946.898926 0)"/>
+    <use xlink:href="#ComicNeue-Regular-70" transform="translate(5996.998917 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(6050.098907 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(6089.798904 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(6139.898895 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(6181.498886 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(6231.598877 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(6286.898865 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(6315.498856 0)"/>
+    <use xlink:href="#ComicNeue-Regular-4f" transform="translate(6348.898849 0)"/>
+    <use xlink:href="#ComicNeue-Regular-44" transform="translate(6413.198837 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(6476.098831 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(6509.498825 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(6549.198822 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6c" transform="translate(6599.298813 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(6621.198807 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(6672.798798 0)"/>
+    <use xlink:href="#ComicNeue-Regular-69" transform="translate(6701.398788 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(6724.098785 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(6776.998779 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(6832.298767 0)"/>
+    <use xlink:href="#ComicNeue-Regular-68" transform="translate(6873.898758 0)"/>
+    <use xlink:href="#ComicNeue-Regular-69" transform="translate(6927.498749 0)"/>
+    <use xlink:href="#ComicNeue-Regular-70" transform="translate(6950.198746 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(7003.298737 0)"/>
+    <use xlink:href="#ComicNeue-Regular-2c" transform="translate(7044.898727 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(7061.298721 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6e" transform="translate(7094.698715 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(7149.998703 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(7202.898697 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(7231.498688 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(7264.898682 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(7304.598679 0)"/>
+    <use xlink:href="#ComicNeue-Regular-69" transform="translate(7356.198669 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6c" transform="translate(7378.898666 0)"/>
+    <use xlink:href="#ComicNeue-Regular-77" transform="translate(7400.79866 0)"/>
+    <use xlink:href="#ComicNeue-Regular-61" transform="translate(7460.598648 0)"/>
+    <use xlink:href="#ComicNeue-Regular-79" transform="translate(7512.198639 0)"/>
+    <use xlink:href="#ComicNeue-Regular-20" transform="translate(7556.898636 0)"/>
+    <use xlink:href="#ComicNeue-Regular-72" transform="translate(7590.29863 0)"/>
+    <use xlink:href="#ComicNeue-Regular-6f" transform="translate(7629.998627 0)"/>
+    <use xlink:href="#ComicNeue-Regular-75" transform="translate(7682.898621 0)"/>
+    <use xlink:href="#ComicNeue-Regular-74" transform="translate(7733.998611 0)"/>
+    <use xlink:href="#ComicNeue-Regular-65" transform="translate(7762.598602 0)"/>
+    <use xlink:href="#ComicNeue-Regular-73" transform="translate(7812.698593 0)"/>
+    <use xlink:href="#ComicNeue-Regular-2e" transform="translate(7854.298584 0)"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe8b51141d0">
+   <rect x="560.208358" y="76.32" width="270.671642" height="162.580645"/>
+  </clipPath>
+  <clipPath id="p1feda5f9f6">
+   <rect x="105.48" y="316.939355" width="270.671642" height="162.580645"/>
+  </clipPath>
+  <clipPath id="p72569512a8">
+   <rect x="560.208358" y="316.939355" width="270.671642" height="162.580645"/>
+  </clipPath>
+ </defs>
+</svg>
