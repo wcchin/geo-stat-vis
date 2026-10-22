@@ -1,166 +1,35 @@
-# k-means clustering
+# 5.4 K-means clustering
 
-## What is k-means Clustering?
-**Definition**:
-k-means is an unsupervised machine learning algorithm used for clustering data points into _k distinct, non-overlapping groups_ based on their similarities and differences.
+K-means partitions observations into a chosen number $k$ of groups. Each group has a centre, or centroid, and observations are assigned to reduce the total squared distance from their group centres.
 
-**Objective**:
-The main goal of k-means is to minimize the within-cluster sum of squares (WCSS), which represents the _total squared distance (euclidean distance) between data points and their nearest cluster centroid_.
+For groups $C_1,\ldots,C_k$ and their centroids $\boldsymbol{\mu}_j$, the objective is
 
+$$J=\sum_{j=1}^{k}\sum_{i\in C_j}\left\|\mathbf{s}_i-\boldsymbol{\mu}_j\right\|^2.$$
 
-## Steps & Process
+For fixed memberships, a centroid is the arithmetic mean of the member coordinates. It need not coincide with a transaction or even an inhabited place. Repeated block coordinates count repeatedly, so a block with more selected transactions exerts greater influence.
 
-- **Choose k**: Select the number of clusters (k) to generate.
+## How the algorithm improves a partition
 
-- **Initialize centroids**: Randomly select k initial centroids from the dataset or use other initialization methods like k-means++.
+Starting from initial centres, the algorithm assigns each observation to its nearest centre. It then recomputes each centre as the mean of its assigned observations. These two steps repeat until the stopping rule is met. Each step does not increase the objective, but different starting centres can lead to different local solutions.
 
-- **Assign points to clusters**: Assign each data point to the cluster with the nearest centroid.
+Our demonstration uses the 1,353 upper-group transactions, a fixed random seed of 5230 and 20 initialisations. It compares $k=3$ with $k=5$. These are teaching choices, not a claim that Singapore contains three or five distinct upper-price housing markets.
 
-- **Update centroids**: Recalculate the centroid positions by taking the mean of all data points belonging to each cluster.
+![K-means comparison](../datasets/hdb_resale_2026/figures/kmeans.png)
 
-- **Repeat**: Repeat steps 3 and 4 until convergence, i.e., no further changes in cluster assignments or centroid positions occur.
+*Figure 5.5. Spatial k-means partitions of the same upper-group transactions. Crosses show centroids. Cluster colours identify membership and have no high-to-low ordering. All transactions are assigned in both runs.*
 
+The broad difference between the maps follows from the question imposed on the method. With three centres, a group can span several concentrations. With five centres, some of those concentrations receive separate centres. Every observation is assigned even if it is isolated or far from a centre. A partition is therefore not evidence that all the resulting groups are dense concentrations.
 
-### Steps demo: 1
+## What changes when k changes?
 
-```{figure} ../resources/w07-img/kmeans-step_0.png
-:label:
-:alt:
-:align: center
+The best achievable sum of squared distances cannot increase as additional centres are allowed. A smaller objective at a larger $k$ is therefore expected and is insufficient evidence for that choice. An elbow plot or silhouette score can support exploration, but neither replaces an explanation of why the grouping is useful for the geographical question.
 
-The data point
+K-means favours compact groups under the chosen distance. It can split an elongated concentration or divide nearby features in ways that reflect the centroid objective rather than their connectivity. Euclidean distance also ignores coastlines, barriers and transport networks. A nearest-centre partition should not be interpreted as an accessibility catchment without an appropriate travel-distance model.
+
+The numerical labels are arbitrary. “Cluster 0” in one run is not necessarily the same geographical group as “Cluster 0” in another. Compare memberships and positions rather than label numbers.
+
+**Interpretation task:** Find a group that spans a visible gap between observed sales. Why can this happen under the k-means objective? Would drawing a filled polygon around that group make its apparent continuity more convincing than the observations warrant?
+
+```{dropdown} Self-check feedback: Why can a k-means group span a gap?
+K-means assigns every observation to a centre to reduce squared distance. It does not require a chain of densely occupied neighbourhoods.
 ```
-
-
-```{figure} ../resources/w07-img/kmeans-step_1.png
-:label:
-:alt:
-:align: center
-
-The steps:
-1 Initialize with random centroids. 2 Get the nearest neighbors, and calculate the new mean centers. 3 Move the centers to the mean centers
-```
-
-
-
-```{figure} ../resources/w07-img/kmeans-step_2.png
-:label:
-:alt:
-:align: center
-
-The steps:
-1 Re-calculate distance and find nearest neighbors. 2 Re-Calculate new mean centers and move
-```
-
-
-```{figure} ../resources/w07-img/kmeans-step_3.png
-:label:
-:alt:
-:align: center
-
-The steps:
-1 The location of new and previous centers overlapped. Hence, stops.
-```
-
-### k-means Clustering: Example with 7 clusters
-
-
-```{figure} ../resources/w07-img/kmeans_demo_7/kmeans_7.gif
-:label:
-:alt:
-:align: center
-
-```
-
-```{figure} ../resources/w07-img/kmeans_demo_7/kmeans_7-step_17.png
-:label:
-:alt:
-:align: center
-
-The final clusters.
-```
-
-
-## Parameters and Initialization
-
-- How do we know the number of clusters (i.e., the k in k-means)?
-- How to initialize mean centers' locations?
-
-
-### How to select k
-
-**Elbow Method**: Plot the explained variation (or distortion) as a function of the number of clusters, and choose the elbow point as the number of clusters to use. The elbow point is the point of diminishing returns, where the additional gain in reducing the distortion starts to decrease significantly as more clusters are added. For the final iteration (i), the explained variation (EV^i) can be calculated by the distance between each point (k) and the cluster they were assigned (C_j^i).
-
-$$D_{j}^i = \sum (|x_k - \mu_j^i|^2)$$
-
-where ${x_{k} \in C_j^i}$
-
-$$D^i = ∑_{j=1}^k D_j^i$$
-
-$$EV^i = D^0 - D^i$$
-
-```{figure} ../resources/w07-img/DataClustering_ElbowCriterion.JPG
-:label:
-:alt:
-:align: center
-
-[Wikipedia](https://en.wikipedia.org/wiki/File:DataClustering_ElbowCriterion.JPG)
-```
-
-
-
-**Silhouette Analysis**: Calculate the average silhouette score ($Si$) for different values of k and choose the value that yields the highest score. The silhouette score measures the cohesiveness of datapoints within a cluster compared to their closeness to datapoints in other clusters, with values closer to 1 indicating well-defined clusters.
-
-$$Si = (b_i - a_i) / \text{max}(a_i, b_i)$$
-
-For a point $i$ in cluster $C(i)$ with at least two members, the average distance to the *other* members of its cluster is
-
-$$
-a_i=\frac{1}{|C(i)|-1}\sum_{j\in C(i),\,j\ne i}d(x_i,x_j).
-$$
-
-The smallest average distance to a different cluster is
-
-$$
-b_i=\min_{C\ne C(i)}\frac{1}{|C|}\sum_{j\in C}d(x_i,x_j).
-$$
-
-Use $s_i=(b_i-a_i)/\max(a_i,b_i)$. A singleton cluster has no within-cluster average over other members; standard implementations assign its silhouette value zero. Report the implementation and distance metric when comparing results.
-
-Note that the Silhouette Coefficient ranges between -1 and 1, with higher values indicating better clustering.
-
-
-
-```{figure} ../resources/w07-img/Silhouette-plot-orange.png
-:label:
-:alt:
-:align: center
-
-[Wikipedia](https://commons.wikimedia.org/wiki/File:Silhouette-plot-orange.png)
-```
-
-**Other approaches**
-- [Gap Statistic](https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set#The_gap_statistics): Compare the total within-cluster variation for different values of k and choose the value that maximizes the gap statistic, which is the difference between the observed and expected within-cluster variation.
-
-- Domain Knowledge: Rely on your knowledge of the dataset and the problem domain to choose a value for k that makes sense in the context of your analysis.
-
-
-
-### How set the initial position of the mean centers?
-
-- Random Initialization: Randomly select k points from the dataset to serve as the initial centers. This method is simple but may lead to suboptimal clusters due to its unpredictability.
-
-- k-means++: Choose the first center randomly from the dataset. Then, for each subsequent center, choose a point from the dataset with a probability proportional to its squared distance from the nearest existing center. This method tends to provide better clustering results than random initialization.
-
-- Furthest Point: Calculate the distances between all pairs of points in the dataset, then choose the two points with the largest distance as the first two centers. For each subsequent center, select the point that maximizes the minimum distance to the previously chosen centers.
-
-
-### Properties of k-means clustering
-
-- Guaranteed to	converge in a finite number of iterations.
-
-- Running time per iteration:
-    - assign data points to closest cluster center: O(KN) time
-    - change the cluster center to average of its assigned points: O(N)
-
-- Sensitive to outliers since an object with an extremely large value may substantially move a center.

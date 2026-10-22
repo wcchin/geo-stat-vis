@@ -1,0 +1,18 @@
+{
+  "bandwidth_m": 700.0,
+  "grid_m": 300,
+  "all_support_per_km2": 5,
+  "each_group_support_per_km2_for_high_low": 1,
+  "counts_all_low_high": [
+    5379,
+    1367,
+    1353
+  ],
+  "retained_grid_cells_high_all_low_all": 2882,
+  "retained_grid_cells_high_low": 1098,
+  "land_grid_cells": 8741,
+  "display_log2_limits": [
+    -2,
+    2
+  ]
+}

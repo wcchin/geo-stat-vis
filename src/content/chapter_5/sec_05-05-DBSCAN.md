@@ -1,124 +1,43 @@
-# Density-Based Spatial Clustering of Applications with Noise (DBSCAN)
+# 5.5 DBSCAN
 
+DBSCAN groups observations through dense neighbourhoods. It does not require the number of groups in advance. Instead, the analyst supplies a neighbourhood distance $\varepsilon$ and a minimum neighbourhood count, commonly called `min_samples` or `minPts`.
 
-## What is DBSCAN?
-- The algorithm finds dense areas and expands these recursively to find **dense arbitrarily shaped clusters**.
+The neighbourhood of observation $i$ is
 
-- Two main parameters to DBSCAN are ‘Epsilon (ε)’ and ‘minPoints’.
-    - ‘Epsilon (ε, or Eps)’ defines radius of the ‘neighborhood region’ and
-    - ‘minPoints’ defines the minimum number of points that should be contained within that neighborhood to be considered as 'high density'.
+$$N_{\varepsilon}(i)=\{j:d(\mathbf{s}_i,\mathbf{s}_j)\leq\varepsilon\}.$$
 
-- The '**density**' refers to the number of points within Eps, which should be larger than minPoints.
+In the scikit-learn implementation used here, the observation itself counts towards `min_samples`. A point is a **core point** when its neighbourhood contains at least this many observations. A **border point** is within the neighbourhood of a core point but does not itself meet the core criterion. An observation assigned to neither is labelled **noise** for that parameter setting.
 
-- Since it **has a concept of noise**, it works well even with noisy datasets.
+## Density connection, rather than one common centre
 
-```{figure} ../resources/w07-img/arbitrary_shape.png
-:label:
-:alt:
-:align: center
+Core points connected through chains of neighbouring core points form a cluster. Border points can be attached to such a cluster, but a border point does not propagate a chain by itself. This lets DBSCAN describe shapes that need not be compact around a centroid.
 
-Arbitrary shape clusters
-```
+A cluster's total diameter can greatly exceed $\varepsilon$. The parameter limits a neighbourhood step, not the distance between every pair of members. A chain of locally dense observations can connect concentrations that look separate at a broader scale.
 
+Our demonstration keeps `min_samples = 20` and compares neighbourhood distances of 300 m, 600 m and 1,000 m. The count is **20 transactions**, including self, rather than 20 unique blocks. Coincident transactions therefore matter. The figures use Euclidean distance in SVY21 metres.
 
-## Key concepts
+![DBSCAN parameter comparison](../datasets/hdb_resale_2026/figures/dbscan.png)
 
-```{figure} ../resources/w07-img/dbscan_key_concept.png
-:label:
-:alt:
-:align: center
+*Figure 5.6. The same upper-group transaction locations under three DBSCAN neighbourhood distances. Grey observations are labelled noise. Colours distinguish clusters within a panel and are not matched between runs; repeated hues may occur where many clusters are present.*
 
-Key concepts of DBSCAN. (minPoint = 4)
-```
+In this demonstration, increasing ε from 300 m to 600 m reduces the noise count from 603 to 306, while the number of clusters rises from 16 to 18. Additional concentrations can qualify as clusters even as others merge. At 1,000 m there are 11 clusters and 102 noise transactions. The cluster count need not change monotonically as ε increases.
 
-- **Epsilon neighborhood** ($\text{N}_{\epsilon}$): set of all points within a distance ‘$\epsilon$’.
-- **Core point**: A point that has at least ‘minPoint’ (including itself) points within it’s $\text{N}_{\epsilon}$.
-- **Directly Density Reachable (DDR)**: A point $q$ is directly density reachable from a point $p$ if $p$ is core point and $q \in \text{N}_{\epsilon}$ of $p$.
-- **Density Reachable (DR)**: Two points are _DR_ if there is _a chain of DDR points that link_ these two points.
-- **Border Point**: Point that are DDR but not a core point.
-- **Noise**: Points that could not reach to any core point through a chain of DDR points.
+A smaller neighbourhood can leave many observations without sufficient nearby support. A larger neighbourhood can connect dense regions through intervening sales. Changing `min_samples` also changes which observations qualify as core points. There is no parameter-free answer hidden behind these maps.
 
+## What a noise label does and does not mean
 
-```{figure} ../resources/w07-img/about_reachable.png
-:label:
-:alt:
-:align: center
+Noise is an algorithmic label. It does not mean an erroneous transaction, a low-quality geocode or an economically unimportant place. An isolated high-price sale can be a valid observation that does not belong to a dense group under the chosen settings.
 
-Abour reachable
-```
+Some border observations can be reachable from core points in more than one cluster. Their assignment can depend on processing order, even when the core structure is unchanged. This is another reason to avoid treating a coloured boundary as a uniquely determined geographical division.
 
-- Let $p$ be a core point, then every point in its Epsilon neighborhood is said to be **directly density-reachable** from $p$.
-- A point $p$ is **density-reachable** from a core point $q$ if there is a chain of points $p, p1, p2, ..., pn, q$.
-- A point $p$ is **density-connected** to a point $q$ if there is a point $o$ such that both, $p$ and $q$ are density-reachable from $o$**.
+A nearest-neighbour distance plot can help identify candidate distance scales. It does not establish a universally correct threshold, especially where the point density varies strongly across the city. Report a small, interpretable range of settings and examine which conclusions persist. Do not choose settings solely because the resulting map looks persuasive.
 
-**Clusters in DBSCAN** are groups of **points that are density-connected**, meaning that every point within a cluster **must be reachable from any other point in the same cluster through a chain of directly density-reachable points**, given a specified _epsilon_ (neighborhood radius, $\epsilon$) and MinPoint (minimum number of points required to form a dense region).
+## Repeated blocks and the meaning of density
 
+A block with many upper-group transactions can help create a dense neighbourhood even when there are few distinct block positions. That is appropriate for a transaction-volume question. For a question about geographical coverage across blocks, it may be preferable to deduplicate positions and reinterpret the minimum count as blocks. If repeated positions are aggregated for computational efficiency, positive sample weights can preserve transaction counts, provided the implementation's weighting rules are understood.
 
-```{figure} ../resources/w07-img/dbscan_type_of_points.png
-:label:
-:alt:
-:align: center
+**Interpretation task:** Describe one change between two panels without calling either result “correct”. Specify the parameter change, the resulting membership change and the limitation of the interpretation.
 
-Types of points: The cores, borders, and noises
-```
-
-
-```{figure} ../resources/w07-img/dbscan_clusters.png
-:label:
-:alt:
-:align: center
-
-The clusters
-```
-
-## Choosing MinPoint
-
-How many nearby points to form a 'core'?
-
-- **Domain knowledge**: If you have an understanding of how dense the clusters should be, use it to set MinPoint accordingly.
-
-- **Sensitivity analysis**: Experiment with various MinPoint values and evaluate the clustering results based on metrics such as the silhouette score, Calinski-Harabasz index, or your own domain-specific criteria.
-
-- **Rule of thumb**: A common rule of thumb (for starting) is to set MinPoint as twice the number of dimensions in your dataset, especially if you don't have any domain knowledge about the expected density.
-
-
-
-### Choosing Epsilon
-(search radius)
-
-How close is close?
-
-- **Domain knowledge**: If you have prior knowledge about the scale or density of your data, you can use it to set an appropriate value for ε.
-
-- **k-distance or k-nearest neighbors**: Calculate the k-distance or k-nearest neighbors for various values of k to understand how the local density changes. Choose ε $\Epsilon$ to capture the desired level of density based on these calculations.
-
-- **Experimentation**: Try different values for ε and observe how the clustering results change. Visualizing the clusters can help you assess their quality.
-
-
-#### k-distance or k-nearest neighbors
-
-- The idea is that for points in a cluster, their $k$th nearest neighbors are at roughly the same distance.
-
-- Noise points have the kth nearest neighbor at farther distance.
-
-- So, plot sorted distance of every point to its kth nearest neighbor (e.g., $k=4$).
-
-
-```{figure} ../resources/w07-img/dbscan-demo_knn.png
-:label:
-:alt:
-:align: center
-
-Demo using KNN
-```
-
-
-## A real-life application
-
-```{figure} ../resources/w07-img/clustering_analysis_sample2.jpg
-:label:
-:alt:
-:align: center
-
-A Modified DBSCAN Clustering Method to Estimate Retail Center Extent. [Pavlis et al. 2017](https://doi.org/10.1111/gean.12138)
+```{dropdown} Self-check feedback: Why is DBSCAN noise not a data-quality label?
+A valid sale can lack enough nearby observations for the chosen distance and count. Different parameters can change its classification.
 ```
