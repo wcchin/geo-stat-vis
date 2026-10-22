@@ -2,7 +2,9 @@
 label: distance-and-neighbourhoods
 ---
 
-# Defining Distance and Neighbourhoods
+# 6.2 Defining distance and neighbourhoods
+
+**Reading route.** Follow the polygon-to-graph example, the three main neighbour rules, row standardisation and the worked spatial lag. Check the graph diagnostics before applying a rule. Higher-order neighbourhoods and inverse-distance decay are optional extensions; the Singapore maps illustrate how membership changes.
 
 ## Neighbours are part of the question
 
@@ -63,6 +65,8 @@ $$
 
 The diagonal is zero. The matrix is symmetric because shared-edge contact is mutual. Unit 5 has four neighbours; unit 6 has only one. There are eight undirected links but sixteen nonzero matrix entries: each link appears in both directions. Preserve that convention in later sums over $i$ and $j$.
 
+::::{dropdown} Go deeper: higher-order neighbourhoods
+
 ### Higher-order neighbours
 
 Graph distance counts the minimum number of links needed to reach another unit. Exactly second-order neighbours are two links away, excluding first-order neighbours and the focal unit. A cumulative neighbourhood up to order two includes first- and second-order neighbours. State which version is used.
@@ -77,6 +81,8 @@ For unit 6, the first-order neighbour is 3 and the exactly second-order neighbou
 
 Higher-order neighbourhoods around Chong Boon. The upper panels show exactly second order; the lower panels combine first and second order. Compare these different sets before interpreting an order parameter.
 ```
+
+::::
 
 ### Topology is not a display detail
 
@@ -112,6 +118,8 @@ Fort Canning, Singapore, with a 1,200 m distance band. Membership is based on re
 Fort Canning has 16 neighbours at 1,200 m and 23 at 1,500 m in this illustration; Holland Road has zero and one respectively. Increasing the threshold changes the selected set. Inspect the thresholds and representative locations rather than interpreting polygon size as distance.
 ```
 
+::::{dropdown} Go deeper: distance-decay weights
+
 Distance-based weights need not be binary. For distinct locations, one option is inverse-distance weighting within a stated cutoff:
 
 $$
@@ -120,6 +128,8 @@ b_{ij}=d_{ij}^{-\alpha}\mathbf{1}(d_{ij}\leq d_0),
 $$
 
 Set $b_{ii}=0$ and define how coincident points are handled before using this expression. A larger exponent gives nearer neighbours greater relative weight. A distance band selects who contributes; a decay function additionally determines how contribution varies with distance. They are separate choices.
+
+::::
 
 Use projected metric coordinates suitable for the region, or a documented geodesic calculation. A threshold in metres cannot be applied directly to unprojected longitude and latitude as if degrees were metres. For a road-travel question, a network travel-time relationship may be more appropriate than Euclidean distance.
 
@@ -208,23 +218,33 @@ Report the spatial support, geometry/coordinate system, neighbour rule and param
 
 ## Check your reasoning
 
-```{dropdown} 1. Can queen neighbours share only an edge?
+**Self-check:** Can queen neighbours share only an edge?
+
+```{dropdown} Feedback
 Yes. Queen includes shared-edge and point-contact relationships; rook requires an edge.
 ```
 
-```{dropdown} 2. Does kNN guarantee one connected graph?
+**Self-check:** Does kNN guarantee one connected graph?
+
+```{dropdown} Feedback
 No. Each observation can have outgoing neighbours while separate groups remain disconnected. Directed selections can also be asymmetric.
 ```
 
-```{dropdown} 3. Must row-standardised weights remain symmetric?
+**Self-check:** Must row-standardised weights remain symmetric?
+
+```{dropdown} Feedback
 No. Mutual neighbours with different neighbour counts receive different reciprocal weights. The underlying relation can still be symmetric.
 ```
 
-```{dropdown} 4. What is unit 5's lag, and does it include its own value of 10?
+**Self-check:** What is unit 5's lag, and does it include its own value of 10?
+
+```{dropdown} Feedback
 The binary lag is 20 and the row-standardised lag is 5. Its own value is excluded. The difference reflects the transformation, not a change in observations.
 ```
 
-```{dropdown} 5. Is a zero lag for an isolate the same as having neighbours whose values average to zero?
+**Self-check:** Is a zero lag for an isolate the same as having neighbours whose values average to zero?
+
+```{dropdown} Feedback
 No. The isolate has no neighbour information under that rule. A stored zero is a computational convention requiring explicit handling.
 ```
 

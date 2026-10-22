@@ -1,4 +1,4 @@
-# Data Transformation
+# 2.3 Data transformation
 
 Transformations change how data are arranged, measured or represented. These operations are often discussed together, but their consequences differ. Before transforming a column, state the purpose: are we making a table easier to read, adjusting exposure, reducing differences in scale, or changing the relationship a model will describe?
 
@@ -62,6 +62,8 @@ The same 12 records in a fixed order. Positive linear rescalings preserve the sp
 
 A log transformation may help with strongly varying positive quantities or a multiplicative relationship. Whether it improves a model depends on the model and its diagnostics. For regression, requirements often concern conditional errors rather than a demand that every input variable look bell-shaped. Transforming a variable does not resolve spatial dependence, an inappropriate observation unit or an incorrect join.
 
+::::{dropdown} Go deeper: the Box–Cox family
+
 The Box–Cox family extends the idea for strictly positive data:
 
 $$
@@ -73,6 +75,8 @@ y_i(\lambda)=
 $$
 
 At $\lambda=0.5$, it is proportional to a square-root transform with an offset; it is not exactly $\sqrt{x_i}$. Selecting $\lambda$ should follow an explicit criterion in the intended model. We do not estimate an optimal transformation from these 12 teaching records. Box and Cox's original paper explains the model-based rationale; a transformed histogram alone is not a complete selection criterion.
+
+::::
 
 ## Ranks retain order and discard magnitude
 
@@ -86,6 +90,8 @@ Keep original quantities alongside derived columns, document fitted parameters, 
 
 **Reading:** Box, G. E. P., & Cox, D. R. (1964). *An Analysis of Transformations*. Journal of the Royal Statistical Society: Series B, 26(2), 211–243. [Publisher record](https://academic.oup.com/jrsssb/article/26/2/211/7028064). The article develops transformations within statistical models; this chapter introduces the basic ideas without fitting that full framework.
 
-```{dropdown} Self-check: Does standardisation make these counts normally distributed?
+**Self-check:** Does standardisation make these counts normally distributed?
+
+```{dropdown} Feedback
 No. Subtracting the mean and dividing by a positive standard deviation changes location and scale. It preserves the distribution's shape and does not remove skewness or dependence.
 ```

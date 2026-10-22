@@ -2,7 +2,7 @@
 label: local-morans-i
 ---
 
-# LISA and Local Moran's I
+# 6.4 LISA and Local Moran's I
 
 ## From an overall association to individual neighbourhoods
 
@@ -113,25 +113,33 @@ Under the six-neighbour sensitivity graph, global I is 0.6593 and 23 local Moran
 
 ## Check your reasoning
 
-```{dropdown} 1. Can a positive local statistic describe low values?
+**Self-check:** Can a positive local statistic describe low values?
+
+```{dropdown} Feedback
 Yes. A below-mean focal value with a below-mean neighbour lag is LL and gives a positive product.
 ```
 
-```{dropdown} 2. What is fixed in the local conditional reference?
+**Self-check:** What is fixed in the local conditional reference?
+
+```{dropdown} Feedback
 The focal value, observation support and weights. The other values are reassigned. The observed neighbour values are not fixed.
 ```
 
-```{dropdown} 3. Is Bentong an adjusted spatial-outlier finding?
+**Self-check:** Is Bentong an adjusted spatial-outlier finding?
+
+```{dropdown} Feedback
 No. It is an unadjusted LH candidate but does not meet the reported BH threshold. State the configuration and inference rule separately.
 ```
 
-```{dropdown} 4. Do unselected districts have no spatial relationships?
+**Self-check:** Do unselected districts have no spatial relationships?
+
+```{dropdown} Feedback
 No. Non-selection means insufficient evidence under that test and threshold. It does not erase observed variation or prove randomness.
 ```
 
 ## Reproduce and read further
 
-The [shared areal notebook](../notebooks/malaysia-income-areal-self-study.ipynb) reproduces the observations, graph, statistics, maps and sensitivity comparison from the repository snapshot. The [source and result record](../datasets/malaysia_income_areal/README.md) defines every calculation. These new empirical maps replace the earlier Guerry illustrations.
+The [shared areal notebook](../notebooks/malaysia-income-areal-self-study.ipynb) reproduces the observations, graph, statistics, maps and sensitivity comparison from the repository snapshot. The [source and result record](../datasets/malaysia_income_areal/README.md) defines every calculation.
 
 - **Foundation:** Anselin, L. (1995). [Local Indicators of Spatial Association—LISA](https://doi.org/10.1111/j.1538-4632.1995.tb00338.x). *Geographical Analysis*, 27, 93–115. Read the local-to-global argument alongside the stated normalisation.
 - **Multiplicity:** Benjamini, Y. and Hochberg, Y. (1995). [Controlling the False Discovery Rate](https://doi.org/10.1111/j.2517-6161.1995.tb02031.x). *JRSS B*, 57, 289–300. Distinguish false discovery rate from family-wise error and note the assumptions.

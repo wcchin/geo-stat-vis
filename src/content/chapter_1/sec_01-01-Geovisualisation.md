@@ -1,4 +1,4 @@
-# Geovisualisation: different views reveal different things
+# 1.1 Geovisualisation: different views reveal different things
 
 A table, chart, map and flow diagram can show the same observations while helping us notice different relationships. Choosing a view is therefore part of forming a question. We ask what the representation makes easy to inspect and what information a reader still needs.
 
@@ -39,6 +39,8 @@ When meeting an unfamiliar figure, identify the quantity, observation unit, peri
 
 **Further reading:** Çöltekin, A., Janetzko, H., & Fabrikant, S. I. (2018). *Geovisualization*. GIS&T Body of Knowledge. [Article](https://gistbok-ltb.ucgis.org/current/concept/CV-05-035). Read for how visual thinking and interaction support geographic inquiry.
 
-```{dropdown} Self-check: Which view would help you compare exact counts, and which would help you investigate direction?
+**Self-check:** Which view would help you compare exact counts, and which would help you investigate direction?
+
+```{dropdown} Feedback
 A table preserves exact values clearly; an aligned chart supports magnitude comparison; a flow diagram foregrounds origins, destinations and direction. The best choice follows the question. More than one view can be useful, especially when the reader can trace the same observations between them.
 ```

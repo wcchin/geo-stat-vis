@@ -1,4 +1,4 @@
-# Frequency Distribution
+# 2.2 Frequency distribution
 
 A table preserves individual records, but it is difficult to see a distribution by reading down a column. A frequency distribution summarises how often values or ranges occur. It helps us examine a variable's centre, spread and shape before choosing a model or comparing groups.
 
@@ -86,6 +86,8 @@ Counts do not automatically follow a Poisson distribution, and a small right-ske
 
 The [NIST exploratory-data-analysis handbook](https://www.itl.nist.gov/div898/handbook/eda/eda.htm) provides further reading on distribution summaries and probability models. The calculations and figure parameters are recorded in the [reproducibility directory](../datasets/mrt_data_foundations_202609/README.md).
 
-```{dropdown} Self-check: Does an ECDF value of 2/3 at 538 mean that two-thirds of all trips have been counted?
+**Self-check:** Does an ECDF value of 2/3 at 538 mean that two-thirds of all trips have been counted?
+
+```{dropdown} Feedback
 No. It means that two-thirds of the 12 selected OD-pair records have counts at most 538. A trip-weighted cumulative share would use trip counts as weights and answer another question.
 ```

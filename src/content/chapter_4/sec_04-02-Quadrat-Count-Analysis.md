@@ -2,25 +2,15 @@
 label: quadrat-count-analysis
 ---
 
-# Quadrat Count Analysis
+# 4.2 Quadrat count analysis
 
-## Three ways to ask about a point pattern
+**Reading route.** First follow the count calculation, its reference distribution and the western Sumatra square. Then compare the eastern square and the combined window. The analytical approximation and grid-sensitivity discussion are useful second readings; the Monte Carlo comparison supplies the main inferential route used for the observed data.
 
-A map of events invites several different questions. Are events concentrated in some parts of the observation window? Is each event unusually close to its nearest other event? Does the pattern change when we examine larger distances? These questions motivate quadrat analysis, [Nearest Neighbour Analysis](sec_04-03-Nearest-Neighbor-Analysis.md) and [Ripley's K-function](sec_04-04-Ripleys-K-Function.md), respectively.
-
-| Method | What is summarised? | What must we choose? |
-| --- | --- | --- |
-| Quadrat analysis | Counts inside a partition of the window | Quadrat size, shape and placement |
-| NNA | One nearest-other-point distance per event | Observation window, metric and null model |
-| K-function | Pairs within each of several radii | Window, radii, edge correction and null model |
-
-The methods can disagree without any calculation being wrong. Each compresses the pattern in a different way. Different regional examples are useful, provided we keep the observation unit and reference model explicit.
-
-**Quadrat analysis** partitions a study window into non-overlapping cells and compares the observed counts with counts expected under a stated model. In this section, we ask whether variation among counts is unusually large under homogeneous complete spatial randomness (CSR). After reading, you should be able to construct the counts, calculate expected values, interpret a Pearson statistic and distinguish uneven intensity from evidence of interaction among events.
+Quadrat analysis partitions a study window and compares its cell counts with expectations under a specified reference. Unlike nearest-neighbour distance or K, it summarises how events are allocated among cells. The [chapter introduction](chapter-4-global_point_pattern.md) compares the three questions.
 
 ## A regional question: where was fire activity detected?
 
-Satellite-detected fire activity in Sumatra provides a regional application that can later connect to the book's areal autocorrelation example. Our question is: **during September 2026, were qualifying FIRMS fire detections distributed uniformly across a fixed land observation window in Sumatra, or concentrated in particular quadrats?** The [NASA FIRMS archive](https://firms.modaps.eosdis.nasa.gov/download/) provides historical active-fire records. The example uses one product, VIIRS S-NPP, throughout the selected month, rather than mixing satellite products with different observation opportunities.
+Satellite-detected fire activity in Sumatra provides a regional application of point-pattern analysis. Our question is: **during September 2026, were qualifying FIRMS fire detections distributed uniformly across a fixed land observation window in Sumatra, or concentrated in particular quadrats?** The [NASA FIRMS archive](https://firms.modaps.eosdis.nasa.gov/download/) provides historical active-fire records. The example uses one product, VIIRS S-NPP, throughout the selected month, rather than mixing satellite products with different observation opportunities.
 
 ```{note} Observed data and synthetic teaching examples
 The South Sumatra maps below use observed September 2026 VIIRS S-NPP detections obtained through a public FIRMS mirror, filtered to nominal/high confidence. The source is near-real-time version 2.0NRT; September records were not independently downloaded from the authenticated NASA archive. The [data record](../datasets/firms_sumatra/README.md) documents provenance, filters and approximate coastal areas. The smaller constructed patterns remain explicitly synthetic and explain the method separately.
@@ -91,6 +81,8 @@ The statistic does **not** use adjacency. Rearranging the same four counts among
 
 ## How unusual is the variation?
 
+::::{dropdown} Go deeper: the analytical approximation
+
 ### Analytical approximation
 
 For the basic homogeneous model with total intensity estimated from the point count, the usual approximation is
@@ -102,6 +94,8 @@ $$
 The degrees of freedom are $m-1$, not $(r-1)(c-1)$ for an $r$ by $c$ grid. We are testing goodness of fit across cells, not independence in a row-by-column contingency table. Additional fitted parameters require a corresponding adjustment.
 
 For the four-cell example, the upper-tail probability is $P(\chi^2_3\geq8)\approx0.046$. This supplies evidence against the specified homogeneous reference at a prespecified 5% threshold, conditional on the approximation being appropriate. It does not reveal why the counts differ. Small expected counts can make the approximation unreliable; “at least about five per cell” is a useful diagnostic, not a universal guarantee.
+
+::::
 
 ### Conditional Monte Carlo comparison
 
@@ -135,6 +129,8 @@ The first row is one random realisation, not a claim that all CSR samples give s
 
 The upper-tail test is sensitive to unusually **large** count variation. Very even counts require a separately specified lower-tail procedure to test unusually low variation. A large upper-tail p-value does not establish regular spacing or prove CSR. Our spaced construction puts six points in every cell and therefore has $T=0$; its regularity is not established by failing to reject an upper-tail test.
 
+::::{dropdown} Go deeper: grid size and origin
+
 ## Quadrat size and origin change what we see
 
 ```{figure} ../resources/original/quadrat-grid-sensitivity.svg
@@ -148,6 +144,8 @@ The same points can give very different summaries under a coarse grid, a finer g
 A coarse grid can hide structure inside cells. A fine grid can produce many empty cells and unstable analytical approximations. Moving the grid can split a concentration across several cells. Compare a small number of defensible specifications and report their consequences; do not select the grid that produces the smallest p-value. Statistics from different partitions also have different null distributions, so their raw magnitudes are not directly comparable measures of clustering strength.
 
 Changing the observation window is different from changing the grid. The window defines where events could have been observed; the grid partitions that opportunity. Keep the window fixed when investigating grid sensitivity.
+
+::::
 
 ## Worked regional example: two adjoining South Sumatra windows
 
@@ -167,7 +165,7 @@ A contains **2,149 detections** and 25 full land quadrats, giving $E_i=2149/25=8
 
 The contrast between the low-count cells and the concentration in the northeastern part is much larger than uniform allocation predicts. This is evidence against a constant detection intensity across this square; it does not establish a mechanism for that variation.
 
-### Step 2: repeat the procedure in the eastern square
+### Comparison exercise: repeat the procedure in the eastern square
 
 B contains **4,052 detections**, including 1,207 in one quadrat near its western side. Ask first: would a higher total alone produce higher expected counts? Yes. Its expected values must be calculated from its own total, rather than retaining A's expectation of 85.96.
 
@@ -183,7 +181,7 @@ These are conditional multinomial comparisons with 9,999 simulations and seed 52
 
 Both squares have uneven counts under their respective homogeneous baselines. B has about 1.89 times as many detections over almost the same land area, but neither its higher total nor its larger raw $T$ alone establishes stronger spatial clustering. The reference distributions depend on the totals and cell probabilities.
 
-### Step 3: combine the squares and reconsider the reference
+### Extension: combine the squares and reconsider the reference
 
 ```{figure} ../resources/original/firms-combined-window.svg
 :label: firms-quadrat-combined-window
@@ -209,25 +207,33 @@ NNA asks a different question about the closest other event. The K-function exam
 
 ## Check your reasoning
 
-```{dropdown} 1. Should empty cells be omitted?
+**Self-check:** Should empty cells be omitted?
+
+```{dropdown} Feedback
 No. They are observations about the allocation of points within the defined window. Removing them changes the comparison and usually suppresses part of the count variation.
 ```
 
-```{dropdown} 2. Two equal-area grids have the same multiset of counts but different arrangements. Must T differ?
+**Self-check:** Two equal-area grids have the same multiset of counts but different arrangements. Must T differ?
+
+```{dropdown} Feedback
 No. The statistic uses each count and its expectation, not which cells touch. The spatial arrangement of those counts can differ while the statistic remains identical.
 ```
 
-```{dropdown} 3. Why not compare means using a t-test?
+**Self-check:** Why not compare means using a t-test?
+
+```{dropdown} Feedback
 With the point count and number of cells fixed, the mean count is already $n/m$. Counts $[3,3,3,3,3,3]$ and $[0,0,0,6,6,6]$ have the same mean but different variation. The question concerns allocation among cells.
 ```
 
-```{dropdown} 4. Does rejection prove that individual fires attract one another?
+**Self-check:** Does rejection prove that individual fires attract one another?
+
+```{dropdown} Feedback
 No. These records represent detections rather than separate fires. Uneven land conditions, repeated observations of persistent fires, observation effects or dependence could all contribute. The test rejects a particular homogeneous reference; it does not identify a mechanism.
 ```
 
 ## Try it and read further
 
-The [point-pattern lab](../notebooks/lab-05-point-pattern.ipynb) provides the existing course workflow. The new [reproducible teaching source](https://github.com/wcchin/geo-stat-vis/blob/main/scripts/point_pattern_examples.py) generates the original figures; its [data record](../datasets/point_pattern_teaching/README.md) explains the synthetic examples and links to the observed FIRMS snapshot. Later, aggregated FIRMS counts can support [Moran's I](../chapter_6/sec_06-03-Morans-I.md): quadrat analysis asks about allocation across cells, whereas Moran's I asks about relationships between neighbouring cell values.
+The [point-pattern lab](../notebooks/lab-05-point-pattern.ipynb) provides the existing course workflow. The new [reproducible teaching source](https://github.com/wcchin/geo-stat-vis/blob/main/scripts/point_pattern_examples.py) generates the original figures; its [data record](../datasets/point_pattern_teaching/README.md) explains the synthetic examples and links to the observed FIRMS snapshot. Compare the question here with [Moran's I](../chapter_6/sec_06-03-Morans-I.md): quadrat analysis asks about allocation across cells, whereas Moran's I asks about relationships between neighbouring values. Chapter 6 develops that second question using Malaysian household income. Applying it to aggregated fire detections would be a separate extension.
 
 - **Foundational reading:** Greig-Smith, P. (1952). [The Use of Random and Contiguous Quadrats in the Study of the Structure of Plant Communities](https://doi.org/10.1093/oxfordjournals.aob.a083317). *Annals of Botany*, 16, 293–316. Read for the historical connection between sampling scale and pattern, rather than treating vegetation quadrats as identical to our event-grid design.
 - **Method reference:** [spatstat: quadrat.test](https://search.r-project.org/CRAN/refmans/spatstat.explore/html/quadrat.test.html). Check the distinction between alternatives, expected counts and simulation designs.

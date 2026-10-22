@@ -16,9 +16,13 @@ Our advertising-inspired brief asks for relevance, tension and a memorable idea.
 
 ## Show the effect of a boundary choice
 
-![Nearby record counts for the same blocks using 500 metre and 800 metre radii](../datasets/neighbourhood_story_2026/figures/04_radius.png)
+```{figure} ../datasets/neighbourhood_story_2026/figures/04_radius.png
+:label: ch7-04-radius
+:alt: Nearby record counts for the same blocks using 500 metre and 800 metre radii
+:align: center
 
-*Figure 7.5. A sensitivity comparison, keeping selected blocks and source records fixed. Counts refer to the specified categories and coordinate representations. Expanding the radius increases the area searched; it does not improve the underlying facilities or establish a travel-time catchment.*
+A sensitivity comparison, keeping selected blocks and source records fixed. Counts refer to the specified categories and coordinate representations. Expanding the radius increases the area searched; it does not improve the underlying facilities or establish a travel-time catchment.
+```
 
 None of the three blocks has a hawker-centre directory point within 500 m. That statement is narrower than “there is nowhere nearby to eat.” Restaurants, coffee shops, food courts and other outlets are outside this directory. At 800 m, the counts can change without any underlying facility moving. A category boundary and a spatial boundary both shape the story.
 

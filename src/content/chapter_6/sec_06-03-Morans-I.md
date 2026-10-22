@@ -2,7 +2,7 @@
 label: global-morans-i
 ---
 
-# Moran’s I
+# 6.3 Moran’s I
 
 
 When districts with relatively high household incomes appear close together, does the pattern extend to their specified neighbours? We need an income measure for each area, a definition of neighbours and a reference against which to assess that arrangement.
@@ -23,19 +23,23 @@ After reading, you should be able to define a spatial lag; calculate Moran's I i
 The four-cell diagrams remain hypothetical and explain the calculation. The empirical results in Section 8 use Malaysian household income, with a full-detail boundary audit and a documented proximity graph. All chapter methods use the same 92 observations. FIRMS detection locations remain the separate Chapter 4 application.
 ```
 
-Reading route: measurement → neighbours → arithmetic → scatterplot → inference → interpretation → sensitivity → self-check. Read alongside [Autocorrelation & Spatial Autocorrelation](sec_06-01-Spatial-Autocorrelation.md) and [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md).
+**Reading route.** On a first reading, follow the income measure and graph, the four-area arithmetic, the scatterplot, permutation inference and the observed Malaysian results. Return to the optional geometry audit, software fields and extended sensitivity discussion afterwards. Read alongside [Autocorrelation & Spatial Autocorrelation](sec_06-01-Spatial-Autocorrelation.md) and [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md).
 
 ## 1. Decide what each number represents
 
 Define $x_i$ as **median gross monthly household income in 2022**, in nominal Malaysian ringgit, for mapped area $i$. Most units are administrative districts; Perlis, Kuala Lumpur and Putrajaya each contribute one observation, and the source includes Kecil Lojing. Every income estimate is matched once using state and district aliases. No area is dropped for having a low value.
 
-The regional mean used by Moran's I is the mean of these 92 area estimates, approximately RM 5,296.83. It is not the mean income or median income of all households in the peninsula. Areas differ in household population, survey uncertainty and size. A district median does not imply that each resident household has that income.
+The regional mean used by Moran's I is the mean of these 92 area estimates, approximately RM 5,296.83. Each area receives equal observation weight. As [Section 6.1](sec_06-01-Spatial-Autocorrelation.md) explains, this is not a peninsula-wide household income estimate.
+
+::::{dropdown} Go deeper: matching observations to boundaries
 
 ### Match the observations to the geometry
 
-The 2022 income table is combined with a boundary service retrieved in October 2026. This is not a reconstruction of 2022 geography. The display maps use generalized outlines, while full-detail geometries are retrieved separately to audit topology and derive interior representative points. The [analysis record](../datasets/malaysia_income_areal/README.md) preserves query details, source hashes and the matched data. [^morans-source-2]
+The 2022 income table is combined with a boundary service retrieved in October 2026. This is not a reconstruction of 2022 geography. The display maps use generalised outlines, while full-detail geometries are retrieved separately to audit topology and derive interior representative points. The [analysis record](../datasets/malaysia_income_areal/README.md) preserves query details, source hashes and the matched data. [^morans-source-2]
 
 Missing or unmatched estimates are not replaced with zero. Water and neighbouring countries are outside the included observation set. A mean-income alternative or a log transformation changes the variable and question; it is not a way to tune significance.
+
+::::
 
 ## 2. Give “nearby” a precise meaning
 
@@ -43,7 +47,7 @@ Before measuring similarity, decide which pairs of areas are neighbours. The ful
 
 This retains all 92 observations in one connected graph. Union symmetrisation gives four to nine neighbours per area, rather than exactly four. A six-nearest-neighbour union graph provides the stated sensitivity comparison. These are geographical proximity relations, not commuting or income-transmission pathways. The rules were specified before calculating association.
 
-Write $a_{ij}=1$ for a selected neighbour pair and $0$ otherwise. Set $a_{ii}=0$: a cell is not its own neighbour. With $k_i=\sum_j a_{ij}>0$ neighbours, row standardisation gives
+Write $a_{ij}=1$ for a selected neighbour pair and $0$ otherwise. Set $a_{ii}=0$: an area is not its own neighbour. With $k_i=\sum_j a_{ij}>0$ neighbours, row standardisation gives
 
 $$
 w_{ij}=\frac{a_{ij}}{k_i},\qquad \sum_j w_{ij}=1.
@@ -53,15 +57,15 @@ Each nonempty row then sums to one.
 
 ### A spatial lag is a neighbour summary
 
-The spatial lag of x at cell i is the weighted sum of neighbour values:
+Recall the spatial lag from [Section 6.2](sec_06-02-Statistical-Spatial-Testing.md): it is the weighted sum of neighbour values,
 
 $$
 \left(W\mathbf{x}\right)_i = \sum_{j=1}^{n} w_{ij}x_j
 $$
 
-For binary neighbours with row standardisation, this is their arithmetic mean. An area with median income RM 8,000 could have a lag of RM 5,000 if its selected neighbours average RM 5,000. The lag belongs to the focal cell, but its value is calculated from other cells. It is not a prediction and does not imply an effect from neighbours. [^morans-source-3]
+For binary neighbours with row standardisation, this is their arithmetic mean. An area with median income RM 8,000 could have a lag of RM 5,000 if its selected neighbours average RM 5,000. The lag belongs to the focal area, but its value is calculated from other areas. It is not a prediction and does not imply an effect from neighbours. [^morans-source-3]
 
-### Edges, masks and isolated cells
+### Edges, masks and isolated areas
 
 Row standardisation gives each nonempty neighbour set total weight one. A neighbour of a four-neighbour area therefore receives weight 1/4, while a neighbour of a nine-neighbour area receives 1/9. The binary relation is symmetric, but the transformed numerical weights need not be.
 
@@ -75,7 +79,7 @@ Compare the primary four-neighbour union with the six-neighbour union on the sam
 
 ## 3. Build Moran's I from cross-products
 
-Let $d_i=x_i-\bar{x}$, where $\bar{x}$ is the mean across the included cells. Two neighbouring cells both above the mean give a positive cross-product. Two below the mean also give a positive product. A pair on opposite sides of the mean gives a negative product.
+Let $d_i=x_i-\bar{x}$, where $\bar{x}$ is the mean across the included areas. Two neighbouring areas both above the mean give a positive cross-product. Two below the mean also give a positive product. A pair on opposite sides of the mean gives a negative product.
 
 $$
 I = \frac{n}{S_0}
@@ -84,7 +88,7 @@ I = \frac{n}{S_0}
 \qquad S_0=\sum_{i=1}^{n}\sum_{j=1}^{n}w_{ij}.
 $$
 
-Here n is the number of included cells and $S_0$ is the sum of all weights. The numerator combines neighbour cross-products; the denominator scales by overall variation. A constant variable has a zero denominator and cannot be analysed with this statistic.
+Here n is the number of included areas and $S_0$ is the sum of all weights. The numerator combines neighbour cross-products; the denominator scales by overall variation. A constant variable has a zero denominator and cannot be analysed with this statistic.
 
 ```{figure} ../resources/original/morans-chain.svg
 :label: morans-four-cell-chain
@@ -152,9 +156,9 @@ For the income example, “high” means above the mean of the 92 area medians. 
 
 ## 5. Compare the statistic with a null model
 
-A positive coefficient describes similarity under the chosen weights. Whether that coefficient is unusual requires a reference. Our randomisation null holds the included cells and weights fixed and treats the observed values as exchangeable across those cells. It asks what I would look like under random reassignment of this same set of values.
+A positive coefficient describes similarity under the chosen weights. Whether that coefficient is unusual requires a reference. Our randomisation null holds the included areas and weights fixed and treats the observed values as exchangeable across those areas. It asks what I would look like under random reassignment of this same set of values.
 
-A permutation leaves the histogram of cell values unchanged. It changes which cell receives which value. Recalculate I after each shuffle; do not recompute a new neighbour graph. This is attribute randomisation on fixed areas, not a simulation of households moving between districts.
+A permutation leaves the histogram of area values unchanged. It changes which area receives which value. Recalculate I after each shuffle; do not recompute a new neighbour graph. This is attribute randomisation on fixed areas, not a simulation of households moving between districts.
 
 ```{figure} ../resources/original/morans-exact-permutations.svg
 :label: morans-four-cell-permutations
@@ -190,6 +194,8 @@ Exchangeability is a substantive assumption. Major differences in urbanisation, 
 
 A complete result combines the variable, study population, weights, coefficient and inferential convention. A bare statement that “Moran's I is significant” leaves the reader unable to assess what was tested.
 
+::::{dropdown} Go deeper: software output fields
+
 | Output | How to read it |
 | --- | --- |
 | Observed I | Magnitude and direction of the global cross-product association for the specified variable and weights. |
@@ -200,6 +206,8 @@ A complete result combines the variable, study population, weights, coefficient 
 
 Software output names are not enough. PySAL distinguishes analytical and simulated quantities, and versions differ in how a permutation alternative is configured. The notebook should record the installed version and calculate the intended right-tail exceedance count explicitly, rather than assuming a default `p_sim` always represents our substantive test. [^morans-source-5] [^morans-source-6]
 
+::::
+
 ### What would a positive result support?
 
 For this application, report the variable, year, support, graph, coefficient and inference together: “Across the 92 mapped Peninsular Malaysian areas in 2022, median household incomes showed positive spatial association under the stated union-4NN weights and unrestricted reassignment reference.” Section 8 supplies the calculated coefficient and p-value.
@@ -208,7 +216,7 @@ This does not establish that one district's income causes its neighbours' income
 
 ### If the result is not significant
 
-Do not conclude that incomes are spatially random in every sense. The test concerns a particular variable, support, neighbour rule, period and null. Opposing local patterns can offset each other in a global measure. A small coefficient can also have strong statistical evidence with many cells, so report magnitude alongside inference.
+Do not conclude that incomes are spatially random in every sense. The test concerns a particular variable, support, neighbour rule, period and null. Opposing local patterns can offset each other in a global measure. Report the coefficient’s magnitude alongside its inferential result; a small departure can be statistically detectable without being substantively large.
 
 ```{note} Keep the terms distinct
 Global autocorrelation describes an overall association. Local cluster detection asks where unusually similar or contrasting neighbourhoods occur. Explaining income differences asks about underlying social and economic processes. These require different evidence.
@@ -217,6 +225,8 @@ Global autocorrelation describes an overall association. Local cluster detection
 ## 7. Ask whether the finding survives reasonable choices
 
 Spatial statistics depend on representation. A useful sensitivity analysis changes one defensible choice at a time and explains the question that changes with it. It should help readers understand the result, not search for a specification that crosses a significance threshold.
+
+::::{dropdown} Go deeper: further sensitivity choices
 
 | Choice | Comparison or extension | Interpretive question |
 | --- | --- | --- |
@@ -234,9 +244,11 @@ Do not smooth the income estimates before the main calculation: smoothing alread
 
 The test treats published medians as the observed attributes. It does not propagate their household-survey estimation uncertainty. Boundary dates, unequal area populations and omitted geographic conditions remain substantive limits. A later official revision should be recorded as a data update, rather than silently replacing the saved snapshot.
 
+::::
+
 ## 8. Observed Peninsular Malaysia results
 
-The [shared analysis record](../datasets/malaysia_income_areal/README.md) contains all 92 income estimates, full-detail geometry audit, representative coordinates, graph edges and results. All areal methods retain the same observations. The generalized boundaries are used only to draw maps; weights are reconstructed from the saved representative coordinates.
+The [shared analysis record](../datasets/malaysia_income_areal/README.md) contains all 92 income estimates, full-detail geometry audit, representative coordinates, graph edges and results. All areal methods retain the same observations. The generalised boundaries are used only to draw maps; weights are reconstructed from the saved representative coordinates.
 
 ```{figure} ../resources/original/malaysia-income-support.png
 :label: malaysia-income-support
@@ -283,7 +295,7 @@ The [shared income notebook](../notebooks/malaysia-income-areal-self-study.ipynb
 
 **7.** Suppose Peninsular Malaysia and another region have different Moran coefficients. What must you inspect before interpreting this as a difference in spatial organisation?
 
-```{dropdown} Check your answers
+```{dropdown} Feedback
 
 
 **1.** Positive: both deviations from the mean are negative, and their product is positive. Similarity includes low-low relationships, not only high-high ones.

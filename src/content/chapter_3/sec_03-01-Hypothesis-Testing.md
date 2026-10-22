@@ -28,9 +28,13 @@ Weekdays and weekends were not randomly assigned to these stops. The 5,161 stops
 
 Before testing, inspect the distributions. In the bus example, the weekday and weekend distributions are both skewed, and the same stop contributes to both. An independent-samples comparison would discard that pairing. A test of mean differences also answers a different question from whether a majority of stops have positive differences.
 
-![Detailed distributions](../datasets/bus_ridership_202609/bus/distribution_details.png)
+```{figure} ../datasets/bus_ridership_202609/bus/distribution_details.png
+:label: ch3-distribution-details
+:alt: Detailed distributions
+:align: center
 
-*Figure 3.3. The histogram focuses on the 0–5,000 range and omits larger values from that panel. The empirical cumulative distribution includes every paired stop and shows the fraction with activity at or below each value. Its symlog horizontal scale accommodates zeros.*
+The histogram focuses on the 0–5,000 range and omits larger values from that panel. The empirical cumulative distribution includes every paired stop and shows the fraction with activity at or below each value. Its symlog horizontal scale accommodates zeros.
+```
 
 The empirical cumulative distribution is useful because it compares complete distributions without requiring histogram bins. However, a visible distributional difference does not automatically identify its cause. Stop function, service provision, surrounding land use and the day-type schedule can all contribute.
 
@@ -49,4 +53,8 @@ The map reveals that nearby stops are embedded in common corridors and neighbour
 The appropriate response depends on the target. Describing this snapshot may require no significance test. Studying changes over time needs repeated temporal observations. Studying an underlying spatial process may require a model or resampling design that represents its dependence. Later chapters develop tools for examining spatial structure explicitly.
 
 **Self-check:** Explain why “the p-value is small, so weekday demand causes more boardings” contains more than one unsupported step.
+
+```{dropdown} Feedback
+A small p-value describes incompatibility with a specified null under its assumptions. It does not establish causation. Here stops were not assigned randomly to weekdays, and conventional independent-stop calculations do not represent shared routes or spatial dependence.
+```
 

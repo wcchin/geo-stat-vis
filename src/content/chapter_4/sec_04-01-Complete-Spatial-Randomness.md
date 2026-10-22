@@ -2,7 +2,7 @@
 label: complete-spatial-randomness
 ---
 
-# Spatial Patterns and Complete Spatial Randomness
+# 4.1 Spatial patterns and complete spatial randomness
 
 ## Define what a point represents and where it could be observed
 
@@ -97,7 +97,7 @@ This distinction is central to geographical interpretation. Fire detections may 
 
 **Spatial stationarity** concerns invariance of a process's statistical properties under translation. Homogeneous Poisson CSR is stationary, but stationarity does not imply CSR: a stationary process can exhibit clustering or inhibition. Constant intensity alone is also insufficient to establish full stationarity.
 
-```{note} A broader use of stationarity
+```{dropdown} Go deeper: a broader use of stationarity
 Strict stationarity concerns invariance of the full joint distribution under translation. For random fields, second-order stationarity concerns a constant mean and a covariance structure depending on separation rather than absolute location. These broader concepts return in other parts of spatial statistics. Here, focus on whether intensity is constant and whether events are independent under the chosen point-process reference. A finite or irregular observation window is a sampling restriction, not by itself evidence that the underlying process is nonstationary.
 ```
 
@@ -128,23 +128,33 @@ These choices shape the question before any statistic is calculated. Simulation 
 
 ## Check your reasoning
 
-```{dropdown} 1. Can independent uniform points contain visible groups?
+**Self-check:** Can independent uniform points contain visible groups?
+
+```{dropdown} Feedback
 Yes. Close pairs and gaps occur by chance. Compare a chosen summary with its reference distribution rather than deciding from appearance alone.
 ```
 
-```{dropdown} 2. Does constant intensity require equal observed counts in equal-area cells?
+**Self-check:** Does constant intensity require equal observed counts in equal-area cells?
+
+```{dropdown} Feedback
 No. It requires equal expected counts. Realised counts vary.
 ```
 
-```{dropdown} 3. Are quadrat counts independent when the total is fixed?
+**Self-check:** Are quadrat counts independent when the total is fixed?
+
+```{dropdown} Feedback
 No. They sum to the fixed total and follow a multinomial distribution under independent uniform placement. Disjoint-region counts are independent in the unconditioned Poisson model.
 ```
 
-```{dropdown} 4. Does rejection of homogeneous CSR demonstrate attraction between individual fires?
+**Self-check:** Does rejection of homogeneous CSR demonstrate attraction between individual fires?
+
+```{dropdown} Feedback
 No. Changing background opportunity, repeat detections, observation coverage and dependence can all contribute. Satellite detections are also not necessarily distinct fires.
 ```
 
-```{dropdown} 5. Can a stationary process be clustered?
+**Self-check:** Can a stationary process be clustered?
+
+```{dropdown} Feedback
 Yes. A process can generate groups throughout space without systematically favouring an absolute location. Stationarity and CSR are not equivalent.
 ```
 

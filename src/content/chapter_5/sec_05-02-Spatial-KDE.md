@@ -1,5 +1,7 @@
 # 5.2 Spatial kernel density estimation
 
+**Reading route.** First distinguish density, intensity and smoothed price, then inspect bandwidth and the all-sales reference. Continue to dual KDE for a comparison of distributions. Its ratio-to-share derivation is an optional second reading; keep the denominator-support rules with any interpretation of the ratio maps.
+
 A point map shows observed positions. When many observations overlap, it becomes difficult to see the broad geographical pattern. Spatial KDE places a two-dimensional kernel over each position and sums the contributions at a grid of evaluation locations. The resulting surface describes how the observed point mass is distributed under a chosen amount of smoothing.
 
 For a common isotropic bandwidth $h$ in two dimensions,
@@ -24,19 +26,27 @@ $$\widehat{\lambda}_h(\mathbf{s})=n\widehat{f}_h(\mathbf{s}).$$
 
 Our first spatial comparison uses this intensity form, with a common Gaussian bandwidth of 700 m and a shared colour scale. Every transaction has unit weight, including transactions sharing a block position. The values describe registrations over the six-month window, not annual rates.
 
-![All-sales and quartile intensity surfaces](../datasets/hdb_resale_2026/figures/spatial_kde.png)
+```{figure} ../datasets/hdb_resale_2026/figures/spatial_kde.png
+:label: ch5-spatial-kde
+:alt: All-sales and quartile intensity surfaces
+:align: center
 
-*Figure 5.3. Uncorrected Gaussian intensity estimates evaluated on a 300 m grid. The same bandwidth, units and colour range apply to all three panels. The surface is displayed within the planning-area union; this display mask is not an edge correction.*
+Uncorrected Gaussian intensity estimates evaluated on a 300 m grid. The same bandwidth, units and colour range apply to all three panels. The surface is displayed within the planning-area union; this display mask is not an edge correction.
+```
 
 A high value in the upper-group panel means a concentration of upper-group sales. It does not mean that the average local sale price equals a high value: price is not being averaged in this calculation. Likewise, summing price-weighted kernels would represent a smoothed concentration of transaction value, not an average price.
 
-If the aim were to estimate a local average price, one possible descriptive smoother would divide the kernel-weighted sum of prices by the kernel-weighted sum of sales. Such an estimate needs care wherever the denominator is small and would answer a different question from Figure 5.3.
+If the aim were to estimate a local average price, one possible descriptive smoother would divide the kernel-weighted sum of prices by the kernel-weighted sum of sales. Such an estimate needs care wherever the denominator is small and would answer a different question from {numref}`ch5-spatial-kde`.
 
 ## Bandwidth sets the geographical scale
 
-![Spatial bandwidth comparison](../datasets/hdb_resale_2026/figures/bandwidth.png)
+```{figure} ../datasets/hdb_resale_2026/figures/bandwidth.png
+:label: ch5-bandwidth
+:alt: Spatial bandwidth comparison
+:align: center
 
-*Figure 5.4. Upper-group probability density with Gaussian bandwidths of 350 m, 700 m and 1,400 m. The panels share a colour scale. These values are standard deviations of Gaussian kernels, not finite search radii.*
+Upper-group probability density with Gaussian bandwidths of 350 m, 700 m and 1,400 m. The panels share a colour scale. These values are standard deviations of Gaussian kernels, not finite search radii.
+```
 
 A smaller bandwidth reveals estate-scale concentrations and gaps. A larger bandwidth can connect several concentrations into one broad feature. A Gaussian kernel has no finite cutoff, so distant observations still contribute, although increasingly weakly. Software that uses a compact kernel or a search radius can therefore interpret a numerical bandwidth differently. State the implementation as well as the distance.
 
@@ -67,6 +77,8 @@ $$R_H(\mathbf{s})=\frac{\widehat f_H(\mathbf{s})}{\widehat f_A(\mathbf{s})}.$$
 
 The neutral value is one. A ratio of two means that the high-group probability density is twice the all-sales probability density at that location. It does **not** mean that twice as many high-price transactions as total transactions occur there.
 
+::::{dropdown} Go deeper: the ratio-to-share calculation
+
 ### A relative-representation ratio and a local share
 
 The distinction follows from normalisation. Let $p_H=n_H/n_A$ be the high-group proportion across the complete sample. Using the same kernels, its smoothed local share is
@@ -77,9 +89,15 @@ Here $p_H$ is about 0.252. A relative-representation ratio of two therefore corr
 
 High and low are not complementary categories: middle-price transactions remain in the all-sales denominator. For high versus low, a ratio of one means equal normalised densities. Equal local count intensities would instead require allowing for the groups' different total counts.
 
-![Dual KDE ratios for the price groups](../datasets/hdb_resale_2026/figures/dual_kde.png)
+::::
 
-*Figure 5.4a. Ratios of separately normalised Gaussian KDEs, displayed on a log₂-spaced scale. Orange indicates a ratio above one and purple below one; the first named group determines the direction of the comparison. Ratios of one-half and two are equally far from the neutral value. Colours saturate outside one-quarter to four. This diverging palette represents departures around a reference value; the earlier observed-count and density maps retain sequential OrRd colours.*
+```{figure} ../datasets/hdb_resale_2026/figures/dual_kde.png
+:label: ch5-dual-kde
+:alt: Dual KDE ratios for the price groups
+:align: center
+
+Ratios of separately normalised Gaussian KDEs, displayed on a log₂-spaced scale. Orange indicates a ratio above one and purple below one; the first named group determines the direction of the comparison. Ratios of one-half and two are equally far from the neutral value. Colours saturate outside one-quarter to four. This diverging palette represents departures around a reference value; the earlier observed-count and density maps retain sequential OrRd colours.
+```
 
 ### Avoid ratios supported by almost no data
 
@@ -95,6 +113,8 @@ Their subtraction and our normalised ratios answer different questions: a differ
 
 **Interpretation task:** Compare a dark patch in the upper-group surface with the all-sales surface. What additional evidence would distinguish a concentration of sales from an unusually high local share of expensive sales?
 
-```{dropdown} Self-check feedback: Does a ratio of two mean twice as many high-price as all sales?
+**Self-check:** Does a ratio of two mean twice as many high-price as all sales?
+
+```{dropdown} Feedback
 No. With separately normalised densities it means the local high-price share is twice its overall share. At an overall share near 0.252, this corresponds to a local smoothed share near 0.503.
 ```

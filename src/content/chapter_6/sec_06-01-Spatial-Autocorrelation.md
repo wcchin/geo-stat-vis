@@ -2,7 +2,9 @@
 label: spatial-autocorrelation
 ---
 
-# Autocorrelation and Spatial Autocorrelation
+# 6.1 Autocorrelation and spatial autocorrelation
+
+**Reading route.** Begin with the observed income map, the four-area calculation and the reassignment maps. These establish the idea needed for neighbourhoods and Moran’s I. Return to the optional reference-model and geography notes when interpreting an empirical result.
 
 ## Does where a value occurs tell us something about its neighbours?
 
@@ -139,6 +141,8 @@ A permutation p-value describes unusualness under the specified procedure. It is
 
 **Neither this section nor its notebook reports a spatial autocorrelation coefficient or p-value for the Malaysian data.** They establish the observations and permutation logic. First continue to [Defining Distance and Neighbourhoods](sec_06-02-Statistical-Spatial-Testing.md), then use [Moran's I](sec_06-03-Morans-I.md) to formalise the comparison.
 
+::::{dropdown} Go deeper: exchangeability and survey estimates
+
 ## When is permutation a defensible reference?
 
 Random reassignment treats areas as **exchangeable under the null**: values can be interchanged without violating that model. Independent observations are not automatically exchangeable if their distributions vary by location. Distinct urban and rural income-generating conditions, for example, could make unrestricted reassignment an unrealistic reference.
@@ -146,6 +150,8 @@ Random reassignment treats areas as **exchangeable under the null**: values can 
 Observed association can reflect neighbour interaction, shared geographical influences, broad trends or several processes together. A common trend can make nearby values similar without direct influence between neighbouring households. Rejecting unrestricted reassignment therefore does not identify a cause or uniquely distinguish dependence from spatial heterogeneity. A research question may require modelling a trend, conditioning on relevant covariates or designing a more restricted randomisation.
 
 Permuting district medians treats the estimates as the available observations. It does not propagate their survey uncertainty, recreate households or account for different household counts between areas. DOSM's survey methodology and uncertainty information matter for substantive comparisons.
+
+::::
 
 ## Global patterns and local differences
 
@@ -160,6 +166,8 @@ A **global** statistic summarises association across the whole study area. A **l
 
 These configurations are descriptive until an appropriate local test has been performed. A dark high-income polygon is not automatically a significant hotspot, nor a pale low-income polygon a significant coldspot. [Local Moran's I](sec_06-04-Local-Moran.md) distinguishes local similarity from spatial outliers; testing many locations also raises a multiple-comparison question.
 
+::::{dropdown} Go deeper: aggregation, boundaries, dates and map classes
+
 ## Read the geography before drawing a conclusion
 
 **Aggregation changes what can be observed.** District-level observations cannot reveal neighbourhood-level inequalities, and patterns can change with the zoning scheme or spatial scale: part of the modifiable areal unit problem. An area's median does not describe every household. Inferring household relationships from an area-level relationship risks an ecological fallacy.
@@ -169,6 +177,8 @@ These configurations are descriptive until an appropriate local test has been pe
 **Maps and estimates have dates.** Income refers to 2022; the PLANMalaysia boundary snapshot was retrieved on 20 October 2026. It is not a reconstruction of 2022 administrative geography. The notebook matches names explicitly, and substantive historical analysis should verify boundary changes and area definitions. The small display snapshot uses the service's 100 m outline generalization. It must not be used to infer exact shared-border adjacency; obtain full-detail geometries and verify topology for that task.
 
 **Representation affects perception.** The published maps use a sequential OrRd palette and fixed income breaks. Class widths are not all equal, and the upper class begins at RM 9,000. The notebook can instead calculate quantile breaks, which put similar numbers of observations into classes. Keep classification fixed across permutations so visible changes come from reassignment, and inspect numerical values before interpreting colours.
+
+::::
 
 ## Reproduce, change and explain
 
@@ -180,27 +190,39 @@ The [source record](../datasets/peninsula_income_2022/README.md) documents retri
 
 ## Check your understanding
 
-```{dropdown} 1. Can identical histograms accompany different spatial autocorrelation?
+**Self-check:** Can identical histograms accompany different spatial autocorrelation?
+
+```{dropdown} Feedback
 Yes. Histograms record values and frequencies, not their assignment to locations. The chain example and map permutations illustrate this. Autocorrelation also requires specified neighbourhoods.
 ```
 
-```{dropdown} 2. Does a pair of low-income neighbours necessarily contribute negatively?
+**Self-check:** Does a pair of low-income neighbours necessarily contribute negatively?
+
+```{dropdown} Feedback
 No. If both are below the chosen mean, both deviations are negative and their product is positive. Low–low similarity contributes towards positive association. A contribution is not a test of local significance.
 ```
 
-```{dropdown} 3. Must a random permutation look patternless?
+**Self-check:** Must a random permutation look patternless?
+
+```{dropdown} Feedback
 No. Chance can produce groupings. Inference compares a defined statistic with a reference distribution instead of declaring randomness from appearance.
 ```
 
-```{dropdown} 4. Does this map establish whether income clusters within Kuala Lumpur?
+**Self-check:** Does this map establish whether income clusters within Kuala Lumpur?
+
+```{dropdown} Feedback
 No. KL is one observation. Its internal neighbourhood variation is not represented. Finer matched data and boundaries are needed for that question.
 ```
 
-```{dropdown} 5. Would a small permutation p-value prove neighbouring districts influence each other's incomes?
+**Self-check:** Would a small permutation p-value prove neighbouring districts influence each other's incomes?
+
+```{dropdown} Feedback
 No. It provides evidence against a chosen randomisation reference. Shared influences and spatial trends can also produce association. Causal claims require an additional research design and evidence.
 ```
 
-```{dropdown} 6. What stays fixed when the notebook's seed changes?
+**Self-check:** What stays fixed when the notebook's seed changes?
+
+```{dropdown} Feedback
 The selected variable and year, boundaries, sorted values, colour classes and extent. Assignments change. In a formal test, the weights and statistic also stay fixed across permutations.
 ```
 

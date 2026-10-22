@@ -63,15 +63,21 @@ The reassignment reference assumes exchangeability under the null. Unequal land 
 
 ## Check your reasoning
 
-```{dropdown} 1. Why can identical histograms accompany different spatial association?
+**Self-check:** Why can identical histograms accompany different spatial association?
+
+```{dropdown} Feedback
 A histogram does not retain which spatial unit receives each value. Association also depends on the assignment and the neighbour relationships.
 ```
 
-```{dropdown} 2. Does a low-income district next to another low-income district imply negative association?
+**Self-check:** Does a low-income district next to another low-income district imply negative association?
+
+```{dropdown} Feedback
 No. Similar low values contribute to positive association under a similarity-based summary. Positive and negative do not mean desirable and undesirable.
 ```
 
-```{dropdown} 3. Does a global coefficient identify every local hotspot?
+**Self-check:** Does a global coefficient identify every local hotspot?
+
+```{dropdown} Feedback
 No. It summarises the overall relationship. Local concentrations and spatial outliers require their own analysis and inference.
 ```
 

@@ -4,7 +4,7 @@ project:
   id: 1c604af6-8f28-4c31-a4ed-13fff51c09fd
   title: Geospatial Statistics and Visualisation
   subtitle: GE5230 | Department of Geography | NUS
-  description: Course materails for GE5230 in NUS
+  description: Course materials for GE5230 in NUS
   keywords:
     - GIS
     - GIScience
@@ -92,6 +92,7 @@ project:
         - file: src/content/notebooks/lab-03-t-test-anova.ipynb
         - file: src/content/notebooks/lab-04-spatially-aggregated.ipynb
         - file: src/content/notebooks/lab-05-point-pattern.ipynb
+        - file: src/content/notebooks/firms-sumatra-quadrat.ipynb
         - file: src/content/notebooks/lab-05-nna-self-study.ipynb
         - file: src/content/notebooks/lab-06-spatial-kde.ipynb
         - file: src/content/notebooks/lab-07_1-clustering-random-demo.ipynb

@@ -6,9 +6,13 @@ Visual hierarchy is the order in which a reader is likely to notice information.
 
 In a local map, the block and its search boundary should be easy to locate. Planning-area edges provide context. Bus stops and POIs provide evidence. If every element has a heavy outline, a bright colour and a large label, the reader must reconstruct that hierarchy unaided.
 
-![Two versions of the same Tampines map comparing competing emphasis with a focused block-and-radius hierarchy](../datasets/neighbourhood_story_2026/figures/05_hierarchy.png)
+```{figure} ../datasets/neighbourhood_story_2026/figures/05_hierarchy.png
+:label: ch7-05-hierarchy
+:alt: Two versions of the same Tampines map comparing competing emphasis with a focused block-and-radius hierarchy
+:align: center
 
-*Figure 7.3. An original design comparison using identical records, filtering and extent. The left panel uses large symbols and a competing place label. The right reduces competing emphasis and labels the analytical anchor. Neither design changes the observations; the category key is shared with Figure 7.2.*
+An original design comparison using identical records, filtering and extent. The left panel uses large symbols and a competing place label. The right reduces competing emphasis and labels the analytical anchor. Neither design changes the observations; the category key is shared with {numref}`ch7-02-neighbourhoods`.
+```
 
 The right panel is easier to enter, but it is not automatically the correct design for every question. A story about the distribution of schools might emphasise school symbols instead. Hierarchy is a choice about the reader's task. It becomes misleading when a designer makes an inconvenient observation nearly invisible or treats visual prominence as evidence of importance.
 
@@ -16,9 +20,13 @@ The right panel is easier to enter, but it is not automatically the correct desi
 
 Maps show location well. They are less effective when readers must compare several exact quantities at once. After orienting the reader with the local maps, we can align the same blocks in a small-multiple chart. Each panel has its own axis and unit; rows remain in a fixed order.
 
-![Aligned comparison of block median price, nearby bus-stop counts, boarding activity, school counts and park reference-point counts](../datasets/neighbourhood_story_2026/figures/03_comparison.png)
+```{figure} ../datasets/neighbourhood_story_2026/figures/03_comparison.png
+:label: ch7-03-comparison
+:alt: Aligned comparison of block median price, nearby bus-stop counts, boarding activity, school counts and park reference-point counts
+:align: center
 
-*Figure 7.4. The same three blocks in every panel, using a 500 m radius for nearby records. The price panel describes five observed four-room sales per block. The boarding panel sums average weekday boardings at qualifying stops, rather than counting residents or unique travellers. Panel lengths must be read against their own axes.*
+The same three blocks in every panel, using a 500 m radius for nearby records. The price panel describes five observed four-room sales per block. The boarding panel sums average weekday boardings at qualifying stops, rather than counting residents or unique travellers. Panel lengths must be read against their own axes.
+```
 
 The selected Tampines and Woodlands blocks each have **18 nearby bus-stop records**. Yet their nearby stops record about **70,173 and 11,701 weekday boardings per day**, respectively. A stop serving a busy interchange or destination can carry much more activity than a residential stop. These data do not establish why the difference occurs; they show that equal stop counts need not correspond to equal recorded activity.
 
@@ -32,4 +40,4 @@ This sequence is more useful than placing every available layer on the first map
 
 A strong headline can guide this progression: “Equal stop counts do not imply equal recorded activity.” A stronger-sounding headline such as “Busy bus stops make homes expensive” would add a causal claim absent from the analysis. Good hierarchy highlights the checked finding; it does not strengthen the finding itself.
 
-**Try it.** Give Figure 7.4 two alternative titles: one for a student learning measurement, one for a planner reviewing data gaps. Both titles must remain true of the displayed data.
+**Try it.** Give {numref}`ch7-03-comparison` two alternative titles: one for a student learning measurement, one for a planner reviewing data gaps. Both titles must remain true of the displayed data.

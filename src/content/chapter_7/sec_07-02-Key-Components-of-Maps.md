@@ -6,9 +6,13 @@ A title, legend, boundary and scale bar are not finishing touches. Together they
 
 A national overview locates patterns; a local map helps us inspect what lies around a particular block. These purposes require different extents. Our three local maps use identical extents and physical scale. A 500 m circle therefore appears the same size in each panel. Enlarging one neighbourhood until its facilities filled the frame would make it look richer in detail while quietly changing the comparison.
 
-![Three equally scaled local maps showing selected blocks, bus stops and three amenity categories](../datasets/neighbourhood_story_2026/figures/02_neighbourhoods.png)
+```{figure} ../datasets/neighbourhood_story_2026/figures/02_neighbourhoods.png
+:label: ch7-02-neighbourhoods
+:alt: Three equally scaled local maps showing selected blocks, bus stops and three amenity categories
+:align: center
 
-*Figure 7.2. Three named blocks with 500 m solid circles and 800 m dashed circles. Symbols outside the circles provide context but do not enter the corresponding count. The maps show planning boundaries rather than a street network, so they cannot demonstrate routes across roads, canals or other barriers.*
+Three named blocks with 500 m solid circles and 800 m dashed circles. Symbols outside the circles provide context but do not enter the corresponding count. The maps show planning boundaries rather than a street network, so they cannot demonstrate routes across roads, canals or other barriers.
+```
 
 Distance calculations require a suitable coordinate reference system. Latitude and longitude are angular coordinates; their numerical differences are not metres. We transform the points to EPSG:3414 before measuring Euclidean distances. The circle is a straight-line search boundary, not a walking catchment. Projection makes the metric calculation consistent; it does not add information about pedestrian routes.
 
@@ -24,7 +28,7 @@ Do not imply that every point represents an equivalent facility. A park diamond 
 
 ## Titles and captions divide the work
 
-A title should orient attention. A caption should supply the unit, period, selection rule and the limitation most likely to change interpretation. “Neighbourhood accessibility” would overstate what Figure 7.2 measures. “What is nearby?” is a better opening, provided the caption immediately defines “nearby” as a straight-line radius and identifies the selected records.
+A title should orient attention. A caption should supply the unit, period, selection rule and the limitation most likely to change interpretation. “Neighbourhood accessibility” would overstate what {numref}`ch7-02-neighbourhoods` measures. “What is nearby?” is a better opening, provided the caption immediately defines “nearby” as a straight-line radius and identifies the selected records.
 
 For a standalone map, include enough source information that it remains understandable outside the chapter. For a sequence, stable layouts and a shared source note can reduce repetition, but each panel still needs its own units and period. A figure copied into a slide should not lose those essentials.
 
