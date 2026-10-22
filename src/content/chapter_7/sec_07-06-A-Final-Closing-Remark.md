@@ -8,16 +8,11 @@ This is the chapter's central idea: **define convenience before comparing places
 
 ## A complete short-form version
 
-A book chapter gives room for explanation. A six-panel slide sequence or short web story must carry the same logic more economically. The following storyboard is a draft of that version. It proposes a claim and an evidence check for every frame.
+A book chapter gives room for explanation. A six-panel slide sequence or short web story must carry the same logic more economically. Use the [six-frame plan in Section 7.1](sec_07-01-Geospatial-Data-Storytelling.md) as a starting point. Test the finished sequence against three questions:
 
-| Frame | Suggested headline | Evidence and guardrail |
-|---|---|---|
-| 1 | “What would make everyday life convenient for you?” | Open with an explicitly imagined reader scenario; invite a definition rather than state a universal preference. |
-| 2 | “A resale-price map shows sales, not every home's value.” | Show 5,379 four-room registrations and block medians; retain period and sample definition. |
-| 3 | “Equal stop counts can hide different activity.” | Show 18 stops for each selected Tampines and Woodlands block, beside about 70,173 and 11,701 weekday boardings. Label these illustrative blocks. |
-| 4 | “Nearby facilities are not interchangeable.” | Show all three local maps at the same scale with separate POI categories; define park points and school records. |
-| 5 | “Move the boundary, change the count.” | Show 500 m and 800 m results without changing cases or sources. Do not present either radius as a walking-time standard. |
-| 6 | “Define convenience before comparing places.” | End with the measure, boundary, period and missing evidence. Invite a journey-time or facility-quality follow-up. |
+- Does the opening give the reader a reason to care about the measurement question?
+- Does each view add evidence or change an interpretation, rather than repeat the previous display?
+- Can the closing claim be traced back to the displayed observations and their limits?
 
 A compelling final paragraph might read:
 
@@ -33,7 +28,7 @@ Evaluate the work using four questions. Can the reader identify the central ques
 
 ## Reading resources
 
-These papers support the narrative and framing concepts in this chapter. The audience brief and neighbourhood example are our teaching synthesis, rather than a framework attributed to either paper. Further empirical Singapore studies can be added to Part 2 after the core chapters are complete, following the book's agreed plan.
+These papers support the narrative and framing concepts in this chapter. The audience brief and neighbourhood example are our teaching synthesis, rather than a framework attributed to either paper.
 
 1. Segel, E., & Heer, J. (2010). **Narrative Visualization: Telling Stories with Data.** *IEEE Transactions on Visualization and Computer Graphics, 16*(6), 1139–1148. [DOI: 10.1109/TVCG.2010.179](https://doi.org/10.1109/TVCG.2010.179). [Author-hosted paper and summary](https://idl.uw.edu/papers/narrative). Read for the balance between author-directed narrative and reader exploration.
 2. Hullman, J., & Diakopoulos, N. (2011). **Visualization Rhetoric: Framing Effects in Narrative Visualization.** *IEEE Transactions on Visualization and Computer Graphics, 17*(12), 2231–2240. [DOI: 10.1109/TVCG.2011.255](https://doi.org/10.1109/TVCG.2011.255). [Author-hosted paper and summary](https://www.hullmanlab.northwestern.edu/paper/2011/02/01/vis-rhetoric.html). Read for how representation, annotations and omissions guide interpretation.
@@ -48,4 +43,4 @@ These papers support the narrative and framing concepts in this chapter. The aud
 - URA, [Master Plan planning-area dataset listing](https://data.gov.sg/datasets?query=URA+planning+area&resultId=d_4765db0e87b9c86336792efe8a1f7a66). Background is the existing MP2019 planning-area teaching copy, not a newly retrieved revision.
 - Public agency data is attributed under the [Singapore Open Data Licence](https://data.gov.sg/open-data-licence). The source mirror identifies this licence separately from its software licence. Comic Neue is bundled with its font licence.
 
-The [reproducibility directory](../datasets/neighbourhood_story_2026/README.md) contains prepared input tables, original plotting code, an audit and checksums. The seven reading sections are stored in the adjacent `chapter_7` directory. Analysis uses 500 m and 800 m straight-line radii in EPSG:3414. The local examples are illustrative blocks, not area-wide estimates, statistically tested price effects or neighbourhood rankings. 
+The [reproducibility directory](../datasets/neighbourhood_story_2026/README.md) contains prepared input tables, original plotting code, an audit and checksums. Analysis uses 500 m and 800 m straight-line radii in EPSG:3414. The local examples are illustrative blocks, not area-wide estimates, statistically tested price effects or neighbourhood rankings. 

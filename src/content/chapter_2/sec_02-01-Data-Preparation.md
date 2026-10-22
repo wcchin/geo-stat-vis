@@ -1,4 +1,4 @@
-# Data Preparation
+# 2.1 Data preparation
 
 Data preparation turns source records into a dataset that answers a defined question. It includes reading metadata, checking structure and quality, resolving identifiers, aligning observations, and recording decisions. The goal is not to make every field look complete. It is to preserve the meaning of the observations while making their limitations visible.
 
@@ -71,10 +71,14 @@ A small inspection table should show original identifiers beside readable names,
 
 The [bundled audit and reproduction scripts](../datasets/mrt_data_foundations_202609/README.md) record the slice, input versions, selected reference points and spatial matches. The next section uses this prepared slice to examine how reported counts vary. We interpret that distribution conditional on the selection, rather than generalising it to the whole MRT network.
 
-```{dropdown} Self-check: Why is a repeated origin code not necessarily a duplicate?
+**Self-check:** Why is a repeated origin code not necessarily a duplicate?
+
+```{dropdown} Feedback
 A station can have several destinations and repeated temporal categories. We check the full observation key. Two identical origin codes can belong to different, valid observations.
 ```
 
-```{dropdown} Self-check: A coordinate has ten decimal places. Is it accurate to that precision?
+**Self-check:** A coordinate has ten decimal places. Is it accurate to that precision?
+
+```{dropdown} Feedback
 No. The stored precision does not establish positional accuracy. Source methods, geocoding choices and validation determine the uncertainty of the location.
 ```

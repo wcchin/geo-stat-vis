@@ -2,7 +2,7 @@
 label: ripleys-k-function
 ---
 
-# Ripley's K-function
+# 4.4 Ripley's K-function
 
 ## From the nearest neighbour to several spatial scales
 
@@ -155,19 +155,27 @@ Under changing background intensity, the ordinary stationary K-function may refl
 
 ## Check your reasoning
 
-```{dropdown} 1. Why exclude the focal point?
+**Self-check:** Why exclude the focal point?
+
+```{dropdown} Feedback
 A self-pair has distance zero and would add a contribution at every radius. The function concerns other points, so self-pairs are excluded.
 ```
 
-```{dropdown} 2. Does K at 500 m count only pairs between 400 and 500 m?
+**Self-check:** Does K at 500 m count only pairs between 400 and 500 m?
+
+```{dropdown} Feedback
 No. It includes all qualifying pairs at distances up to 500 m. It is cumulative, so many short-distance pairs continue to influence the larger-radius summary.
 ```
 
-```{dropdown} 3. A curve crosses a pointwise 95% band once. Has a global 5% test rejected CSR?
+**Self-check:** A curve crosses a pointwise 95% band once. Has a global 5% test rejected CSR?
+
+```{dropdown} Feedback
 No. A whole-curve claim needs calibration for the entire prespecified radius interval, not an unadjusted pointwise band inspected at many distances.
 ```
 
-```{dropdown} 4. Can the same planar CSR model be used uncritically for bus stops and FIRMS fire detections?
+**Self-check:** Can the same planar CSR model be used uncritically for bus stops and FIRMS fire detections?
+
+```{dropdown} Feedback
 No. Bus stops are constrained by a road network and service design; FIRMS detections reflect satellite observations, repeated overpasses and a land-based study window. The method can be shared while the defensible null models differ.
 ```
 

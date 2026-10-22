@@ -1,4 +1,6 @@
-# Spatial Database
+# 2.5 Spatial database
+
+**Reading route.** Follow the station keys, the two endpoint joins, the duplication counterexample and the spatial join first. Database administration and indexing provide optional background after those operations are clear.
 
 The previous sections treated a prepared column as something we could summarise, transform and classify. But real analysis usually combines several sources. Station codes and names belong in one table, exit locations in another, and repeated activity observations in others. A database organises these relationships so that we can retrieve the information needed for a question without confusing the entities or repeatedly maintaining the same attributes.
 
@@ -25,7 +27,11 @@ This illustrates database normalisation: organise attributes according to their 
 
 A combined identifier such as `NS17/CC15` is treated as one source key for a station complex in this demonstration. If line membership becomes analytically relevant, create a separate relation linking the complex to line-specific codes. Do not split the OD fact into repeated copies of its trip count.
 
+::::{dropdown} Go deeper: what a DBMS adds
+
 A database management system (DBMS) provides storage and operations such as create, read, update and delete, along with mechanisms for constraints, concurrent access, transactions and recovery. These capabilities depend on the system and its configuration; a database does not automatically guarantee data accuracy or security. PostgreSQL with PostGIS is one spatial-capable option. A desktop GIS or notebook can also perform the small joins here without requiring students to administer a server.
+
+::::
 
 ## Join the station lookup twice
 
@@ -105,9 +111,13 @@ This query is a schema illustration, not a command to run against unimported CSV
 
 Containment here uses compatible EPSG:4326 points and polygons and does not calculate distances. For a metre-based proximity question, transform the geometries to a suitable projected CRS such as EPSG:3414 and state the distance operation. Relabelling an EPSG:4326 geometry as EPSG:3414 does not perform that transformation. A straight-line radius also differs from a walking-network distance or travel time.
 
+::::{dropdown} Go deeper: spatial indexes and implementation references
+
 Spatial indexes speed up searching by organising spatial extents or locations. An R-tree-style index can identify candidate features using bounding rectangles, after which the exact spatial predicate checks the geometry. A rectangle match alone need not establish containment or intersection of the original shapes. Point-oriented k-d trees, quadtrees and bounding-box indexes support different structures and queries; their internal algorithms are beyond this chapter's requirements.
 
 An index affects how efficiently candidates are found, not which real-world representation is appropriate. Faster querying cannot repair a wrong coordinate system, repeated observations or a poorly chosen reference point. See the [PostGIS spatial-query documentation](https://postgis.net/docs/using_postgis_query.html) and [`ST_Covers` definition](https://postgis.net/docs/ST_Covers.html) for the implemented operations; the [pandas merge guide](https://pandas.pydata.org/docs/user_guide/merging.html) explains tabular join validation.
+
+::::
 
 ## From prepared data to defensible analysis
 
@@ -115,6 +125,8 @@ Before proceeding, be able to state the observation unit, temporal scope, identi
 
 The [offline reproduction package](../datasets/mrt_data_foundations_202609/README.md) checks both endpoint joins, totals, the unsafe-join counterexample and the reference-point matches. Chapter 3 builds on these foundations by examining what statistical comparisons can tell us—and what their assumptions require.
 
-```{dropdown} Self-check: Why not assign the station's full activity to every exit and sum by area?
+**Self-check:** Why not assign the station's full activity to every exit and sum by area?
+
+```{dropdown} Feedback
 The station activity does not identify which exit each trip used. Copying the total to every exit repeats it. An allocation requires additional observations or a justified model; an ordinary join supplies neither.
 ```

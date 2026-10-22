@@ -2,7 +2,7 @@
 label: gearys-c-and-local-geary
 ---
 
-# Geary's C and Local Geary
+# 6.5 Geary's C and Local Geary
 
 ## Compare differences rather than mean-centred products
 
@@ -111,19 +111,27 @@ Geary is often described as sensitive to neighbour differences, but this is not 
 
 ## Check your reasoning
 
-```{dropdown} 1. Can two values on opposite sides of the mean still have a small Geary difference?
+**Self-check:** Can two values on opposite sides of the mean still have a small Geary difference?
+
+```{dropdown} Feedback
 Yes. Values 9 and 11 around a mean of 10 differ by only two. The squared difference is four, regardless of their opposite deviation signs.
 ```
 
-```{dropdown} 2. Does local c below one establish positive local association?
+**Self-check:** Does local c below one establish positive local association?
+
+```{dropdown} Feedback
 No. One is the expectation for the specified global C under unrestricted permutation, not a universal local threshold. Use the local conditional reference.
 ```
 
-```{dropdown} 3. Can local Geary be negative with the weights used here?
+**Self-check:** Can local Geary be negative with the weights used here?
+
+```{dropdown} Feedback
 No. It sums nonnegative weighted squares. A high-tail departure can suggest dissimilarity without the statistic being negative.
 ```
 
-```{dropdown} 4. Does agreement between the global Moran and Geary tests prove a mechanism?
+**Self-check:** Does agreement between the global Moran and Geary tests prove a mechanism?
+
+```{dropdown} Feedback
 No. They are related summaries of the same observations and graph. Neither identifies direct neighbour influence or removes observation and survey limitations.
 ```
 

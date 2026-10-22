@@ -1,6 +1,6 @@
 # Chapter 5: Local point patterns
 
-Chapter 4 asked whether a point pattern, considered across a study window, departed from a specified model of randomness. A global summary can reveal aggregation without showing where the concentrations lie. It can also conceal differences within the window: a dense centre and a sparse fringe may contribute to the same overall statistic. This chapter turns from an overall summary to the geographical arrangement of concentrations and groups.
+Chapter 4 asked whether a point pattern, considered across a study window, departed from a specified model of randomness. A global summary can reveal aggregation without showing where the concentrations lie. It can also conceal differences within the window: a dense centre and a sparse fringe may contribute to the same overall statistic. This chapter turns from an overall summary to the geographical arrangement of concentrations and groups. Here, **local description** means identifying where density and algorithmic groups occur. It does not mean a location-specific significance test; Chapter 6 introduces that inferential use of local statistics.
 
 We develop this question using Singapore HDB resale registrations: **where do transactions in the higher and lower parts of the price distribution occur, and how does our description change with the analytical method?** The example connects an attribute distribution to a spatial pattern. It also introduces a distinction that matters throughout spatial analysis: a concentration of events is not automatically a concentration of unusually high values.
 
@@ -10,9 +10,13 @@ The teaching snapshot contains 5,379 four-room resale registrations from January
 
 Using all selected transactions, the lower price quartile is S\$558,000 and the upper quartile is S\$745,000. We include every record at either cutoff: the lower group contains 1,367 transactions and the upper group contains 1,353. The groups are slightly larger than 25% because prices are tied. Arbitrarily splitting tied prices would create a distinction that is absent from the data.
 
-![All transactions and the two price groups](../datasets/hdb_resale_2026/figures/hdb-overview.png)
+```{figure} ../datasets/hdb_resale_2026/figures/hdb-overview.png
+:label: ch5-hdb-overview
+:alt: All transactions and the two price groups
+:align: center
 
-*Figure 5.1. The same map extent and colour scale show all transactions, lower-group transactions and upper-group transactions. Markers count sales at blocks, without jitter. URA MP2019 planning areas provide geographical context. They are not the units of this point analysis.*
+The same map extent and colour scale show all transactions, lower-group transactions and upper-group transactions. Markers count sales at blocks, without jitter. URA MP2019 planning areas provide geographical context. They are not the units of this point analysis.
+```
 
 The lower-price group occupies more selling blocks than the upper-price group: 1,033 compared with 647. This is a descriptive difference in geographical spread. It does not by itself establish statistically significant clustering. A large volume of transactions in one housing estate can produce a concentration in several price categories simply because many sales occurred there.
 
@@ -36,6 +40,8 @@ In the main spatial demonstrations, price selects the subset and projected coord
 
 Contains HDB resale-price information and HDB/OneMap building coordinates, accessed 21–22 October 2026 and made available under the [Singapore Open Data Licence](https://www.onemap.gov.sg/legal/opendatalicence.html). The coordinate snapshot is distributed by [seehiong/autonomous-hdb-deepagents](https://github.com/seehiong/autonomous-hdb-deepagents), with source attribution to HDB and OneMap, © Singapore Land Authority. URA MP2019 planning areas provide the basemap. See the [dataset sources, matching audit and reproducible figure scripts](https://github.com/wcchin/geo-stat-vis/blob/main/src/content/datasets/hdb_resale_2026/README.md).
 
-```{dropdown} Self-check feedback: Why does a concentration of expensive sales need a reference pattern?
+**Self-check:** Why does a concentration of expensive sales need a reference pattern?
+
+```{dropdown} Feedback
 Many sales of every type may occur where housing stock or turnover is large. Compare with all selling locations and make the denominator explicit.
 ```

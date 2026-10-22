@@ -1,4 +1,4 @@
-# 7.0 Geovisualisation: from spatial evidence to a story
+# Chapter 7: Geovisualisation — From Spatial Evidence to a Story
 
 Imagine that a friend is comparing places to live in Singapore. They ask a familiar question: “Is this neighbourhood convenient?” You could answer with a map of bus stops, a map of shops, or a map of resale prices. Each might be accurate. Each would answer a different question.
 
@@ -16,9 +16,13 @@ We borrow questions from advertising design: Who is this for? What familiar beli
 
 The working question is: **When we call a neighbourhood convenient, which evidence are we using—and how does that relate to housing prices?** The imagined reader is a student or household comparing places, rather than a transport engineer or property valuer. This is an audience scenario, not a claim based on interviews with actual residents.
 
-![National maps of selling-block prices, bus boarding activity and selected amenity records](../datasets/neighbourhood_story_2026/figures/01_evidence.png)
+```{figure} ../datasets/neighbourhood_story_2026/figures/01_evidence.png
+:label: ch7-01-evidence
+:alt: National maps of selling-block prices, bus boarding activity and selected amenity records
+:align: center
 
-*Figure 7.1. Three views of Singapore, each retaining its own unit and meaning. Price colours show block medians, bus colours show average weekday boardings, and amenity symbols show categories. Similar-looking spatial concentrations do not establish a causal relationship. Full source and time notes appear below.*
+Three views of Singapore, each retaining its own unit and meaning. Price colours show block medians, bus colours show average weekday boardings, and amenity symbols show categories. Similar-looking spatial concentrations do not establish a causal relationship. Full source and time notes appear below.
+```
 
 The HDB sample contains **5,379 four-room transactions registered from January to June 2026, at 3,236 block addresses**. A block point can represent several sales. We use its median transaction price, not a valuation of every flat in the block. Bus volumes are September 2026 aggregates supplied for teaching, converted to average weekday boardings by dividing the weekday totals by 22. Boarding counts describe observed activity, including transfers and repeated trips; they are not a count of unique residents.
 

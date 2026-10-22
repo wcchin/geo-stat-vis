@@ -16,9 +16,13 @@ Among the paired stops, the groups contain 47 interchange-label stops, 29 termin
 
 Creating “low”, “medium” and “high” groups from the boarding volumes and then testing whether their mean boardings differ would build the result into the grouping rule. Independent categories make the comparison interpretable, although observational associations still do not establish causes.
 
-![Weekday distributions by label group](../datasets/bus_ridership_202609/bus/group_comparison.png)
+```{figure} ../datasets/bus_ridership_202609/bus/group_comparison.png
+:label: ch3-group-comparison
+:alt: Weekday distributions by label group
+:align: center
 
-*Figure 3.5. The same weekday data on original and log(1 + boardings) scales. Boxplots show medians, interquartile ranges and points beyond the whiskers. The groups differ greatly in size and variability; the name-based grouping is an explicit proxy.*
+The same weekday data on original and log(1 + boardings) scales. Boxplots show medians, interquartile ranges and points beyond the whiskers. The groups differ greatly in size and variability; the name-based grouping is an explicit proxy.
+```
 
 ## Why compare variances to compare means?
 
@@ -32,11 +36,11 @@ The conventional statistic is
 
 $$F=\frac{SS_B/(g-1)}{SS_W/(N-g)}.$$
 
-The numerator reflects separation among means and the denominator reflects scatter within groups. Under independent normal errors with a common variance and the null hypothesis, the statistic has an F distribution with $g-1$ and $N-g$ degrees of freedom.
+Here $N=\sum_{j=1}^{g}n_j$ is the total number of observations across the groups. The numerator reflects separation among means and the denominator reflects scatter within groups. Under independent normal errors with a common variance and the null hypothesis, the statistic has an F distribution with $g-1$ and $N-g$ degrees of freedom.
 
 For this snapshot, the classical calculation gives F about 868.46. Welch's ANOVA, which allows unequal group variances and uses a different construction, gives F about 14.66 and a model-based p-value about 0.0000109. The large difference between these statistics illustrates the importance of variance assumptions when group sizes are highly unequal. The two statistics have different reference degrees of freedom and should not be compared as if they used the same scale of evidence.
 
-Neither calculation accounts for spatial dependence. The original-scale distributions are strongly skewed and the group rule is a proxy. We therefore interpret these outputs as demonstrations of model sensitivity, alongside the observed summaries, rather than treating an omnibus test as a final conclusion about Singapore's transport system.
+Together, the calculations show how variance assumptions change a mean-comparison procedure. Interpret them alongside the observed means and medians. The name-based proxy, skewness and chapter-level dependence limits still apply.
 
 ## Follow-up comparisons and multiplicity
 
@@ -51,3 +55,11 @@ Weekday and weekend measurements at the same stop are repeated measurements. Wit
 A mixed design could combine day type within stops with stop category between stops. Its interaction would ask whether the day-type difference varies by category. Such an analysis requires a model representing repeated measurements, group differences and any relevant dependence. Separate omnibus tests do not automatically answer the interaction question. More than two repeated conditions would also introduce additional covariance assumptions or corrections.
 
 **Self-check:** Why is “the ANOVA is significant, therefore every interchange has higher ridership than every other stop” an incorrect interpretation?
+
+```{dropdown} Feedback
+An omnibus test concerns group means under a model. It neither identifies every pairwise difference nor says that every observation in one group exceeds every observation in another. Group distributions can overlap substantially.
+```
+
+## Further reading
+
+Welch, B. L. (1951). [On the Comparison of Several Mean Values: An Alternative Approach](https://doi.org/10.1093/biomet/38.3-4.330). *Biometrika*, 38(3–4), 330–336. Read for why comparing several means with unequal variances requires a different reference calculation from classical ANOVA.

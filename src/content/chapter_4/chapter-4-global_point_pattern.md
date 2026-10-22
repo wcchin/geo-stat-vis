@@ -63,15 +63,21 @@ A small p-value supplies evidence against the specified reference; it does not i
 
 ### Check your reasoning
 
-```{dropdown} 1. Two maps have the same point count but different window areas. Does the smaller map establish stronger clustering because distances are shorter?
+**Self-check:** Two maps have the same point count but different window areas. Does the smaller map establish stronger clustering because distances are shorter?
+
+```{dropdown} Feedback
 No. The smaller window has higher overall intensity, so its random reference also predicts shorter distances. Compare each observed summary with its appropriate reference.
 ```
 
-```{dropdown} 2. Would a single global statistic identify which commercial activities belong to each cluster?
+**Self-check:** Would a single global statistic identify which commercial activities belong to each cluster?
+
+```{dropdown} Feedback
 No. It summarises the arrangement across the window. Identifying particular groups requires a method and definition suited to that question.
 ```
 
-```{dropdown} 3. Why might quadrat analysis and NNA give different impressions?
+**Self-check:** Why might quadrat analysis and NNA give different impressions?
+
+```{dropdown} Feedback
 Quadrat counts discard positions within cells. NNA responds to the closest other point. Equal cell counts can coexist with tight groups inside the cells.
 ```
 

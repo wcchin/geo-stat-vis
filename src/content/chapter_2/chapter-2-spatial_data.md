@@ -54,6 +54,8 @@ The observations are instructor-supplied LTA September 2026 train OD and station
 
 See the [selected data, source attribution, preparation rules, numerical audit and offline scripts](../datasets/mrt_data_foundations_202609/README.md). All new chapter illustrations are original. Conceptual model curves are labelled as illustrations; the trip observations are real records from the supplied extracts.
 
-```{dropdown} Self-check: Is a point always a station?
+**Self-check:** Is a point always a station?
+
+```{dropdown} Feedback
 No. It could represent a station centre, a selected exit, an individual platform or another reference location. Geometry type tells us how a feature is represented; metadata tells us what the feature means.
 ```

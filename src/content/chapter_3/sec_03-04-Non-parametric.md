@@ -19,9 +19,13 @@ Mann–Whitney is not the paired signed-rank test. Applying an independent-group
 
 A simple description records the sign of each difference. In this dataset, 4,300 stops have a positive weekday-minus-weekend difference, 856 a negative difference and 5 an exact tie. Of the 5,156 non-tied pairs, approximately 83.40% are positive. If ties are included in the denominator, 83.32% of all pairs are positive. Both summaries are valid when their denominators are stated.
 
-![Signs of paired differences](../datasets/bus_ridership_202609/bus/signs.png)
+```{figure} ../datasets/bus_ridership_202609/bus/signs.png
+:label: ch3-signs
+:alt: Signs of paired differences
+:align: center
 
-*Figure 3.6. Counting directions gives each stop one contribution, regardless of its difference in magnitude. This answers a different question from comparing mean differences.*
+Counting directions gives each stop one contribution, regardless of its difference in magnitude. This answers a different question from comparing mean differences.
+```
 
 Under an illustrative independent-pairs sign-test null, positive and negative signs are equally likely among non-ties. That model does not require the size of differences to follow a normal distribution, but still needs an appropriate independence assumption and a clear treatment of ties.
 
@@ -38,3 +42,11 @@ Kruskal–Wallis applied to the three stop-label groups gives H about 82.80 and 
 A rank-based result and an ANOVA can disagree because they weight magnitudes differently and target different aspects of a distribution. Their agreement would not validate a shared, questionable independence assumption either.
 
 **Self-check:** If a few very busy interchanges dominate the mean, what information is lost when replacing volumes with ranks? What information is retained, and which geographical dependence remains?
+
+```{dropdown} Feedback
+Ranks retain order while discarding the sizes of numerical gaps, so a very large volume no longer contributes in proportion to its magnitude. They do not change which stops share routes or nearby environments. The dependence problem therefore remains.
+```
+
+## Further reading
+
+Wilcoxon, F. (1945). [Individual Comparisons by Ranking Methods](https://doi.org/10.2307/3001968). *Biometrics Bulletin*, 1(6), 80–83. Read for the distinction between paired and unpaired rank comparisons; check modern implementation documentation for ties, zeros and approximation choices.

@@ -1,4 +1,4 @@
-# Why visualisation? From seeing to investigating
+# 1.2 Why visualisation? From seeing to investigating
 
 Visualisation gives us something to inspect, compare and question. Its value is especially clear when an initial impression changes after we add context. That change can be the most useful result of an exploratory figure: we learn that our first question was incomplete.
 
@@ -39,6 +39,8 @@ This is a flexible course guideline, not a mandatory sequence or a claim that ev
 
 **Further reading:** MacEachren, A. M., & Kraak, M.-J. (2001). *Research Challenges in Geovisualization*. Cartography and Geographic Information Science, 28(1), 3–12. [Publisher record](https://doi.org/10.1559/152304001782173970).
 
-```{dropdown} Self-check: Which area has more upper-price-group sales, and which has the larger share?
+**Self-check:** Which area has more upper-price-group sales, and which has the larger share?
+
+```{dropdown} Feedback
 A has more selected sales: 20 rather than 10. B has the larger share of its observed sales: 50% rather than 20%. A statement about “more” needs to identify the quantity being compared.
 ```

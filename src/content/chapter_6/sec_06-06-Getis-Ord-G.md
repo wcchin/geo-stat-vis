@@ -2,7 +2,7 @@
 label: getis-ord-g
 ---
 
-# Getis–Ord G Statistics
+# 6.6 Getis–Ord G statistics
 
 ## A different question about local concentration
 
@@ -123,24 +123,34 @@ Report the observation unit, variable, year, graph and evidence rule with each c
 
 ## Check your reasoning
 
-```{dropdown} 1. Does the star mean statistically significant?
+**Self-check:** Does the star mean statistically significant?
+
+```{dropdown} Feedback
 No. It denotes self-inclusion in the local definition. Significance requires a separate reference comparison.
 ```
 
-```{dropdown} 2. Is a high raw Gi* ratio automatically a hotspot?
+**Self-check:** Is a high raw Gi* ratio automatically a hotspot?
+
+```{dropdown} Feedback
 No. The neighbourhood size, weights, value distribution and reference determine its expected magnitude and unusualness.
 ```
 
-```{dropdown} 3. Can a low focal value lie inside a high-sum neighbourhood?
+**Self-check:** Can a low focal value lie inside a high-sum neighbourhood?
+
+```{dropdown} Feedback
 Yes. Gi* concerns the sum including neighbours. Local Moran can identify the focal-versus-neighbour contrast separately.
 ```
 
-```{dropdown} 4. Does Local Moran/Gi* agreement here provide independent confirmation?
+**Self-check:** Does Local Moran/Gi* agreement here provide independent confirmation?
+
+```{dropdown} Feedback
 No. Their two-sided conditional rankings coincide under this equal-neighbour-weight, fixed-focal-value design. The same data and draws drive both.
 ```
 
-```{dropdown} 5. What changes when diagonal neighbours are included?
-The graph, selected pair products, neighbourhood sums and corresponding null distributions. Raw coefficients from different graphs are not a common strength scale.
+**Self-check:** What changes when corner-contact neighbours are added to a rook graph?
+
+```{dropdown} Feedback
+The graph, selected pair products, neighbourhood sums and corresponding null distributions. Corner contact is a queen-contiguity relationship; it is different from adding self-weights on the matrix diagonal. Raw coefficients from different graphs are not a common strength scale.
 ```
 
 ## Reproduce and read further

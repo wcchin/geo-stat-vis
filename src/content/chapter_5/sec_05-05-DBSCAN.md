@@ -16,9 +16,13 @@ A cluster's total diameter can greatly exceed $\varepsilon$. The parameter limit
 
 Our demonstration keeps `min_samples = 20` and compares neighbourhood distances of 300 m, 600 m and 1,000 m. The count is **20 transactions**, including self, rather than 20 unique blocks. Coincident transactions therefore matter. The figures use Euclidean distance in SVY21 metres.
 
-![DBSCAN parameter comparison](../datasets/hdb_resale_2026/figures/dbscan.png)
+```{figure} ../datasets/hdb_resale_2026/figures/dbscan.png
+:label: ch5-dbscan
+:alt: DBSCAN parameter comparison
+:align: center
 
-*Figure 5.6. The same upper-group transaction locations under three DBSCAN neighbourhood distances. Grey observations are labelled noise. Colours distinguish clusters within a panel and are not matched between runs; repeated hues may occur where many clusters are present.*
+The same upper-group transaction locations under three DBSCAN neighbourhood distances. Grey observations are labelled noise. Colours distinguish clusters within a panel and are not matched between runs; repeated hues may occur where many clusters are present.
+```
 
 In this demonstration, increasing ε from 300 m to 600 m reduces the noise count from 603 to 306, while the number of clusters rises from 16 to 18. Additional concentrations can qualify as clusters even as others merge. At 1,000 m there are 11 clusters and 102 noise transactions. The cluster count need not change monotonically as ε increases.
 
@@ -38,6 +42,12 @@ A block with many upper-group transactions can help create a dense neighbourhood
 
 **Interpretation task:** Describe one change between two panels without calling either result “correct”. Specify the parameter change, the resulting membership change and the limitation of the interpretation.
 
-```{dropdown} Self-check feedback: Why is DBSCAN noise not a data-quality label?
+**Self-check:** Why is DBSCAN noise not a data-quality label?
+
+```{dropdown} Feedback
 A valid sale can lack enough nearby observations for the chosen distance and count. Different parameters can change its classification.
 ```
+
+## Further reading
+
+Ester, M., Kriegel, H.-P., Sander, J., and Xu, X. (1996). [A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise](https://aaai.org/papers/kdd96-037-a-density-based-algorithm-for-discovering-clusters-in-large-spatial-databases-with-noise/). *Proceedings of KDD-96*, 226–231. Read for density reachability and connectivity, then compare the definitions with this page’s core, border and noise examples.

@@ -24,16 +24,10 @@ Subsequent work could add daily observations, service frequency, independently v
 
 Chapters 4 and 5 investigate the arrangement of point events and local concentrations. Chapter 6 examines similarity of attributes across neighbouring areas. Together these topics extend the current chapter's central lesson: a valid interpretation depends on how observations are represented, related and compared.
 
-## Self-study feedback
+## Bring the comparisons together
 
-**Why are the 22 weekdays not 22 observed replicates?** The source reports their combined volume. Individual daily values and their variation cannot be recovered from a total alone.
+**Interpretation task.** Write three sentences about the bus example: one descriptive finding, one statement about what an inferential model assumes, and one geographical question requiring additional evidence. Use at least one quantity in its original units.
 
-**Why retain pairing?** Weekday and weekend values refer to the same stop. The within-stop difference preserves that connection and answers a question about changes within those units.
-
-**Why can a large sample still have a misleading standard error?** The conventional calculation depends on independence. Common routes and spatially related environments can connect many observations.
-
-**Why do ranks not solve spatial dependence?** Ranking changes numerical information while leaving the relationships among stops intact.
-
-**Why define groups before inspecting their volumes?** Groups derived from volumes would already be separated by the response, so a subsequent comparison would partly restate the construction rule.
-
-**Why show means and medians together?** A mean describes total activity per stop on average, while a median describes the middle stop. In a skewed distribution they answer different questions.
+```{dropdown} Guidance for evaluating your interpretation
+A complete answer identifies the stops and month, distinguishes the observed difference from a model-based inference, and asks for evidence that could clarify a geographical explanation. For example, about 150 additional weekday boardings per stop is the observed mean difference; shared routes challenge independent-stop inference; daily observations and service information could help investigate variation. Other questions can be defensible if they follow from a stated target.
+```

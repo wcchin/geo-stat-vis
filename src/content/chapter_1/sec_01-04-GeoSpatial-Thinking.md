@@ -1,4 +1,4 @@
-# Geospatial thinking: why locations and relationships matter
+# 1.4 Geospatial thinking: why locations and relationships matter
 
 Imagine two amenities equally distant from your home on a straight-line sketch. One has a direct path; the other requires crossing a major road and finding an entrance. Now imagine a friend farther away who is easy to reach by a direct train connection. Familiarity, mobility and purpose may change which journey you consider convenient.
 
@@ -55,6 +55,8 @@ Return to the place or journey you chose at the start of the chapter. Identify o
 
 That is the bridge to [Chapter 2](../chapter_2/chapter-2-spatial_data.md). Before choosing a method, we learn to ask **what our observations actually represent**—and how to prepare them so that the analysis remains connected to the question.
 
-```{dropdown} Self-check: Is the nearest facility necessarily the easiest one to use?
+**Self-check:** Is the nearest facility necessarily the easiest one to use?
+
+```{dropdown} Feedback
 The answer depends on the definition of nearest and the person's purpose and circumstances. Straight-line distance, network distance, travel time, entrances and familiarity can point to different comparisons. State which meaning your data can support, and identify what else you would need.
 ```

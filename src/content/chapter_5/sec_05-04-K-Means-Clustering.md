@@ -14,9 +14,13 @@ Starting from initial centres, the algorithm assigns each observation to its nea
 
 Our demonstration uses the 1,353 upper-group transactions, a fixed random seed of 5230 and 20 initialisations. It compares $k=3$ with $k=5$. These are teaching choices, not a claim that Singapore contains three or five distinct upper-price housing markets.
 
-![K-means comparison](../datasets/hdb_resale_2026/figures/kmeans.png)
+```{figure} ../datasets/hdb_resale_2026/figures/kmeans.png
+:label: ch5-kmeans
+:alt: K-means comparison
+:align: center
 
-*Figure 5.5. Spatial k-means partitions of the same upper-group transactions. Crosses show centroids. Cluster colours identify membership and have no high-to-low ordering. All transactions are assigned in both runs.*
+Spatial k-means partitions of the same upper-group transactions. Crosses show centroids. Cluster colours identify membership and have no high-to-low ordering. All transactions are assigned in both runs.
+```
 
 The broad difference between the maps follows from the question imposed on the method. With three centres, a group can span several concentrations. With five centres, some of those concentrations receive separate centres. Every observation is assigned even if it is isolated or far from a centre. A partition is therefore not evidence that all the resulting groups are dense concentrations.
 
@@ -30,6 +34,12 @@ The numerical labels are arbitrary. “Cluster 0” in one run is not necessaril
 
 **Interpretation task:** Find a group that spans a visible gap between observed sales. Why can this happen under the k-means objective? Would drawing a filled polygon around that group make its apparent continuity more convincing than the observations warrant?
 
-```{dropdown} Self-check feedback: Why can a k-means group span a gap?
+**Self-check:** Why can a k-means group span a gap?
+
+```{dropdown} Feedback
 K-means assigns every observation to a centre to reduce squared distance. It does not require a chain of densely occupied neighbourhoods.
 ```
+
+## Further reading
+
+MacQueen, J. (1967). [Some Methods for Classification and Analysis of Multivariate Observations](https://digicoll.lib.berkeley.edu/record/113015). In *Proceedings of the Fifth Berkeley Symposium on Mathematical Statistics and Probability*, Vol. 1, 281–297. Read for the k-means grouping idea; distinguish the original procedure from the batch assignment/update algorithm demonstrated here.

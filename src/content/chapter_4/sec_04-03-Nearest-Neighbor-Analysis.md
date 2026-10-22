@@ -2,7 +2,7 @@
 label: nearest-neighbour-analysis
 ---
 
-# Nearest Neighbour Analysis
+# 4.3 Nearest neighbour analysis
 
 ## From counts to nearest-neighbour distances
 
@@ -174,23 +174,33 @@ The [full point-pattern lab](../notebooks/lab-05-point-pattern.ipynb) connects q
 
 ### Check your reasoning
 
-```{dropdown} 1. Keep the same points but double the window area. What happens to R?
+**Self-check:** Keep the same points but double the window area. What happens to R?
+
+```{dropdown} Feedback
 The observed mean stays the same. The theoretical expected distance increases by $\sqrt{2}$, so $R$ decreases by that factor. This illustrates window sensitivity; it does not justify choosing a window to obtain a desired answer.
 ```
 
-```{dropdown} 2. A lower-tail test gives p = 0.24. Have we shown randomness?
+**Self-check:** A lower-tail test gives p = 0.24. Have we shown randomness?
+
+```{dropdown} Feedback
 No. We have not found sufficient evidence of unusually short mean nearest-neighbour distances under this null model. This does not establish that the whole pattern is random.
 ```
 
-```{dropdown} 3. Several transactions share a building coordinate. Should we remove them?
+**Self-check:** Several transactions share a building coordinate. Should we remove them?
+
+```{dropdown} Feedback
 It depends on the observation unit. Retain records for a question about transaction events, or aggregate for a question about distinct locations. State the choice and its implications for the null model.
 ```
 
-```{dropdown} 4. A coarse quadrat grid shows equal counts, but NNA gives a short mean distance. Is this a contradiction?
+**Self-check:** A coarse quadrat grid shows equal counts, but NNA gives a short mean distance. Is this a contradiction?
+
+```{dropdown} Feedback
 No. Each cell can contain a tight group while all cells have the same count. Quadrat counts ignore locations within a cell, whereas NNA responds to those short distances. State the scale and summary used.
 ```
 
-```{dropdown} 5. A pair of bus stops lies on opposite sides of a road. Does a short nearest-neighbour distance establish broad clustering?
+**Self-check:** A pair of bus stops lies on opposite sides of a road. Does a short nearest-neighbour distance establish broad clustering?
+
+```{dropdown} Feedback
 No. It can describe paired objects. The observation unit and physical constraint matter, and the spacing of sites at larger distances requires a different summary. The next K-function section develops this example.
 ```
 

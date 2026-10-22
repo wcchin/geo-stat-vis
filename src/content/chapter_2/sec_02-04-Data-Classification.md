@@ -1,4 +1,4 @@
-# Data Classification
+# 2.4 Data classification
 
 Numerical classification groups values into intervals so that readers can compare categories rather than inspect every number. A classified map, table or matrix is simpler to read, but it discards within-class differences and introduces boundaries chosen by the analyst. “High” is therefore incomplete without a definition: high relative to what range, distribution or external threshold?
 
@@ -69,6 +69,8 @@ For an actual planning decision, externally justified thresholds may be more use
 
 Classification changes visual emphasis without changing the observations. Keep exact values or a retrievable source table available, disclose class boundaries, and use consistent units and legends. The [bundled numerical audit](../datasets/mrt_data_foundations_202609/README.md) records all three worked classifications, including the quantile convention and right-closed interior breaks.
 
-```{dropdown} Self-check: Why can the upper class contain two records in one display and four in another?
+**Self-check:** Why can the upper class contain two records in one display and four in another?
+
+```{dropdown} Feedback
 The methods define “upper” differently. Equal intervals use the numerical range; quantiles use relative position. Neither label identifies a significant spatial cluster. Inspect the thresholds and sample before comparing colours.
 ```

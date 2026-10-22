@@ -1,4 +1,4 @@
-# Statistical thinking: what would count as convincing evidence?
+# 1.3 Statistical thinking: what would count as convincing evidence?
 
 Statistical thinking begins when we ask how observations vary, what comparison matters, and how much confidence a claim deserves. It is useful before we know a test's name. The first task is to connect a question with an observation unit and a meaningful reference.
 
@@ -36,6 +36,8 @@ Before interpreting a pattern, ask: what constitutes one observation; compared w
 
 For example, a satellite fire detection is not automatically one distinct fire. Repeated detections and the observation process matter. Similarly, a resale registration describes an observed transaction rather than every household's housing conditions. These distinctions connect statistical thinking directly to data preparation in Chapter 2.
 
-```{dropdown} Self-check: We have more than 5,000 stops. Does that settle the uncertainty question?
+**Self-check:** We have more than 5,000 stops. Does that settle the uncertainty question?
+
+```{dropdown} Feedback
 No. First identify the target and source of uncertainty. Stops can share routes and geographical conditions, and one month's aggregates do not provide repeated observations of individual days. The number of rows alone does not establish independence, coverage or generalisability.
 ```

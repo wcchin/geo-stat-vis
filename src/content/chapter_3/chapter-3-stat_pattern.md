@@ -1,5 +1,9 @@
 # Chapter 3: Statistical patterns and comparisons
 
+```{note} What the model demonstrations teach
+The descriptive summaries concern the supplied stops in September 2026. The tests demonstrate how an estimand, design and assumptions determine a calculation. Their conventional independent-stop models do not account for shared routes or spatial dependence, and monthly aggregates do not reveal day-to-day variability. Read the effect estimate in its original units first, then assess whether the model supports an inference to the stated target.
+```
+
 Two places can look different on a map, and two groups can have different averages, without yet providing a clear answer to a statistical question. We need to know what was measured, what constitutes an observation, which comparison matters and what source of uncertainty a model is meant to represent. This chapter develops those decisions before introducing the calculations used to compare groups.
 
 We use Singapore bus-stop boardings in September 2026 as a common example. The opening question is: **how does daily-average boarding activity differ between weekdays and weekends at the same stops?** A second question asks how weekday boarding distributions vary between stops with different functional labels. Both questions concern the same network, but their statistical designs differ.
@@ -16,9 +20,13 @@ The monthly totals $B_{i,W}$ and $B_{i,E}$ refer to different numbers of days. C
 
 A total of 5,161 stops report both day types. These form our paired sample. The other 46 stops are not assigned invented zero values or included in the paired calculation. Five source records have no hour label; their zero boardings do not alter the boarding profiles. Their 13 alightings remain in the stop totals. We study boardings here, rather than adding boardings and alightings as if they counted distinct passengers.
 
-![Bus-stop maps](../datasets/bus_ridership_202609/bus/maps.png)
+```{figure} ../datasets/bus_ridership_202609/bus/maps.png
+:label: ch3-maps
+:alt: Bus-stop maps
+:align: center
 
-*Figure 3.1. Weekday and weekend daily-average boardings use a common logarithmic colour scale. The third panel shows the direction of each stop's difference, with marker size reflecting magnitude. All 5,161 paired stops have coordinates. URA MP2019 planning areas provide the background.*
+Weekday and weekend daily-average boardings use a common logarithmic colour scale. The third panel shows the direction of each stop's difference, with marker size reflecting magnitude. All 5,161 paired stops have coordinates. URA MP2019 planning areas provide the background.
+```
 
 ## Describe the observed differences first
 
@@ -31,9 +39,13 @@ The mean of the paired differences is 149.85 boardings per day, while their medi
 
 The much larger means than medians suggest a long upper tail. A small number of busy stops can strongly influence an average, so the mean and median describe different aspects of a distribution. Neither is automatically the better statistic: the choice follows the question.
 
-![Distribution, paired scatter and hourly profiles](../datasets/bus_ridership_202609/bus/distributions.png)
+```{figure} ../datasets/bus_ridership_202609/bus/distributions.png
+:label: ch3-distributions
+:alt: Distribution, paired scatter and hourly profiles
+:align: center
 
-*Figure 3.2. Distributions and paired scatter use the paired stops; hourly boarding profiles sum all reported stops. The transformed axes reveal the broad range of activity. They do not change which records are included.*
+Distributions and paired scatter use the paired stops; hourly boarding profiles sum all reported stops. The transformed axes reveal the broad range of activity. They do not change which records are included.
+```
 
 ## What would an inference be about?
 
@@ -41,11 +53,15 @@ This snapshot is close to a census of reporting stops for a single month. If our
 
 Inference requires a broader or model-based target: perhaps a population of comparable stop environments or an underlying process generating stop differences. It also requires assumptions about how observations vary and depend on each other. Adjacent stops share routes, neighbourhoods and passenger flows, so treating them as independent can be implausible. Generalising to other months would require temporal evidence, not simply a large number of stops within this month.
 
-We use conventional tests as **conditional model demonstrations**, stating their assumptions and identifying where this example challenges them. The objective is to understand what each calculation answers and why its output needs geographical reasoning.
+Each method page identifies its target and uses the same descriptive evidence. The chapter-level model note applies to every inferential demonstration below.
 
 By the end of the chapter, you should be able to formulate a null hypothesis, distinguish independent and paired designs, interpret a t-test and an ANOVA, choose among common rank-based alternatives and separate an observed difference from a defensible inference.
 
 **Self-check:** What additional data would you need to estimate day-to-day variability in weekday boardings? Why are 22 weekdays in an aggregate not 22 observed replicates?
+
+```{dropdown} Feedback
+You would need separate observations for individual dates, with consistent coverage and stop identifiers. A monthly aggregate combines the 22 weekdays; it does not retain 22 daily values from which to estimate day-to-day variation.
+```
 
 ## Sources and reproducibility
 

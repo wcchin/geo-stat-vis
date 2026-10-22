@@ -8,9 +8,13 @@ Use point colours to show membership and a neutral symbol for observations label
 
 Repeated transaction positions can hide one another. Size or count symbols can communicate co-location, but the legend must state whether the displayed quantity is transactions or distinct blocks. Random jitter makes overlap visible at the cost of inventing positions; we avoid it for this example.
 
-![Point memberships and convex hulls](../datasets/hdb_resale_2026/figures/hulls.png)
+```{figure} ../datasets/hdb_resale_2026/figures/hulls.png
+:label: ch5-hulls
+:alt: Point memberships and convex hulls
+:align: center
 
-*Figure 5.7. The 600 m DBSCAN result with `min_samples = 20`, shown first as observed block positions and then with convex hulls. Coincident positions are collapsed only for drawing hulls and member markers in this comparison; memberships were computed from all transactions.*
+The 600 m DBSCAN result with `min_samples = 20`, shown first as observed block positions and then with convex hulls. Coincident positions are collapsed only for drawing hulls and member markers in this comparison; memberships were computed from all transactions.
+```
 
 ## Choose envelopes cautiously
 
@@ -26,9 +30,13 @@ Contours and heatmaps communicate a continuous density surface. A displayed cont
 
 The chapter's methods locate and group selected transactions. They have not established that expensive marks are unusually clustered conditional on all selling locations. One descriptive check is to compare the upper-group count at a block with the total count at that block.
 
-![Quartile shares at selling blocks](../datasets/hdb_resale_2026/figures/hdb-shares.png)
+```{figure} ../datasets/hdb_resale_2026/figures/hdb-shares.png
+:label: ch5-hdb-shares
+:alt: Quartile shares at selling blocks
+:align: center
 
-*Figure 5.8. The observed fraction of each selling block's transactions in the lower or upper price group. Marker area increases with the square root of its sales count plus a constant. Shares based on very few sales are unstable; these are not smoothed estimates or significance maps.*
+The observed fraction of each selling block's transactions in the lower or upper price group. Marker area increases with the square root of its sales count plus a constant. Shares based on very few sales are unstable; these are not smoothed estimates or significance maps.
+```
 
 An all-upper share at a block with one sale has a different evidential basis from an all-upper share at a block with twenty sales. A local share also conditions on sales, not all flats or residents. It cannot be interpreted as the probability that a resident can afford a home there.
 
@@ -40,8 +48,10 @@ KDE smooths observations at a chosen scale. K-means partitions every observation
 
 For a defensible description, state the observation and period, the price definition, the coordinate system, how repeated positions contribute, and the parameters that shape the result. Then separate the observed pattern from the explanation proposed for it. Formal evidence about whether nearby values are similar requires an explicitly defined inferential framework; the areal autocorrelation methods in Chapter 6 introduce one such framework with a different data representation.
 
-**Final exercise:** Write a short interpretation of Figure 5.6 that includes its subset, observation unit, parameter settings and a sensitivity finding. End with one question the map cannot answer.
+**Final exercise:** Write a short interpretation of {numref}`ch5-dbscan` that includes its subset, observation unit, parameter settings and a sensitivity finding. End with one question the map cannot answer.
 
-```{dropdown} Self-check feedback: Does a convex hull locate the true housing-market boundary?
+**Self-check:** Does a convex hull locate the true housing-market boundary?
+
+```{dropdown} Feedback
 No. It encloses member points and fills gaps, potentially including water or places with no observed sale.
 ```

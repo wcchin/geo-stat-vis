@@ -32,6 +32,8 @@ For an inferential question about price labels, a possible later analysis would 
 
 **Before running an algorithm:** Write one sentence specifying the observation, the features, the distance and the purpose of the grouping.
 
-```{dropdown} Self-check feedback: What changes when repeated block positions are collapsed?
+**Self-check:** What changes when repeated block positions are collapsed?
+
+```{dropdown} Feedback
 The observation becomes a selling block rather than a transaction. Neighbourhood counts and the influence of heavily selling blocks change.
 ```
