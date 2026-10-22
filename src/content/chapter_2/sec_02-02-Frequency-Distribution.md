@@ -1,278 +1,91 @@
 # Frequency Distribution
 
-Analyses start by viewing data. So, how to 'view' the data?
+A table preserves individual records, but it is difficult to see a distribution by reading down a column. A frequency distribution summarises how often values or ranges occur. It helps us examine a variable's centre, spread and shape before choosing a model or comparing groups.
 
+In our example, the variable is `TOTAL_TRIPS` and the observations are the 12 reported OD pairs in the selected temporal slice. **The count recorded for a pair and the number of pairs in a histogram bin are different quantities.** A bin containing five OD pairs does not mean five passenger trips.
 
-:::{table} A slice of HDB data table.
-:label: HDBtable
-:align: center
+## Start with the observed values
 
-| Street            | Flat Type   | Floor Area (sqm) |   Resale Age |   Resale Price |
-|:------------------|------------:|-----------------:|-------------:|---------------:|
-| ANG MO KIO AVE 10 | 2 ROOM      |               44 |           44 |         267000 |
-| ANG MO KIO AVE 3  | 2 ROOM      |               49 |           46 |         300000 |
-| ANG MO KIO AVE 3  | 2 ROOM      |               44 |           45 |         280000 |
-| ANG MO KIO AVE 3  | 2 ROOM      |               44 |           45 |         282000 |
-| ANG MO KIO AVE 4  | 2 ROOM      |               45 |           37 |         289800 |
-|               ... |         ... |             ...  |          ... |            ... |
+The sorted trip counts are:
 
-:::
+**50, 256, 342, 381, 416, 500, 537, 538, 1,113, 1,385, 3,092, 4,294.**
 
+Every value belongs to a different directed pair. Sorting reveals that most selected pairs have smaller counts and a few have much larger counts. A dot display is often useful for such a small dataset because it shows every observation. A histogram groups observations and therefore introduces a choice of bin boundaries.
 
-**Understanding frequency distribution**
-A frequency distribution is a representation, usually in the form of a table or graph, that *illustrates the number of occurrences* (frequency) of each unique value or range of values within a given dataset. This visual or tabular summary of data distribution allows us to understand the **spread, shape, and central tendency** of the data, providing initial understanding of the underlying patterns and structures in the dataset.
+```{figure} ../datasets/mrt_data_foundations_202609/figures/05_empirical_distribution.png
+:label: ch2-empirical-distribution
+:alt: A histogram, empirical cumulative distribution and box plot of the twelve selected OD counts, with the individual values also indicated.
 
-
-
-**Examples of frequency distribution**
-
-And the measures of central tendency and spread.
-
-(a): Bar chart (for discrete variable)
-(b): Histogram (for continuous variable)
-
-
-```{figure} ../resources/w02-img/frequency_distribution_demo_0.png
-:label:
-:alt:
-:align: center
-
-The frequency distribution of resale transactions by: (a) flat type and (b) resale price.
+Three summaries of the same 12 OD-pair counts. Histogram bins have width 500 trips; the vertical axis counts OD-pair records. The empirical CDF accumulates records, not trips. The box plot uses the stated quartile convention and 1.5-IQR whiskers.
 ```
 
-## Frequency Distribution and Density Function
-**Understanding PDF and CDF**
+For bins 0–<500, 500–<1,000 and 1,000–<1,500, the frequencies are 5, 3 and 2. The 500-trip record belongs to the second bin because our intervals include their lower boundary and exclude their upper boundary. The final histogram bin includes its upper endpoint. State such rules when a value could lie exactly on a break.
 
-Probability Density Function (PDF):
-- A mathematical function representing the relative likelihood of observing a continuous random variable in a specific range of values.
-- *PDFs have non-negative values, and their total area under the curve equals*.
-- Different PDF shapes correspond to various probability distributions (e.g., normal, exponential).
+Relative frequency divides a bin count by the number of observations. The first bin therefore contains 5/12, or about 41.7%, of the selected OD-pair records. This is not the share of trips carried by those pairs: a trip-weighted share would sum their trip counts and divide by 12,904. Choosing the denominator changes the question.
 
-Cumulative Distribution Function (CDF):
-- Calculates the cumulative probability of a random variable being less than or equal to a given value.
-- *The CDF value at a point x corresponds to the area under the PDF curve to the left of x.*
-- CDFs are useful for assessing probabilities of events within a specific range.
+## Centre and spread
 
-The PDF and CDF are complementary tools in probability and statistics, providing insights into the distribution and likely outcomes of continuous random variables. PDFs offer a detailed view of relative likelihoods, while CDFs show the accumulated probabilities over a range of values. Together, they enable a comprehensive understanding of data distributions and facilitate various statistical analyses.
+The arithmetic mean is the total divided by the number of observations:
 
+$$
+\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i.
+$$
 
+Here, the mean is 1,075.33 reported trips per selected OD-pair record. The median is 518.5, halfway between the sixth and seventh sorted values, 500 and 537. A median need not be an observed count. The large difference between mean and median helps describe the uneven distribution. There is no unique mode because all 12 values occur once.
 
-```{figure} ../resources/w02-img/frequency_distribution_pdf_cdf.png
-:label:
-:alt:
-:align: center
+The range is maximum minus minimum, or 4,244. Quartiles describe positions in the ordered data. Using linear interpolation as in the bundled calculation, the first and third quartiles are 371.25 and 1,181; the interquartile range (IQR) is 809.75. Software can use different quantile conventions, particularly noticeable in a small sample. Record the convention rather than treating a different interpolated quartile as necessarily an error.
 
-The (a) histogram, (b) PDF, and (c) CDF. In CDF, the x-axis value (167) that correspond to the y (density) value of 0.4 means that all the smaller values ($x<167$) contains 40% of the data points.
+For a sample standard deviation, we use:
+
+$$
+s=\sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}.
+$$
+
+The result is about 1,300.73 trips. Variance is its square and therefore has squared units. Neither a mean nor a standard deviation alone describes the distribution fully; both are sensitive to large values. The median and IQR are often useful companions when the observations are strongly uneven.
+
+Arithmetic means are not the only possible averages. A geometric mean summarises multiplicative variation in positive quantities; a harmonic mean can be appropriate for certain averages of rates with a fixed numerator. The choice follows the quantity and weighting scheme. We use the arithmetic mean here because each selected OD-pair record receives equal weight.
+
+## Shape without overclaiming
+
+A right-skewed distribution has a longer tail towards larger values. Our selected counts have that descriptive pattern. Modality refers to peaks; with only 12 observations, apparent peaks in a histogram can change considerably with binning. Kurtosis concerns the standardised fourth moment and tail behaviour relative to a reference convention. It should not be reduced to the visual height or sharpness of a histogram's central peak. Some software reports excess kurtosis, subtracting 3 from the ordinary kurtosis; always check the definition.
+
+A box plot summarises quartiles and can flag values beyond a chosen whisker rule. It does not prove those observations are mistakes. Here, 3,092 and 4,294 exceed the upper 1.5-IQR fence and are drawn separately. They remain valid reported observations in the teaching slice. A flag invites investigation; it does not supply an explanation.
+
+## Cumulative distribution, probability mass and density
+
+The empirical cumulative distribution function (ECDF) is:
+
+$$
+\widehat{F}(t)=\frac{1}{n}\sum_{i=1}^{n}\mathbf{1}(x_i\leq t).
+$$
+
+It gives the fraction of observed records whose values are at most a threshold. At 538 trips, 8 of the 12 selected pairs lie at or below the threshold, so the ECDF is 2/3. Its vertical axis is a cumulative proportion between 0 and 1, not a density. Ties would produce larger jumps.
+
+A probability mass function assigns probabilities to discrete outcomes. A probability density function describes continuous outcomes through areas under a curve; its total area is one, but its height at a point is not a probability and may exceed one. With equal-width histogram bins, a density-normalised bar has height equal to its relative frequency divided by bin width. Unequal bin widths make the distinction between height and area especially important.
+
+A smooth kernel-density curve can summarise a numerical sample, but it is an estimate affected by bandwidth and support. For a dozen integer counts, a smooth curve may suggest more information than we have and can assign density to impossible negative counts if used carelessly. We use the observed values and ECDF rather than fit a smooth density here. Chapter 5 develops KDE in greater detail.
+
+## Observed distributions and theoretical models
+
+A descriptive distribution and a probability model serve different purposes. The histogram reports what we observed; a model proposes a data-generating structure under assumptions. Three common families are useful foundations:
+
+| Model | Outcome and parameters | Important conditions |
+|---|---|---|
+| Normal | Continuous values; mean and standard deviation | A symmetric continuous model. Approximate normality must be justified for the quantity or model errors being analysed. |
+| Poisson | Non-negative integer count; expected count in a specified exposure | A Poisson-process interpretation requires suitable independence and rate assumptions. The mean equals the variance in the basic model. |
+| Binomial | Successes in a fixed number of trials; trial count and success probability | Trials are independent with the same success probability in the basic model. |
+
+```{figure} ../datasets/mrt_data_foundations_202609/figures/06_probability_models.png
+:label: ch2-probability-models
+:alt: Illustrative normal density, Poisson probability masses and binomial probability masses with explicitly chosen parameters.
+
+Conceptual model illustrations, not fits to MRT observations. The continuous normal panel shows density; the discrete panels show probability mass. Their vertical-axis meanings differ.
 ```
 
-The PDF here is estimated from an empirical data series using Kernel Density Estimation (aka KDE).
+Counts do not automatically follow a Poisson distribution, and a small right-skewed sample does not establish a heavy-tailed probability law. OD records share endpoints and may be dependent; different pairs also have different demand and exposure. The central limit theorem concerns sampling distributions of sums or means under appropriate conditions, not a rule that a large raw dataset becomes normally distributed. Chapter 3 returns to the assumptions needed for statistical inference.
 
-If Y-axis shows count, then it should be a histogram, and if it shows 'density', then is should be either PDF or CDF.
+The [NIST exploratory-data-analysis handbook](https://www.itl.nist.gov/div898/handbook/eda/eda.htm) provides further reading on distribution summaries and probability models. The calculations and figure parameters are recorded in the [reproducibility directory](../datasets/mrt_data_foundations_202609/README.md).
 
-
-## Interpreting Frequency Distributions
-
-Measure of **Central Tendency**
-- Gravitational center: mean, aka arithmetic mean
-- Middle value: median
-- Most frequent value: mode
-
-Measure of **Spread**
-- Range and inter-quartile range
-- Standard deviation and variance
-
-Measure of **Shape**
-- *Symmetry*: Mirrored between left and right of central line
-- *Skewness*: Has a long tail on right (positive skew) or left (negative skew)
-- *Modality*: Number of peaks
-- *Kurtosis*: Steepness of peak compared to a normal distribution
-
-what are the other 'mean' besides 'arithmetic mean'?
-
-
-**Symmetry**
-```{figure} ../resources/w02-img/frequency_distribution_symmetrical.png
-:label:
-:alt:
-:align: center
-
-Symmetrical shapes.
-```
-
-
-
-**Asymmetry**
-
-```{figure} ../resources/w02-img/frequency_distribution_asymmetrical.png
-:label:
-:alt:
-:align: center
-
-Asymmetrical shapes.
-```
-
-
-
-**Modality**
-
-```{figure} ../resources/w02-img/frequency_distribution_modality.png
-:label:
-:alt:
-:align: center
-
-Various modality shapes.
-```
-
-
-
-**Kurtosis**
-```{figure} ../resources/w02-img/frequency_distribution_kurtosis.png
-:label:
-:alt:
-:align: center
-
-Various Kurtosis shapes.
-```
-
-
-
-### Common Types of Frequency Distributions
-
-```{figure} ../resources/w02-img/frequency_distribution_3types.png
-:label:
-:alt:
-:align: center
-
-Three common types of distribution.
-```
-
-
-
-#### Normal Distribution
-
-The normal distribution, also known as the Gaussian distribution or the "*bell curve*," is often used to model *continuous variables* in various fields. It is particularly useful in statistics because of the *Central Limit Theorem*, which states that the distribution of sample means approaches a normal distribution as the sample size increases. The normal distribution has applications in many areas, such as finance, psychology, and engineering.
-
-Many real-world phenomena, such as heights, IQ scores, and measurement errors, tend to follow a normal distribution. As a result, the normal distribution plays a central role in statistics and is used as a basis for many statistical tests and analyses.
-
-The normal distribution is defined by two parameters---the mean ($\mu$) and standard deviation ($\sigma$).
-
-```{figure} ../resources/w02-img/frequency_distribution_normal.png
-:label:
-:alt:
-:align: center
-
-Normal Distribution with various paramters ($\mu$ and $\sigma$).
-```
-
-
-
-
-
-#### Poisson Distribution
-
-The Poisson distribution is used to model *discrete count data*, such as the number of occurrences of a particular event within a specific time interval or spatial area. It is often applied to scenarios *where events happen at a certain average rate*, and each event is independent of the others. It has applications in various fields, such as telecommunications, insurance, and biology.
-
-The Poisson distribution is ideal for modeling count data involving rare events. In many real-world situations, count data often represent occurrences of rare events.
-
-The Poisson distribution is characterized by a single parameter, *lambda (λ), which represents the average rate of events over a given time interval or a specific area*.
-
-```{figure} ../resources/w02-img/frequency_distribution_poisson.png
-:label:
-:alt:
-:align: center
-
-Poisson Distribution with various paramters ($\lambda$).
-```
-
-
-
-#### Binomial Distribution
-
-The binomial distribution is also used for *discrete data*, specifically for modeling *the number of successes in a fixed number of* independent *trials*. Each trial has only two possible outcomes (e.g., success or failure, true or false), and *the probability of success remains the same across all trials*. It is frequently applied in areas such as quality control, marketing research, and opinion polls.
-
-The binomial distribution provides a straightforward way to calculate the probability of observing a specific number of successful outcomes in a fixed number of trials. This makes it easy to understand and communicate the results of analyses using binomial distributions.
-
-The binomial distribution involves two parameters:
-number of trials and the probability of success (or being one of the two options).
-
-```{figure} ../resources/w02-img/frequency_distribution_binomial.png
-:label:
-:alt:
-:align: center
-
-Binomial Distribution with various paramters. Number of trials is fixed at 10.
-```
-
-
-
-
-### Visualizing Frequency Distributions
-#### Histogram
-
-```{figure} ../resources/w02-img/frequency_distribution_histplot.png
-:label:
-:alt:
-:align: center
-
-Histogram of resale prices, differentiated by flat types.
-```
-
-
-
-#### PDF plot
-
-```{figure} ../resources/w02-img/frequency_distribution_kdeplot.png
-:label:
-:alt:
-:align: center
-
-PDF of resale prices, differentiated by flat types.
-```
-
-
-
-#### CDF plot
-
-```{figure} ../resources/w02-img/frequency_distribution_ecdfplot.png
-:label:
-:alt:
-:align: center
-
-CDF of resale prices, differentiated by flat types.
-```
-
-
-
-#### Box plot
-
-```{figure} ../resources/w02-img/frequency_distribution_boxplot.png
-:label:
-:alt:
-:align: center
-
-Box plot of resale prices, differentiated by flat types.
-```
-
-
-
-#### Boxen plot
-
-```{figure} ../resources/w02-img/frequency_distribution_boxenplot.png
-:label:
-:alt:
-:align: center
-
-Boxen plot of resale prices, differentiated by flat types.
-```
-
-
-
-#### Joint grid plot for 2-variables
-
-```{figure} ../resources/w02-img/frequency_distribution_jointgrid.png
-:label:
-:alt:
-:align: center
-
-Joint grid (scatter plot and PDF) of floor area vs. resale prices, differentiated by flat types.
+```{dropdown} Self-check: Does an ECDF value of 2/3 at 538 mean that two-thirds of all trips have been counted?
+No. It means that two-thirds of the 12 selected OD-pair records have counts at most 538. A trip-weighted cumulative share would use trip counts as weights and answer another question.
 ```

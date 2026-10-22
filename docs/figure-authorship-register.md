@@ -19,6 +19,20 @@ All active Chapter 1 figures now use three original project plates under `src/co
 - `03_spatial_perspectives`: explicitly invented conceptual positions, connections and perception cues; no measured mental-space attributes are claimed.
 - Reproduction script and source attribution: `src/content/datasets/chapter_1_gateway`. The local space–place reading cites Feng, Chin, Gao, Chua and Ho (2024); no published figures are copied. Companion detail is relocated to Chapters 3 and 7 as documented in `docs/chapter-1-content-relocation.md`.
 
+## Chapter 2 completed revision — 22 October 2026
+
+All active illustrations in the six Chapter 2 reading pages now use original project artwork under `src/content/datasets/mrt_data_foundations_202609/figures/`. The older Chapter 2 inventory below records the pre-revision references and is superseded for these pages; historical and unused resource files are retained.
+
+| Assets | Status and evidence |
+| --- | --- |
+| `01_row_meaning.svg`, `02_two_joins.svg` | Original diagrams of table units and the two endpoint joins, reproduced by `draw_diagrams.py`. |
+| `03_spatial_join.svg` | Original, explicitly schematic area drawing; labels come from checked point-in-polygon results using selected LTA-derived exits and URA MP2019 areas. Shapes and positions are illustrative. |
+| `04_od_matrix.svg` | Original matrix of 12 selected real OD records; absent cells remain missing. |
+| `05_empirical_distribution.png`, `07_transformations.png`, `08_classification.png` | Original plots of the same selected records; all quantities and conventions are in `data/descriptive_audit.json`, reproduced by `plots.py`. |
+| `06_probability_models.png` | Original conceptual normal, Poisson and binomial illustrations with stated parameters; not fits to MRT data. |
+
+Underlying data remains attributed to LTA/URA and the pinned source mirror; original artwork does not claim original ownership of source records or methods. Source vintages, the reference-point rule, code/name crosswalk and redistribution notes are in the dataset README. Existing page paths are preserved.
+
 ## Remaining review
 
 This is a source-text inventory of core-chapter and worked-example Markdown, not an assertion that every unattributed image belongs to the author. A linked source may cite a dataset, method, coauthored paper or the author's own work, rather than borrowed artwork. These cases require inspection before replacement. In particular, retain attribution for external data used in an original plot.
