@@ -1,0 +1,8 @@
+{
+  "retrieved": "2026-10-22",
+  "schools": "https://raw.githubusercontent.com/seehiong/autonomous-hdb-deepagents/2a0df19534be15102658cebdda9267a653e79642/db/init/data/sg_schools.csv",
+  "parks": "https://raw.githubusercontent.com/seehiong/autonomous-hdb-deepagents/2a0df19534be15102658cebdda9267a653e79642/db/init/data/sg_parks.csv",
+  "hawkers": "https://data.gov.sg/api/action/datastore_search?resource_id=d_bda4baa634dd1cc7a6c7cad5f19e2d68&limit=1000",
+  "hdb": "See corrected Chapter 5 extract and chapter source notes",
+  "bus": "Instructor-supplied September 2026 files, prepared Chapter 3 stop table"
+}

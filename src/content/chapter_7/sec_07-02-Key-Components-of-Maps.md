@@ -1,255 +1,37 @@
-# Key Components of Maps
+# 7.2 Map components as parts of an argument
 
-- Sizes
-- Typography
-- Colors
-- Coordinate System
-- Arrangement
+A title, legend, boundary and scale bar are not finishing touches. Together they tell readers what the map represents and which comparisons are possible. Begin with the question the panel must answer, then choose the components that make that answer inspectable.
 
+## Establishing place and scale
 
-## Sizes
-The size of the map:
-- a 'full' width figure in an A4 paper (e.g., thesis, reports)
-- a 'half' width figure in an A4 paper (i.e., to fit in one column of a two columns layout)
-- as one of the element inside an A1 poster
-- a full A0 poster-size map
-- in a Powerpoint slide (full-page vs. as an element)
+A national overview locates patterns; a local map helps us inspect what lies around a particular block. These purposes require different extents. Our three local maps use identical extents and physical scale. A 500 m circle therefore appears the same size in each panel. Enlarging one neighbourhood until its facilities filled the frame would make it look richer in detail while quietly changing the comparison.
 
+![Three equally scaled local maps showing selected blocks, bus stops and three amenity categories](../datasets/neighbourhood_story_2026/figures/02_neighbourhoods.png)
 
-### Map details
-How much detail can be shown in:
-- a small A4-one-column map
-- a full A0 poster-size map
+*Figure 7.2. Three named blocks with 500 m solid circles and 800 m dashed circles. Symbols outside the circles provide context but do not enter the corresponding count. The maps show planning boundaries rather than a street network, so they cannot demonstrate routes across roads, canals or other barriers.*
 
-Two thinking directions:
-- What should be added --- the 'plus'
-- What should be removed --- the 'minus'
+Distance calculations require a suitable coordinate reference system. Latitude and longitude are angular coordinates; their numerical differences are not metres. We transform the points to EPSG:3414 before measuring Euclidean distances. The circle is a straight-line search boundary, not a walking catchment. Projection makes the metric calculation consistent; it does not add information about pedestrian routes.
 
-### Considerations
-- DPI (dots-per-inch): the number of dots that will be drawn or printed within a one-inch span (in a single dimension).
+The 500 m and 800 m choices are teaching scenarios, not universal walking thresholds. A reader using a mobility aid, a parent accompanying a child and a commuter carrying groceries may experience the same distance differently. We keep the units explicit rather than converting the radii into unsupported walking times.
 
-**Think:**
-- What happens when you put an A0-size map/image inside an A4 paper?
-- How does a 2cm line in the original A0 map look on the A4 paper?
+## Colour, symbols and legends
 
-**Take home message**:
-Always plan ahead about what size of map to be drawn.
+Use a sequential palette for a quantity that progresses from smaller to larger. Our price and boarding maps use OrRd, with separate colour scales because the units differ. A darker bus point does not mean the same thing as a darker HDB point. The bus colour scale is logarithmic to reveal variation in a skewed activity distribution; the label states that transformation. The price overview fixes its colour range at S\$300,000–S\$1,400,000 and indicates clipped extremes. Exact observations remain in the data.
 
-```{figure} ../resources/w01-img/drawing_sizes_1a.png
-:label: effectofsize
-:alt: difference size
-:align: center
+Amenity categories have no natural order. We use distinct hues and shapes: squares for hawker centres, triangles for schools and diamonds for park reference points. Shape gives readers a second cue when colours are hard to distinguish. Stops recede in neutral grey; the selected block has a dark star. A legend should explain the visible encoding, including what a size or colour means, rather than merely name the data provider.
 
-The same map export with different size, squeezed to the same display size.
-```
+Do not imply that every point represents an equivalent facility. A park diamond might locate a small recreation site or a reference position for a much larger park. A school triangle does not encode enrolment, available places or school level. Those omitted attributes are reasons to refine the analysis if the audience's question requires them.
 
-```{figure} ../resources/w01-img/drawing_sizes_1b.png
-:label: zoomin
-:alt: zoom in
-:align: center
+## Titles and captions divide the work
 
-The same 4 maps, zoomed-in.
-```
+A title should orient attention. A caption should supply the unit, period, selection rule and the limitation most likely to change interpretation. “Neighbourhood accessibility” would overstate what Figure 7.2 measures. “What is nearby?” is a better opening, provided the caption immediately defines “nearby” as a straight-line radius and identifies the selected records.
 
+For a standalone map, include enough source information that it remains understandable outside the chapter. For a sequence, stable layouts and a shared source note can reduce repetition, but each panel still needs its own units and period. A figure copied into a slide should not lose those essentials.
 
-## Typography
+## Typography, layout and export
 
-Typography most often serves to label cartographic elements.
-It is a **“functional symbol”** primarily, and secondarily an _aesthetic element_ meaning that _it carries cartographic meaning_ and **is not simply “window dressing”**.
+Use a clear reading order: title, main evidence, legend or direct labels, then supporting notes. Keep map labels readable at the size students will actually view. Exporting at a high dots-per-inch value cannot rescue tiny text. For raster figures, choose pixel dimensions for the display or print size; retain vector output where practical for line work and text. Inspect the exported figure rather than relying on the plotting window.
 
-:::{aside} About Typography
-[Typography, from Making Effective Maps: Cartographic Visualization for GIS](https://colorado.pressbooks.pub/makingmaps/chapter/typography/)
-:::
+Our original figures use Comic Neue, a hand-drawn-style font bundled with its licence. The geographic boundaries and measured circles remain undistorted. A playful typeface can establish a teaching tone; applying a sketch effect to precise geometry could make a boundary or distance harder to read. Font choice should support comprehension rather than signal scientific authority.
 
-- Font Family (Serif, Sans-Serif, Decorative, Monospaced)
-- Font Size (relative to map size)
-- Font Weight (Bold (700) vs. Regular (400) vs. Light (300))
-- Font style (italic vs. regular)
-- Uppercase, lowercase, title case
-
-*What is the differences between Sans Serif fonts and Serif fonts?*
-
-```{figure} ../resources/w01-img/drawing-fonts.png
-:label: fonts
-:alt: san-serif and serif
-:align: center
-
-Some example of Sans-Serif fonts (left) and Serif fonts (right).
-```
-
-```{figure} ../resources/w01-img/text_elements.png
-:label: textele
-:alt: text element
-:align: center
-
-Text elements.
-```
-
-
-Things to be considered:
-- **Visibility**: make sure the labels can be viewed without zoom-in.
-- **Hierarchy**: use different sizes, weights, or styles to show hierarchy of labels.
-- **Consistency**: use the same typeface to show labels in the same level.
-- **License**: make sure the font can be used in your targeted publication or is there any restriction/subscription-needed
-- **Publication requirement**: some journal requested that some specific fonts should be used for some of the map elements.
-
-**Take home message**:
-The top priority is to ensure that the text is *clear and readable*. Additionally, make sure the fonts are appropriate for your target venue.
-
-## Colours
-
-In the realm of cartography and geovisualization, color is an essential tool that serves to delineate different components and highlight their significance, thereby facilitating effective visual communication. In designing geovisualization, *the application of color goes beyond aesthetics, as it enables the clear differentiation of features and allows for the accurate representation of data*, making it a crucial aspect of geovisualization design.
-
-```{figure} ../resources/w01-img/US_temperature_map.png
-:label:
-:alt:
-:align: center
-
-Temperature of colours. Source: NASA Earth Observatory: [Arctic Chill Sweeps U.S.](https://earthobservatory.nasa.gov/images/152333/arctic-chill-sweeps-us)
-```
-
-
-Things to considered while selecting color(s):
-- The targeted  audiences or venues: color or black and white (and grey)?, colorblind? etc....
-
-- Types of values:
-    - Qualitative/Categorical
-    - Quantitative/Sequential:
-        - discrete: Q1, Q2, Q3, Q4; levels after 'breaks'; age groups...
-        - continuous: scaled data from 0 to 1, with a min-value and max-value, exact age...
-    - Diverging: with a center value (e.g., 0)
-    -  <img src="../resources/w01-img/drawing_continuous_discrete.png" width="40%" align="center">
-    Discrete vs. Continuous.
-
-- Temperature of colours:
-    - cold colors for low values,
-    - hot colors for high values, etc.
-    - <img src="../resources/w01-img/temperature-of-greys.png" width="40%" align="center">
-    [Color temperature](https://en.wikipedia.org/wiki/Color_temperature) from Wikipedia.
-
-- - The meaning of data:
-    - green-series colours for greeneries level, or safety level, etc.
-    - red, orange colours for dangerous level, or warning level...
-
-```{figure} ../resources/w01-img/matplotlib-colors.png
-:label: cmap
-:alt: colormaps from Matplotlib
-:align: center
-
-Some example of colormaps from [Matplotlib](https://matplotlib.org/stable/users/explain/colors/colormaps.html).
-```
-
-
-```{figure} ../resources/w01-img/seaborn-qualitative.png
-:label: seabornquali
-:alt: qualitative colormap from seaborn
-:align: center
-
-Various qualitative colormap from [Seaborn](https://seaborn.pydata.org/tutorial/color_palettes.html).
-```
-
-
-
-Two basic colour models:
-- **CMYK**: allows for more precise control over how colors appear on printed materials.
-    - four integer values ranging from 0 to 100, each value corresponding to the percentage of ink coverage for Cyan, Magenta, Yellow, and blacK components.
-- **RGB**: allows for precise control over how colors appear on digital devices.
-    - three integer values ranging from 0 to 255, each value corresponding to the intensity of the Red, Green, and Blue lights.
-
-How to use colors in Python (Matplotlib):
-- named colors: `'red'`, `'blue'`, `'green'`, `'white'`, [full list here](https://matplotlib.org/stable/gallery/color/named_colors.html)
-- xkcd colors: `'xkcd:off white'`, [full list here](https://xkcd.com/color/rgb/)
-- specifying R, G, & B in the ranging from 0 to 1 (divided by 255): `(0.1, 0.2, 0.5)`
-- specifying R, G, B, & alpha in the ranging from 0 to 1 (alpha as proportion): `(0.1, 0.2, 0.5, 0.7)`
-- specifying RGB hex code: `'#0f0f0f'`
-- specifying RGBA hex code: `'#0f0f0fff'`
-
-
-## Coordinate System
-
-All maps are drawn with a specific coordinate reference system (CRS), which defines how the geographic coordinates of features on the Earth's surface are represented in a flat, two-dimensional plane (i.e., map). There are two main types of CRS: unprojected and projected. See [proj](https://proj.org/en/5.2/operations/projections/index.html) for a series of different global projections and [The Morphing Map Project](https://wcchin.github.io/map_projection/) to see how projections are different from each other.
-
-1. **Unprojected CRS**
-
-   - Uses latitude (N-S) and longitude (E-W) coordinates in degrees.
-   - Represents Earth's curved surface.
-
-2. **Projected CRS**
-
-   - Transforms Earth's curved surface into a flat map (in length, e.g. meters).
-   - Different types:
-     - **Mercator**: Preserves angles and directions, used in navigation.
-     - **Equal Area**: Preserves area, useful for spatial analysis.
-     - **Conic**: Preserves shape and angles, used for mid-latitude regions.
-
-   Each map projection serves different purposes and has its own advantages and disadvantages in terms of preserving shape, area, distance, and direction. The choice of projection depends on the specific needs and applications of the map.
-
-```{figure} ../resources/w01-img/morphing_map_project.png
-:label: morphing
-:alt: morphing maps
-:align: center
-
-[Try and view the differences of various projections in [The Morphing Map Project](https://wcchin.github.io/map_projection/).
-```
-
-
-```{figure} ../resources/w01-img/varying_projections.png
-:label: country_dif
-:alt: Countries in differet projection.
-:align: center
-
-The four countries in three different projections.
-```
-
-
-
-### How to use CRS in Python
-
-Here we demonstrate how to change to the Singapore projection See [EPSG:3414](https://epsg.io/3414) and [SLA on SVY21 / Singapore TM](https://app.sla.gov.sg/sirent/About/PlaneCoordinateSystem) for more details.
-
-```python
-import geopandas as gpd
-# read the file
-singapore = gpd.read_file('../path_to_file/singapore.shp')
-print(singapore.crs)  # to show the projection info from the saved file
-
-# use .to_crs() to convert between projections, usually from or to EPSG:4326
-
-# check EPSG.io website, 3414 is the code for SVY21 / Singapore TM,
-# TM means Transverse Mercator, see https://epsg.io/3414 for details
-sg_prjd = singapore.to_crs('epsg:3414')
-# OR
-## find the targeted crs string, something look like this:
-targeted_crs = '+proj=tmerc +lat_0=1.36666666666667 +lon_0=103.833333333333 +k=1 +x_0=28001.642 +y_0=38744.572 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs'
-sg_prjd = singapore.to_crs(targeted_crs)
-
-```
-
-
-
-## Arrangement
-
-- **Arrangement** is about the position of every element on map.
-    - Where to put what
-- **Which area** of a map/paper will be seen first by the readers?
-    - The hierarchy of information (see next section)
-- Should we draw **North arrow** and **scale bar**?
-    - If it is a series of maps, the second and later maps could ignore the N-arrow and scale bar, for the sake of simplicity and readability.
-- **Collective/shared legend**, or separate legends for every map?
-    - In a multi-subplots layout setting, the elements in the legend are usually same, so that the colors/sizes could be compared between subplots---in this case, one large shared legend is sufficient.
-- Figure **title**
-    - Do we need one for a map that would be placed in a report/thesis?
-    - It is a common practice that if the map comes with a figure caption (e.g., Fig X. figure title) then the title on top of the map should be removed.
-- The **external (out-of-studying-scope) area**
-    - It is a better idea to draw these external area with light grey or something less attractive.
-
-
-## Summary
-Basics of mapping
-
-Things to be considered and planned while visualizing spatial patterns:
-- **Sizes**: The sizes of maps and each individual element (line width, point size, etc.) in a static image affect the visibility and aesthetics of the visualization.
-- **Typography**: The visibility of text is the top priority.
-- **Colors**: Consider the color temperature, relation to the subject, targeted venue, etc.
-- **Coordinate System**: Choose a commonly used and suitable projection for the targeted area.
-- **Arrangement**: Carefully consider the hierarchy of information and the placement of various elements in the map or visualization.
+**Check your map.** Hide the surrounding paragraph and ask a classmate to describe the unit, period and meaning of each symbol. Any disagreement identifies information the figure still needs.
