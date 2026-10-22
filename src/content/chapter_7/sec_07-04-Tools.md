@@ -1,129 +1,32 @@
-# Tools and Resources
+# 7.4 Choosing tools after choosing the story
 
-## Data Visualization Tools
+Tool choice should follow the analytical and communication tasks. Start with a storyboard, the operations it requires and the form the reader needs. A static sequence may communicate the main argument more clearly than a dashboard with many controls. Interactivity is valuable when it lets the reader ask a consequential additional question.
 
-- **Carto**: A location intelligence and data visualization platform for creating interactive maps and geospatial applications.
+## A reproducible analytical core
 
-- **Tableau**: A data visualization and storytelling tool that allows you to create interactive and engaging visualizations.
+For this example, a notebook or script can read the prepared HDB, bus and POI tables; transform coordinates; calculate distance-based selections; and produce maps and summaries. Python offers one route through pandas, pyproj, scipy and Matplotlib. QGIS offers another route for inspecting locations, checking projections and preparing spatial joins. The important requirement is that the operation and its parameters are recorded, rather than remembered from an editing session.
 
-- **Power BI**: A business analytics platform from Microsoft for creating data visualizations, reports, and interactive dashboards.
+The bundled `analyse.py` records the selection rule and computes the same measures for all 3,236 selling blocks before extracting the three illustrations. The nearest-stop calculation uses geocoded bus records from the supplied volume-linked table. Radius counts include only those available records; they are not an independent census of every operating stop. Boarding sums use non-missing weekday averages and preserve a missing result when no activity is available. These definitions should travel with any notebook derived from this draft.
 
-- **QGIS**: A free and open-source GIS software that enables geospatial data visualization and analysis.
+The `plots.py` script produces the original plates from the prepared tables and planning-area GeoJSON. Neither analytical reproduction nor figure reproduction needs a live geocoding service. The [reproducibility directory](../datasets/neighbourhood_story_2026/README.md) includes the inputs, scripts, selected-block metrics, source notes and checksums. Installation may require an internet connection, but rerunning the analysis on the bundled data does not require downloading the observations again.
 
-- **ArcGIS Online**: A web-based GIS platform by Esri that enables users to create, share, and analyze geospatial data, maps, and apps.
+## Choose an output for a reading task
 
-- **Mapbox**: A platform that offers customizable map designs tools to create interactive maps and location-based applications.
+| Output | A useful task | A responsibility that comes with it |
+|---|---|---|
+| Book figure sequence | Explain the central comparison in a stable order | Keep labels, captions and evidence visible in the static view |
+| Notebook | Let students reproduce a measure and change its definition | Separate raw inputs from outputs; state dependencies and parameters |
+| Interactive map | Let readers inspect local facilities or choose an address | Provide a usable default, keyboard-accessible controls and a static explanation |
+| Dashboard | Compare a controlled set of measures or scenarios | Keep denominators and filter states explicit; avoid a decorative ranking score |
 
-- **Kepler.gl**: A geospatial data visualization tool that allows users to create large-scale visualizations for geospatial data exploration.
+For this chapter, the first useful interaction would be a **500 m / 800 m radius switch**, because it tests a choice in the analysis. Selecting a POI category would be useful too, provided the reader sees what the category includes. A colour-picker or a rotating map would add less to the central question.
 
-- **Flowmap.gl**: A web-based tool designed for visualizing and exploring spatial interactions using animated flow maps.
+Do not let the availability of a tool determine the conclusion. A heatmap does not turn a set of locations into evidence of accessibility. A dashboard correlation does not control for confounding. A button labelled “best neighbourhood” would require defensible criteria and weights, not merely software that can calculate a score.
 
-- **Plotly**: A versatile data library that can be used with various programming languages, offering a wide range of interactive charts, maps, and plots.
+## Publish for inspection
 
-- **Bokeh**: An interactive data visualization library for Python, providing elegant, concise construction of versatile graphics and interactive plots.
+A reader should be able to discover the source, reproduce the stated sample, inspect a selected block and understand any exclusions. Record source versions and retrieval dates. Keep bus-stop codes as strings so leading zeros survive. Keep source geometry and measured distances distinct from visual offsets; these figures do not jitter co-located records. Include readable alternative text and explain the key result in prose, so the argument is not locked inside the image.
 
+For the eventual book, the static figures can carry the main reading path while a companion notebook supports exploration. An “Open in Colab” link can be added under the book's agreed notebook-sharing approach, with repository-hosted public input files where size and redistribution terms permit. The figure scripts run on the bundled inputs without a Google Drive mount.
 
-```{figure} ../resources/w11-img/carto_webpage.png
-:label:
-:alt:
-:align: center
-
-[Carto](https://carto.com/)
-```
-
-
-```{figure} ../resources/w11-img/mapbox_3D.png
-:label:
-:alt:
-:align: center
-
-Mapbox 3D buildings. [Mapbox](https://www.mapbox.com/)
-```
-
-
-
-```{figure} ../resources/w11-img/kepler-gl.png
-:label:
-:alt:
-:align: center
-
-[Kepler.gl](https://kepler.gl/) demo. [Demo link](https://wcchin.github.io/sg_HDB_price_map/hdb_map_filter.html)
-```
-
-
-
-
-
-```{figure} ../resources/w11-img/flowmap-gl.png
-:label:
-:alt:
-:align: center
-
-[Flowmap.gl](https://flowmap.gl/) demo. [Demo link](https://app.flowmap.city/public/67249d1d-4c21-40e3-8ddb-fd5124907c99)
-```
-
-
-
-```{figure} ../resources/w11-img/plotly_dash-2.png
-:label:
-:alt:
-:align: center
-
-Plot.ly Dash [webpage](https://plotly.com/examples/)
-```
-
-
-
-```{figure} ../resources/w11-img/bokeh_webpage.png
-:label:
-:alt:
-:align: center
-
-[Bokeh webpage](https://docs.bokeh.org/en/latest/)
-```
-
-
-
-```{figure} ../resources/w11-img/storymap-js_webpage.png
-:label:
-:alt:
-:align: center
-
-Storymap.js (Knight-lab) [webpage](https://storymap.knightlab.com/#examples)
-```
-
-
-
-
-
-```{figure} ../resources/w11-img/odyssey-js_webpage.png
-:label:
-:alt:
-:align: center
-
-Odyssey.js (by Cartodb) [webpage](https://cartodb.github.io/odyssey.js/)
-```
-
-
-
-## Programming Languages and Libraries
-- **Python**: A popular programming language with libraries for data analysis, visualization, and mapping, such as:
-  - Matplotlib,
-  - Seaborn,
-  - Bokeh, and
-  - Folium.
-
-- **R**: A programming language designed for statistical computing and visualization, with packages like:
-  - ggplot2 and
-  - leaflet.
-
-- **JavaScript**: A versatile programming language for building interactive web-based visualizations, with libraries such as:
-  - D3.js and
-  - Leaflet.js.
-
-
-
-## Storytelling Resources
-- **"Storytelling with Data"** ([NUS Library link](https://linc.nus.edu.sg/record=b3543267)) by Cole Nussbaumer Knaflic: A book that provides practical tips and techniques for creating effective data stories.
-- [The Pudding](https://pudding.cool/): A digital publication that uses data visualization and storytelling to explore a wide range of topics.
-- [The Data Visualisation Catalogue](https://datavizcatalogue.com/): A comprehensive online resource showcasing various data visualization examples and use cases, offering guidance and inspiration for creating effective visualizations across diverse industries and applications.
+**Try it.** Specify one control for an interactive version. State which reader question it answers, which calculation changes, and which warning must remain visible when the control changes.

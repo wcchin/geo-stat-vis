@@ -1,90 +1,47 @@
-# Geospatial Ethics
+# 7.5 Framing, uncertainty and responsible persuasion
 
-## What is Ethics
+Every map selects. It selects observations, boundaries, symbols, labels and an order of presentation. Those choices direct attention even when no one intends to persuade. Research on visualisation rhetoric shows how additions and omissions in data, representation, annotation and interaction can privilege particular interpretations [2]. The practical response is to make consequential choices inspectable.
 
-> “Ethics, also known as moral philosophy, involves systematic intellectual reflection on morality in general ... or specific moral concerns in particular. The former can be called **theoretical ethics**, and the latter **applied ethics**, though the two are closely related. One realm of applied ethics that ahs garnered considerable attention outside philosophy focuses on professional conduct; thus, **the moral questions asked by scientists**, as well as those in, for instance, the fields of law, medicine, and business, are legitimate components of ethical inquiry.”
+## Separate an observation from an explanation
 
-In [Proctor, James D (1998). Ethics in geography: giving moral form tot he geographical imagination. Area 30.1, p. 9.](https://www.jstor.org/stable/20003845)
+Consider two possible headlines for the comparison:
 
-**Ethics is not _what_ you do, but _why_ you do it.**
+> “The selected Tampines and Woodlands blocks have equal nearby stop counts but different recorded boarding activity.”
 
+> “Tampines offers better transport and therefore commands higher home prices.”
 
-## Ethics in geospatial data analysis
-### Definition
+The first states the checked comparison, including its limited scope. The second replaces activity with quality, generalises blocks to towns and introduces causation. It is an attractive narrative shortcut because it connects several layers with one explanation. The dataset does not justify that explanation.
 
-Ethics in geospatial data analysis refers to the application of moral principles and guidelines to ensure that the collection, analysis, and use of geospatial data are **conducted responsibly and with respect for individuals, communities, and the environment**.
+Our advertising-inspired brief asks for relevance, tension and a memorable idea. In a teaching book, those devices serve understanding. A persuasive ending should make the evidence and its limits easier to remember. It should not make a weak claim feel certain.
 
-- [A GIS Code-of-Ethics](https://www.gisci.org/Ethics/Code-of-Ethics)
-- [Rules of Conduct for Certified GIS Professionals](https://www.gisci.org/Ethics/Rules-of-Conduct)
+## Show the effect of a boundary choice
 
+![Nearby record counts for the same blocks using 500 metre and 800 metre radii](../datasets/neighbourhood_story_2026/figures/04_radius.png)
 
-### A GIS Code of Ethics
+*Figure 7.5. A sensitivity comparison, keeping selected blocks and source records fixed. Counts refer to the specified categories and coordinate representations. Expanding the radius increases the area searched; it does not improve the underlying facilities or establish a travel-time catchment.*
 
-The link: [Code-of-Ethics](https://www.gisci.org/Ethics/Code-of-Ethics)
+None of the three blocks has a hawker-centre directory point within 500 m. That statement is narrower than “there is nowhere nearby to eat.” Restaurants, coffee shops, food courts and other outlets are outside this directory. At 800 m, the counts can change without any underlying facility moving. A category boundary and a spatial boundary both shape the story.
 
-```{figure} ../resources/w12-img/code_of_ethics.png
-:label:
-:alt:
-:align: center
+The same issue affects park records. Counting reference points gives each point equal weight. Measuring actual park area, distance to an entrance or a route to a usable recreation facility would answer different questions. A precise distance to an unsuitable representation can still be an unsuitable measure.
 
-Screenshot of the GIS Code-of-Ethics page.
-```
+## An evidence ledger
 
+Before publication, write down what each part of the story supports. This is especially useful when an appealing caption begins to sound stronger than the analysis.
 
-### Rules of Conduct for Certified GIS Professionals
+| Evidence | Supported statement | Additional evidence needed for a stronger statement |
+|---|---|---|
+| Observed block sale medians | The selected sales have these median prices | Comparable-property modelling for an adjusted price relationship; income and financing context for affordability |
+| Straight-line stop proximity and counts | These supplied stop records lie near the reference point | Pedestrian network, operating services, frequency and journey times for accessibility |
+| Nearby boarding totals | Qualifying stops record this aggregate boarding activity | Origins, destinations and population exposure for residents' travel demand |
+| Selected POI locations | These category records lie within the radius | Facility type, capacity, opening hours, entrances, quality and user needs for practical convenience |
+| Three illustrative cases | The measures can differ within these examples | A defined sample and broader analysis for generalisation to towns or the city |
 
-The link: [Rules of Conduct](https://www.gisci.org/Ethics/Rules-of-Conduct)
+The temporal mismatch matters too. September bus activity does not describe the exact transport conditions at every January–June sale. A 2026 directory does not establish whether a particular centre was available on a transaction date. We show the sources together to teach measurement and communication, while declining a historical causal interpretation.
 
-```{figure} ../resources/w12-img/rules_of_conduct.png
-:label:
-:alt:
-:align: center
+## Privacy, attribution and consequences
 
-Screenshot of the Rules of Conduct page.
-```
+Public data still deserves care. Block-level resale information should not be turned into a speculative story about an individual household. Bus aggregates should not be described as traces of identifiable passengers. Avoid labelling whole neighbourhoods as undesirable, poorly served or “cheap” on the strength of a few transactions and a narrow POI layer. Use observed-price language rather than social labels about residents.
 
+Credit the originating agencies and distinguish them from a mirror that prepares coordinates. A code repository's software licence does not automatically license every dataset it contains. This chapter identifies the data licence and the OneMap attribution separately from software. If a future notebook adds another layer, its provenance and redistribution terms need their own check.
 
-## Ethics is not legality
-
-```{figure} ../resources/w12-img/ethical_legal.png
-:label:
-:alt:
-:align: center
-
-Ethics and legality
-```
-
-Ethics is not a front-line of defense against wrong-doing.
-
-Ethics is more like a touchstone for professionals to identify and resolve ethical dilemmas that they encounter in their research.
-
-
-
-## Geospatial Privacy
-
-In geospatial research, particularly in people-related topics like health, crime, and disease-related studies, we often encounter privacy concerns.
-
-Sometimes, these concerns are the reason we cannot access certain data, such as the COVID-19 distribution data in the early days of the pandemic.
-- In the early days of a situation involving small case numbers, the data can be traced back to individual households or persons, potentially creating unnecessary problems for the people involved. As a result, government agencies may be unable to disclose such data.
-- bias and inequality, privacy
-
-In other cases, privacy becomes a crucial aspect to consider while writing the results, ensuring that we do not reveal any private information in our reports or manuscripts.
-- Making sure the anonyminity or de-identification could not be re-identified.
-
-
-
-.split-30[.column[
-### Geospatial Privacy
-Protecting geospatial information privacy involves employing various strategies to ensure that individuals' personal information remains _secure_ and _anonymous_.
-
-**Data anonymization**:
-Remove or alter personally _identifiable information_ from geospatial datasets. This can be achieved through techniques such as generalization, perturbation, or differential privacy.
-
-**Geo-masking**:
-Geo-masking involves altering or obscuring the _precise location information_ in geospatial data to protect individual privacy. This can be achieved by shifting, rotating, or perturbing the coordinates, or by introducing random noise to the location data. Geo-masking allows for the analysis of geospatial patterns and trends while maintaining a degree of anonymity for individuals or sensitive locations.
-
-**Data aggregation**:
-_Combine data from multiple individuals or locations_ to make it more difficult to trace information back to a specific person or place.
-
-**Privacy-preserving data mining**:
-Utilize _data mining techniques_ that protect privacy, such as k-anonymity, l-diversity, or t-closeness, to analyze geospatial data without revealing sensitive information.
+**Reader test.** Ask someone to read only the title, figures and final paragraph. What claim do they think you made? If it is stronger than the evidence ledger, revise the visual emphasis or wording before adding more caveats in small print.

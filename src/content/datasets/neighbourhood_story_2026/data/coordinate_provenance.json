@@ -1,0 +1,17 @@
+{
+  "coordinate_source": "https://raw.githubusercontent.com/seehiong/autonomous-hdb-deepagents/2a0df19534be15102658cebdda9267a653e79642/db/init/data/hdb_property_info.csv",
+  "retrieved": "2026-10-22",
+  "raw_coordinate_snapshot_sha256": "4319b9192d40582d3087e49d83c548167afa8ac3dbc882f97a0da0f42cdf4933",
+  "transaction_count": 5379,
+  "addresses": 3236,
+  "matched_transactions": 5379,
+  "corrections_over_100m_transactions": 6,
+  "corrections_over_100m_addresses": 5,
+  "displacement_quantiles_m": [
+    0.0,
+    0.0,
+    1.0289757937229989e-11,
+    32.972321980542056,
+    4623.414143463935
+  ]
+}

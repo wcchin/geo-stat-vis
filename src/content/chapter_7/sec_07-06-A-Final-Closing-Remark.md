@@ -1,269 +1,51 @@
-# A Final Closing Remark
+# 7.6 Putting the sequence together
 
-## Visualization?
-The comic shows a **visualization** of the relationship between human proximity to cat and the intelligence of the person.
+Return to the opening question: “Is this neighbourhood convenient?” We can now give a more useful response: convenient for whom, for which activities, and measured how? The maps have not failed to answer a simple question. They have helped us recognise the decisions inside it.
 
-Visualization is **the process of representing data or information** in a graphical or pictorial form **to communicate an idea, concept, or pattern** more effectively.
+The worked sequence begins with observed housing prices, introduces nearby stops and activity, then distinguishes amenity categories. The comparison shows why a familiar proxy can be incomplete: the Tampines and Woodlands illustrations have equal 500 m stop counts but very different boarding totals. The radius comparison then challenges the apparent firmness of a nearby-facility count. The ending asks the reader to specify a need before selecting a measure.
 
+This is the chapter's central idea: **define convenience before comparing places**. Its human relevance comes from a recognisable decision. Its tension comes from a checked contrast. Its payoff is an improved way of evaluating evidence. The narrative has a purpose without manufacturing a winner or claiming that proximity determines price.
 
-```{figure} ../resources/w01-img/xkcd_cat_proximity.png
-:label:
-:alt:
-:align: center
+## A complete short-form version
 
-[Cat Proximity (xkcd.com/231)](https://xkcd.com/231/).
-```
+A book chapter gives room for explanation. A six-panel slide sequence or short web story must carry the same logic more economically. The following storyboard is a draft of that version. It proposes a claim and an evidence check for every frame.
 
+| Frame | Suggested headline | Evidence and guardrail |
+|---|---|---|
+| 1 | “What would make everyday life convenient for you?” | Open with an explicitly imagined reader scenario; invite a definition rather than state a universal preference. |
+| 2 | “A resale-price map shows sales, not every home's value.” | Show 5,379 four-room registrations and block medians; retain period and sample definition. |
+| 3 | “Equal stop counts can hide different activity.” | Show 18 stops for each selected Tampines and Woodlands block, beside about 70,173 and 11,701 weekday boardings. Label these illustrative blocks. |
+| 4 | “Nearby facilities are not interchangeable.” | Show all three local maps at the same scale with separate POI categories; define park points and school records. |
+| 5 | “Move the boundary, change the count.” | Show 500 m and 800 m results without changing cases or sources. Do not present either radius as a walking-time standard. |
+| 6 | “Define convenience before comparing places.” | End with the measure, boundary, period and missing evidence. Invite a journey-time or facility-quality follow-up. |
 
-## Why visualization?
-```{figure} ../resources/w01-img/drawing-data_info_insight.png
-:label:
-:alt:
-:align: center
+A compelling final paragraph might read:
 
-Data, Information, Insights.
-```
+> These maps offer several views of the same city. Housing prices describe observed sales. Stop counts describe nearby records. Boarding totals describe transport activity. Amenity points describe selected facilities. To judge convenience, first decide which daily need matters, then choose evidence that measures it. A familiar map becomes more useful when we know which question it can answer.
 
-Geovisualization is a series of explorations and analyses, that includes using various techniques and methods, e.g., thematic mapping, exploratory spatial data analysis, to uncover the underlying patterns, to get better understanding of geographical phenomena.
+## A self-study project
 
-```{figure} ../resources/w01-img/drawing-how_maps_are_used.png
-:label:
-:alt:
-:align: center
+Develop an alternative sequence for a clearly named audience, using the bundled data as a starting point. Keep the analytical core inspectable. Your submission should contain a one-paragraph brief, four to six visual frames, a short methods note, a source list and a paragraph explaining what your story cannot establish.
 
-MacEachren's cartographic cube.
-```
+Begin by selecting a specific need, such as reaching an everyday destination or finding a particular category of facility. Explain why the existing layers do or do not measure that need. If you change the case-selection rule, write it down before inspecting the new results. Retain one sensitivity comparison, such as a radius change or an alternative price measure. Conclude with the claim the evidence actually supports, even if it differs from the story you expected to tell.
 
+Evaluate the work using four questions. Can the reader identify the central question? Does each visual contribute a new inference? Can another student reproduce the displayed numbers? Does the closing statement remain true when read without the surrounding explanations? Good visual communication requires all four.
 
+## Reading resources
 
-## What is a good visualisation
+These papers support the narrative and framing concepts in this chapter. The audience brief and neighbourhood example are our teaching synthesis, rather than a framework attributed to either paper. Further empirical Singapore studies can be added to Part 2 after the core chapters are complete, following the book's agreed plan.
 
-A good data visualization effectively communicates complex information in a clear, concise, and engaging manner, allowing the audience to quickly understand the data's key insights and messages.
+1. Segel, E., & Heer, J. (2010). **Narrative Visualization: Telling Stories with Data.** *IEEE Transactions on Visualization and Computer Graphics, 16*(6), 1139–1148. [DOI: 10.1109/TVCG.2010.179](https://doi.org/10.1109/TVCG.2010.179). [Author-hosted paper and summary](https://idl.uw.edu/papers/narrative). Read for the balance between author-directed narrative and reader exploration.
+2. Hullman, J., & Diakopoulos, N. (2011). **Visualization Rhetoric: Framing Effects in Narrative Visualization.** *IEEE Transactions on Visualization and Computer Graphics, 17*(12), 2231–2240. [DOI: 10.1109/TVCG.2011.255](https://doi.org/10.1109/TVCG.2011.255). [Author-hosted paper and summary](https://www.hullmanlab.northwestern.edu/paper/2011/02/01/vis-rhetoric.html). Read for how representation, annotations and omissions guide interpretation.
 
-- **Clear Purpose**:
-A well-defined purpose or goal helps guide the creation of the visualization, ensuring that it **addresses relevant questions and objectives**.
+## Data sources and reproducibility
 
-- **Appropriate Visual Encoding**:
-The choice of **visual elements (e.g., color, size, position)** should accurately represent the data and facilitate easy comparison, pattern identification, and understanding.
+- HDB, [Resale flat prices based on registration date from January 2017 onwards](https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view). Prepared sample: four-room transactions registered January–June 2026. The supplied teaching extract contains 5,379 records.
+- LTA DataMall, [data and API resources](https://datamall.lta.gov.sg/). September 2026 bus-stop locations and transport-node activity files supplied by the instructor. This chapter reuses the prepared Chapter 3 stop table; it does not claim a fresh download of the monthly volumes.
+- NEA, [Dates of Hawker Centres Closure](https://data.gov.sg/datasets/d_bda4baa634dd1cc7a6c7cad5f19e2d68/view). The 2026 directory was retrieved through the official data.gov.sg datastore API on 22 October 2026; all 123 returned records have usable coordinates and an existing/new-existing status. Points do not establish continuous availability during closure periods.
+- MOE, [General information of schools](https://data.gov.sg/datasets/d_688b934f82c1059ed0a6993d2a829089/view); NParks, [Parks](https://data.gov.sg/datasets/d_0542d48f0991541706b58059381a6eca/view). Coordinates and prepared records come from [this pinned, third-party source mirror](https://github.com/seehiong/autonomous-hdb-deepagents/tree/2a0df19534be15102658cebdda9267a653e79642/db/init/data), not a new live download from MOE or NParks. The mirror README cites 16 September 2026 retrieval and OneMap school geocoding. The parks table's update field is 22 April 2026. We use its point geometry rather than infer park entrances or polygons.
+- HDB block coordinates also reuse the corrected HDB/OneMap-derived coordinate table prepared for Chapter 5 from the same pinned mirror. OneMap map and geocoding data: © Singapore Land Authority; [OneMap open data licence](https://www.onemap.gov.sg/legal/opendatalicence.html).
+- URA, [Master Plan planning-area dataset listing](https://data.gov.sg/datasets?query=URA+planning+area&resultId=d_4765db0e87b9c86336792efe8a1f7a66). Background is the existing MP2019 planning-area teaching copy, not a newly retrieved revision.
+- Public agency data is attributed under the [Singapore Open Data Licence](https://data.gov.sg/open-data-licence). The source mirror identifies this licence separately from its software licence. Comic Neue is bundled with its font licence.
 
-- **Clarity and Simplicity**:
-A good visualization should be **easy to comprehend**, avoiding unnecessary complexity and clutter. Clear labeling, appropriate use of scale, and logical organization contribute to overall clarity.
-
-- **Meaningful Context**:
-Providing context through **labels, titles, captions, and reference points** helps the audience interpret the data more accurately and effectively.
-
-- **Attention to Detail**:
-A well-crafted visualization pays attention to details such as **color palettes, fonts, and visual hierarchy**, creating an aesthetically pleasing and professional-looking end product.
-
-- **Accessibility**:
-Ensuring that visualizations are **accessible to all readers**, including those with color vision deficiency or other visual impairments, is an essential aspect of good data visualization.
-
-- **Interactivity and Responsiveness**:
-Interactive visualizations allow users to explore and customize the data presentation, **enhancing engagement** and understanding.
-
-- **Accuracy**:
-A good visualization accurately represents the underlying data, **avoiding distortion or misrepresentation**.
-
-
-
-## Get some inspiration here for what is good visualisation
-- [Information is Beautiful](https://informationisbeautiful.net/)
-```{figure} ../resources/w12-img/information_is_beautiful.png
-:label:
-:alt:
-:align: center
-
-Screenshot of Information is Beautiful
-```
-
-
-- [Data Viz Project](https://datavizproject.com/)
-```{figure} ../resources/w12-img/data_viz_project.png
-:label:
-:alt:
-:align: center
-
-Screenshot of Data Viz Project
-```
-
-
-
-
-
-## Statistics for better visualisation
-Statistical tools play a crucial role in creating meaningful geospatial data visualizations and forming useful insights.
-
-- **Descriptive Statistics**:
-Basic descriptive statistics like mean, median, standard deviation and frequency distribution can help **summarize and describe** geospatial data.
-
-- **Data Classification**:
-Methods for classifying geospatial data, such as equal interval, quantile, natural breaks, and geometrical intervals help **organize and group data** for effective visualization and analysis.
-
-- **Spatial Autocorrelation**:
-Spatial autocorrelation techniques could measure the similarity between values in a given spatial dataset. This can help **identify spatial clusters or outliers** in the data.
-
-- **Spatial Heterogeneity**:
-Heterogeneity refers to the variability of a variable across a study area. Spatial heterogeneity can be analyzed using techniques like geographically weighted regression (GWR) or spatial error models to better understand **regional variations and factors influencing local patterns**.
-
-- **Spatial Dependence**:
-Spatial dependence occurs when the values of a variable at one location depend on the values of the variables at nearby locations. Analyzing spatial dependence can help model spatial relationships and predict outcomes more accurately.
-
-
-
-
-
-## Elements for bad visualisation
-
-- **Clutter and Complexity**:
-Excessive use of colors, fonts, labels, or visual elements can make a visualization **difficult to interpret and detract from its main message**.
-
-- **Misleading Scales or Axes**:
-Manipulating or misrepresenting **scales or axes** can distort the data and lead to inaccurate conclusions.
-
-- **Poor Color Choices**:
-Using color palettes with **low contrast or inappropriate color associations** can make it difficult for viewers to distinguish between different data points or categories.
-
-- **Confusing Data Encoding**:
-Inconsistent encoding of data (e.g., **using different symbols or sizes for the same value**) can make it challenging for the audience to compare and understand the data.
-
-- **Unnecessary 3D Effects**:
-Adding 3D effects **without a specific purpose** can add unnecessary complexity and make it harder to interpret the visualization accurately.
-
-- **Lack of Context**:
-Omitting important contextual information, such as **units, labels, or reference points**, can hinder the audience's ability to understand and interpret the data accurately.
-
-- **Unnecessary Visual Elements**:
-Including **irrelevant visual elements** or "chart junk" can distract from the main message and clutter the visualization.
-
-- **Inaccurate Representation of Data**:
-Using the **wrong visualization type** for the data type or purpose can lead to misinterpretation and misunderstanding.
-
-
-## Example of bad visualisation
-
-```{figure} ../resources/w12-img/bad-3d_bar.png
-:label:
-:alt:
-:align: center
-
-Unnecessary 3D view.
-```
-
-
-```{figure} ../resources/w12-img/bad-piechart.png
-:label:
-:alt:
-:align: center
-
-A bar chart could be clearer.
-```
-
-
-```{figure} ../resources/w12-img/bad-line_discrete.png
-:label:
-:alt:
-:align: center
-
-Line plot used to show discrete data (not continuous).
-```
-
-
-
-```{figure} ../resources/w12-img/bad-confusing.png
-:label:
-:alt:
-:align: center
-
-Confusing composition --- what is the main message?
-```
-
-
-
-```{figure} ../resources/w12-img/bad_visual_time_spiral.jpg
-:label:
-:alt:
-:align: center
-
-Unnecessary spiral effect --- what is the main message?
-```
-
-
-
-```{figure} ../resources/w12-img/bad-negative-values.png
-:label:
-:alt:
-:align: center
-
-Negative values going up and/or down?
-```
-
-
-```{figure} ../resources/w12-img/bad-color-palette-types.png
-:label:
-:alt:
-:align: center
-
-Color palette choice & type of chart (bar? or just table).
-```
-
-
-```{figure} ../resources/w12-img/bad-change_size_range.png
-:label:
-:alt:
-:align: center
-
-Generated based on the relative diameters of their circles, not relative areas. It’s subtle but still misleading.
-```
-
-
-
-```{figure} ../resources/w12-img/bad-color_category.jpg
-:label:
-:alt:
-:align: center
-
-Inconsistent categories and colors.
-```
-
-
-
-```{figure} ../resources/w12-img/bad-maps-numbers.jpg
-:label:
-:alt:
-:align: center
-
-Distracting labels (numbers).
-```
-
-
-
-
-```{figure} ../resources/w12-img/bad-maps-area_effect.jpg
-:label:
-:alt:
-:align: center
-
-Confusing area effect.
-```
-
-
-
-## How about these?
-
-```{figure} ../resources/w12-img/how-3D-population.png
-:label:
-:alt:
-:align: center
-
-Population (3D) in New York City.
-```
-
-
-
-```{figure} ../resources/w12-img/how-3D-SFO-tree.png
-:label:
-:alt:
-:align: center
-
-Tree density in San Francisco.
-```
+The [reproducibility directory](../datasets/neighbourhood_story_2026/README.md) contains prepared input tables, original plotting code, an audit and checksums. The seven reading sections are stored in the adjacent `chapter_7` directory. Analysis uses 500 m and 800 m straight-line radii in EPSG:3414. The local examples are illustrative blocks, not area-wide estimates, statistically tested price effects or neighbourhood rankings. 
