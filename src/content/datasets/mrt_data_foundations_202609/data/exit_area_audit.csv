@@ -1,0 +1,20 @@
+station_name,exit_code,planning_areas,matches
+Bishan,Exit A,BISHAN,1
+Bishan,Exit B,BISHAN,1
+Bishan,Exit C,BISHAN,1
+Bishan,Exit D,BISHAN,1
+Bishan,Exit E,BISHAN,1
+Serangoon,Exit A,SERANGOON,1
+Serangoon,Exit B,SERANGOON,1
+Serangoon,Exit C,SERANGOON,1
+Serangoon,Exit D,SERANGOON,1
+Serangoon,Exit E,SERANGOON,1
+Serangoon,Exit F,SERANGOON,1
+Serangoon,Exit G,SERANGOON,1
+Serangoon,Exit H,SERANGOON,1
+Paya Lebar,Exit A,GEYLANG,1
+Paya Lebar,Exit B,GEYLANG,1
+Paya Lebar,Exit C,GEYLANG,1
+Paya Lebar,Exit D,GEYLANG,1
+Marymount,Exit A,BISHAN,1
+Marymount,Exit B,BISHAN,1
