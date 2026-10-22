@@ -1,72 +1,40 @@
-# The Non-parametric Tests
+# 3.4 Non-parametric comparisons
 
-## Limitations of t-tests and ANOVA
+Rank-based methods offer alternatives when an analysis of arithmetic means is not the intended question or when its distributional assumptions are unsuitable. They often use the order of observations rather than their full numerical magnitudes. That makes them less sensitive to extreme values in some settings, while changing what the test is about.
 
-- Both t-test and ANOVA have assumptions of:
-    - numerical responses (ratio or interval target variable)
-    - normality (target variable)
-    - independence (within and between groups)
-    - equal variances
-- When these assumptions are violated, the validity of t-tests and ANOVA may be compromised, leading to inaccurate results.
-- In this case, the relevant _non-parametric tests_ could be used.
+“Non-parametric” does not mean “without assumptions”. Independence, pairing, measurement scale and the interpretation of the null hypothesis still matter. A rank transformation also preserves the geography linking neighbouring stops, so it does not remove spatial dependence.
 
+## Match the test to the design
 
+| Design | Common alternative | Interpretation to check |
+|---|---|---|
+| Two independent groups | Mann–Whitney U / Wilcoxon rank-sum | Distributional or stochastic ordering; a median-shift interpretation requires additional shape assumptions |
+| Two paired conditions | Wilcoxon signed-rank | Symmetry of the paired-difference distribution around zero under its null |
+| Three or more independent groups | Kruskal–Wallis | Equality of distributions under its null; differences can involve more than medians |
+| Three or more repeated conditions | Friedman | Within-unit ranks across conditions, with a complete suitable block design |
 
-## Roadmap for choosing non-parametric tests
-```{figure} ../resources/w03-img/pingouin_nonparam_guide.png
-:label:
-:alt:
-:align: center
+Mann–Whitney is not the paired signed-rank test. Applying an independent-groups rank test to weekday and weekend values would discard the within-stop connection, just as an independent t-test would.
 
-The roadmap for choosing non-parametric tests approaches. by [Pingouin](https://pingouin-stats.org/build/html/guidelines.html)
-```
+## Paired signs and signed ranks
 
-## The non-parametric alternatives
+A simple description records the sign of each difference. In this dataset, 4,300 stops have a positive weekday-minus-weekend difference, 856 a negative difference and 5 an exact tie. Of the 5,156 non-tied pairs, approximately 83.40% are positive. If ties are included in the denominator, 83.32% of all pairs are positive. Both summaries are valid when their denominators are stated.
 
-**T-test**
-- Independent samples t-test
-    - Mann-Whitney U Test
-- Paired samples t-test
-    - Wilcoxon Sign-Rank Test
+![Signs of paired differences](../datasets/bus_ridership_202609/bus/signs.png)
 
-**ANOVA**
-- One-way ANOVA
-    - Kruskal-Wallis Test
-- Repeated Measures ANOVA
-    - Friedman Test (non-binary data)
-    - Cochran Test (binary data)
+*Figure 3.6. Counting directions gives each stop one contribution, regardless of its difference in magnitude. This answers a different question from comparing mean differences.*
 
+Under an illustrative independent-pairs sign-test null, positive and negative signs are equally likely among non-ties. That model does not require the size of differences to follow a normal distribution, but still needs an appropriate independence assumption and a clear treatment of ties.
 
-## An example (socio-economic status in Brunei)
+Wilcoxon signed-rank uses both the signs and the ranks of absolute nonzero differences. Its usual location interpretation assumes a suitable symmetric difference distribution. Our Q–Q plot and tail behaviour motivate inspecting that assumption rather than selecting the test automatically because the original boardings are skewed.
 
-The income levels are ordinal (ranks) data, which is not numerical, and not normally distributed. Two groups are observed in both example, i.e., gender (male: 1, female: 0) and rural (rural: 1, urban: 0).
+The supplied source counts also create ties through aggregation. For numerical stability, the code constructs the paired differences from their integer numerator before dividing by 88, because dividing by 22 and by 8 can otherwise introduce tiny rounding differences. We state the zero convention used in the demonstration: `zero_method='wilcox'` drops zero differences from its ranking calculation. The five tied pairs remain in the descriptive summaries.
 
+The conditional signed-rank and sign-test p-values are so small that the implementation returns numerical zero at floating-point precision. This is a computational limit, not a probability of exactly zero. We do not use those values to claim stronger substantive evidence than the design supports.
 
-:::{figure}
-:label: bruneiexample1
-:align: center
+## Several groups and several kinds of difference
 
-(byGender)=
-![by age](../resources/w03-img/nonparam_byGender_brunei.png)
+Kruskal–Wallis applied to the three stop-label groups gives H about 82.80 and a conditional p-value about $1.05\times10^{-18}$. It compares ranks across independent groups under its model. Calling this simply a “test of medians” would require additional assumptions about the distributional shapes. The boxplots show why that qualification matters.
 
-(byRural)=
-![by rural](../resources/w03-img/nonparam_byEdu_brunei.png)
+A rank-based result and an ANOVA can disagree because they weight magnitudes differently and target different aspects of a distribution. Their agreement would not validate a shared, questionable independence assumption either.
 
-Comparing the income level vs. gender (a) and rural/urban (b). Data source: [A global dataset of 7 billion individuals with socio-economic characteristics](https://doi.org/10.1038/s41597-024-03864-2)
-:::
-
-
-The income levels are ordinal (ranks) data, which is not numerical, and not normally distributed. _Multiple_ groups are observed in both example, i.e., age group (from low to large) and rural (from low education level to high education level), thus, ANOVA's alternatives could be used.
-
-:::{figure}
-:label: bruneiexample2left
-:align: center
-
-(byAge)=
-![by age](../resources/w03-img/nonparam_byAge_brunei.png)
-
-(byEdu)=
-![by Education](../resources/w03-img/nonparam_byEdu_brunei.png)
-
-Comparing the income level vs. age groups (a) and education levels (b). Data source: [A global dataset of 7 billion individuals with socio-economic characteristics](https://doi.org/10.1038/s41597-024-03864-2)
-:::
+**Self-check:** If a few very busy interchanges dominate the mean, what information is lost when replacing volumes with ranks? What information is retained, and which geographical dependence remains?

@@ -1,0 +1,49 @@
+{
+  "paired_n": 5161,
+  "mean_weekday": 793.6099064663297,
+  "mean_weekend": 643.7638296841698,
+  "median_weekday": 369.1363636363636,
+  "median_weekend": 273.25,
+  "mean_difference": 149.8460767821599,
+  "median_difference": 62.92045454545453,
+  "sd_difference": 434.25109393924583,
+  "se_iid": 6.044689422668014,
+  "t_iid": 24.789706518291325,
+  "p_t_iid": 2.849436182316494e-128,
+  "ci_iid": [
+    137.9959235745636,
+    161.69622998975623
+  ],
+  "positive": 4300,
+  "negative": 856,
+  "ties": 5,
+  "wilcoxon_statistic": 1477065.0,
+  "wilcoxon_p_iid": 0.0,
+  "sign_p_iid": 0.0,
+  "anova_F_iid": 868.458002562963,
+  "anova_p_iid": 0.0,
+  "welch_F_iid": 14.657547423666607,
+  "welch_p_iid": 1.0890081929448214e-05,
+  "kruskal_H_iid": 82.79778493851938,
+  "kruskal_p_iid": 1.0487921876917633e-18,
+  "groups": {
+    "Interchange label": {
+      "count": 47,
+      "mean": 11660.446808510638,
+      "median": 5720.954545454545,
+      "std": 14709.329853463458
+    },
+    "Other stop labels": {
+      "count": 5085,
+      "mean": 694.8884061857514,
+      "median": 365.1363636363636,
+      "std": 1145.8377971988268
+    },
+    "Terminal label": {
+      "count": 29,
+      "mean": 492.1442006269592,
+      "median": 235.22727272727272,
+      "std": 570.1772616142192
+    }
+  }
+}

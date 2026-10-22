@@ -1,207 +1,53 @@
-# The Analysis of Variance
+# 3.3 Comparing several means with ANOVA
 
-## What is Analysis of Variance
+Analysis of variance (ANOVA) compares differences among group means with variation within groups. In a one-way ANOVA, a single categorical factor defines the groups. The null hypothesis states that all population means are equal; the alternative is that at least one differs.
 
-**Definition**:
-Analysis of Variance, aka ANOVA, is a statistical method used to compare the means of _more than two groups_ to determine whether there is a significant difference between them.
+For $g$ groups,
 
-The primary purpose of ANOVA is to test the hypothesis that the means of several populations are equal. It helps determine _whether any observed differences between group means are real or occurred by chance_.
+$$H_0:\mu_1=\mu_2=\cdots=\mu_g.$$
 
-**When to use ANOVA**:
-ANOVA is used when comparing more than two group means. It is particularly useful in experimental settings where a single factor (independent variable, one-way ANOVA) is _manipulated at multiple levels_ (e.g., low, medium, high), and the researcher wants to investigate the effect of _this manipulation_ on the outcome (dependent variable).
+The alternative does not state that every pair differs. An omnibus rejection therefore does not identify which groups differ or whether a difference is practically important.
 
+## Define groups independently of the outcome
 
-## Assumptions of ANOVA
+We use the stop descriptions to construct a transparent teaching proxy. Descriptions ending in “Int” form an **interchange-label** group; those ending in “Ter” form a **terminal-label** group; other descriptions form a third group. The rule is based on names, not on passenger volumes. It is not a fully verified inventory of operational stop functions, so the labels and their limitations remain visible.
 
-ANOVA is based on the following assumptions:
-- **Numeric Response**: The _target (dependent) variable_ should be continuous, either ratio or interval.
-- **Normality**: The data within each group should be approximately normally distributed.
-- **Equal Variances (homoscedasticity)**: The variances of the populations being compared should be roughly equal.
-- **Independence**: Observations should be independent of each other. This means that the data from one subject should not influence the data from another subject.
-- **Categorical treatment or factor variables**: ANOVA evaluates mean differences between one or more categorical variables (such as treatment groups), which are referred to as factors or “ways.”
+Among the paired stops, the groups contain 47 interchange-label stops, 29 terminal-label stops and 5,085 other stops. Their weekday mean daily-average boardings are approximately 11,660.45, 492.14 and 694.89, respectively. Medians are 5,720.95, 235.23 and 365.14. The contrast between means and medians matters particularly for the interchange-label group.
 
-Note: It is essential to verify that these assumptions are met before conducting ANOVA. If assumptions are not satisfied, the validity of the F-test may be compromised. In such cases, alternative methods such as _repeated measure ANOVA, Welch's ANOVA, non-parametric tests_ or more robust techniques may be considered.
+Creating “low”, “medium” and “high” groups from the boarding volumes and then testing whether their mean boardings differ would build the result into the grouping rule. Independent categories make the comparison interpretable, although observational associations still do not establish causes.
 
+![Weekday distributions by label group](../datasets/bus_ridership_202609/bus/group_comparison.png)
 
-## Steps of ANOVA
-```{figure} ../resources/w03-img/anova_ttest.drawio.png
-:label:
-:alt:
-:align: center
+*Figure 3.5. The same weekday data on original and log(1 + boardings) scales. Boxplots show medians, interquartile ranges and points beyond the whiskers. The groups differ greatly in size and variability; the name-based grouping is an explicit proxy.*
 
-The analysis process for t-test, ANOVA, and post-hoc test.
-```
+## Why compare variances to compare means?
 
+Classical one-way ANOVA separates total squared variation into between-group and within-group components. If group $j$ has $n_j$ observations, mean $\overline{X}_j$ and overall mean $\overline{X}$, then
 
-## Types of ANOVA
-Here only some commonly used types are introduced. Other types, e.g,. two-ways, three-ways, nested, Welch's ANOVA... are not covered here since those data is less common, and the concept is similar (anyway).
+$$SS_B=\sum_{j=1}^{g}n_j(\overline{X}_j-\overline{X})^2,$$
 
-- One-way ANOVA
-    - between groups
-    - the simplest and straighforward situation
+$$SS_W=\sum_{j=1}^{g}\sum_{i=1}^{n_j}(X_{ij}-\overline{X}_j)^2.$$
 
-- Repeated Measures ANOVA
-    - within group
-    - when the groups are not independent
+The conventional statistic is
 
-- Mixed-Design ANOVA
-    - when both between and within occurs
+$$F=\frac{SS_B/(g-1)}{SS_W/(N-g)}.$$
 
-### One-way ANOVA
-**Concept**
-One-way ANOVA is a statistical technique used to compare the target variable's means of _three or more independent groups_ with _a single independent variable_ (or factor). It helps determine whether any observed differences between group means are real or occurred by chance.
+The numerator reflects separation among means and the denominator reflects scatter within groups. Under independent normal errors with a common variance and the null hypothesis, the statistic has an F distribution with $g-1$ and $N-g$ degrees of freedom.
 
-**Example**
-To compare the average test scores of students who received different teaching methods.
+For this snapshot, the classical calculation gives F about 868.46. Welch's ANOVA, which allows unequal group variances and uses a different construction, gives F about 14.66 and a model-based p-value about 0.0000109. The large difference between these statistics illustrates the importance of variance assumptions when group sizes are highly unequal. The two statistics have different reference degrees of freedom and should not be compared as if they used the same scale of evidence.
 
-**Hypothesis Tested in One-way ANOVA**
-- $H_0$: The population means of the groups being compared are equal.
-Symbolically: $μ_1 = μ_2 = μ_3 = ... = μ_k$, where μ_i represents the mean of the ith group, and k is the total number of groups.
-- $H_1$: At least one of the group means is different from the others.
+Neither calculation accounts for spatial dependence. The original-scale distributions are strongly skewed and the group rule is a proxy. We therefore interpret these outputs as demonstrations of model sensitivity, alongside the observed summaries, rather than treating an omnibus test as a final conclusion about Singapore's transport system.
 
-```{figure} ../resources/w03-img/measures_spread_4vars.png
-:label:
-:alt:
-:align: center
+## Follow-up comparisons and multiplicity
 
-The One-way ANOVA comparing the four target variables between the three species.
-```
+An omnibus test can be followed by planned contrasts or appropriate post-hoc comparisons. If many comparisons are made, the probability of at least one false rejection can increase. A method such as Holm adjustment can control a familywise error criterion for valid component p-values. Tukey's approach is associated with an equal-variance ANOVA setting; unequal-variance comparisons require a suitable alternative, such as Games–Howell, with its own assumptions.
 
+An adjustment does not fix an invalid independence model. Specify the family of comparisons and the substantive reason for making them before interpreting a collection of p-values.
 
+## Repeated and mixed designs
 
-:::{table} The ANOVA result for the four target variables. Each row display the result from a single ANOVA.  All were significant.
-:label: anovatable
-:align: center
+Weekday and weekend measurements at the same stop are repeated measurements. With only those two conditions, the usual repeated-measures mean comparison corresponds to the paired t-test, and its F statistic equals the squared paired t statistic under the same model. It is not an independent one-way ANOVA on the two lists.
 
-| variety      |   ddof1 |   ddof2 |        F |   p-unc |   np2 |
-|:-------------|--------:|--------:|---------:|--------:|------:|
-| petal.length |       2 |     147 | 1180.16  |   0.000 | 0.941 |
-| petal.width  |       2 |     147 |  960.007 |   0.000 | 0.929 |
-| sepal.length |       2 |     147 |  119.265 |   0.000 | 0.619 |
-| sepal.width  |       2 |     147 |   49.16  |   0.000 | 0.401 |
+A mixed design could combine day type within stops with stop category between stops. Its interaction would ask whether the day-type difference varies by category. Such an analysis requires a model representing repeated measurements, group differences and any relevant dependence. Separate omnibus tests do not automatically answer the interaction question. More than two repeated conditions would also introduce additional covariance assumptions or corrections.
 
-:::
-
-### Repeated Measures ANOVA
-**Concept**
-Repeated measures ANOVA, also known as _within-subjects_ ANOVA, is a statistical technique used to compare means of _three or more dependent groups_ when the same subjects are _observed under various conditions or at different points in time._
-
-**Example**
-To compare the reaction times of a group of participants before, during, and after receiving a treatment.
-
-**Hypothesis Tested in Repeated Measures ANOVA**
-- $H_0$: The population means of the different conditions or time points are equal.
-Symbolically: $μ_1 = μ_2 = μ_3 = ... = μ_k$, where μi represents the mean of the ith condition or time point, and k is the total number of conditions or time points.
-- $H_1$: At least one of the population means is different from the others.
-Symbolically: There exists at least one i and j such that $μ_i ≠ μ_j$.
-
-```{figure} ../resources/w03-img/physiology_data_lineplot-b.png
-:label:
-:alt:
-:align: center
-
-The physiological responses before, during and after two types of VR treatments.
-```
-
-
-```{figure} ../resources/w03-img/physiology_data_lineplot-b-tables.png
-:label:
-:alt:
-:align: center
-
-The tables about the repeated measures and post-hoc results: (left) low decibel, (right) high decibel.
-```
-
-
-
-### Mixed-Design ANOVA
-
-**Concept**
-Mixed-design ANOVA, also known as split-plot ANOVA, is a statistical method used for analyzing data from studies with both between-subjects factors and within-subjects factors. It _combines features of one-way ANOVA and repeated measures ANOVA_, allowing researchers to examine the effects of multiple independent variables on a dependent variable.
-
-**Key Points**
-- _Between-subjects factors_ involve comparisons between different groups of participants, similar to one-way ANOVA.
-- _Within-subjects factors_ involve comparisons within the same group of participants at different time points or under various conditions, similar to repeated measures ANOVA.
-- Mixed-design ANOVA enables researchers to assess the main effects of each factor and the potential interaction effects between factors.
-
-**Assumptions**
-The assumptions of mixed-design ANOVA are similar to those of one-way and repeated measures ANOVA, including normality, homogeneity of variances, and independence. Additionally, the assumption of _sphericity_ must be met for the _within-subjects factor_.
-
-**Use case**
-By using mixed-design ANOVA, researchers can gain a deeper understanding of the complex relationships between multiple factors and their effects on the dependent variable. It's a powerful tool for analyzing data from various experimental designs, particularly in fields such as psychology, medicine, and education.
-
-```{figure} ../resources/w03-img/mixed-anova.png
-:label:
-:alt:
-:align: center
-
-The mixed ANOVA result between classes, time (pre-test vs. post-test), and the interaction between class and time.
-```
-
-
-```{figure} ../resources/w03-img/mixed-anova_posthoc.png
-:label:
-:alt:
-:align: center
-
-The post-hoc test after mixed ANOVA, to observe the time effects in different condition.
-```
-
-
-## F-test, F-distribution, and F-statistic
-
-The F-test is a statistical test used in ANOVA to compare variances and determine whether there is a significant difference between group means. The F-statistic (or F-ratio) is calculated as _the ratio of the between-group variance to the within-group variance_:
-
-$$
-F = (\text{Between-group variance}) / (\text{Within-group variance})
-$$
-
-The F-statistic reflects the extent to which _the variation between groups exceeds the variation within groups_.
-A higher F-value indicates a greater difference between group means relative to the variability within each group.
-
-
-Under the null hypothesis that all group means are equal, the F-statistic follows an F-distribution, which is a family of continuous probability distributions characterized by two parameters: _degrees of freedom for the **numerator** ($\text{ddof}_1$) and degrees of freedom for the **denominator** ($\text{ddof}_2$)_.
-
-The F-distribution is used to determine the _critical F-value_ for a given significance level ($\alpha$) and degrees of freedom ($\text{ddof}_1$ and $\text{ddof}_2$). This critical value is compared with the calculated F-statistic _to make a decision_ about the null hypothesis.
-
-
-### Making decisions in ANOVA using the F-value
-
-- To make decisions in ANOVA, the calculated F-statistic is compared to the critical F-value obtained from the F-distribution.
-
-- If the F-statistic is **larger** than the critical F-value, we **reject** the null hypothesis, concluding that **at least one group mean is significantly** different from the others.
-
-- If the F-statistic is _smaller_ than the critical F-value, we **fail to reject** the null hypothesis, concluding that there is _insufficient evidence to claim a significant_ difference between group means.
-
-- In practice, a p-value is often computed and compared to a predetermined significance level ($\alpha$) to make this decision. _If the p-value is smaller than $\alpha$, the null hypothesis is rejected._
-
-
-
-
-## Post-hoc Tests
-
-### Purpose of Post-hoc Tests
-
-Post-hoc tests are follow-up analyses conducted **after** a significant overall F-test in ANOVA. Their purpose is to determine **which specific group means** are significantly different from one another. Since ANOVA only tells us that at least two means are different, **post-hoc tests help pinpoint where those differences lie**.
-
-### Common post-hoc tests
-
-**Tukey's HSD Test**:
-- Simultaneously compares all possible pairs of means.
-- Controls the family-wise error rate, ensuring the overall probability of making at least one Type I error across all comparisons remains at the desired significance level.
-- Generally more appropriate when making multiple comparisons in an ANOVA context, as it has greater power to detect significant differences while controlling for multiple comparisons.
-
-**Pairwise t-tests**:
-- Compares two means at a time.
-- Performing multiple pairwise t-tests inflates the Type I error rate, as each test uses a fixed significance level (e.g., 0.05) without considering the number of comparisons made.
-- While adjustments such as the Bonferroni correction can control for multiple comparisons, using individual t-tests becomes less powerful and more complex as the number of comparisons increases.
-
-### Roadmap for choosing ANOVA and post-hoc tests
-
-```{figure} ../resources/w03-img/pingouin_anova_guide.png
-:label:
-:alt:
-:align: center
-
-The roadmap for choosing ANOVA and post-hoc tests approaches. by [Pingouin](https://pingouin-stats.org/build/html/guidelines.html)
-```
+**Self-check:** Why is “the ANOVA is significant, therefore every interchange has higher ridership than every other stop” an incorrect interpretation?
