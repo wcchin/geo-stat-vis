@@ -1,0 +1,74 @@
+{
+  "source_od_rows": 887478,
+  "duplicate_od_composite_keys": 0,
+  "selection": {
+    "month": "2026-09",
+    "day_type": "WEEKDAY",
+    "hour_category": 8,
+    "station_codes": [
+      "NS17/CC15",
+      "NE12/CC13",
+      "EW8/CC9",
+      "CC16"
+    ]
+  },
+  "selected_od_rows": 12,
+  "possible_ordered_pairs": 16,
+  "absent_pairs": 4,
+  "reported_zero_pairs": 0,
+  "selected_trip_total": 12904,
+  "safe_join_rows": 12,
+  "safe_join_total": 12904,
+  "unsafe_exit_join_rows": 57,
+  "unsafe_exit_join_total": 78396,
+  "spatial_predicate": "Point-in-polygon with explicit boundary inclusion (covers semantics), EPSG:4326; no distance calculation",
+  "reference_point_rule": "Alphabetically first exit_code; objectid breaks ties. A teaching reference, not station centre or official area assignment.",
+  "reference_points": [
+    {
+      "station_code": "NS17/CC15",
+      "station_name": "Bishan",
+      "reference_exit": "Exit A",
+      "reference_lon": 103.8483049917219,
+      "reference_lat": 1.350579598712016,
+      "planning_area": "BISHAN",
+      "exit_records": 5
+    },
+    {
+      "station_code": "NE12/CC13",
+      "station_name": "Serangoon",
+      "reference_exit": "Exit A",
+      "reference_lon": 103.873957395391,
+      "reference_lat": 1.3494816802550018,
+      "planning_area": "SERANGOON",
+      "exit_records": 8
+    },
+    {
+      "station_code": "EW8/CC9",
+      "station_name": "Paya Lebar",
+      "reference_exit": "Exit A",
+      "reference_lon": 103.89278832410524,
+      "reference_lat": 1.3182159921500778,
+      "planning_area": "GEYLANG",
+      "exit_records": 4
+    },
+    {
+      "station_code": "CC16",
+      "station_name": "Marymount",
+      "reference_exit": "Exit A",
+      "reference_lon": 103.83908795680053,
+      "reference_lat": 1.348980386421366,
+      "planning_area": "BISHAN",
+      "exit_records": 2
+    }
+  ],
+  "sources": {
+    "od": "Instructor-supplied origin_destination_train_202609.csv.xz",
+    "activity": "Instructor-supplied transport_node_train_202609.csv.xz",
+    "exits": "LTA-derived third-party mirror, pinned 2a0df19534be15102658cebdda9267a653e79642; update field 2025-12-02",
+    "boundaries": "Existing URA MP2019 planning-area teaching copy"
+  },
+  "raw_source_sha256": {
+    "upload/origin_destination_train_202609.csv.xz": "9663cfd7e5be5a05da1384664f3c64f0cb1a6ed1c0631760a8c11655dbf67025",
+    "upload/transport_node_train_202609.csv.xz": "bb2a76ef0c61bec1bdf849540e9ddaa69a48be04b07d78064e60476d6f4d9ff7"
+  }
+}

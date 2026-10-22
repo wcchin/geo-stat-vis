@@ -1,523 +1,120 @@
 # Spatial Database
 
-## Why (do we need to talk about) (Spatial) Database
+The previous sections treated a prepared column as something we could summarise, transform and classify. But real analysis usually combines several sources. Station codes and names belong in one table, exit locations in another, and repeated activity observations in others. A database organises these relationships so that we can retrieve the information needed for a question without confusing the entities or repeatedly maintaining the same attributes.
 
-- **Data Management and Organization**:
-Spatial databases play a crucial role in managing, storing, and querying _large volumes of geospatial data_. A solid understanding of spatial databases helps geovisualization professionals effectively organize and access data, ensuring efficient workflows and accurate analysis.
+Our MRT example makes this concrete. To label an OD observation, we need station information twice: once for the origin and once for the destination. To attach a planning-area label, we need coordinates and polygons. The first operation matches identifiers; the second matches geometries.
 
-- **Data Retrieval and Query Performance**:
-Geovisualization often involves working with complex spatial queries and data retrieval tasks. By discussing spatial databases, students can learn how to optimize these queries and improve performance, resulting in _faster and more efficient data retrieval_ for visualization purposes.
+## Tables, keys and relationships
 
-- **Data Quality and Consistency**:
-Spatial databases provide tools and techniques for maintaining data quality, consistency, and integrity. This knowledge is vital for geovisualization professionals, as _data quality directly impacts the accuracy and reliability of their visualizations_.
+A relational database stores information in related tables. A primary key uniquely identifies a row and cannot be null. A foreign key refers to an identifying key in another table. A composite key uses several fields together. In our station lookup, `station_code` identifies one selected station complex. In the OD table, both endpoint codes refer to that lookup, while the complete observation key also includes month, day type, hour and transport type.
 
-- **Data Analysis and Modeling**:
-Spatial databases support various geospatial analysis and modeling techniques, such as spatial statistics, spatial interpolation, and geostatistics. A strong foundation in spatial databases allows geovisualization professionals _to leverage these advanced methods and create more informative visualizations_.
+| Relationship | MRT example | Consequence |
+|---|---|---|
+| One-to-one | A station and one deliberately selected reference-point record | A valid join can attach geometry without multiplying station rows |
+| One-to-many | A station and its exit-location records | One station can match several exits |
+| Many-to-one | Many OD observations matched to an origin-station lookup | The right-hand station key must be unique to preserve OD rows |
+| Many-to-many | Stations related to other stations through directed OD observations | Store the relationship explicitly, with its temporal context and trip count |
 
+Cardinality describes the relationship being modelled, not a promise made by the word “join.” Optionality matters too: a station might lack a matching location in a snapshot. A foreign-key constraint in a database can prevent some unmatched identifiers, while a CSV or in-memory table needs explicit checks. Constraints do not establish that an identifier names the correct real-world object.
 
-## About Data Management
+## Store each fact where it belongs
 
-### How do you manage your photos?
+Repeating a station name and every exit coordinate in every monthly OD record creates redundant information and opportunities for inconsistent updates. A practical design keeps station attributes, exits, OD observations and station activity separate. Queries connect them when needed.
 
-- Most cellphones take nice photos​
-    - Taking 3 photos a day will give you ~1,000 photos a year​
-    - Taking a 5-day vacation would give you 200 photos​
+This illustrates database normalisation: organise attributes according to their dependencies to reduce update, insertion and deletion anomalies. A station name depends on a station identifier, not on which destination appears in an OD row. Formal normal forms are more precise than simply saying “one table per object”; the useful habit here is to identify which key each fact depends on.
 
-- Ways to managing photos​
-    - Leave them on the phone?​
-    - Organize them into folders?​
-    - Upload them to some cloud services?​
+A combined identifier such as `NS17/CC15` is treated as one source key for a station complex in this demonstration. If line membership becomes analytically relevant, create a separate relation linking the complex to line-specific codes. Do not split the OD fact into repeated copies of its trip count.
 
-- Which method is the best?​
+A database management system (DBMS) provides storage and operations such as create, read, update and delete, along with mechanisms for constraints, concurrent access, transactions and recovery. These capabilities depend on the system and its configuration; a database does not automatically guarantee data accuracy or security. PostgreSQL with PostGIS is one spatial-capable option. A desktop GIS or notebook can also perform the small joins here without requiring students to administer a server.
 
-```{figure} ../resources/w12-img/charles-postiaux-_Ulv6kWf5Gw-unsplash.jpg
-:label:takingphoto
-:alt:Sultan Mosque, Singapore.
-:align: center
+## Join the station lookup twice
 
-Sultan Mosque, Singapore. Photo by <a href="https://unsplash.com/@charlespostiaux?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Charles Postiaux</a> on <a href="https://unsplash.com/photos/selective-focus-photography-of-woman-taking-photo-_Ulv6kWf5Gw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+For the observation `NS17/CC15 → CC16`, the reported count is 256. Matching the origin supplies “Bishan”; matching the destination supplies “Marymount.” Use role-specific field names so the result remains unambiguous.
+
+```{figure} ../datasets/mrt_data_foundations_202609/figures/02_two_joins.svg
+:label: ch2-two-endpoint-joins
+:alt: A single OD record receives its origin and destination names through two many-to-one matches to the same station lookup.
+
+One lookup plays two roles. Attaching names preserves the observation and its count; it does not create another trip.
 ```
 
-Managing photos is very similar to the way of managing data, and vice versa.
+The following pandas example uses the field names in the bundled CSVs:
 
-```{figure} ../resources/w12-img/data_management.png
-:label:
-:alt:
-:align: center
-
-The photo management.
+```python
+origin = stations[["station_code", "station_name"]].rename(columns={
+    "station_code": "ORIGIN_PT_CODE", "station_name": "origin_name"
+})
+destination = stations[["station_code", "station_name"]].rename(columns={
+    "station_code": "DESTINATION_PT_CODE", "station_name": "destination_name"
+})
+joined = od.merge(origin, on="ORIGIN_PT_CODE", how="left",
+                  validate="many_to_one")
+joined = joined.merge(destination, on="DESTINATION_PT_CODE", how="left",
+                      validate="many_to_one")
+assert len(joined) == len(od)
+assert joined["TOTAL_TRIPS"].sum() == od["TOTAL_TRIPS"].sum()
+assert joined[["origin_name", "destination_name"]].notna().all().all()
 ```
 
+Here, `od` is the 12-row slice and `stations` is the four-row lookup. Both endpoint codes must be non-missing and the lookup keys unique. A left join retains the selected observations so unmatched names remain inspectable; an inner join would exclude unmatched observations. An outer join can help inspect keys appearing on only one side. Null-key behaviour also differs between tools: pandas can match null join keys to each other, whereas ordinary SQL equality does not, so validate keys before relying on a cross-tool result.
 
-## Data Management
-### Definition (Oracle)
+The checked result has 12 rows and 12,904 trips before and after both matches, with no missing names. These checks support this small lookup; they do not establish full-network matching coverage.
 
-- Data management is the practice of _collecting, keeping, and using_ data securely, efficiently, and cost-effectively.
+## A successful command can still produce the wrong unit
 
-- help people, organizations, and connected things
-    - optimize the use of data within the bounds of policy and regulation
-    - (use data to) enable data-driven decision-makings and take actions that maximize the benefit to the organisation
+Bishan has five exit records in our source snapshot. Joining every OD record directly to all exits of its origin repeats that record once per matching exit. Across the four stations, the 12 OD observations expand to **57 rows**. Summing the repeated counts gives **78,396**, rather than 12,904. The extra count was created by duplication, not transport activity.
 
+This is not a reason to prohibit one-to-many joins. They are useful when the intended result is one row per matching exit. It is a reason to state the output unit and avoid summing station-level facts after expansion. If the goal is to attach a station-level exit count, aggregate exits first. If the goal is one reference geometry, select that geometry explicitly. If the goal is to inspect related exits interactively, a GIS relationship or “relate” can expose them without flattening all records into one observation table.
 
-### Database Operations - CRUD
+A join need not create a permanently stored combined table. It can be a query or view, or it can be materialised as a snapshot. Whether updates propagate depends on implementation; “join” does not by itself mean static, and “relate” does not guarantee real-time synchronisation.
 
-- **_C_reate**: The Create operation is used to add new records (or rows) to a database table.
+## Match geography with a spatial join
 
-- **_R_ead**: The Read operation is used to retrieve or fetch existing records from a database table.
+A spatial join attaches attributes according to a geometric relationship, such as containment, intersection, a distance threshold or nearest feature. For our containment example, we test each selected station reference point against URA planning-area polygons. Station names are not the matching key.
 
-- **_U_pdate**: The Update operation is used to modify existing records in a database table.
+```{figure} ../datasets/mrt_data_foundations_202609/figures/03_spatial_join.svg
+:label: ch2-spatial-join
+:alt: Schematic of the calculated reference-point matches: Bishan and Marymount in Bishan planning area, Serangoon in Serangoon, and Paya Lebar in Geylang.
 
-- **_D_elete**: The Delete operation is used to remove existing records from a database table.
-
-
-### What is Database and Spatial Database
-
-**Database**: an integrated set of data on a particular subject, which is often used to store, and organize data
-
-**Spatial (or Geographic) database**: database containing geographic data of a particular subject for a particular area
-
-```{figure} ../resources/w12-img/spatial_database_simple.png
-:label:
-:alt:
-:align: center
-
-Spatial Database
+The point-in-polygon labels come from real source coordinates and URA boundaries. The drawing's shapes and positions are illustrative, not a geographical map. Each point represents the selected source exit, not the full station complex.
 ```
 
-### Characteristics of (spatial) database
+| Selected station reference | Source exit | Covering planning area |
+|---|---|---|
+| Bishan | Exit A | Bishan |
+| Serangoon | Exit A | Serangoon |
+| Paya Lebar | Exit A | Geylang |
+| Marymount | Exit A | Bishan |
 
-- Data is under **centralized control**
-    - Can guarantee data sharing among different users and applications
-    - Different from file management in which files are dispersed
+Paya Lebar station's selected reference falls in Geylang planning area. Matching the strings “Paya Lebar” in the two tables would not answer the containment question. Similarly, grouping the four results gives two selected reference points in Bishan, one in Serangoon and one in Geylang. These are subset counts, not totals for all stations or estimates of passengers residing in each area.
 
-- Data are **independent**
-    - Database is independent of the application systems, and thus can be called by various application systems
+Choose the spatial predicate deliberately. A boundary-inclusive rule equivalent to `ST_Covers(polygon, point)` accepts points on a polygon boundary; strict point `within` excludes them. A point on a shared boundary can therefore receive two covering matches. Our four reference points each receive exactly one match. All 19 selected exits happen to have the same area label as their respective reference point in this snapshot, but that should not be assumed for every station.
 
-- **Data redundancy** is small
-    - Avoid repetitive data storage
-    - Improve data usage efficiency
+An illustrative PostGIS query, assuming compatible geometry columns and valid polygons, is:
 
-- Database has **complex data model structure**
-    - The complex data model structure is used for data organization and data management
-    - Vital difference from file management
-
-- Database has the function of **data protection**
-    - A password and permission for access must be set
-
----
-class: left, middle
-### Database Management Systems (DBMS)
-
-- A system to _perform database operations_ on tables
-    - CRUD (Create, Read, Update, Delete)
-    - providing a systematic way to store, organize, retrieve, and manipulate data.
-
-- It ensures data _consistency, integrity, and security_ while enabling efficient access and data sharing among multiple users or applications.
-
-- A DBMS supports various database models and provides features like backup, recovery, and performance optimization for _effective data management_.
-
-
-Basic and key characteristics of DBMS:
-- **Persistence** across failures --- maintain a consistent system after failures – software, hardware, network failures, etc.
-
-- **Concurrent** access to data
-
-- **Scalability** to search on very large datasets (which do not fit inside main memories of computers)
-
-- **Efficiency**
-
-
-
-### DBMS clients
-
-- an **interface** between users and the DBMS
-
-- allow users to _connect, access, and interact_ with the database
-
-- a software package that _enables_ people to build and manipulate a database
-
-- Examples:
-    - MySQL Workbench,
-    - pgAdmin
-    - SQL Developer
-    - Microsoft Access (dBase file)
-    - dBeaver
-
-
-
-## Relational Database
-
-- It is a collection of tables, also called _relations_
-
-- The tables are _connected to each other_ by keys
-
-- A _primary key_: represents one or more attributes whose values can uniquely identify a record in a table
-
-- A _foreign key_: is one or more attributes that refer to a primary key in another table
-
-
-### Primary key, Foreign key, Composite key
-- Typically, one column, the _primary key_ contains the unique ID (identifier) of the described things, e.g., student IDs, social security numbers
-
-- This primary key column can exist in other tables to establish a relation, i.e., the _foreign key_
-
-- A _composite key_ is typically generated by combining the values of two or more columns in a table,
-e.g., student ID + course ID
-
-```{figure} ../resources/w12-img/keys.png
-:label:
-:alt:
-:align: center
-
-The keys in Relational Database.
-```
-
-
-### Logical relation types
-
-- One-to-one
-<img src="../resources/w12-img/one-to-one-link.png" width="30%" align="center">
-
-- One-to-many
-<img src="../resources/w12-img/one-to-many-link.png" width="30%" align="center">
-
-- Many-to-one
-<img src="../resources/w12-img/many-to-one-link.png" width="30%" align="center">
-
-- Many-to-many
-<img src="../resources/w12-img/many-to-many-link.png" width="30%" align="center">
-
-
-#### One-to-one <img src="../resources/w12-img/one-to-one-link.png" width="20%" align="center">
-
-Every entity on the left can connect to one and only one entity on the right.
-
-```{figure} ../resources/w12-img/one-to-one-demo.png
-:label:
-:alt:
-:align: center
-
-One-to-one demo.
-```
-
-
-#### One-to-many <img src="../resources/w12-img/one-to-many-link.png" width="20%" align="center">
-
-Every entity on the left can connect to multiple entities on the right.
-Every entity on the right can connect to one and only one entity on the left.
-
-```{figure} ../resources/w12-img/one-to-many-demo.png
-:label:
-:alt:
-:align: center
-
-One-to-many demo.
-```
-
-
-#### Many-to-one <img src="../resources/w12-img/many-to-one-link.png" width="20%" align="center">
-
-Every entity on the left can connect to one and only one entity on the right.
-Every entity on the right can connect to multiple entities on the left.
-
-```{figure} ../resources/w12-img/many-to-one-demo.png
-:label:
-:alt:
-:align: center
-
-Many-to-one demo.
-```
-
-
-
-#### Many-to-many <img src="../resources/w12-img/many-to-many-link.png" width="20%" align="center">
-
-Every entity on the left can connect to multiple entities on the right.
-Every entity on the right can connect to multiple entities on the left​.
-
-```{figure} ../resources/w12-img/many-to-many-demo.png
-:label:
-:alt:
-:align: center
-
-Many-to-many demo.
-```
-
-
-```{figure} ../resources/w12-img/database_relational_demo.png
-:label:
-:alt:
-:align: center
-
-A database for food order & delivery system.
-```
-
-
-
-### Advantages of Relational Database
-
-- Each table in the database can be prepared, maintained, and edited _separately from other tables_
-    - This is important as more (GIS) data are being recorded and added
-
-- The tables can remain separate until a query or an analysis requires that attribute data from different tables be _linked (joined) together_, which is favorable to both data management and data processing.
-
-
-### Normalization: Preparing a relational database
-
-- Normalization is the process of decomposition, taking a table with all the attribute data, and breaking it down into small tables while maintaining the necessary linkages between them.
-
-- Objectives of normalization:
-    - To avoid redundant data
-    - To ensure that attribute data in separate tables can be maintained and updated separately and can be linked whenever necessary
-    - To facilitate a distributed database
-
-
-
-### Demonstration of database normalisation
-
-```{figure} ../resources/w12-img/normalization_before.png
-:label:
-:alt:
-:align: center
-
-A demo table, before normalisation.
-```
-
-
-#### Step 0: Observation on the unnormalized table
-
-Database Normalization is mainly _to separate information from different types of entities to separated tables_.
-
-```{figure} ../resources/w12-img/normalization_observe.png
-:label:
-:alt:
-:align: center
-
-First step is to observe the composition and structure of the database: how many and what are the different 'entity' or 'object' in the table.
-```
-
-#### Step 1: Fill Missing Values
-
-Step 1 fills the empty cells, and each cell has one value.
-But the problem of data redundancy has increased.
-
-```{figure} ../resources/w12-img/normalization_missing_value.png
-:label:
-:alt:
-:align: center
-
-The original data may organised in an ordered way such that the repeated values are skipped if it is same as the one before.
-```
-
-
-
-#### Step 2: Table Decomposition
-
-```{figure} ../resources/w12-img/normalization_decompose_1.png
-:label:
-:alt:
-:align: center
-
-Decopmose the table. Still, there are one table with two types of 'object'.
-```
-
-
-#### Step 3: Table Decomposition again
-
-```{figure} ../resources/w12-img/normalization_decompose_2.png
-:label:
-:alt:
-:align: center
-
-Keep decompose the table again, until every table only represent a single type of object.
-```
-
-#### Done Normalisation
-
-```{figure} ../resources/w12-img/normalization_after.png
-:label:
-:alt:
-:align: center
-
-Finalise the table decomposition and the normalisation is complete.
-```
-
-### Table join and relate
-Since now the tables are separated and represent a single object, how to 'combine' them again for other data operation and usage? Table join and relate are the two frequently used database operation in GIS.
-
-#### Table join
-A join operation brings together two tables by using a common field or a primary key and a foreign key.
-
-```{figure} ../resources/w12-img/table_join.png
-:label:
-:alt:
-:align: center
-
-
-```
-
-#### Table relate
-- A relate operation temporarily connects two tables but keeps the tables physically separate
-
-- Does not append the data from one table to another
-
-- Three or more tables can be simultaneously connected
-
-- Support all relationships
-
-].column[
-```{figure} ../resources/w12-img/table_relate.png
-:label:
-:alt:
-:align: center
-
-
-```
-
-
-### Comparison of Join and Relate
-
-#### Join
-- Combines data from two tables _into a single table or layer_.
-
-- Most often used for one-to-one or many-to-one relationships.
-
-- _Requires a common field in both tables._
-
-- Creates a _static connection_ between tables (updates are not synchronized).
-
-- Appended columns are editable, but _changes won't reflect in the original table_.
-
-
-#### Relate
-- Establishes a _temporary, dynamic connection_ between two tables or layers without physically combining them.
-
-- Allows for one-to-one, one-to-many, and many-to-many relationships.
-
-- _Requires a common field in both tables._
-
-- Provides _real-time access_ to related data (updates are reflected when accessing related information).
-
-- Allows for editing related data, but _changes in the target table won't be synchronized back_ to the original related table.
-
-
-
-## The Special of 'Spatial' in 'Spatial Database'
-
-```{figure} ../resources/w12-img/google_map_demo.png
-:label:
-:alt:
-:align: center
-
-What about 'spatial' in spatial database? The location, proximity, and direction in Google Map.
-```
-
-- **Location**:
-Spatial databases store and manage data with a geographical component, allowing users to associate locations with other attributes for enhanced analysis and visualization.​
-
-- **Proximity**:
-Spatial databases enable proximity analysis, facilitating the identification of nearby features, calculation of distances, and exploration of spatial relationships between various data points.​
-
-- **Direction**:
-With spatial databases, direction-based queries and navigation-based queries, enabling route planning, shortest path calculations, and network analysis to optimize movement and travel within spatial data contexts.​
-
-**Spatial is indeed special!**
-
-
-
-### Spatial join
-A spatial join uses a spatial relationship to join two sets of spatial features and their attribute data.
-
-In [](#spatialjoin):
-- (left) Join a school to a county in which the school is located
-- (center) Join a highway to a forest area by which the highway is intersected​
-- (right) Join a villages to a fault line which the village is closest to
-
-```{figure} ../resources/w12-img/spatial_join.png
-:label: spatialjoin
-:alt: Spatial Join Example
-:align: center
-
-'Merging' (join/relate) table by spatial relationships.
-```
-
-### Example of spatial database
-
-- PostgreSQL + PostGIS
-
-- Mysql + Spatial Extension
-
-- SQLite + SpatiaLite
-
-- DuckDB + Spatial Extension
-
-- MongoDB
-
-- CrateDB
-
-
-### Spatial Indexing
-
-Operationaly, what is the addition of SPATIAL to the database?
-
-- Spatial indexing is a crucial and arguably the main component of a spatial database because it's essential for efficiently querying large datasets of geographic or geometric data.
-
-- KD-Tree, QuadTree
-
-- R-Tree
-
-```{figure} ../resources/w12-img/R-tree.svg.png
-:label:
-:alt:
-:align: center
-
-Image source: [Wikipedia: R-tree](https://en.wikipedia.org/wiki/R-tree)
-```
-
-
-### Example of spatial query (PostGIS)
-
-#### Create table
 ```sql
-CREATE TABLE public.cities (
-    id serial PRIMARY KEY,
-    name VARCHAR(255),
-    population INT,
-    geom GEOMETRY(Point, 4326) -- Point geometry, SRID 4326 (WGS 84 geographic coordinate system)
-);
+SELECT s.station_code, s.station_name, a.planning_area
+FROM stations AS s
+LEFT JOIN planning_areas AS a
+  ON ST_Covers(a.geom, s.geom);
 ```
 
-#### Insert data rows (point)
-```sql
-INSERT INTO public.cities (name, population, geom) VALUES
-('London', 8982000, ST_SetSRID(ST_MakePoint(-0.1278, 51.5074), 4326)),
-('Paris', 2141000, ST_SetSRID(ST_MakePoint(2.3522, 48.8566), 4326)),
-('New York', 8419000, ST_SetSRID(ST_MakePoint(-74.0060, 40.7128), 4326));
-```
+This query is a schema illustration, not a command to run against unimported CSVs: `stations.geom` must first be constructed from the chosen longitude/latitude fields with the correct CRS, and `planning_areas.geom` must contain the area polygons. A left spatial join can return more than one output row per station, so check match counts as well as unmatched rows.
 
+## Coordinates, distance and spatial indexes
 
-### Example of spatial query (PostGIS)
+Containment here uses compatible EPSG:4326 points and polygons and does not calculate distances. For a metre-based proximity question, transform the geometries to a suitable projected CRS such as EPSG:3414 and state the distance operation. Relabelling an EPSG:4326 geometry as EPSG:3414 does not perform that transformation. A straight-line radius also differs from a walking-network distance or travel time.
 
-#### Finding cities within a search distance from a point
-```sql
-    SELECT name
-    FROM public.cities
-    WHERE ST_DWithin(
-        geom::geography,
-        ST_SetSRID(ST_MakePoint(-0.1278, 51.5074), 4326)::geography,
-        100000 -- distance in meters
-    );
-```
+Spatial indexes speed up searching by organising spatial extents or locations. An R-tree-style index can identify candidate features using bounding rectangles, after which the exact spatial predicate checks the geometry. A rectangle match alone need not establish containment or intersection of the original shapes. Point-oriented k-d trees, quadtrees and bounding-box indexes support different structures and queries; their internal algorithms are beyond this chapter's requirements.
 
-#### Spatial Joins
-```sql
--- Assuming another table 'countries' with a 'geom' column (Polygon)
-SELECT c.name AS city_name, co.name AS country_name
-FROM public.cities AS c, public.countries AS co
-WHERE ST_Contains(co.geom, c.geom);
-```
+An index affects how efficiently candidates are found, not which real-world representation is appropriate. Faster querying cannot repair a wrong coordinate system, repeated observations or a poorly chosen reference point. See the [PostGIS spatial-query documentation](https://postgis.net/docs/using_postgis_query.html) and [`ST_Covers` definition](https://postgis.net/docs/ST_Covers.html) for the implemented operations; the [pandas merge guide](https://pandas.pydata.org/docs/user_guide/merging.html) explains tabular join validation.
 
-#### Do calculation (area)
-```sql
-    SELECT ST_Area(ST_GeomFromText('POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))', 4326));
+## From prepared data to defensible analysis
+
+Before proceeding, be able to state the observation unit, temporal scope, identifiers, geometry representation, missing-data treatment and consequences of every join. These decisions determine which distributions and patterns are meaningful to analyse. A spatially explicit table is not automatically an analytically appropriate one; it becomes useful when its construction matches the intended question.
+
+The [offline reproduction package](../datasets/mrt_data_foundations_202609/README.md) checks both endpoint joins, totals, the unsafe-join counterexample and the reference-point matches. Chapter 3 builds on these foundations by examining what statistical comparisons can tell us—and what their assumptions require.
+
+```{dropdown} Self-check: Why not assign the station's full activity to every exit and sum by area?
+The station activity does not identify which exit each trip used. Copying the total to every exit repeats it. An allocation requires additional observations or a justified model; an ordinary join supplies neither.
 ```
