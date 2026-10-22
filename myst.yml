@@ -3,8 +3,8 @@ version: 1
 project:
   id: 1c604af6-8f28-4c31-a4ed-13fff51c09fd
   title: Geospatial Statistics and Visualisation
-  subtitle: Understanding geographical patterns through statistics, spatial analysis and visualisation
-  description: An open, self-study book on geospatial statistics, spatial analysis and visualisation, developed from GE5230 teaching materials at the National University of Singapore.
+  subtitle: GE5230 | Department of Geography | NUS
+  description: Course materials for GE5230 in NUS
   keywords:
     - GIS
     - GIScience
@@ -112,7 +112,7 @@ site:
     logo: ./_static/img/logo-light.png
     logo_dark: ./_static/img/logo-dark.png
     style: ./_static/css/custom.css
-    logo_text: "Geospatial Statistics and Visualisation"
+    logo_text: "GE5230 - Geospatial Statistics and Visualisation"
   parts:
     footer: footer.md
     primary_sidebar_footer: _static/sidebar-footer.md
