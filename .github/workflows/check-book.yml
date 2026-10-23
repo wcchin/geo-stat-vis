@@ -30,6 +30,10 @@ jobs:
         run: python -m pip install numpy 'scipy>=1.16' matplotlib pandas ipython nbformat pyproj shapely scikit-learn geopandas pyogrio
       - name: Validate HDB and URA teaching inputs
         run: python scripts/check_hdb_ura_inputs.py
+      - name: Execute completed statistical-foundations notebooks
+        run: python scripts/check_foundations_notebooks.py
+      - name: Execute point-pattern and clustering solutions
+        run: python scripts/check_point_pattern_guided_notebooks.py
       - name: Check notebook calculations
         run: python scripts/check_nna_pilot.py
       - name: Check original spatial illustrations

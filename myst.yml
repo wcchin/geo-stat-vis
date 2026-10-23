@@ -87,15 +87,21 @@ project:
       children:
         - file: src/content/datasets/data_list.md
         - file: src/content/notebooks/getting-started.ipynb
-        - file: src/content/notebooks/lab-01-reading-table-and-histogram.ipynb
-        - file: src/content/notebooks/lab-02-map-classification.ipynb
-        - file: src/content/notebooks/lab-03-t-test-anova.ipynb
+        - file: src/content/notebooks/exploring-distributions.ipynb
+        - file: src/content/notebooks/exploring-distributions-solution.ipynb
+        - file: src/content/notebooks/data-transformation-classification.ipynb
+        - file: src/content/notebooks/data-transformation-classification-solution.ipynb
+        - file: src/content/notebooks/statistical-group-comparisons.ipynb
+        - file: src/content/notebooks/statistical-group-comparisons-solution.ipynb
         - file: src/content/notebooks/lab-04-spatially-aggregated.ipynb
-        - file: src/content/notebooks/lab-05-point-pattern.ipynb
+        - file: src/content/notebooks/global-point-patterns.ipynb
+        - file: src/content/notebooks/global-point-patterns-solution.ipynb
         - file: src/content/notebooks/firms-sumatra-quadrat.ipynb
         - file: src/content/notebooks/lab-05-nna-self-study.ipynb
-        - file: src/content/notebooks/lab-06-spatial-kde.ipynb
-        - file: src/content/notebooks/lab-07_1-clustering-random-demo.ipynb
+        - file: src/content/notebooks/spatial-kernel-density.ipynb
+        - file: src/content/notebooks/spatial-kernel-density-solution.ipynb
+        - file: src/content/notebooks/spatial-clustering-methods.ipynb
+        - file: src/content/notebooks/spatial-clustering-methods-solution.ipynb
         - file: src/content/notebooks/lab-07_2-clustering-real-data.ipynb
         - file: src/content/notebooks/lab-08-spatial-autocorrelation.ipynb
         - file: src/content/notebooks/lab-08-autocorrelation-self-study.ipynb
