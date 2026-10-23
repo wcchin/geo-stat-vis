@@ -13,10 +13,12 @@ These four compressed source snapshots were copied **byte-for-byte** from the pr
 
 The intended upstream public authorities are Singapore's **Housing & Development Board (HDB)** for resale transactions and **Urban Redevelopment Authority (URA)** for Master Plan 2019 areas. The [Singapore Open Data Licence](https://data.gov.sg/open-data-licence) permits use and redistribution of government open datasets subject to source attribution and third-party-rights exclusions. Relevant upstream entry points include [data.gov.sg](https://data.gov.sg/) and [URA Master Plan 2019 Subzone Boundary (No Sea)](https://data.gov.sg/datasets/d_8594ae9ff96d0c708bc2af633048edfb/view).
 
-**Provenance still to verify before merging:** the exact original dataset IDs and retrieval dates; whether any HDB extract contains externally supplied geocoding, private enrichment or coordinates not covered by the government open-data licence; the original processing transformations; and licence compatibility for the archived boundary layers. The open-data licence for the official public data does not automatically cover every derived column in these GE5230 snapshots.
+**Provenance still to verify despite these files already being publicly merged:** the exact original dataset IDs and retrieval dates; whether any HDB extract contains externally supplied geocoding, private enrichment or coordinates not covered by the government open-data licence; the original processing transformations; and licence compatibility for the archived boundary layers. The open-data licence for the official public data does not automatically cover every derived column in these GE5230 snapshots.
 
 **Do not assume the book's CC BY-NC-ND licence applies to source government datasets.** Original provider licences, attributions and limitations remain applicable.
 
 ## Next validation step
 
-Before converting the notebooks: inspect the archive members and CSV columns; check coordinates, temporal coverage, row counts, duplicates and nulls; verify spatial CRS; confirm the datasets contain no restricted/personal or third-party data; and record SHA-256 digests and a schema summary. Update notebook loaders to prefer local copies and fall back to a pinned public GitHub commit/tag after this PR is merged.
+Priority clearance review: inspect the archive members and CSV columns; check coordinates, temporal coverage, row counts, duplicates and nulls; verify spatial CRS; confirm the datasets contain no restricted/personal or third-party data; and record SHA-256 digests and a schema summary. Update notebook loaders to prefer local copies and fall back to a pinned public GitHub commit/tag after this PR is merged.
+
+See the repository-wide [third-party sources and licensing inventory](../../../../THIRD_PARTY_SOURCES.md). Until the source-specific review is complete, the inclusion of these files should not be interpreted as confirmation of redistribution permission.
