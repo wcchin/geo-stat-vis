@@ -1,17 +1,17 @@
 # Dataset catalogue and downloads
 
-This catalogue links datasets to Geo-stat-vis demonstrations. Use the [Part 3 notebook guide](../part3.md) to choose an exercise. A downloaded repository contains local copies of these files; online notebooks can instead use pinned GitHub raw URLs.
+This catalogue links datasets to Geo-stat-vis demonstrations. **External datasets retain their original source-specific licence terms; the book licence does not relicense them.** See the [third-party licensing inventory](../../../THIRD_PARTY_SOURCES.md). Use the [Part 3 notebook guide](../part3.md) to choose an exercise. A downloaded repository contains local copies of these files; online notebooks can instead use pinned GitHub raw URLs.
 
-## HDB resale and planning boundaries — staged, pending provenance review
+## HDB resale and planning boundaries — already public, provenance not yet cleared
 
-The four following compressed files were confirmed in `wcchin/GE5230-2610/resources` and copied without modification into this PR. **Before merging, verify original data sources, derived/geocoded fields, and redistribution permissions.** Their presence in a private teaching repository alone does not establish permission for public release.
+The four compressed files were copied from `wcchin/GE5230-2610/resources` and are **already present in the public repository**. Their original dataset IDs, derived/geocoded fields and redistribution rights **have not yet been established**. Public presence does not imply licence clearance.
 
-| Dataset | Used for | Download from this PR | Documentation |
+| Dataset | Used for | Download from main | Documentation |
 | --- | --- | --- | --- |
-| HDB resale teaching extract (2013) | Statistical comparisons | [CSV.xz](https://github.com/wcchin/geo-stat-vis/blob/data/hdb-2013-2023-planning-boundaries/src/content/datasets/singapore_hdb_ura/hdb_data_2013.csv.xz) | [Source notes](singapore_hdb_ura/README.md) |
-| HDB resale teaching extract (2023) | Distributions, classification, comparisons, global point patterns | [CSV.xz](https://github.com/wcchin/geo-stat-vis/blob/data/hdb-2013-2023-planning-boundaries/src/content/datasets/singapore_hdb_ura/hdb_data_2023.csv.xz) | [Source notes](singapore_hdb_ura/README.md) |
-| Master Plan 2019 planning areas | Spatial joins and regional comparisons | [ZIP](https://github.com/wcchin/geo-stat-vis/blob/data/hdb-2013-2023-planning-boundaries/src/content/datasets/singapore_hdb_ura/master-plan-2019-planningarea.zip) | [Source notes](singapore_hdb_ura/README.md) |
-| Master Plan 2019 subzones | Spatial aggregation and point-pattern study areas | [ZIP](https://github.com/wcchin/geo-stat-vis/blob/data/hdb-2013-2023-planning-boundaries/src/content/datasets/singapore_hdb_ura/master-plan-2019-subzone_landuse_area.zip) | [Source notes](singapore_hdb_ura/README.md) |
+| HDB resale teaching extract (2013) | Statistical comparisons | [CSV.xz](https://github.com/wcchin/geo-stat-vis/blob/main/src/content/datasets/singapore_hdb_ura/hdb_data_2013.csv.xz) | [Source notes](singapore_hdb_ura/README.md) |
+| HDB resale teaching extract (2023) | Distributions, classification, comparisons, global point patterns | [CSV.xz](https://github.com/wcchin/geo-stat-vis/blob/main/src/content/datasets/singapore_hdb_ura/hdb_data_2023.csv.xz) | [Source notes](singapore_hdb_ura/README.md) |
+| Master Plan 2019 planning areas | Spatial joins and regional comparisons | [ZIP](https://github.com/wcchin/geo-stat-vis/blob/main/src/content/datasets/singapore_hdb_ura/master-plan-2019-planningarea.zip) | [Source notes](singapore_hdb_ura/README.md) |
+| Master Plan 2019 subzones | Spatial aggregation and point-pattern study areas | [ZIP](https://github.com/wcchin/geo-stat-vis/blob/main/src/content/datasets/singapore_hdb_ura/master-plan-2019-subzone_landuse_area.zip) | [Source notes](singapore_hdb_ura/README.md) |
 
 ## Other documented datasets
 

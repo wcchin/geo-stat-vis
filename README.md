@@ -30,4 +30,4 @@ Reproducibility checks and preparation scripts are available under `scripts/`. F
 
 ## Licensing
 
-© 2026 Benny Chin · Content CC BY-NC-ND 4.0 · Code MIT. See the [book homepage](src/index.md) for licence details.
+© 2026 Benny Chin · Content CC BY-NC-ND 4.0 · Code MIT. External datasets and reused third-party assets are **not automatically covered** by those licences. See the [Third-party sources and licensing inventory](THIRD_PARTY_SOURCES.md), which also records outstanding permission checks. See the [book homepage](src/index.md) for licence details.
