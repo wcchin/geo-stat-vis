@@ -4,7 +4,7 @@ These notebooks complement the [core chapters](part1.md) with practical demonstr
 
 The **GE5230 week** column provides an approximate connection to the original 2026 course schedule. It is not part of the notebook title or URL and may change in future teaching.
 
-The guided statistical-foundations notebooks provide **learner** and **solution** versions. Try the tasks first; solutions are openly accessible for self-study. The complete solution notebooks are executable, while learner notebooks intentionally contain unfinished exercises.
+The statistical and new point-pattern notebooks provide **learner** and **solution** versions. Try the tasks first; solutions are openly accessible for self-study. The complete solution notebooks are executable, while learner notebooks intentionally contain unfinished exercises.
 
 ## Notebook catalogue
 
@@ -15,11 +15,11 @@ The guided statistical-foundations notebooks provide **learner** and **solution*
 | [Transforming and classifying values — learner](notebooks/data-transformation-classification.ipynb) · [solution](notebooks/data-transformation-classification-solution.ipynb) | [§2.3–2.4](chapter_2/sec_02-03-Data-Transformation.md) | 2023 HDB extract (PR #33) | Core | 2 |
 | [Statistical group comparisons — learner](notebooks/statistical-group-comparisons.ipynb) · [solution](notebooks/statistical-group-comparisons-solution.ipynb) | [§3.1–3.4](chapter_3/sec_03-01-Hypothesis-Testing.md) | 2023 HDB extract (PR #33) | Core | 3 |
 | [Spatial aggregation](notebooks/lab-04-spatially-aggregated.ipynb) | [Chapter 2](chapter_2/chapter-2-spatial_data.md) | HDB; planning subzones | Core | 4 |
-| [Global point patterns](notebooks/lab-05-point-pattern.ipynb) | [§4.1–4.4](chapter_4/chapter-4-global_point_pattern.md) | Tampines HDB | Core | 5 |
+| [Global point-pattern methods — learner](notebooks/global-point-patterns.ipynb) · [solution](notebooks/global-point-patterns-solution.ipynb) | [§4.1–4.4](chapter_4/chapter-4-global_point_pattern.md) | Synthetic points | Core | 5 |
 | [Sumatra fire detection quadrats](notebooks/firms-sumatra-quadrat.ipynb) | [§4.2](chapter_4/sec_04-02-Quadrat-Count-Analysis.md) | FIRMS teaching snapshot | Application | 5 |
 | [Nearest-neighbour self-study](notebooks/lab-05-nna-self-study.ipynb) | [§4.3](chapter_4/sec_04-03-Nearest-Neighbor-Analysis.md) | Synthetic points | Self-study | 5 |
-| [Spatial kernel density](notebooks/lab-06-spatial-kde.ipynb) | [§5.1–5.2](chapter_5/sec_05-01-Kernel-Density-Estimation.md) | Synthetic points; Johor POIs | Core | 6 |
-| [K-means and DBSCAN](notebooks/lab-07_1-clustering-random-demo.ipynb) | [§5.3–5.5](chapter_5/sec_05-03-Spatial-Clustering.md) | Synthetic points | Core | 7 |
+| [Spatial kernel density — learner](notebooks/spatial-kernel-density.ipynb) · [solution](notebooks/spatial-kernel-density-solution.ipynb) | [§5.1–5.2](chapter_5/sec_05-01-Kernel-Density-Estimation.md) | Synthetic points | Core | 6 |
+| [Spatial clustering methods — learner](notebooks/spatial-clustering-methods.ipynb) · [solution](notebooks/spatial-clustering-methods-solution.ipynb) | [§5.3–5.5](chapter_5/sec_05-03-Spatial-Clustering.md) | Synthetic points | Core | 7 |
 | [Clustering across time](notebooks/lab-07_2-clustering-real-data.ipynb) | [§5.3–5.6](chapter_5/sec_05-03-Spatial-Clustering.md) | Queenstown location records | Application | 7 |
 | [Global spatial autocorrelation](notebooks/lab-08-spatial-autocorrelation.ipynb) | [§6.1–6.3](chapter_6/sec_06-01-Spatial-Autocorrelation.md) | Singapore transit | Core | 8 |
 | [Malaysia spatial autocorrelation self-study](notebooks/lab-08-autocorrelation-self-study.ipynb) | [§6.1–6.3](chapter_6/sec_06-03-Morans-I.md) | Peninsular Malaysia income | Self-study | 8–9 |
