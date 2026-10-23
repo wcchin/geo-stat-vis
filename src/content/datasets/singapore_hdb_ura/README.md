@@ -11,6 +11,9 @@ These four compressed source snapshots were copied **byte-for-byte** from the pr
 
 ## Source and licence notes
 
+**Geocoding provenance:** Location or geometry fields in the HDB teaching extracts may have been enriched using Singapore Land Authority's [OneMap APIs](https://www.onemap.gov.sg/apidocs/), particularly the address **Search** service. OneMap publishes a [Singapore Open Data Licence](https://www.onemap.gov.sg/legal/opendatalicence.html) for eligible datasets, alongside [API Terms of Service](https://www.onemap.gov.sg/legal/apitermsofservice.html). SLA/OneMap must be attributed separately from HDB transaction data. **Still to verify:** that these specific coordinates came from OneMap, the geocoding API/matching procedure, the date and any endpoint-specific conditions; this source link alone does not clear the prepared extract for redistribution.
+
+
 The intended upstream public authorities are Singapore's **Housing & Development Board (HDB)** for resale transactions and **Urban Redevelopment Authority (URA)** for Master Plan 2019 areas. The [Singapore Open Data Licence](https://data.gov.sg/open-data-licence) permits use and redistribution of government open datasets subject to source attribution and third-party-rights exclusions. Relevant upstream entry points include [data.gov.sg](https://data.gov.sg/) and [URA Master Plan 2019 Subzone Boundary (No Sea)](https://data.gov.sg/datasets/d_8594ae9ff96d0c708bc2af633048edfb/view).
 
 **Provenance still to verify despite these files already being publicly merged:** the exact original dataset IDs and retrieval dates; whether any HDB extract contains externally supplied geocoding, private enrichment or coordinates not covered by the government open-data licence; the original processing transformations; and licence compatibility for the archived boundary layers. The open-data licence for the official public data does not automatically cover every derived column in these GE5230 snapshots.
