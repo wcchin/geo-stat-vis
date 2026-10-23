@@ -1,192 +1,126 @@
-# A Demonstration on Point Patterns
+# Gordon Square: Does the Pattern Change When We Count People or Groups?
 
-This example connects the [nearest-neighbour explanation](../chapter_4/sec_04-03-Nearest-Neighbor-Analysis.md) with a geographical decision: what should one point represent? Use the [self-study notebook](../notebooks/lab-05-nna-self-study.ipynb) to practise the calculation, and the [Week 5 lecture slides](../part4.md) to revisit the visual demonstration.
+Imagine visiting a London garden on a sunny afternoon. Some people sit alone; others sit with friends. Looking across the lawn, you might say that people are gathered in clusters. But what would happen if we treated each *social group*, rather than each *person*, as one event?
 
-The existing figures below illustrate how conclusions change between individuals and groups; they are not newly recomputed results from the synthetic notebook.
+This case study follows a geographical decision with statistical consequences: **what does one point represent?** It uses an observed point pattern and previously prepared teaching figures to compare nearest-neighbour and multiple-distance perspectives. The aim is to evaluate the reasoning, not to claim a newly executed analysis.
+
+**Read alongside:** [Complete spatial randomness](../chapter_4/sec_04-01-Complete-Spatial-Randomness.md), [nearest-neighbour analysis](../chapter_4/sec_04-03-Nearest-Neighbor-Analysis.md), and [Ripley's K-function](../chapter_4/sec_04-04-Ripleys-K-Function.md).
+
+## 1. The geographical question
+
+There are competing expectations about where people sit. Friends may choose adjacent spots, while separate groups might leave comfortable gaps between themselves. Both behaviours could appear in the same garden at the same time.
+
+We therefore ask two related but distinct questions:
+
+1. **Individuals:** Are people closer to one another than we would expect from an independent, uniform placement in the accessible garden?
+2. **Groups:** Are the positions of distinct sitting groups more spread out than the same reference would predict?
+
+Neither question alone establishes *why* people chose their seats. Other factors—shade, paths, occupied benches, personal preferences and earlier arrivals—may influence the locations.
 
 ```{figure} ../resources/w05-img/gordon_square2.png
-:label:
-:alt:
+:alt: Context illustration showing Gordon Square in London.
 :align: center
 
-Let's do a mind travel to  Gordon Square, London, UK. Source: [Google Map](https://maps.app.goo.gl/Qdb1K4hzyG485Btm8)
+Gordon Square, London. The original course illustration links to [Google Maps](https://maps.app.goo.gl/Qdb1K4hzyG485Btm8). This is context, not the measured point-pattern geometry.
 ```
 
+## 2. What was observed—and what is represented?
 
-## The question
+The published **`gordon`** dataset in R's [`spatstat.data`](https://search.r-project.org/CRAN/refmans/spatstat.data/html/gordon.html) records locations of people sitting on a grass patch in Gordon Square at 3 pm on a sunny afternoon. Its coordinates are in **metres**, and the observation window is an **irregular polygon with two holes**. The dataset is attributed to Andrew Bevan, University College London; it is discussed in [Baddeley et al. (2013)](https://doi.org/10.18637/jss.v055.i11).
 
-- Can we assume people randomly find a spot to sit?
-- Can we assume people prefer not to sit too close to strangers?
-- If they go with friends or colleagues, they will sit together.
-
-- _Will the process of **people finding comfortable spots for sitting in an open space** result in a random, clustered, or dispersed pattern?_
-
-Analyze with:
-1. individual level
-2. group level
-
-
-## The dataset
-
-This dataset records the location of people sitting on a grass patch in Gordon Square, London, at 3pm on a sunny afternoon.
-
-Area: $42 \times 56 \text{m}^2$
-
-Source: [R spatstat dataset](https://search.r-project.org/CRAN/refmans/spatstat.data/html/gordon.html), Baddeley et al. 2013: [DOI:10.18637/jss.v055.i11](https://doi.org/10.18637/jss.v055.i11)
-
+The `spatstat` teaching notes describe **99 individual points**. The original page's approximate 42 × 56 m rectangle should not be substituted for the actual polygon or treated as its area. The enclosing dimensions and the *usable observation area* are different quantities.
 
 ```{figure} ../resources/w05-img/GordonSquare_individual_and_groups_xkcd.png
-:label:
-:alt:
+:alt: Existing teaching illustration contrasting individual positions with sitting-group positions.
 :align: center
 
-Distribution of individuals and groups.
+The existing teaching illustration contrasts two observation units. The original grouping procedure and its derived coordinates have not yet been independently verified from the material in this repository; do not treat the group layer as an official field in `spatstat.data::gordon`.
 ```
 
+A point for each **individual** asks about interpersonal proximity. One representative point for each **group** asks about spacing between social units. To reproduce the second analysis we would need a documented rule defining membership and group location (for example, a representative centre); it cannot be reconstructed uniquely from the individual coordinates alone.
 
-## Nearest Neighbor Analysis
+### Check your reasoning
 
-- For individual, the p-value is significant with a negative z-score, indicating people tended to sit together.
-- For in-group, the p-value is significant, with a positive z-score, suggesting the locations of groups are dispersed.
+**Self-check:** If three friends sit together, how many events would each representation record?
 
+```{dropdown} Feedback
+The individual representation would record three events. The group representation would record one event *if* those three people were classified as a single group. The latter needs an explicit grouping rule; a group cannot be inferred reliably from distance alone.
+```
 
+## 3. Selecting analytical methods
+
+A visual impression of a cluster is not a statistical test. We need to choose what kind of departure matters, define where sitting was possible, and compare the observed pattern with a relevant reference.
+
+**Nearest-neighbour analysis (NNA)** summarises the distance from each event to its closest *other* event. Shorter-than-reference distances suggest local aggregation; longer distances suggest more regular spacing. It is one summary, not a complete description of the pattern.
+
+**Ripley's K-function** considers the cumulative number of neighbours within a sequence of radii. It can reveal how the pattern's appearance changes with spatial scale. Its interpretation depends on an appropriate observation window, an edge correction and a clearly identified simulation or theoretical reference.
+
+For both methods, homogeneous complete spatial randomness (CSR) is a **starting model**, not a realistic theory of how people must behave. In this setting, a finite-window simulation with a fixed event count and uniformly sampled locations would provide one conditional reference. The irregular accessible window—including the holes—matters.
+
+## 4. What do the existing figures suggest?
+
+### Nearest neighbours
 
 ```{figure} ../resources/w05-img/nna_compare_hist_gordon.png
-:label:
-:alt:
+:alt: Previously prepared nearest-neighbour comparison plots for the individual and group representations.
 :align: center
 
-NNA result.
+Previously prepared course results comparing individual and group representations. The figure is retained as a teaching result; the precise input coordinates, grouping protocol, reference simulation and numerical significance calculations have not yet been independently reproduced here.
 ```
 
+The original teaching interpretation reports *shorter* nearest-neighbour distances for individuals and *longer* distances for groups relative to their respective reference comparisons. That contrast is plausible: members of a party may sit together while separate parties leave more space between them.
 
-## Ripley's K-function
+But the interpretation should remain **conditional on the original analysis** until its data and test settings are reconstructed. A negative or positive z-score describes direction only in relation to the stated formula; a significance claim also requires a verified reference distribution, tail and p-value.
 
-For individual,
-- radius 4 m resulted in higher than random, indicating people tended to sit together at this scale.
-- betwen 4 m and 6 m , the observed line is near to the random, but still above the plotted simulation envelope.
+The key insight does not depend on declaring both tests significant: **changing the observation unit changes the question and can change the pattern we detect**.
 
-
-For in-group,
-- the search radius less than 7 m resulted in dispersed pattern.
-- beyond about 8 m, the figure provides less evidence of departure from its simulated reference; this does not prove randomness.
-
-
+### More than one distance
 
 ```{figure} ../resources/w05-img/k_function_ci_gordon.png
-:label:
-:alt:
+:alt: Previously prepared K-function comparison curves for individuals and groups across spatial distances.
 :align: center
 
-K-function result.
+Previously prepared multi-distance comparison. Check whether the displayed function is K, L or centred L, the estimator and edge correction, and whether the bands are pointwise or globally calibrated before making inferential claims.
 ```
 
+The existing course notes describe excess nearby individual pairs at short radii and relative separation among groups over short to intermediate distances. At larger distances the plotted group curve appears closer to its reference. This **does not prove randomness** beyond any particular radius.
 
+Also, a curve crossing a *pointwise* simulation band at a selected radius is not automatically a globally calibrated test across the full interval. We should not report a whole-curve p-value unless that test has been performed.
 
-## Closing Remarks
+### Compare the two summaries
 
-### NNA & K-function: Key Considerations, Limitations, and Directions
+| Question | NNA contributes | K-function contributes |
+| --- | --- | --- |
+| Are individual positions close together? | Closest other person's distance | Accumulated nearby pairs across chosen radii |
+| Are social groups spaced apart? | Closest other group's distance | How spacing varies with radius |
+| Does either statistic reveal why? | No | No |
 
-**Sensitive to study area size and settings**:
+## 5. Choices that could change the conclusion
 
-CSR assume points to be scattered all around the study area. Thus, Ripley's K function can be influenced by the size and shape of the study area. _Larger study areas_ may result in different K function estimates compared to smaller ones, and _irregular shapes_ can introduce biases. Additionally, the settings used for the K function analysis, such as the bandwidth or edge correction method, can impact the results.
+**Observation unit.** A member of a group has nearby companions; the centre of that group might have no nearby *other group*. These are valid but different questions. A reproducible group analysis needs explicit membership and location rules.
 
+**Window and inaccessible spaces.** Use the actual polygonal lawn and its holes, not the enclosing rectangle. An inflated reference area makes the same observed nearest-neighbour distances appear more clustered; mismatched simulation windows undermine inference.
 
-```{figure} ../resources/w05-img/area_size.png
-:label:
-:alt:
-:align: center
+**Edges and distance range.** Near-boundary neighbours beyond the lawn cannot be observed. A K-function analysis should report the correction used and a justified maximum radius relative to the window.
 
-Effect of different area.
+**Unequal opportunity.** Shade, paths and comfortable patches may make some locations more likely even without attraction or avoidance between people. Rejecting homogeneous CSR does not isolate a social mechanism.
+
+**Uncertainty.** This is a single observed afternoon, not evidence of universal behaviour in London parks. Group definitions and any claimed p-values need an auditable calculation.
+
+## 6. Synthesis: What have we learned?
+
+The strongest lesson is not that people are simply clustered or dispersed. **People can appear clustered when we count individuals, while groups can appear more regularly spaced when each party is represented as one event.** The two statements answer different geographical questions.
+
+An analytical account should therefore name the event, observation window, reference model, method and distance scale before assigning a label to the pattern. It should also make clear which results were reproduced and which came from earlier teaching materials.
+
+**Final reflection:** If someone concludes that “people prefer to sit close together” from the individual pattern, how would you challenge that interpretation? Which alternative explanations would you investigate, and what extra observations would help distinguish them?
+
+```{dropdown} Feedback
+Ask whether the close neighbours are companions, whether people select shaded or accessible locations, and whether the usable lawn was modelled correctly. Group-membership observations, repeated time points and environmental covariates would help distinguish these explanations, though observational data alone would still not demonstrate causation.
 ```
 
+## Continue exploring
 
-**Edge effect** (border effect):
+The [NNA self-study notebook](../notebooks/lab-05-nna-self-study.ipynb) provides reproducible *synthetic* comparisons and an option to supply projected point coordinates. It does **not** reproduce the Gordon Square group analysis. For the method itself, revisit [NNA](../chapter_4/sec_04-03-Nearest-Neighbor-Analysis.md) and [Ripley's K-function](../chapter_4/sec_04-04-Ripleys-K-Function.md). The [point-pattern lab](../notebooks/lab-05-point-pattern.ipynb) offers further practical exercises.
 
-Points beyond the study area are 'ignored.' _Points close to the boundary of the study area may have fewer neighboring points_ than those in the interior, which can bias the K function estimates. This is known as the edge effect, and it can introduce inaccuracies when studying spatial patterns. Edge correction methods are often employed to mitigate this issue.
-
-
-```{figure} ../resources/w05-img/edge_effect.png
-:label:
-:alt:
-:align: center
-
-Edge Effect.
-```
-
-
-**Population-at-risk**:
-
-Ripley's K function assumes that the underlying point process is _stationary and homogeneous_. If the population at risk (i.e., the underlying risk of events occurring) is not uniform across the study area, this can violate the assumptions and lead to misleading results. Incorporating information on the population at risk can help refine the analysis and improve the accuracy of the conclusions drawn from the K function.
-
-```{figure} ../resources/w05-img/pop_at_risk.png
-:label:
-:alt:
-:align: center
-
-Population at risk.
-```
-
-
-## What has been covered in this chapter and section?
-
-What is the workflow of analyzing spatial point pattern?
-
-Global Pattern: the overall pattern of the point distribution
-
-Local Pattern: where are the clusters
-
-
-```{figure} ../resources/w05-img/about_point_pattern_analysis Diagram.drawio.png
-:label:
-:alt:
-:align: center
-
-Point pattern analysis.
-```
-
-
-
-
-## Some notes
-
-The three methods explore the spatial pattern with different angle:
-- Quadrat count: the number of points fall in equal size quadrats
-- NNA: how near/far the nearest neighbor is
-- K-function: how many other points could be found for a specific search radius
-
-The latter two methods can be extended:
-- NNA: to k-order nearest neighbor (see: [CrimeStat III](https://www.ojp.gov/pdffiles1/nij/grants/209264.pdf))
-- K-function: weighted K-function (see: [ArcGIS Pro](https://pro.arcgis.com/en/pro-app/3.1/tool-reference/spatial-statistics/h-how-multi-distance-spatial-cluster-analysis-ripl.htm)])
-
-Things to considered:
-- Edge effect: the near border areas could be underestimated due to the external points. (see: .smaller[[DOI:10.2307/3237072](https://doi.org/10.2307/3237072)])
-- Population at risk: a place with more population could have more events (e.g., crime/disease cases) happens by chance. (see: _SaTScan_(https://www.satscan.org/cgi-bin/satscan/register.pl/SaTScan_Users_Guide.pdf?todo=process_userguide_download)
-
-
-
-## About Statistical Tests
-
-There are so many tests. It is more important to know:
-- The key considerations for choosing a test:
-Understand the _assumptions, requirements, and limitations of each test_, as well as _the nature of your data_ and _research questions_, to select the most appropriate test.
-    - Knowing these can help you to choose the appropriate test(s).
-
-- What you're testing and why:
-Be clear to yourself about the null and alternative hypotheses, _the rationale behind them_, and _the implications of your results_.
-    - Are you testing against CSR? Why?
-
-- Explicitly communicate your approach:
-you have to explicitly tell your readers what, why, and how.
-    - Don't let your readers guess.
-
-_No single test is suitable for all situations, and it's impossible to memorize every test._
-Instead, focus on developing a strong foundation in statistical concepts and _knowing where to find_ relevant information when selecting the appropriate test for your specific needs.
-
-### About p-values
-
-A p-value describes how unusual the observed statistic, or a more extreme value in the specified direction, would be under the null model. It is not the probability that the null is true or that a particular rejection is wrong.
-
-Choose the alternative and significance level before inspecting the result. A non-significant result does not establish randomness. For K/L curves, distinguish a pointwise simulation envelope from a simultaneous test across all radii; crossing a pointwise envelope somewhere is not automatically a global 5% test.
-
-The nearest-neighbour result concerns the distance to the closest other event. The K/L result concerns several distances. In this example, changing the point unit from individuals to groups changes the geographical question itself.
+**Source and further reading:** [`spatstat.data::gordon` documentation](https://search.r-project.org/CRAN/refmans/spatstat.data/html/gordon.html); [Baddeley, Turner, Mateu and Bevan (2013)](https://doi.org/10.18637/jss.v055.i11). The official dataset provides individual coordinates and its observation window; the group-level figures in this case study remain legacy teaching material pending a separate reproduction audit.
