@@ -30,4 +30,4 @@ Reproducibility checks and preparation scripts are available under `scripts/`. F
 
 ## Licensing
 
-Book content: **CC BY-NC-ND 4.0** (© 2025 National University of Singapore). Code: **MIT**. See the [book homepage](src/index.md) for licence details.
+© 2026 Benny Chin · Content CC BY-NC-ND 4.0 · Code MIT. See the [book homepage](src/index.md) for licence details.
