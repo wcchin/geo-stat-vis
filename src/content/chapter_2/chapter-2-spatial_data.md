@@ -59,3 +59,13 @@ See the [selected data, source attribution, preparation rules, numerical audit a
 ```{dropdown} Feedback
 No. It could represent a station centre, a selected exit, an individual platform or another reference location. Geometry type tells us how a feature is represented; metadata tells us what the feature means.
 ```
+
+## Try it yourself
+
+Apply the concepts in the corresponding [Part 3 notebook catalogue](../part3.md). The linked learner notebooks include guided activities; companion solutions are available from their introductions or from the catalogue.
+
+- [Explore distributions](../notebooks/exploring-distributions.ipynb)
+- [Transform and classify values](../notebooks/data-transformation-classification.ipynb)
+- [Investigate spatial aggregation](../notebooks/spatial-aggregation.ipynb)
+
+**Reflect:** Compare a histogram or classification result under two reasonable parameter choices. Which features are stable, and which are choices made by the analyst?
