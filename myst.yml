@@ -98,9 +98,9 @@ project:
         - file: src/content/notebooks/spatial-clustering-methods.ipynb
         - file: src/content/notebooks/lab-07_2-clustering-real-data.ipynb
         - file: src/content/notebooks/lab-08-spatial-autocorrelation.ipynb
-        - file: src/content/notebooks/lab-08-autocorrelation-self-study.ipynb
+        - file: src/content/notebooks/malaysia-income-mapping-permutations.ipynb
         - file: src/content/notebooks/lab-09-LISA.ipynb
-        - file: src/content/notebooks/malaysia-income-areal-self-study.ipynb
+        - file: src/content/notebooks/malaysia-income-areal-inference.ipynb
         - file: src/content/notebooks/lab-10-for-flowmapgl.ipynb
     - title: Part 4 - Lecture Slides
       file: src/content/part4.md
