@@ -40,6 +40,8 @@ jobs:
         run: python scripts/check_od_worked_notebook.py
       - name: Check Part 1 to Part 3 activity links
         run: python scripts/check_chapter_notebook_links.py
+      - name: Check learner and solution notebook links
+        run: python scripts/check_solution_links.py
       - name: Check notebook calculations
         run: python scripts/check_nna_pilot.py
       - name: Check original spatial illustrations
