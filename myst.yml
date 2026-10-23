@@ -101,7 +101,7 @@ project:
         - file: src/content/notebooks/lab-08-autocorrelation-self-study.ipynb
         - file: src/content/notebooks/local-spatial-autocorrelation.ipynb
         - file: src/content/notebooks/malaysia-income-areal-self-study.ipynb
-        - file: src/content/notebooks/lab-10-for-flowmapgl.ipynb
+        - file: src/content/notebooks/visualising-origin-destination-flows.ipynb
     - title: Part 4 - Lecture Slides
       file: src/content/part4.md
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
