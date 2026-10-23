@@ -29,9 +29,12 @@ This book is developed and maintained by **Benny Chin**, Department of Geography
 
 ## Licensing
 
-**Book content (text, images, figures and explanations)**  
-© 2026 Benny Chin.  
-Licensed under [Creative Commons Attribution–NonCommercial–NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/). You may share the material with attribution, but may not modify it or use it commercially.
+**Parts 1 and 2 — concepts and worked examples.** Original text, explanations and project-created figures are licensed under [Creative Commons Attribution–NonCommercial–NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/). Redistribution of adaptations, including translations, requires separate permission from the applicable rights holders.
 
-**Code cells and example scripts**  
-Licensed under the [MIT License](https://opensource.org/license/mit). You may reuse, modify and distribute the code under its terms.
+**Part 3 — code and notebooks.** Original executable code cells and reusable scripts are licensed under the [MIT License](https://opensource.org/license/mit). The accompanying prose, learning questions, illustrations and other original non-code materials in notebooks retain the book's CC BY-NC-ND 4.0 licence.
+
+**Part 4 — lecture slides.** Original project-owned slide text and graphics are subject to CC BY-NC-ND 4.0. Embedded third-party images, diagrams or resources retain their respective rights and must be assessed individually.
+
+**External datasets and other third-party materials — all parts.** Each dataset, boundary, geocoding source, background map or reused asset retains its provider's applicable licence and attribution requirements. The project's CC and MIT licences do not relicense these resources. Refer to the [dataset catalogue](content/datasets/data_list.md) and [third-party sources and licensing inventory](../THIRD_PARTY_SOURCES.md).
+
+© 2026 Benny Chin for original material, subject to other rights holders' contributions and licences.

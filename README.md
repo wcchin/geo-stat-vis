@@ -30,4 +30,13 @@ Reproducibility checks and preparation scripts are available under `scripts/`. F
 
 ## Licensing
 
-© 2026 Benny Chin · Content CC BY-NC-ND 4.0 · Code MIT. External datasets and reused third-party assets are **not automatically covered** by those licences. See the [Third-party sources and licensing inventory](THIRD_PARTY_SOURCES.md), which also records outstanding permission checks. See the [book homepage](src/index.md) for licence details.
+Different components have different licences:
+
+- **Parts 1 and 2:** Original chapter text, worked-example explanations and project-created figures are licensed under [CC BY-NC-ND 4.0](LICENSE).
+- **Part 3:** Executable Python code, code cells and reusable scripts are licensed under [MIT](LICENSE-CODE). The notebook explanations, questions and original figures remain under CC BY-NC-ND 4.0.
+- **Part 4:** Original slide content is under CC BY-NC-ND 4.0 **only where the project owns the rights**; external figures and teaching assets retain their original permissions.
+- **Datasets and third-party assets in any part:** Governed by their own provider-specific licences, attribution and reuse conditions—not automatically by CC BY-NC-ND or MIT.
+
+See [Third-party sources and licensing](THIRD_PARTY_SOURCES.md), including the outstanding provenance checks for prepared government-data teaching extracts.
+
+© 2026 Benny Chin for original book content, subject to the rights of other contributors and third parties.
