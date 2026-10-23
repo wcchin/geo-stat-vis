@@ -36,6 +36,8 @@ jobs:
         run: python scripts/check_point_pattern_guided_notebooks.py
       - name: Check guided global and local Moran solutions
         run: python scripts/check_areal_guided.py
+      - name: Check portable OD-flow worked example
+        run: python scripts/check_od_worked_notebook.py
       - name: Check notebook calculations
         run: python scripts/check_nna_pilot.py
       - name: Check original spatial illustrations
