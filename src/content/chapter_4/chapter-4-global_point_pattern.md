@@ -82,3 +82,13 @@ Quadrat counts discard positions within cells. NNA responds to the closest other
 ```
 
 **Next:** [Spatial Patterns and Complete Spatial Randomness](sec_04-01-Complete-Spatial-Randomness.md).
+
+## Try it yourself
+
+Apply the concepts in the corresponding [Part 3 notebook catalogue](../part3.md). The linked learner notebooks include guided activities; companion solutions are available from their introductions or from the catalogue.
+
+- [Global point-pattern investigation](../notebooks/global-point-patterns.ipynb)
+- [Nearest-neighbour self-study](../notebooks/lab-05-nna-self-study.ipynb)
+- [Sumatra fire-detection quadrats](../notebooks/firms-sumatra-quadrat.ipynb)
+
+**Reflect:** Compare two summaries of the same points. Which choices about the window, boundary and reference model affect the inference?
