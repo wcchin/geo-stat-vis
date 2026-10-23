@@ -30,7 +30,7 @@ This book is developed and maintained by **Benny Chin**, Department of Geography
 ## Licensing
 
 **Book content (text, images, figures and explanations)**  
-© 2025 National University of Singapore.  
+© 2026 Benny Chin.  
 Licensed under [Creative Commons Attribution–NonCommercial–NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/). You may share the material with attribution, but may not modify it or use it commercially.
 
 **Code cells and example scripts**  
