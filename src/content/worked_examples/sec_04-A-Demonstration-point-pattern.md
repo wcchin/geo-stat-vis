@@ -1,4 +1,4 @@
-# Gordon Square: Does the Pattern Change When We Count People or Groups?
+# People and Groups: Analysing Point Patterns in Gordon Square
 
 Imagine visiting a London garden on a sunny afternoon. Some people sit alone; others sit with friends. Looking across the lawn, you might say that people are gathered in clusters. But what would happen if we treated each *social group*, rather than each *person*, as one event?
 
