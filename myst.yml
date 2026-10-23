@@ -86,7 +86,7 @@ project:
       file: src/content/part3.md
       children:
         - file: src/content/datasets/data_list.md
-        - file: src/content/notebooks/lab-00-installing-packages.ipynb
+        - file: src/content/notebooks/getting-started.ipynb
         - file: src/content/notebooks/lab-01-reading-table-and-histogram.ipynb
         - file: src/content/notebooks/lab-02-map-classification.ipynb
         - file: src/content/notebooks/lab-03-t-test-anova.ipynb
