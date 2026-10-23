@@ -90,7 +90,7 @@ project:
         - file: src/content/notebooks/exploring-distributions.ipynb
         - file: src/content/notebooks/data-transformation-classification.ipynb
         - file: src/content/notebooks/statistical-group-comparisons.ipynb
-        - file: src/content/notebooks/lab-04-spatially-aggregated.ipynb
+        - file: src/content/notebooks/spatial-aggregation.ipynb
         - file: src/content/notebooks/global-point-patterns.ipynb
         - file: src/content/notebooks/firms-sumatra-quadrat.ipynb
         - file: src/content/notebooks/lab-05-nna-self-study.ipynb
