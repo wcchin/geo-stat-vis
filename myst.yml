@@ -96,7 +96,7 @@ project:
         - file: src/content/notebooks/lab-05-nna-self-study.ipynb
         - file: src/content/notebooks/spatial-kernel-density.ipynb
         - file: src/content/notebooks/spatial-clustering-methods.ipynb
-        - file: src/content/notebooks/lab-07_2-clustering-real-data.ipynb
+        - file: src/content/notebooks/spatial-clustering-across-time.ipynb
         - file: src/content/notebooks/global-spatial-autocorrelation.ipynb
         - file: src/content/notebooks/lab-08-autocorrelation-self-study.ipynb
         - file: src/content/notebooks/local-spatial-autocorrelation.ipynb
