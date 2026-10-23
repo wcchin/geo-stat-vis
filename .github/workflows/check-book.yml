@@ -34,6 +34,8 @@ jobs:
         run: python scripts/check_foundations_notebooks.py
       - name: Execute point-pattern and clustering solutions
         run: python scripts/check_point_pattern_guided_notebooks.py
+      - name: Check guided global and local Moran solutions
+        run: python scripts/check_areal_guided.py
       - name: Check notebook calculations
         run: python scripts/check_nna_pilot.py
       - name: Check original spatial illustrations
