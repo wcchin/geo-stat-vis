@@ -40,3 +40,11 @@ The new amenity layer contains 123 hawker-centre directory records, 337 school r
 These layers are a **cross-source teaching comparison**, not a time-matched study of what caused the resale prices. Throughout the chapter, all distances are calculated in metres using SVY21 / Singapore TM (EPSG:3414). The maps omit coordinate-axis numbers, retain a scale bar and north indication, and use detailed planning-area boundaries for context.
 
 **Pause and consider.** Before reading further, write one measurable definition of “convenient” for your own daily life. Which of these layers could address it? Which important evidence is missing?
+
+## Try it yourself
+
+Apply the concepts in the corresponding [Part 3 notebook catalogue](../part3.md). The linked learner notebooks include guided activities; companion solutions are available from their introductions or from the catalogue.
+
+- [Visualise origin–destination connections](../notebooks/visualising-origin-destination-flows.ipynb)
+
+**Reflect:** What does a connection line encode in this example? What would be an unsupported claim about the underlying movement?

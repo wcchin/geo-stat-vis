@@ -66,3 +66,11 @@ You would need separate observations for individual dates, with consistent cover
 ## Sources and reproducibility
 
 The source records are instructor-supplied LTA DataMall September 2026 passenger-volume and bus-stop extracts. See the [data definitions, preparation rules, numerical audit and offline figure scripts](https://github.com/wcchin/geo-stat-vis/blob/main/src/content/datasets/bus_ridership_202609/README.md). Maps use URA Master Plan 2019 planning areas.
+
+## Try it yourself
+
+Apply the concepts in the corresponding [Part 3 notebook catalogue](../part3.md). The linked learner notebooks include guided activities; companion solutions are available from their introductions or from the catalogue.
+
+- [Compare statistical groups](../notebooks/statistical-group-comparisons.ipynb)
+
+**Reflect:** Before interpreting the result, identify the observational unit, null hypothesis, effect magnitude and at least one plausible source of confounding.

@@ -82,3 +82,14 @@ No. It summarises the overall relationship. Local concentrations and spatial out
 ```
 
 **Next:** [Autocorrelation and Spatial Autocorrelation](sec_06-01-Spatial-Autocorrelation.md).
+
+## Try it yourself
+
+Apply the concepts in the corresponding [Part 3 notebook catalogue](../part3.md). The linked learner notebooks include guided activities; companion solutions are available from their introductions or from the catalogue.
+
+- [Global Moran's I](../notebooks/global-spatial-autocorrelation.ipynb)
+- [Local Moran contributions](../notebooks/local-spatial-autocorrelation.ipynb)
+- [Malaysian income maps and permutations](../notebooks/malaysia-income-mapping-permutations.ipynb)
+- [Malaysian income spatial inference](../notebooks/malaysia-income-areal-inference.ipynb)
+
+**Reflect:** Explain how neighbourhood weights define the comparison. Distinguish a descriptive quadrant or statistic from a statistically supported interpretation.

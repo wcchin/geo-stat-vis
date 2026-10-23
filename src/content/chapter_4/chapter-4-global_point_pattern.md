@@ -82,3 +82,31 @@ Quadrat counts discard positions within cells. NNA responds to the closest other
 ```
 
 **Next:** [Spatial Patterns and Complete Spatial Randomness](sec_04-01-Complete-Spatial-Randomness.md).
+
+## Try it yourself
+
+Apply the concepts in the corresponding [Part 3 notebook catalogue](../part3.md). The linked learner notebooks include guided activities; companion solutions are available from their introductions or from the catalogue.
+
+- [Global point-pattern investigation](../notebooks/global-point-patterns.ipynb)
+- [Nearest-neighbour self-study](../notebooks/lab-05-nna-self-study.ipynb)
+- [Sumatra fire-detection quadrats](../notebooks/firms-sumatra-quadrat.ipynb)
+
+**Reflect:** Compare two summaries of the same points. Which choices about the window, boundary and reference model affect the inference?
+
+
+### A short code demonstration: nearest-neighbour distance
+
+For four points in an arbitrary projected coordinate system, this small calculation makes the **observed nearest-neighbour distance** concrete before applying a reference model. Each point must exclude itself from the search.
+
+```python
+import numpy as np
+
+points = np.array([[0, 0], [1, 0], [4, 0], [4, 3]], dtype=float)
+distances = np.linalg.norm(points[:, None, :] - points[None, :, :], axis=2)
+np.fill_diagonal(distances, np.inf)  # exclude each point itself
+nearest = distances.min(axis=1)
+print(nearest)         # [1. 1. 3. 3.]
+print(nearest.mean())  # 2.0 coordinate units
+```
+
+The observed mean is a descriptive result, **not** a test of complete spatial randomness. For inference, the observation window, units, sampling design and an appropriate CSR reference or simulation are still required.

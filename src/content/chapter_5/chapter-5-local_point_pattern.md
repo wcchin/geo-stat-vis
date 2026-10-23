@@ -45,3 +45,13 @@ Contains HDB resale-price information and HDB/OneMap building coordinates, acces
 ```{dropdown} Feedback
 Many sales of every type may occur where housing stock or turnover is large. Compare with all selling locations and make the denominator explicit.
 ```
+
+## Try it yourself
+
+Apply the concepts in the corresponding [Part 3 notebook catalogue](../part3.md). The linked learner notebooks include guided activities; companion solutions are available from their introductions or from the catalogue.
+
+- [Explore KDE bandwidth](../notebooks/spatial-kernel-density.ipynb)
+- [Compare clustering methods](../notebooks/spatial-clustering-methods.ipynb)
+- [Compare clusters across time](../notebooks/spatial-clustering-across-time.ipynb)
+
+**Reflect:** Vary a bandwidth or clustering parameter and explain how a change in the map differs from a change in the observed data.
