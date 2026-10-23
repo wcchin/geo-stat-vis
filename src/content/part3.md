@@ -14,7 +14,7 @@ The statistical and new point-pattern notebooks provide **learner** and **soluti
 | [Exploring distributions — learner](notebooks/exploring-distributions.ipynb) · [solution](notebooks/exploring-distributions-solution.ipynb) | [§2.2](chapter_2/sec_02-02-Frequency-Distribution.md) | 2023 HDB extract (PR #33) | Core | 2 |
 | [Transforming and classifying values — learner](notebooks/data-transformation-classification.ipynb) · [solution](notebooks/data-transformation-classification-solution.ipynb) | [§2.3–2.4](chapter_2/sec_02-03-Data-Transformation.md) | 2023 HDB extract (PR #33) | Core | 2 |
 | [Statistical group comparisons — learner](notebooks/statistical-group-comparisons.ipynb) · [solution](notebooks/statistical-group-comparisons-solution.ipynb) | [§3.1–3.4](chapter_3/sec_03-01-Hypothesis-Testing.md) | 2023 HDB extract (PR #33) | Core | 3 |
-| [Spatial aggregation](notebooks/lab-04-spatially-aggregated.ipynb) | [Chapter 2](chapter_2/chapter-2-spatial_data.md) | HDB; planning subzones | Core | 4 |
+| [Spatial aggregation: HDB and planning subzones](notebooks/lab-04-spatially-aggregated.ipynb) | [Chapter 2](chapter_2/chapter-2-spatial_data.md) | HDB; planning subzones | Core | 4 |
 | [Global point-pattern methods — learner](notebooks/global-point-patterns.ipynb) · [solution](notebooks/global-point-patterns-solution.ipynb) | [§4.1–4.4](chapter_4/chapter-4-global_point_pattern.md) | Synthetic points | Core | 5 |
 | [Sumatra fire detection quadrats](notebooks/firms-sumatra-quadrat.ipynb) | [§4.2](chapter_4/sec_04-02-Quadrat-Count-Analysis.md) | FIRMS teaching snapshot | Application | 5 |
 | [Nearest-neighbour self-study](notebooks/lab-05-nna-self-study.ipynb) | [§4.3](chapter_4/sec_04-03-Nearest-Neighbor-Analysis.md) | Synthetic points | Self-study | 5 |
@@ -25,9 +25,9 @@ The statistical and new point-pattern notebooks provide **learner** and **soluti
 | [Malaysia spatial autocorrelation self-study](notebooks/lab-08-autocorrelation-self-study.ipynb) | [§6.1–6.3](chapter_6/sec_06-03-Morans-I.md) | Peninsular Malaysia income | Self-study | 8–9 |
 | [Local spatial association](notebooks/lab-09-LISA.ipynb) | [§6.4–6.6](chapter_6/sec_06-04-Local-Moran.md) | Course areal data | Core | 9 |
 | [Malaysia income and areal patterns](notebooks/malaysia-income-areal-self-study.ipynb) | [Chapter 6](chapter_6/chapter-6-areal_pattern.md) | Peninsular Malaysia income | Application | 8–9 |
-| [Preparing movement flows](notebooks/lab-10-for-flowmapgl.ipynb) | [Chapter 7](chapter_7/chapter-7-geovisualisation.md) | Singapore bus OD data | Application | 11 |
+| [Visualising origin–destination flows](notebooks/lab-10-for-flowmapgl.ipynb) | [Chapter 7](chapter_7/chapter-7-geovisualisation.md) | Singapore bus OD data | Application | 11 |
 
-**Migration note.** The catalogue uses descriptive labels now; some underlying filenames still contain course numbering while they are being adapted and checked. The [migration blueprint](../../docs/part3-migration-blueprint.md) records proposed names, data dependencies and migration status. The legacy preparation notebook is no longer in the table of contents but remains in the repository until compatibility checks are complete.
+**Migration note.** The catalogue uses descriptive labels now; some underlying filenames still contain course numbering while they are being adapted and checked. The [migration blueprint](../../docs/part3-migration-blueprint.md) records proposed names, data dependencies and migration status. Superseded numbered foundation, point-pattern, KDE and introductory clustering notebooks have been removed. Legacy application notebooks with unique material remain available pending their own migration.
 
 ## Data and reproducibility
 
