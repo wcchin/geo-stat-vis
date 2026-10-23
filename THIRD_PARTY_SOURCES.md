@@ -2,9 +2,10 @@
 
 Geo-stat-vis has **separate licensing layers**:
 
-- **Original book text and graphical content:** [CC BY-NC-ND 4.0](../LICENSE), subject to third-party exclusions.
-- **Original software/code:** [MIT](../LICENSE-CODE).
-- **External data, photographs, basemaps, boundaries, icons, figures and other third-party material:** their **original providers' terms apply**. They are **not relicensed** under the book's CC licence or the repository's MIT code licence.
+- **Part 1 (Core Chapters) and Part 2 (Worked Examples):** Original prose, educational explanations and project-created diagrams are under [CC BY-NC-ND 4.0](LICENSE), except where third-party rights apply.
+- **Part 3 (Data and Notebooks):** Original executable notebook code and reusable scripts are under [MIT](LICENSE-CODE). Notebook prose, learning prompts and original non-code artwork remain under CC BY-NC-ND 4.0. **Bundled datasets are governed separately** by their source licences.
+- **Part 4 (Lecture Slides):** Original project-owned prose and graphics are under CC BY-NC-ND 4.0; externally sourced slide illustrations are not automatically included.
+- **All parts:** External data, photographs, basemaps, boundaries, icons, figures, fonts and other third-party material retain their own providers' terms. Neither the book's CC licence nor the repository's MIT licence overrides them.
 
 The following inventory describes *documented sources*, not blanket permission. **Unverified** means the use or redistribution conditions still need confirmation. The listed status is not legal advice or a guarantee that all contents of a teaching extract derive from the named provider.
 
