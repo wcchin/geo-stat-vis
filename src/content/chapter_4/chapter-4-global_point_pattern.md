@@ -92,3 +92,21 @@ Apply the concepts in the corresponding [Part 3 notebook catalogue](../part3.md)
 - [Sumatra fire-detection quadrats](../notebooks/firms-sumatra-quadrat.ipynb)
 
 **Reflect:** Compare two summaries of the same points. Which choices about the window, boundary and reference model affect the inference?
+
+
+### A short code demonstration: nearest-neighbour distance
+
+For four points in an arbitrary projected coordinate system, this small calculation makes the **observed nearest-neighbour distance** concrete before applying a reference model. Each point must exclude itself from the search.
+
+```python
+import numpy as np
+
+points = np.array([[0, 0], [1, 0], [4, 0], [4, 3]], dtype=float)
+distances = np.linalg.norm(points[:, None, :] - points[None, :, :], axis=2)
+np.fill_diagonal(distances, np.inf)  # exclude each point itself
+nearest = distances.min(axis=1)
+print(nearest)         # [1. 1. 3. 3.]
+print(nearest.mean())  # 2.0 coordinate units
+```
+
+The observed mean is a descriptive result, **not** a test of complete spatial randomness. For inference, the observation window, units, sampling design and an appropriate CSR reference or simulation are still required.
