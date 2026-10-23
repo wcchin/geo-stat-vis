@@ -109,8 +109,8 @@ site:
   template: book-theme
   options:
     favicon: ./_static/img/favicon.ico
-    logo: ./_static/img/logo-light.png
-    logo_dark: ./_static/img/logo-dark.png
+    logo: ./_static/img/logo-symbol.svg
+    logo_dark: ./_static/img/logo-symbol.svg
     style: ./_static/css/custom.css
     logo_text: "Geospatial Statistics and Visualisation"
   parts:
